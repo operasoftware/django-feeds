@@ -1,0 +1,110 @@
+{% extends "opal/base.html" %}
+
+{% load i18n %}
+
+{% block context-box %}
+<div id="context-box">
+    <ul id="xmlhttp">
+    </ul>
+        
+    
+    
+	{% comment %} Sign up & labguage selections are here  until we know more about the design {% endcomment %}
+	{% if user.is_authenticated and user.is_active %}
+	  <span id="signin"><a href="/accounts/logout/">Logout {{user.username}}</a></span>
+	{% else %}
+	  <span id="signin"><a href="/accounts/login/">Login</a></span>
+	{% endif %}
+	
+	<p>Your current location:
+	    {{location.city}}, {{location.country}}
+    </p> 
+	<br><br>
+	<p>Current language :
+	    {% for lang in languages %}
+	        {% ifequal lang.0 LANGUAGE_CODE %} {{ lang.1 }} {% endifequal %}
+	        
+	    {% endfor %}
+	    <br><br>test : {% trans "This is a test sentence for the demo." %}
+	    <br><br>change it :
+	    <ul>
+	        {% for lang in languages %}
+
+    		  <li><a href="/setlanghyplnk/{{ lang.0 }}/">{{ lang.1 }}</a></li>
+
+    		{% endfor %}
+    	</ul>
+	</p>
+	<br><br>
+	<p>Your feeds: 
+    {% for feed in feeds %}
+        {{ feed.name }}, 
+    {% endfor %}
+    </p>
+    <p>
+
+        <form id="feed-add" action="." method="post">        
+            <ul>
+                {{ form.as_ul }}
+            </ul>
+            <input type="submit" value="Create new feed" />
+        </form>
+    
+      </p> 
+    {% comment %} 
+	{% block language-selection %}
+		<form id="lang-form" action="/i18n/setlang/" method="get">
+		<div>
+		<input name="next" type="hidden" value="" />
+		<select name="language">
+		{% for lang in languages %}
+		
+		<option value="{{ lang.0 }}" {% ifequal lang.0 LANGUAGE_CODE %} selected="selected" {% endifequal %}>{{ lang.1 }}</option>
+		{% endfor %}
+		</select>
+		<input id="lang-sub" type="submit" value="Change language" />
+		</div>
+		</form>
+	{% endblock %}
+	{% endcomment %}
+
+</div>
+{% endblock %}{% comment %} Endblock content {% endcomment %}
+
+{% block content %}
+<div id="content">
+        
+    <ol id="content-0" class="content-col">
+            {% for feed in feeds %}
+            <li class="drag">
+            <div class="box feed-box">
+                <h3> {{feed.name}} </h3>
+                <a title="minimize module" class="min" href="#"> - </a>
+                <a title="close module" class="close" href="#"> x </a>
+                <div class="box-content">
+                <ol>
+                {% for post in feed.get_posts %}
+                    <li class="{% cycle 'odd' 'even' %}">
+                        <h4>{{ post.title|striptags }}</h4>
+                        <span class="feed-pub">{{ post.date_published|striptags }}</span>
+                        <p>{{ post.content|striptags }} <a href="{{ post.link }}" title="{{ post.title|striptags }}">Read more</a>
+                        </p>
+                    </li>
+                {% endfor %}
+                </ol>
+                </div>
+            </div>
+            </li>
+            {% endfor %}
+    </ol>
+ 
+    <ol id="content-1" class="content-col">
+
+    </ol>
+
+
+</div>
+{% endblock %}
+
+
+
