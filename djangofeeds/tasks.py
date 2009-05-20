@@ -1,6 +1,11 @@
 from celery.task import tasks, Task, PeriodicTask
 from djangofeeds.importers import FeedImporter
 from djangofeeds.messaging import refresh_all_feeds_delayed
+from django.conf import settings
+
+DEFAULT_REFRESH_EVERY = 15 * 60 # 15 minutes
+REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
+                        DEFAULT_REFRESH_EVERY)
 
 
 class RefreshFeedTask(Task):
@@ -19,7 +24,7 @@ tasks.register(RefreshFeedTask)
 
 class RefreshAllFeeds(PeriodicTask):
     name = "djangofeeds.refresh_all_feeds"
-    run_every = 15 * 60 # 15 minutes
+    run_every = REFRESH_EVERY
 
     def run(self, **kwargs):
         refresh_all_feeds_delayed()
