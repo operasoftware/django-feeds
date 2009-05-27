@@ -197,8 +197,3 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"<Post: %s>" % self.title
-
-
-class SomeSum(models.Model):
-    the_sum = models.PositiveIntegerField(default=0)
-    the_sum2 = models.PositiveIntegerField(default=0)
