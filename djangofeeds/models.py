@@ -84,12 +84,12 @@ class Feed(StdModel):
     """
 
     name = models.CharField(_(u"name"), max_length=200)
-    feed_url = models.URLField(_(u"feed URL"), max_length=1000, unique=True)
+    feed_url = models.URLField(_(u"feed URL"), unique=True)
     description = models.TextField(_(u"description"))
-    link = models.URLField(_(u"link"), max_length=300, blank=True)
+    link = models.URLField(_(u"link"), max_length=200, blank=True)
     http_etag = models.CharField(_(u"E-Tag"), editable=False, blank=True,
                                                               null=True,
-                                                              max_length=255),
+                                                              max_length=200),
     http_last_modified = models.DateTimeField(_(u"Last-Modified"),
                                                                null=True,
                                                                editable=False,
@@ -132,7 +132,7 @@ class Enclosure(models.Model):
     """
 
     url = models.URLField(_(u"URL"))
-    type = models.CharField(_(u"type"), max_length=255)
+    type = models.CharField(_(u"type"), max_length=200)
     length = models.PositiveIntegerField(_(u"length"), default=0)
 
     class Meta:
@@ -178,10 +178,10 @@ class Post(models.Model):
     """
 
     feed = models.ForeignKey(Feed, null=False, blank=False)
-    title = models.CharField(_(u"title"), max_length=255)
-    link = models.URLField(_(u"link"), max_length=1000)
+    title = models.CharField(_(u"title"), max_length=200)
+    link = models.URLField(_(u"link"))
     content = models.TextField(_(u"content"), blank=True)
-    guid = models.CharField(_(u"guid"), max_length=1000, blank=True)
+    guid = models.CharField(_(u"guid"), max_length=200, blank=True)
     author = models.CharField(_(u"author"), max_length=50, blank=True)
     date_published = models.DateField(_(u"date published"))
     date_updated = models.DateTimeField(_(u"date updated"))
