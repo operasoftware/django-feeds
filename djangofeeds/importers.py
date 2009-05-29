@@ -154,11 +154,17 @@ class FeedImporter(object):
         return cat
 
     def update_feed(self, feed_obj, feed=None):
+        logger = self.logger
         limit = self.post_limit
         if not feed:
+            self.logger.debug("uf: %s Feed was not provided, fetch..." % (
+                feed_obj.feed_url))
             last_modified = None
             if feed_obj.http_last_modified:
+                self.logger.debug("uf: %s Feed was last modified %s" % (
+                        last_modified))
                 last_modified = feed_obj.http_last_modified.timetuple()
+            self.logger.debug("uf: Parsing feed %s" % feed_obj.feed_url)
             feed = self.parser.parse(feed_obj.feed_url,
                                      etag=feed_obj.http_etag,
                                      modified=last_modified)
@@ -168,6 +174,9 @@ class FeedImporter(object):
 
         # Feed can be local/ not fetched with HTTP client.
         status = feed.get("status", HTTP_OK)
+        self.logger.debug("uf: %s Feed HTTP status is %d" %
+                (feed_obj.feed_url, status))
+
 
         if status == HTTP_FOUND or status == HTTP_MOVED:
             if feed_obj.feed_url != feed.href:
@@ -175,6 +184,8 @@ class FeedImporter(object):
             status = HTTP_OK
 
         if status == HTTP_OK or status == HTTP_TEMPORARY_REDIRECT:
+            self.logger.debug("uf: %s Importing entries..." %
+                    (feed_obj.feed_url))
             entries = [self.import_entry(entry, feed_obj)
                         for entry in entries_by_date(feed.entries, limit)]
             feed_obj.date_last_refresh = datetime.now()
@@ -182,6 +193,8 @@ class FeedImporter(object):
             if hasattr(feed, "modified"):
                 feed_obj.http_last_modified = datetime.fromtimestamp(
                                                 time.mktime(feed.modified))
+            self.logger.debug("uf: %s Saving feed object..." %
+                    (feed_obj.feed_url))
             feed_obj.save()
             return entries
         return []
@@ -206,30 +219,49 @@ class FeedImporter(object):
         return dict(fields)
 
     def import_entry(self, entry, feed_obj):
+        self.logger.debug("ie: %s Importing entry..." % (feed_obj.feed_url))
+        self.logger.debug("ie: %s parsing field data..." %
+                (feed_obj.feed_url))
         fields = self.post_fields_parsed(entry, feed_obj)
+        self.logger.debug("ie: %s Truncating field data..." %
+                (feed_obj.feed_url))
         fields = truncate_field_data(Post, fields)
 
         if fields["guid"]:
             # Unique on GUID, feed
+            self.logger.debug("ie: %s Is unique on GUID, storing post." % (
+                feed_obj.feed_url))
             post, created = Post.objects.get_or_create(guid=fields["guid"],
                                                        feed=feed_obj,
                                                        defaults=fields)
         else:
             # Unique on title, feed
+            self.logger.debug("ie: %s No GUID, storing post." % (
+                feed_obj.feed_url))
             post, created = Post.objects.get_or_create(title=fields["title"],
                                                        feed=feed_obj,
                                                        defaults=fields)
 
         if not created:
             # Update post with new values (if any)
+            self.logger.debug("ie: %s Feed not new, update values..." % (
+                feed_obj.feed_url))
             post.save()
 
         if self.include_enclosures:
+            self.logger.debug("ie: %s Saving enclosures..." % (
+                feed_obj.feed_url))
             enclosures = self.get_enclosures(entry) or []
             post.enclosures.add(*enclosures)
         if self.include_categories:
+            self.logger.debug("ie: %s Saving categories..." % (
+                feed_obj.feed_url))
             categories = self.get_categories(entry) or []
             post.categories.add(*categories)
+
+        self.logger.debug("ie: %s Post successfully imported..." % (
+            feed_obj.feed_url))
+
         return post
 
 
