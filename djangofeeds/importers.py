@@ -219,7 +219,6 @@ class FeedImporter(object):
         return dict(fields)
 
     def import_entry(self, entry, feed_obj):
-        return
         self.logger.debug("ie: %s Importing entry..." % (feed_obj.feed_url))
         self.logger.debug("ie: %s parsing field data..." %
                 (feed_obj.feed_url))
