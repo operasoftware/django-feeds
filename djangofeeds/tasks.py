@@ -16,7 +16,7 @@ class RefreshFeedTask(Task):
         feed_url = kwargs["feed_url"]
         logger = self.get_logger(**kwargs)
         logger.info(">>> Importing feed: %s..." % feed_url)
-        importer = FeedImporter(update_on_import=True)
+        importer = FeedImporter(update_on_import=True, logger=logger)
         importer.import_feed(feed_url)
         return feed_url
 tasks.register(RefreshFeedTask)
