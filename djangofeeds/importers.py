@@ -1,7 +1,7 @@
 import sys
 import time
 import feedparser
-from datetime import datetime
+from datetime import datetime, timedelta
 from djangofeeds.models import Feed, Post, Enclosure, Category
 from yadayada.db import TransactionContext
 from django.utils.text import truncate_words, truncate_html_words
@@ -110,7 +110,7 @@ class FeedImporter(object):
         self.include_enclosures = kwargs.get("include_enclosures",
                                         self.include_enclosures)
 
-    def import_feed(self, feed_url):
+    def import_feed(self, feed_url, force=None):
         logger = self.logger
         feed_url = feed_url.strip()
         logger.debug("Starting import of %s." % feed_url)
@@ -130,13 +130,16 @@ class FeedImporter(object):
         })
         feed_obj, created = Feed.objects.get_or_create(feed_url=feed_url,
                                                        defaults=feed_data)
-        logger.debug("%s Feed object created" % feed_url)
+
+        if created:
+            logger.debug("%s Feed object created" % feed_url)
+
         if self.include_categories:
             feed_obj.categories.add(*self.get_categories(feed.channel))
             logger.debug("%s categories created" % feed_url)
         if self.update_on_import:
             logger.debug("%s Updating...." % feed_url)
-            self.update_feed(feed_obj, feed=feed)
+            self.update_feed(feed_obj, feed=feed, force=force)
             logger.debug("%s Update finished!" % feed_url)
         return feed_obj
 
@@ -153,8 +156,18 @@ class FeedImporter(object):
         cat, created = Category.objects.get_or_create(**fields)
         return cat
 
-    def update_feed(self, feed_obj, feed=None):
+    13:40
+
+    13:60
+
+    13:20 < 13:50
+
+    def update_feed(self, feed_obj, feed=None, force=False):
         logger = self.logger
+        if datetime.now() < feed_obj.date_last_refresh + \
+                timedelta(seconds=10):
+            logger.info("Feed %s already refreshed in the last 10 seconds.")
+            return []
         limit = self.post_limit
         if not feed:
             self.logger.debug("uf: %s Feed was not provided, fetch..." % (
