@@ -156,12 +156,6 @@ class FeedImporter(object):
         cat, created = Category.objects.get_or_create(**fields)
         return cat
 
-    13:40
-
-    13:60
-
-    13:20 < 13:50
-
     def update_feed(self, feed_obj, feed=None, force=False):
         logger = self.logger
         if datetime.now() < feed_obj.date_last_refresh + \
