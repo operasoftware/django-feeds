@@ -11,6 +11,7 @@ REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
+    routing_key = "feed.importer"
 
     def run(self, **kwargs):
         feed_url = kwargs["feed_url"]
@@ -29,14 +30,3 @@ class RefreshAllFeeds(PeriodicTask):
     def run(self, **kwargs):
         refresh_all_feeds_delayed()
 tasks.register(RefreshAllFeeds)
-
-
-class SetSomeSum(Task):
-    name = "djangofeeds.set_some_sum"
-
-    def run(self, increment):
-        from djangofeeds.models import SomeSum
-        o, c = SomeSum.objects.get_or_create(pk=1)
-        c.the_sum = increment
-        c.the_sum2 += increment
-        c.save()
