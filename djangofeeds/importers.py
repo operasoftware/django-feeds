@@ -158,8 +158,9 @@ class FeedImporter(object):
 
     def update_feed(self, feed_obj, feed=None, force=False):
         logger = self.logger
-        if datetime.now() < feed_obj.date_last_refresh + \
-                timedelta(seconds=10):
+        
+        if feed_obj.date_last_refresh and datetime.now() <
+                feed_obj.date_last_refresh + timedelta(seconds=10):
             logger.info("Feed %s already refreshed in the last 10 seconds.")
             return []
         limit = self.post_limit
