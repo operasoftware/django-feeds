@@ -128,10 +128,12 @@ class FeedImporter(object):
                         "name": feed_name,
                         "description": feed.channel.get("description", ""),
         })
-        feed_obj, created = Feed.objects.get_or_create(feed_url=feed_url,
-                                                       defaults=feed_data)
 
-        if created:
+        try:
+            feed_obj = Feed.objects.get(feed_url=feed_url)
+        except Feed.DoesNotExist:
+            feed_obj = Feed(feed_url=feed_url, **feed_data)
+            feed_obj.save()
             logger.debug("%s Feed object created" % feed_url)
 
         if self.include_categories:
