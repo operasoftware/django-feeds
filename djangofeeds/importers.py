@@ -17,8 +17,15 @@ DEFAULT_NUM_POSTS = -1
 DEFAULT_CACHE_MIN = 30
 DEFAULT_SUMMARY_MAX_WORDS = 25
 
+DEFAULT_MAX_REFRESH_INTERVAL = timedelta(seconds=30)
 STORE_ENCLOSURES = getattr(settings, "DJANGOFEEDS_STORE_ENCLOSURES", False)
 STORE_CATEGORIES = getattr(settings, "DJANGOFEEDS_STORE_CATEGORIES", False)
+MAX_REFRESH_INTERVAL = getattr(settings, "DJANGOFEEDS_MAX_REFRESH_INTERVAL",
+                               DEFAULT_MAX_REFRESH_INTERVAL)
+
+# Make sure MAX_REFRESH_INTERVAL is a timedelta object.
+if isinstance(MAX_REFRESH_INTERVAL, int):
+    MAX_REFRESH_INTERVAL = timedelta(seconds=MAX_REFRESH_INTERVAL)
 
 
 def summarize(text, max_length=DEFAULT_SUMMARY_MAX_WORDS):
@@ -160,11 +167,13 @@ class FeedImporter(object):
 
     def update_feed(self, feed_obj, feed=None, force=False):
         logger = self.logger
-        if feed_obj.date_last_refresh:
-            if datetime.now() < feed_obj.date_last_refresh + \
-                    timedelta(seconds=30):
-                logger.info("Feed %s already refreshed in the last 30 seconds.")
-                return []
+        
+        if feed_obj.date_last_refresh and datetime.now() < \
+                feed_obj.date_last_refresh + MAX_REFRESH_INTERVAL:
+            logger.info("Feed %s already refreshed, cannot refresh until \
+                        its max refresh interval has passed")
+            return []
+
         limit = self.post_limit
         if not feed:
             self.logger.debug("uf: %s Feed was not provided, fetch..." % (
