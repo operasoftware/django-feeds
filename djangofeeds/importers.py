@@ -17,15 +17,15 @@ DEFAULT_NUM_POSTS = -1
 DEFAULT_CACHE_MIN = 30
 DEFAULT_SUMMARY_MAX_WORDS = 25
 
-DEFAULT_MAX_REFRESH_INTERVAL = timedelta(seconds=30)
+DEFAULT_MIN_REFRESH_INTERVAL = timedelta(seconds=60 * 20)
 STORE_ENCLOSURES = getattr(settings, "DJANGOFEEDS_STORE_ENCLOSURES", False)
 STORE_CATEGORIES = getattr(settings, "DJANGOFEEDS_STORE_CATEGORIES", False)
-MAX_REFRESH_INTERVAL = getattr(settings, "DJANGOFEEDS_MAX_REFRESH_INTERVAL",
-                               DEFAULT_MAX_REFRESH_INTERVAL)
+MIN_REFRESH_INTERVAL = getattr(settings, "DJANGOFEEDS_MIN_REFRESH_INTERVAL",
+                               DEFAULT_MIN_REFRESH_INTERVAL)
 
 # Make sure MAX_REFRESH_INTERVAL is a timedelta object.
-if isinstance(MAX_REFRESH_INTERVAL, int):
-    MAX_REFRESH_INTERVAL = timedelta(seconds=MAX_REFRESH_INTERVAL)
+if isinstance(MIN_REFRESH_INTERVAL, int):
+    MIN_REFRESH_INTERVAL = timedelta(seconds=MIN_REFRESH_INTERVAL)
 
 
 def summarize(text, max_length=DEFAULT_SUMMARY_MAX_WORDS):
@@ -120,25 +120,27 @@ class FeedImporter(object):
     def import_feed(self, feed_url, force=None):
         logger = self.logger
         feed_url = feed_url.strip()
-        logger.debug("Starting import of %s." % feed_url)
-        feed = self.parser.parse(feed_url)
-        logger.debug("%s parsed" % feed_url)
-        # Feed can be local/fetched with a HTTP client.
-        status = feed.get("status\n", HTTP_OK)
-
-        if status == HTTP_FOUND or status == HTTP_MOVED:
-            feed_url = feed.href
-
-        feed_name = feed.channel.get("title", "(no title)").strip()
-        feed_data = truncate_field_data(Feed, {
-                        "sort": 0,
-                        "name": feed_name,
-                        "description": feed.channel.get("description", ""),
-        })
-
+        feed = None
         try:
             feed_obj = Feed.objects.get(feed_url=feed_url)
         except Feed.DoesNotExist:
+
+            logger.debug("Starting import of %s." % feed_url)
+            feed = self.parser.parse(feed_url)
+            logger.debug("%s parsed" % feed_url)
+            # Feed can be local/fetched with a HTTP client.
+            status = feed.get("status\n", HTTP_OK)
+
+            if status == HTTP_FOUND or status == HTTP_MOVED:
+                feed_url = feed.href
+
+            feed_name = feed.channel.get("title", "(no title)").strip()
+            feed_data = truncate_field_data(Feed, {
+                            "sort": 0,
+                            "name": feed_name,
+                            "description": feed.channel.get("description", ""),
+            })
+            
             feed_obj = Feed(feed_url=feed_url, **feed_data)
             feed_obj.save()
             logger.debug("%s Feed object created" % feed_url)
@@ -147,7 +149,7 @@ class FeedImporter(object):
             feed_obj.categories.add(*self.get_categories(feed.channel))
             logger.debug("%s categories created" % feed_url)
         if self.update_on_import:
-            logger.debug("%s Updating...." % feed_url)
+            logger.info("%s Updating...." % feed_url)
             self.update_feed(feed_obj, feed=feed, force=force)
             logger.debug("%s Update finished!" % feed_url)
         return feed_obj
@@ -169,9 +171,9 @@ class FeedImporter(object):
         logger = self.logger
         
         if feed_obj.date_last_refresh and datetime.now() < \
-                feed_obj.date_last_refresh + MAX_REFRESH_INTERVAL:
-            logger.info("Feed %s already refreshed, cannot refresh until \
-                        its max refresh interval has passed")
+                feed_obj.date_last_refresh + MIN_REFRESH_INTERVAL:
+            logger.info("Feed %s don't need to be refreshed" % \
+                                            feed_obj.feed_url)
             return []
 
         limit = self.post_limit
@@ -188,18 +190,20 @@ class FeedImporter(object):
                                      etag=feed_obj.http_etag,
                                      modified=last_modified)
 
-        # If the document has been moved, update the unique feed_url,
-        # to the new location.
-
         # Feed can be local/ not fetched with HTTP client.
         status = feed.get("status", HTTP_OK)
         self.logger.debug("uf: %s Feed HTTP status is %d" %
                 (feed_obj.feed_url, status))
 
-
+        # If the document has been moved, update the unique feed_url,
+        # to the new location.
         if status == HTTP_FOUND or status == HTTP_MOVED:
-            if feed_obj.feed_url != feed.href:
-                feed_obj.feed_url = feed.href
+            # TODO: this code will cause an SQL error due to the UNIQUE
+            # constraint. And duplicates if there is no constraint.
+            # If we want to support this, first we should check if a feed
+            # with the new URL does not exist.
+            #if feed_obj.feed_url != feed.href:
+            #    feed_obj.feed_url = feed.href
             status = HTTP_OK
 
         if status == HTTP_OK or status == HTTP_TEMPORARY_REDIRECT:

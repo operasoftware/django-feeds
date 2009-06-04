@@ -84,7 +84,7 @@ class Feed(StdModel):
     """
 
     name = models.CharField(_(u"name"), max_length=200)
-    feed_url = models.URLField(_(u"feed URL"))
+    feed_url = models.URLField(_(u"feed URL"), unique=True)
     description = models.TextField(_(u"description"))
     link = models.URLField(_(u"link"), max_length=200, blank=True)
     http_etag = models.CharField(_(u"E-Tag"), editable=False, blank=True,

@@ -14,9 +14,11 @@ class RefreshFeedTask(Task):
     routing_key = "feed.importer"
 
     def run(self, **kwargs):
+        import socket
+        socket.setdefaulttimeout(10)
         feed_url = kwargs["feed_url"]
         logger = self.get_logger(**kwargs)
-        logger.info(">>> Importing feed: %s..." % feed_url)
+        logger.info("Importing feed %s" % feed_url)
         importer = FeedImporter(update_on_import=True, logger=logger)
         importer.import_feed(feed_url)
         return feed_url
@@ -28,5 +30,7 @@ class RefreshAllFeeds(PeriodicTask):
     run_every = REFRESH_EVERY
 
     def run(self, **kwargs):
+        import socket
+        socket.setdefaulttimeout(10)
         refresh_all_feeds_delayed()
 tasks.register(RefreshAllFeeds)
