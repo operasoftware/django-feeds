@@ -132,7 +132,8 @@ class FeedImporter(object):
             status = feed.get("status\n", HTTP_OK)
 
             if status == HTTP_FOUND or status == HTTP_MOVED:
-                feed_url = feed.href
+                if feed_url != feed.href:
+                    return self.import_feed(feed.href, force)
 
             feed_name = feed.channel.get("title", "(no title)").strip()
             feed_data = truncate_field_data(Feed, {
@@ -183,7 +184,7 @@ class FeedImporter(object):
             last_modified = None
             if feed_obj.http_last_modified:
                 self.logger.debug("uf: %s Feed was last modified %s" % (
-                        last_modified))
+                        feed_obj.feed_url, feed_obj.http_last_modified))
                 last_modified = feed_obj.http_last_modified.timetuple()
             self.logger.debug("uf: Parsing feed %s" % feed_obj.feed_url)
             feed = self.parser.parse(feed_obj.feed_url,
