@@ -58,8 +58,8 @@ class Category(models.Model):
 
     def __unicode__(self):
         if self.domain:
-            return u"<Category: %s [%s]>" % (self.name, self.domain)
-        return u"<Category: %s>" % self.name
+            return u"%s [%s]" % (self.name, self.domain)
+        return u"%s" % self.name
 
 
 class Feed(StdModel):
@@ -112,7 +112,7 @@ class Feed(StdModel):
         verbose_name_plural = _(u"syndication feeds")
 
     def __unicode__(self):
-        return u"<Feed: %s (%s)>" % (self.name, self.feed_url)
+        return u"%s (%s)" % (self.name, self.feed_url)
 
     def get_posts(self, **kwargs):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
@@ -146,7 +146,7 @@ class Enclosure(models.Model):
         verbose_name_plural = _(u"enclosures")
 
     def __unicode__(self):
-        return u"<Enclosure: %s %s (%d)>" % (self.url, self.type, self.length)
+        return u"%s %s (%d)" % (self.url, self.type, self.length)
 
 
 class Post(models.Model):
@@ -209,4 +209,4 @@ class Post(models.Model):
         verbose_name_plural = _(u"posts")
 
     def __unicode__(self):
-        return u"<Post: %s>" % self.title
+        return u"%s" % self.title

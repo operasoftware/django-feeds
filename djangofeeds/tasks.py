@@ -19,7 +19,7 @@ FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
-    routing_key = ".".join([DJANGOFEEDS_ROUTING_KEY_PREFIX, "feedimporter"])
+    routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
 
     def run(self, **kwargs):
         feed_url = kwargs["feed_url"]
