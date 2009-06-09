@@ -3,17 +3,21 @@
 Model Classes
 -------------
 
-    * Category
-        Category associated with Post or Feed.
+.. class:: Category
+        
+    :class:`Category` associated with :class:`Post` or :class:`Feed`.
 
-    * Feed
-        Model representing a feed.
+.. class:: Feed
+        
+    Model representing a feed.
 
-    * Enclosure
-        Model representing media attached to a post.
+.. class:: Enclosure
 
-    * Post
-        Model representing a single post in a feed.
+    Model representing media attached to a :class:`Post`.
+
+.. class:: Post
+
+    Model representing a single post in a :class:`Feed`.
 
 
 portal-dev@list.opera.com
@@ -31,15 +35,15 @@ __all__ = ["Feed", "Enclosure", "Post", "Category"]
 
 
 class Category(models.Model):
-    """Category associated with ``Post`` or ``Feed``
+    """Category associated with :class:`Post`` or :class:`Feed`.
 
-    Attributes
-    ----------
-        * ``name``
-            Name of the category.
+    .. attribute:: name
 
-        * ``domain``
-            The type of category
+        Name of the category.
+
+    .. attribute:: domain
+
+        The type of category
 
     """
 
@@ -61,25 +65,27 @@ class Category(models.Model):
 class Feed(StdModel):
     """An RSS feed
 
-    Attributes
-    ----------
+    .. attribute:: name
 
-        * ``name``
-            The name of the feed.
+        The name of the feed.
 
-        * ``feed_url``
-            The URL the feed is located at.
+    .. attribute:: feed_url
 
-        * ``description``
-            The feeds description in full text/HTML.
+        The URL the feed is located at.
 
-        * ``link``
-            The link the feed says it's located at.
-            Can be different from feed_url as it's the
-            source we got from the user.
+    .. attribute:: description
 
-        * ``date_last_refresh``
-            Date of the last time this feed was refreshed.
+        The feeds description in full text/HTML.
+
+    .. attribute:: link
+
+        The link the feed says it's located at.
+        Can be different from :attr:`feed_url` as it's the
+        source we got from the user.
+
+    .. attribute:: date_last_refresh
+
+        Date of the last time this feed was refreshed.
 
     """
 
@@ -109,25 +115,25 @@ class Feed(StdModel):
         return u"<Feed: %s (%s)>" % (self.name, self.feed_url)
 
     def get_posts(self, **kwargs):
-        """Get all posts for this feed in order."""
+        """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
 
 
 class Enclosure(models.Model):
     """Media enclosure for a Post
 
-    Attributes
-    ----------
+    .. attribute:: url
 
-        * ``url``
-            The location of the media attachment.
+        The location of the media attachment.
 
-        * ``type``
-            The mime/type of the attachment.
+    .. attribute:: type
 
-        * ``length``
-            The actual content length of the file
-            pointed to at ``url``.
+        The mime/type of the attachment.
+
+    .. attribute:: length
+
+        The actual content length of the file
+        pointed to at :attr:`url`.
 
     """
 
@@ -146,34 +152,41 @@ class Enclosure(models.Model):
 class Post(models.Model):
     """A Post for an RSS feed
 
-    Attributes
-    ----------
-        * ``feed``
-            The feed which this is a post for.
+    .. attribute:: feed
 
-        * ``title``
-            The title of the post.
+        The feed which this is a post for.
 
-        * ``link``
-            Link to the original article.
+    .. attribute:: title
 
-        * ``content``
-            The posts content in full-text/HTML.
+        The title of the post.
 
-        * ``guid``
-            The GUID for this post (unique for Feed)
+    .. attribute:: link
 
-        * ``author``
-            Name of this posts author.
+        Link to the original article.
 
-        * ``date_published``
-            The date this post was published.
+    .. attribute:: content
 
-        * ``date_updated``
-            The date this post was last changed/updated.
+        The posts content in full-text/HTML.
 
-        * ``enclosures``
-            List of media attachments for this post.
+    .. attribute:: guid
+
+        The GUID for this post (unique for :class:`Feed`)
+
+    .. attribute:: author
+
+        Name of this posts author.
+
+    .. attribute:: date_published
+
+        The date this post was published.
+
+    .. attribute:: date_updated
+
+        The date this post was last changed/updated.
+
+    .. attribute:: enclosures
+
+        List of media attachments for this post.
 
     """
 
