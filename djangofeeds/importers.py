@@ -151,7 +151,7 @@ class FeedImporter(object):
             logger.debug("%s categories created" % feed_url)
         if self.update_on_import:
             logger.info("%s Updating...." % feed_url)
-            self.update_feed(feed_obj, feed=feed, force=force)
+            feed_obj = self.update_feed(feed_obj, feed=feed, force=force)
             logger.debug("%s Update finished!" % feed_url)
         return feed_obj
 
@@ -175,7 +175,7 @@ class FeedImporter(object):
                 feed_obj.date_last_refresh + MIN_REFRESH_INTERVAL:
             logger.info("Feed %s don't need to be refreshed" % \
                                             feed_obj.feed_url)
-            return []
+            return feed_obj
 
         limit = self.post_limit
         if not feed:
@@ -205,7 +205,7 @@ class FeedImporter(object):
             # with the new URL does not exist.
             #if feed_obj.feed_url != feed.href:
             #    feed_obj.feed_url = feed.href
-            status = HTTP_OK
+            return self.import_feed(feed.href, force)
 
         if status == HTTP_OK or status == HTTP_TEMPORARY_REDIRECT:
             self.logger.debug("uf: %s Importing entries..." %
@@ -220,8 +220,7 @@ class FeedImporter(object):
             self.logger.debug("uf: %s Saving feed object..." %
                     (feed_obj.feed_url))
             feed_obj.save()
-            return entries
-        return []
+        return feed_obj
 
     def create_enclosure(self, **kwargs):
         kwargs["length"] = kwargs.get("length", 0) or 0
@@ -304,7 +303,7 @@ def refresh_all(verbose=True):
     for feed_obj in Feed.objects.all():
         sys.stderr.write(">>> Refreshing feed %s...\n" % \
                 (feed_obj.name))
-        entries = importer.update_feed(feed_obj)
+        feed_obj = importer.update_feed(feed_obj)
 
         if verbose:
             print_feed_summary(feed_obj)
