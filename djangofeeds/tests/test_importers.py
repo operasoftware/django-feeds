@@ -1,12 +1,15 @@
 from __future__ import with_statement
 import os
 import unittest
-from djangofeeds.importers import FeedImporter
+from djangofeeds.importers import FeedImporter, FeedCriticalError
+from djangofeeds.importers import TimeoutError, FeedNotFoundError
 from djangofeeds.models import Feed, Post, Enclosure
 from yadayada.test.user import create_random_user
 from django.contrib.auth import authenticate
 
 data_path = os.path.join(os.path.dirname(__file__), 'data')
+
+FEED_YIELDING_404 = "http://www.yahoo.fr/rssmhwqgiuyeqwgeqygqfyf"
 
 
 def get_data_filename(name):
@@ -58,3 +61,8 @@ class TestFeedImporter(unittest.TestCase):
                         "Importing same feed doesn't create new object")
         self.assertEqual(feed_obj2.post_set.count(), 20,
                         "Re-importing feed doesn't give duplicates")
+
+        def test_404_feed_raises_ok(self):
+            importer = self.importer
+            self.assertRaises(FeedNotFoundError, importer.import_feed,
+                    FEED_YIELDING_404)

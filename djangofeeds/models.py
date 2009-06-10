@@ -87,6 +87,10 @@ class Feed(StdModel):
 
         Date of the last time this feed was refreshed.
 
+    .. attribute:: last_error
+
+        The last error message (if any).
+
     """
 
     name = models.CharField(_(u"name"), max_length=200)
@@ -103,6 +107,8 @@ class Feed(StdModel):
     date_last_refresh = models.DateTimeField(_(u"date of last refresh"),
                                         null=True, blank=True, editable=False)
     categories = models.ManyToManyField(Category)
+    last_error = models.CharField(_(u"last error"), blank=True, default="",
+                                 max_length=200)
 
     objects = FeedManager()
 
