@@ -33,6 +33,24 @@ from django.utils.translation import ugettext_lazy as _
 
 __all__ = ["Feed", "Enclosure", "Post", "Category"]
 
+FEED_TIMEDOUT_ERROR = "TIMEDOUT_ERROR"
+FEED_NOT_FOUND_ERROR = "NOT_FOUND_ERROR"
+FEED_GENERIC_ERROR = "GENERIC_ERROR"
+
+FEED_TIMEDOUT_ERROR_TEXT = _(
+    u"The feed does not seem to be respond. We will try again later.")
+FEED_NOT_FOUND_ERROR_TEXT = _(
+    u"You entered an incorrect URL or the feed you requested does not exist "
+    u"anymore.")
+FEED_GENERIC_ERROR_TEXT = _(
+    u"There was a problem with the feed you provided, please check the URL "
+    u"for mispellings or try again later.")
+
+FEED_ERROR_CHOICES = (
+        (FEED_TIMEDOUT_ERROR, FEED_TIMEDOUT_ERROR_TEXT),
+        (FEED_NOT_FOUND_ERROR, FEED_NOT_FOUND_ERROR_TEXT),
+        (FEED_GENERIC_ERROR, FEED_GENERIC_ERROR_TEXT),
+)
 
 class Category(models.Model):
     """Category associated with :class:`Post`` or :class:`Feed`.
@@ -108,7 +126,7 @@ class Feed(StdModel):
                                         null=True, blank=True, editable=False)
     categories = models.ManyToManyField(Category)
     last_error = models.CharField(_(u"last error"), blank=True, default="",
-                                 max_length=200)
+                                 max_length=32, choices=FEED_ERROR_CHOICES)
 
     objects = FeedManager()
 

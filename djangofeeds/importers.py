@@ -11,9 +11,14 @@ from httplib import MOVED_PERMANENTLY as HTTP_MOVED
 from httplib import FOUND as HTTP_FOUND
 from httplib import TEMPORARY_REDIRECT as HTTP_TEMPORARY_REDIRECT
 from httplib import NOT_FOUND as HTTP_NOT_FOUND
+from httplib import NOT_MODIFIED as HTTP_NOT_MODIFIED
 from django.utils.translation import ugettext_lazy as _
 from djangofeeds import logger as default_logger
 from django.conf import settings
+from djangofeeds.models import FEED_TIMEDOUT_ERROR, FEED_TIMEDOUT_ERROR_TEXT
+from djangofeeds.models import FEED_NOT_FOUND_ERROR, FEED_NOT_FOUND_ERROR_TEXT
+from djangofeeds.models import FEED_GENERIC_ERROR, FEED_GENERIC_ERROR_TEXT
+
 
 ACCEPTED_STATUSES = [HTTP_FOUND, HTTP_MOVED, HTTP_OK, HTTP_TEMPORARY_REDIRECT]
 DEFAULT_POST_LIMIT = 20
@@ -33,17 +38,6 @@ FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
 # Make sure MAX_REFRESH_INTERVAL is a timedelta object.
 if isinstance(MIN_REFRESH_INTERVAL, int):
     MIN_REFRESH_INTERVAL = timedelta(seconds=MIN_REFRESH_INTERVAL)
-
-TIMEDOUT_ERROR = _(
-    u"The feed does not seem to responsd. We will try again later.")
-
-NOT_FOUND_ERROR = _(
-    u"You entered an incorrect URL or the feed you requested does not exist "
-    u"anymore.")
-
-FEED_PROBLEM_ERROR = _(
-    u"There was a problem with the feed you provided, please check the URL "
-    u"for mispellings or try again later.")
 
 class TimeoutError(Exception):
     """The operation timed-out."""
@@ -158,7 +152,7 @@ class FeedImporter(object):
         timeout = timeout or self.timeout
 
         def on_timeout():
-            raise TimeoutError("The feed timed out")
+            raise TimeoutError("The feed %s timed out" % feed_url)
 
         timeout_timer = threading.Timer(timeout, on_timeout)
         timeout_timer.start()
@@ -178,21 +172,20 @@ class FeedImporter(object):
         try:
             feed_obj = Feed.objects.get(feed_url=feed_url)
         except Feed.DoesNotExist:
-
+            last_error = u""
             logger.debug("Starting import of %s." % feed_url)
             try:
-                feed = self.parser.parse(feed_url)
+                feed = self.parse_feed(feed_url)
             except TimedoutError:
-                raise FeedCriticalError(unicode(TIMEDOUT_ERROR))
+                error = FEED_TIMEDOUT_ERROR
 
             status = feed.get("status", HTTP_NOT_FOUND)
             if status == HTTP_NOT_FOUND:
-                raise FeedNotFoundError(unicode(NOT_FOUND_ERROR))
+                raise FeedNotFoundError(unicode(FEED_NOT_FOUND_ERROR_TEXT))
             if status not in ACCEPTED_STATUSES:
-                raise FeedCriticalError(unicode(FEED_PROBLEM_ERROR),
+                raise FeedCriticalError(unicode(FEED_GENERIC_ERROR_TEXT),
                                         status=status)
                 
-
             logger.debug("%s parsed" % feed_url)
             # Feed can be local/fetched with a HTTP client.
             status = feed.get("status\n", HTTP_OK)
@@ -207,7 +200,7 @@ class FeedImporter(object):
                             "name": feed_name,
                             "description": feed.channel.get("description", ""),
             })
-            
+            feed_data["last_error"] = last_error 
             feed_obj, created = Feed.objects.get_or_create(feed_url=feed_url,
                                                            **feed_data)
             if not created:
@@ -260,29 +253,41 @@ class FeedImporter(object):
                                        etag=feed_obj.http_etag,
                                        modified=last_modified)
             except TimeoutError:
-                feed_obj.last_error = TIMEDOUT_ERROR
+                feed_obj.last_error = FEED_TIMEDOUT_ERROR
                 feed_obj.save()
                 return feed_obj
 
         # Feed can be local/ not fetched with HTTP client.
         status = feed.get("status", HTTP_OK)
+        if status == HTTP_NOT_MODIFIED:
+            return feed_obj
+
         self.logger.debug("uf: %s Feed HTTP status is %d" %
                 (feed_obj.feed_url, status))
 
-
-        if status in ACCEPTED_STATUSES:
-            self.logger.debug("uf: %s Importing entries..." %
-                    (feed_obj.feed_url))
-            entries = [self.import_entry(entry, feed_obj)
-                        for entry in entries_by_date(feed.entries, limit)]
-            feed_obj.date_last_refresh = datetime.now()
-            feed_obj.http_etag = feed.get("etag", "")
-            if hasattr(feed, "modified"):
-                feed_obj.http_last_modified = datetime.fromtimestamp(
-                                                time.mktime(feed.modified))
-            self.logger.debug("uf: %s Saving feed object..." %
-                    (feed_obj.feed_url))
+        if status == HTTP_NOT_FOUND:
+            feed_obj.last_error = FEED_NOT_FOUND_ERROR
             feed_obj.save()
+            return feed_obj
+
+        if status not in ACCEPTED_STATUSES:
+            feed_obj.last_error = FEED_GENERIC_ERROR
+            feed_obj.save()
+            return feed_obj
+
+        self.logger.debug("uf: %s Importing entries..." %
+                (feed_obj.feed_url))
+        entries = [self.import_entry(entry, feed_obj)
+                    for entry in entries_by_date(feed.entries, limit)]
+        feed_obj.date_last_refresh = datetime.now()
+        feed_obj.http_etag = feed.get("etag", "")
+        if hasattr(feed, "modified"):
+            feed_obj.http_last_modified = datetime.fromtimestamp(
+                                            time.mktime(feed.modified))
+        self.logger.debug("uf: %s Saving feed object..." %
+                (feed_obj.feed_url))
+        feed_obj.last_error = u""
+        feed_obj.save()
         return feed_obj
 
     def create_enclosure(self, **kwargs):
