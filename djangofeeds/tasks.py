@@ -1,9 +1,10 @@
-from celery.task import tasks, Task, PeriodicTask
+from celery.task import tasks, Task, PeriodicTask, TaskSet
 from celery.timer import TimeoutError
 from djangofeeds.importers import FeedImporter
 from djangofeeds.messaging import refresh_all_feeds_delayed
+from djangofeeds.models import Feed
 from django.conf import settings
-import threading
+from django.core.cache import cache
 
 DEFAULT_REFRESH_EVERY = 15 * 60 # 15 minutes
 DEFAULT_FEED_TIMEOUT = 10
@@ -14,6 +15,8 @@ ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
                              DEFAULT_ROUTING_KEY_PREFIX)
 FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
                        DEFAULT_FEED_TIMEOUT)
+FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
+FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 
 
 class RefreshFeedTask(Task):
@@ -21,23 +24,27 @@ class RefreshFeedTask(Task):
     name = "djangofeeds.refresh_feed"
     #routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
 
-    def run(self, **kwargs):
-        feed_url = kwargs["feed_url"]
+    def run(self, feed_url, feed_id=None, **kwargs):
+        feed_id = feed_id or feed_url
+        lock_id = FEED_LOCK_CACHE_KEY_FMT % feed_id
 
-        def on_timeout():
-            raise TimeoutError(
-                    "Timed out while importing feed: %s" % feed_url)
+        is_locked = lambda: str(cache.get(lock_id)) == "true"
+        acquire_lock = lambda: cache.set(lock_id, "true", FEED_LOCK_EXPIRE)
+        release_lock = lambda: cache.set(lock_id, "nil", 1)
 
         logger = self.get_logger(**kwargs)
         logger.info("Importing feed %s" % feed_url)
+        if is_locked():
+            logger.info("Feed is already being imported by another process.")
+            return feed_url
 
-        timeout_timer = threading.Timer(FEED_TIMEOUT, on_timeout)
-        timeout_timer.start()
+        acquire_lock()
         try:
             importer = FeedImporter(update_on_import=True, logger=logger)
             importer.import_feed(feed_url)
         finally:
-            timeout_timer.cancel()
+            release_lock()
+
         return feed_url
 tasks.register(RefreshFeedTask)
 
@@ -47,7 +54,8 @@ class RefreshAllFeeds(PeriodicTask):
     run_every = REFRESH_EVERY
 
     def run(self, **kwargs):
-        import socket
-        socket.setdefaulttimeout(10)
-        refresh_all_feeds_delayed()
+        taskset = TaskSet(RefreshFeedTask, [
+            [[], {"feed_url": f.feed_url, "feed_id": f.pk}]
+                for f in Feed.objects.all()])
+        taskset.run()
 tasks.register(RefreshAllFeeds)
