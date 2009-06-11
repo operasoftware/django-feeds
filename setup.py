@@ -70,6 +70,15 @@ setup(
     url=djangofeeds.__homepage__,
     zip_safe=False,
     data_files = data_files,
+    install_requires=[
+        'feedparser',
+        'django',
+        'yadayada',
+        'django-unittest-depth',
+        'celery',
+        'django-tagging',
+
+    ],
     classifiers=[
         "Framework :: Django",
         "Development Status :: 3 - Alpha",
