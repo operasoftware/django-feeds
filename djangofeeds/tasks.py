@@ -5,14 +5,14 @@ from djangofeeds.messaging import refresh_all_feeds_delayed
 from djangofeeds.models import Feed
 from django.conf import settings
 from django.core.cache import cache
+from celery.conf import AMQP_PUBLISHER_ROUTING_KEY
 
 DEFAULT_REFRESH_EVERY = 15 * 60 # 15 minutes
 DEFAULT_FEED_TIMEOUT = 10
-DEFAULT_ROUTING_KEY_PREFIX = "feed"
 REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
                         DEFAULT_REFRESH_EVERY)
 ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
-                             DEFAULT_ROUTING_KEY_PREFIX)
+                             AMQP_PUBLISHER_ROUTING_KEY)
 FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
                        DEFAULT_FEED_TIMEOUT)
 FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
@@ -22,7 +22,7 @@ FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
-    #routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
+    routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
 
     def run(self, feed_url, feed_id=None, **kwargs):
         feed_id = feed_id or feed_url
