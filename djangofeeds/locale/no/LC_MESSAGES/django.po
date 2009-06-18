@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-13 06:17+0100\n"
+"PO-Revision-Date: 2009-06-18 17:08+0100\n"
+"Last-Translator: Pål Eivind Jacobsen Nes <paaln@opera.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:41
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr "Denne kanalen ser ikke ut til å svare. Vi prøver igjen senere."
+
+#: models.py:43
+msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgstr "Du har skrevet feil adresse, eller kanalen du etterspurte finnes ikke lenger."
+
+#: models.py:46
+msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
+msgstr "Det var et problem med kanalen du angav, vennligst sjekk adressen for skrivefeil eller prøv igjen senere."
+
+#: models.py:68
+#: models.py:114
+msgid "name"
+msgstr "navn"
+
+#: models.py:69
+msgid "domain"
+msgstr "domene"
+
+#: models.py:74
+msgid "category"
+msgstr "kategori"
+
+#: models.py:75
+msgid "categories"
+msgstr "kategorier"
+
+#: models.py:115
+msgid "feed URL"
+msgstr "kanal adresse"
+
+#: models.py:116
+msgid "description"
+msgstr "beskrivelse"
+
+#: models.py:117
+#: models.py:219
+msgid "link"
+msgstr "lenke"
+
+#: models.py:118
+msgid "E-Tag"
+msgstr ""
+
+#: models.py:121
+msgid "Last-Modified"
+msgstr ""
+
+#: models.py:125
+msgid "date of last refresh"
+msgstr "siste oppdatering"
+
+#: models.py:128
+msgid "last error"
+msgstr "siste feil"
+
+#: models.py:135
+msgid "syndication feed"
+msgstr "syndikeringskanal"
+
+#: models.py:136
+msgid "syndication feeds"
+msgstr "syndikeringskanaler"
+
+#: models.py:164
+msgid "URL"
+msgstr ""
+
+#: models.py:165
+msgid "type"
+msgstr ""
+
+#: models.py:166
+msgid "length"
+msgstr ""
+
+#: models.py:169
+msgid "enclosure"
+msgstr ""
+
+#: models.py:170
+msgid "enclosures"
+msgstr ""
+
+#: models.py:218
+msgid "title"
+msgstr ""
+
+#: models.py:220
+msgid "content"
+msgstr ""
+
+#: models.py:221
+msgid "guid"
+msgstr ""
+
+#: models.py:222
+msgid "author"
+msgstr ""
+
+#: models.py:223
+msgid "date published"
+msgstr ""
+
+#: models.py:224
+msgid "date updated"
+msgstr ""
+
+#: models.py:232
+msgid "post"
+msgstr ""
+
+#: models.py:233
+msgid "posts"
+msgstr ""
+
+#: templates/opal_feeds/display_feeds.html:28
+msgid "This is a test sentence for the demo."
+msgstr "Dette er en testsetning for demonstrasjonen."
+
