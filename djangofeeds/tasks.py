@@ -23,6 +23,7 @@ class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
     routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
+    ignore_result = True
 
     def run(self, feed_url, feed_id=None, **kwargs):
         feed_id = feed_id or feed_url
@@ -52,6 +53,7 @@ tasks.register(RefreshFeedTask)
 class RefreshAllFeeds(PeriodicTask):
     name = "djangofeeds.refresh_all_feeds"
     run_every = REFRESH_EVERY
+    ignore_result = True
 
     def run(self, **kwargs):
         taskset = TaskSet(RefreshFeedTask, [
