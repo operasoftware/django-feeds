@@ -178,6 +178,8 @@ class FeedImporter(object):
                 feed = self.parse_feed(feed_url)
             except TimedoutError:
                 error = FEED_TIMEDOUT_ERROR
+            except Exception:
+                feed = {"status": 500}
 
             status = feed.get("status", HTTP_NOT_FOUND)
             if status == HTTP_NOT_FOUND:
@@ -254,6 +256,10 @@ class FeedImporter(object):
                                        modified=last_modified)
             except TimeoutError:
                 feed_obj.last_error = FEED_TIMEDOUT_ERROR
+                feed_obj.save()
+                return feed_obj
+            except Exception, e:
+                feed_obj.last_error = FEED_GENERIC_ERROR
                 feed_obj.save()
                 return feed_obj
 
