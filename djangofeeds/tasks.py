@@ -6,6 +6,8 @@ from djangofeeds.models import Feed
 from django.conf import settings
 from django.core.cache import cache
 from celery.conf import AMQP_PUBLISHER_ROUTING_KEY
+from celery.utils import chunks
+import math
 
 DEFAULT_REFRESH_EVERY = 15 * 60 # 15 minutes
 DEFAULT_FEED_TIMEOUT = 10
@@ -22,7 +24,7 @@ FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
-    routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
+    #routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
     ignore_result = True
 
     def run(self, feed_url, feed_id=None, **kwargs):
@@ -56,8 +58,21 @@ class RefreshAllFeeds(PeriodicTask):
     ignore_result = True
 
     def run(self, **kwargs):
-        taskset = TaskSet(RefreshFeedTask, [
-            [[], {"feed_url": f.feed_url, "feed_id": f.pk}]
-                for f in Feed.objects.all()])
-        taskset.run()
+        print("INSIDE TASK")
+        from carrot.connection import DjangoAMQPConnection
+        connection = DjangoAMQPConnection()
+
+        try:
+            feeds = Feed.objects.all()
+            total = feeds.count()
+            print("TOTAL FEEDS: %s" % total)
+            blocks = math.ceil(float(total / REFRESH_EVERY))
+            buckets = chunks(feeds.iterator(), blocks)
+            for minutes, bucket in enumerate(buckets):
+                for feed in bucket:
+                    RefreshFeedTask.apply_async(args=[feed.feed_url],
+                                                connection=connection,
+                                                countdown=minutes)
+        finally:
+            connection.close()
 tasks.register(RefreshAllFeeds)
