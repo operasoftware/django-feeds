@@ -24,7 +24,7 @@ FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
-    #routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
+    routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
     ignore_result = True
 
     def run(self, feed_url, feed_id=None, **kwargs):
@@ -58,16 +58,14 @@ class RefreshAllFeeds(PeriodicTask):
     ignore_result = True
 
     def run(self, **kwargs):
-        print("INSIDE TASK")
         from carrot.connection import DjangoAMQPConnection
         connection = DjangoAMQPConnection()
 
         try:
             feeds = Feed.objects.all()
             total = feeds.count()
-            print("TOTAL FEEDS: %s" % total)
             blocks = math.ceil(float(total / REFRESH_EVERY))
-            buckets = chunks(feeds.iterator(), blocks)
+            buckets = chunks(feeds.iterator(), int(blocks))
             for minutes, bucket in enumerate(buckets):
                 for feed in bucket:
                     RefreshFeedTask.apply_async(args=[feed.feed_url],
