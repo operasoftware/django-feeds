@@ -24,7 +24,7 @@ FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
-    routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
+    #routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
     ignore_result = True
 
     def run(self, feed_url, feed_id=None, **kwargs):
@@ -64,8 +64,10 @@ class RefreshAllFeeds(PeriodicTask):
         try:
             feeds = Feed.objects.all()
             total = feeds.count()
-            blocks = math.ceil(float(total / REFRESH_EVERY))
-            buckets = chunks(feeds.iterator(), int(blocks))
+            if not total:
+                return
+            blocksize = total / (REFRESH_EVERY / 60)
+            buckets = chunks(feeds.iterator(), int(blocksize))
             for minutes, bucket in enumerate(buckets):
                 for feed in bucket:
                     RefreshFeedTask.apply_async(args=[feed.feed_url],
