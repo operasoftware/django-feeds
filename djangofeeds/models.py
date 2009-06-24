@@ -117,7 +117,7 @@ class Feed(StdModel):
     link = models.URLField(_(u"link"), max_length=200, blank=True)
     http_etag = models.CharField(_(u"E-Tag"), editable=False, blank=True,
                                                               null=True,
-                                                              max_length=200),
+                                                              max_length=200)
     http_last_modified = models.DateTimeField(_(u"Last-Modified"),
                                                                null=True,
                                                                editable=False,
