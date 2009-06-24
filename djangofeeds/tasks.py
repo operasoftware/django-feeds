@@ -72,7 +72,7 @@ class RefreshAllFeeds(PeriodicTask):
                 for feed in bucket:
                     RefreshFeedTask.apply_async(args=[feed.feed_url],
                                                 connection=connection,
-                                                countdown=minutes + 1)
+                                                countdown=60 * (minutes+1))
         finally:
             connection.close()
 tasks.register(RefreshAllFeeds)
