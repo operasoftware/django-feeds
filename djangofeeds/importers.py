@@ -176,7 +176,7 @@ class FeedImporter(object):
             logger.debug("Starting import of %s." % feed_url)
             try:
                 feed = self.parse_feed(feed_url)
-            except TimedoutError:
+            except TimeoutError:
                 error = FEED_TIMEDOUT_ERROR
             except Exception:
                 feed = {"status": 500}
