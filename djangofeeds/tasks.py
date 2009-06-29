@@ -24,7 +24,7 @@ FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
     name = "djangofeeds.refresh_feed"
-    routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
+    #routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
     ignore_result = True
 
     def run(self, feed_url, feed_id=None, **kwargs):
