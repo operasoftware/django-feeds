@@ -8,8 +8,9 @@ from django.core.cache import cache
 from celery.conf import AMQP_PUBLISHER_ROUTING_KEY
 from celery.utils import chunks
 import math
+from datetime import datetime, timedelta
 
-DEFAULT_REFRESH_EVERY = 15 * 60 # 15 minutes
+DEFAULT_REFRESH_EVERY = 20 * 60 # 20 minutes
 DEFAULT_FEED_TIMEOUT = 10
 REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
                         DEFAULT_REFRESH_EVERY)
@@ -60,9 +61,10 @@ class RefreshAllFeeds(PeriodicTask):
     def run(self, **kwargs):
         from carrot.connection import DjangoAMQPConnection
         connection = DjangoAMQPConnection()
-
         try:
-            feeds = Feed.objects.all()
+            now = datetime.now()
+            threshold = now - timedelta(seconds=REFRESH_EVERY)
+            feeds = Feed.objects.filter(date_last_refresh__lt=threshold)
             total = feeds.count()
             if not total:
                 return
