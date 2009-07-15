@@ -68,7 +68,10 @@ class RefreshAllFeeds(PeriodicTask):
             total = feeds.count()
             if not total:
                 return
-            blocksize = total / (REFRESH_EVERY / 60)
+
+            interval_minutes = REFRESH_EVERY / 60
+            time_window = interval_minutes / 2
+            blocksize = total / time_window
             buckets = chunks(feeds.iterator(), int(blocksize))
             for minutes, bucket in enumerate(buckets):
                 for feed in bucket:
