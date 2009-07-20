@@ -1,5 +1,4 @@
 from celery.task import tasks, Task, PeriodicTask, TaskSet
-from celery.timer import TimeoutError
 from djangofeeds.importers import FeedImporter
 from djangofeeds.messaging import refresh_all_feeds_delayed
 from djangofeeds.models import Feed
@@ -10,7 +9,7 @@ from celery.utils import chunks
 import math
 from datetime import datetime, timedelta
 
-DEFAULT_REFRESH_EVERY = 20 * 60 # 20 minutes
+DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
 DEFAULT_FEED_TIMEOUT = 10
 REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
                         DEFAULT_REFRESH_EVERY)
@@ -69,15 +68,24 @@ class RefreshAllFeeds(PeriodicTask):
             if not total:
                 return
 
-            interval_minutes = REFRESH_EVERY / 60
-            time_window = interval_minutes / 2
+            # We evenly distribute the refreshing of feeds over the time
+            # interval available.
+
+            # Time window is 75% of refresh interval in minutes.
+            interval = REFRESH_EVERY
+            time_window = interval * 0.75 / 60
+
+            # Make buckets with total/time_window feeds in each.
             blocksize = total / time_window
             buckets = chunks(feeds.iterator(), int(blocksize))
+
             for minutes, bucket in enumerate(buckets):
+                # Skew the countdown for feeds in this.
+                seconds = 60 * (minutes+1)
                 for feed in bucket:
                     RefreshFeedTask.apply_async(args=[feed.feed_url],
                                                 connection=connection,
-                                                countdown=60 * (minutes+1))
+                                                countdown=seconds)
         finally:
             connection.close()
 tasks.register(RefreshAllFeeds)
