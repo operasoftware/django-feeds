@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.cache import cache
 from celery.conf import AMQP_PUBLISHER_ROUTING_KEY
 from celery.utils import chunks
+from celery.task.strategy import even_time_distribution
 import math
 from datetime import datetime, timedelta
 
@@ -23,7 +24,6 @@ FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 
 class RefreshFeedTask(Task):
     """Refresh a djangofeed feed, supports multiprocessing."""
-    name = "djangofeeds.refresh_feed"
     routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
     ignore_result = True
 
@@ -53,39 +53,27 @@ tasks.register(RefreshFeedTask)
 
 
 class RefreshAllFeeds(PeriodicTask):
-    name = "djangofeeds.refresh_all_feeds"
     run_every = REFRESH_EVERY
     ignore_result = True
 
     def run(self, **kwargs):
-        from carrot.connection import DjangoAMQPConnection
-        connection = DjangoAMQPConnection()
-        try:
-            now = datetime.now()
-            threshold = now - timedelta(seconds=REFRESH_EVERY)
-            feeds = Feed.objects.filter(date_last_refresh__lt=threshold)
-            total = feeds.count()
-            if not total:
-                return
+        now = datetime.now()
+        threshold = now - timedelta(seconds=REFRESH_EVERY)
+        feeds = Feed.objects.filter(date_last_refresh__lt=threshold)
+        total = feeds.count()
+        if not total:
+            return
 
-            # We evenly distribute the refreshing of feeds over the time
-            # interval available.
+        # We evenly distribute the refreshing of feeds over the time
+        # interval available.
 
-            # Time window is 75% of refresh interval in minutes.
-            interval = REFRESH_EVERY
-            time_window = interval * 0.75 / 60
+        # Time window is 75% of refresh interval in minutes.
+        time_window = REFRESH_EVERY * 0.75 / 60
 
-            # Make buckets with total/time_window feeds in each.
-            blocksize = total / time_window
-            buckets = chunks(feeds.iterator(), int(blocksize))
-
-            for minutes, bucket in enumerate(buckets):
-                # Skew the countdown for feeds in this.
-                seconds = 60 * (minutes+1)
-                for feed in bucket:
-                    RefreshFeedTask.apply_async(args=[feed.feed_url],
-                                                connection=connection,
-                                                countdown=seconds)
-        finally:
-            connection.close()
+        def iter_feed_task_args(iterable):
+            for feed in iterable:
+                yield ([feed.feed_url], {}) # args,kwargs tuple
+        
+        it = iter_feed_task_args(feeds.iterator())
+        even_time_distribution(RefreshFeedTask, total, time_window, it) 
 tasks.register(RefreshAllFeeds)
