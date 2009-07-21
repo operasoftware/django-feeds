@@ -11,19 +11,78 @@ import math
 from datetime import datetime, timedelta
 
 DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
-DEFAULT_FEED_TIMEOUT = 10
+DEFAULT_FEED_TIMEOUT = 10 # seconds
+DEFAULT_FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
+DEFAULT_FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
+
+"""
+.. data:: REFRESH_EVERY
+
+Interval in seconds between feed refreshes.
+Default: 3 hours
+Taken from: ``settings.DJANGOFEEDS_REFRESH_EVERY``.
+
+"""
 REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
                         DEFAULT_REFRESH_EVERY)
+
+
+"""
+.. data:: REFRESH_EVERY
+
+Prefix for AMQP routing key.
+Default: ``celery.conf.AMQP_PUBLISHER_ROUTING_KEY``.
+Taken from: ``settings.DJANGOFEEDS_ROUTING_KEY_PREFIX``.
+
+"""
 ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
                              AMQP_PUBLISHER_ROUTING_KEY)
+
+"""
+.. data:: FEED_TIMEOUT
+
+Timeout in seconds for processing a single feed.
+Default: 10 seconds
+Taken from: ``settings.DJANGOFEEDS_FEED_TIMEOUT``.
+
+"""
 FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
                        DEFAULT_FEED_TIMEOUT)
-FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
-FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
+
+
+"""
+.. data:: FEED_LOCK_CACHE_KEY_FMT
+
+Format used for feed cache lock. Takes one argument: the feeds URL.
+Default: "djangofeeds.import_lock.%s"
+Taken from: ``settings.DJANGOFEEDS_FEED_LOCK_CACHE_KEY_FMT``.
+
+"""
+FEED_LOCK_CACHE_KEY_FMT = getattr(settings,
+                            "DJANGOFEEDS_FEED_LOCK_CACHE_KEY_FMT",
+                            DEFAULT_FEED_LOCK_CACHE_KEY_FMT)
+
+"""
+.. data:: FEED_LOCK_EXPIRE
+
+Time in seconds which after the feed lock expires.
+Default: 3 minutes
+Taken from: ``settings.DJANGOFEEDS_FEED_LOCK_EXPIRE``.
+
+"""
+FEED_LOCK_EXPIRE = getattr(settings,
+                    "DJANGOFEEDS_FEED_LOCK_EXPIRE",
+                    DEFAULT_FEED_LOCK_EXPIRE)
 
 
 class RefreshFeedTask(Task):
-    """Refresh a djangofeed feed, supports multiprocessing."""
+    """Refresh a djangofeed feed, supports multiprocessing.
+
+    :param feed_url: The URL of the feed to refresh.
+    :keyword feed_id: Optional id of the feed, if not specified
+        the ``feed_url`` is used instead.
+
+    """
     routing_key = ".".join([ROUTING_KEY_PREFIX, "feedimporter"])
     ignore_result = True
 
@@ -53,6 +112,12 @@ tasks.register(RefreshFeedTask)
 
 
 class RefreshAllFeeds(PeriodicTask):
+    """Periodic Task to refresh all the feeds.
+
+    We evenly distribute the refreshing of feeds over the time
+    interval available.
+
+    """
     run_every = REFRESH_EVERY
     ignore_result = True
 
@@ -64,13 +129,12 @@ class RefreshAllFeeds(PeriodicTask):
         if not total:
             return
 
-        # We evenly distribute the refreshing of feeds over the time
-        # interval available.
-
         # Time window is 75% of refresh interval in minutes.
         time_window = REFRESH_EVERY * 0.75 / 60
 
         def iter_feed_task_args(iterable):
+            """For a feed in the db, return valid arguments for a
+            :class:`RefreshFeedTask`` task."""
             for feed in iterable:
                 yield ([feed.feed_url], {}) # args,kwargs tuple
         
