@@ -25,19 +25,55 @@ DEFAULT_POST_LIMIT = 20
 DEFAULT_NUM_POSTS = -1
 DEFAULT_CACHE_MIN = 30
 DEFAULT_SUMMARY_MAX_WORDS = 25
-DEFAULT_FEED_TIMEOUT = 3
-
+DEFAULT_FEED_TIMEOUT = 10
 DEFAULT_MIN_REFRESH_INTERVAL = timedelta(seconds=60 * 20)
+
+"""
+.. data:: STORE_ENCLOSURES
+
+Keep post enclosures.
+Default: False
+Taken from: ``settings.DJANGOFEEDS_STORE_ENCLOSURES``.
+"""
+
 STORE_ENCLOSURES = getattr(settings, "DJANGOFEEDS_STORE_ENCLOSURES", False)
+
+"""
+.. data:: STORE_CATEGORIES
+
+Keep feed/post categories
+Default: False
+Taken from: ``settings.DJANGOFEEDS_STORE_CATEGORIES``.
+
+"""
 STORE_CATEGORIES = getattr(settings, "DJANGOFEEDS_STORE_CATEGORIES", False)
+
+"""
+.. data:: MIN_REFRESH_INTERVAL
+
+Feed should not be refreshed if it was last refreshed within this time.
+(in seconds)
+Default: 20 minutes
+Taken from: ``settings.DJANGOFEEDS_MIN_REFRESH_INTERVAL``.
+
+"""
 MIN_REFRESH_INTERVAL = getattr(settings, "DJANGOFEEDS_MIN_REFRESH_INTERVAL",
                                DEFAULT_MIN_REFRESH_INTERVAL)
+
+"""
+.. data:: FEED_TIMEOUT
+
+Timeout in seconds for the feed to refresh.
+Default: 10 seconds
+Taken from: ``settings.DJANGOFEEDS_FEED_TIMEOUT``.
+"""
 FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
                        DEFAULT_FEED_TIMEOUT)
 
-# Make sure MAX_REFRESH_INTERVAL is a timedelta object.
+# Make sure MIN_REFRESH_INTERVAL is a timedelta object.
 if isinstance(MIN_REFRESH_INTERVAL, int):
     MIN_REFRESH_INTERVAL = timedelta(seconds=MIN_REFRESH_INTERVAL)
+
 
 class TimeoutError(Exception):
     """The operation timed-out."""
@@ -59,16 +95,25 @@ class FeedNotFoundError(FeedCriticalError):
 
 
 def summarize(text, max_length=DEFAULT_SUMMARY_MAX_WORDS):
+    """Truncate words by ``max_length``."""
     return truncate_words(text, max_length)
 
 
 def summarize_html(text, max_length=DEFAULT_SUMMARY_MAX_WORDS):
+    """Truncate HTML by ``max_length``."""
     return truncate_html_words(text, max_length)
 
 
 def entries_by_date(entries, limit=-1):
+    """Sort the feed entries by date
+
+    :param entries: Entries given from :mod:`feedparser``.
+    :param limit: Limit number of posts.
+
+    """
 
     def date_entry_tuple(entry):
+        """Find the most current date entry tuple."""
         if "date_parsed" in entry:
             return (entry["date_parsed"], entry)
         if "updated_parsed" in entry:
@@ -85,6 +130,7 @@ def entries_by_date(entries, limit=-1):
 
 
 def _find_post_summary(feed_obj, entry):
+    """Find the correct summary field for a post."""
     try:
         content = entry["content"][0]["value"]
     except (IndexError, KeyError):
@@ -93,8 +139,14 @@ def _find_post_summary(feed_obj, entry):
 
 
 def _gen_parsed_date_to_datetime(field_name):
+    """Given a post field, convert its :mod:`feedparser` date tuple to
+    :class:`datetime.datetime` objects.
+   
+    :param field_name: The post field to use.
+    """
 
     def _parsed_date_to_datetime(feed_obj, entry):
+        """generated below"""
         if field_name in entry:
             try:
                 time_ = time.mktime(entry[field_name])
@@ -103,10 +155,18 @@ def _gen_parsed_date_to_datetime(field_name):
                 date = datetime.now()
             return date
         return datetime.now()
+    _parsed_date_to_datetime.__doc__ = \
+            """Convert %s to :class:`datetime.datetime` object""" % field_name
     return _parsed_date_to_datetime
 
 
 def truncate_by_field(field, value):
+    """Truncate string value by model fields ``max_length`` attribute.
+   
+    :param field: A Django model field instance.
+    :param value: The value to truncate.
+
+    """
     if isinstance(value, basestring) and \
             hasattr(field, "max_length") and value > field.max_length:
                 return value[:field.max_length]
@@ -114,12 +174,57 @@ def truncate_by_field(field, value):
 
 
 def truncate_field_data(model, data):
+    """Truncate all data fields for model by its ``max_length`` field
+    attributes.
+    
+    :param model: Kind of data (A Django Model instance).
+    :param data: The data to truncate.
+
+    """
     fields = dict([(field.name, field) for field in model._meta.fields])
     return dict([(name, truncate_by_field(fields[name], value))
                     for name, value in data.items()])
 
 
 class FeedImporter(object):
+    """Import/Update feeds.
+
+    :keyword post_limit: See :attr`post_limit`.
+    :keyword update_on_import: See :attr:`update_on_import`.
+    :keyword logger: See :attr:`logger`.
+    :keyword include_categories: See :attr:`include_categories`.
+    :keyword include_enclosures: See :attr:`include_enclosures`.
+    :keyword timeout: See :attr:`timeout`.
+
+    .. attribute:: post_limit
+
+        Default number of posts limit.
+
+    .. attribute:: update_on_import
+
+        By default, fetch new posts when a feed is imported
+
+    .. attribute:: logger
+
+       The :class:`logging.Logger` instance used for logging messages.
+
+    .. attribute:: include_categories
+
+        By default, include feed/post categories.
+
+    .. attribute:: include_enclosures
+
+        By default, include post enclosures.
+
+    .. attribute:: timeout
+
+        Default feed timeout.
+
+    .. attribute:: parser
+
+        The feed parser used. (Default: :mod:`feedparser`.)
+
+    """
     parser = feedparser
     post_limit = DEFAULT_POST_LIMIT
     include_categories = STORE_CATEGORIES
@@ -149,9 +254,20 @@ class FeedImporter(object):
         self.timeout = kwargs.get("timeout", FEED_TIMEOUT)
 
     def parse_feed(self, feed_url, etag=None, modified=None, timeout=None):
+        """Parse feed using the current feed parser.
+
+        :param feed_url: URL to the feed to parse.
+
+        :keyword etag: E-tag recevied from last parse (if any).
+        :keyword modified: ``Last-Modified`` HTTP header received from last
+            parse (if any).
+        :keyword timeout: Parser timeout in seconds.
+
+        """
         timeout = timeout or self.timeout
 
         def on_timeout():
+            """Raise timeout exception."""
             raise TimeoutError("The feed %s timed out" % feed_url)
 
         timeout_timer = threading.Timer(timeout, on_timeout)
@@ -166,6 +282,16 @@ class FeedImporter(object):
         return feed
 
     def import_feed(self, feed_url, force=None):
+        """Import feed.
+
+        If feed is not seen before it will be created, otherwise
+        just updated.
+
+        :param feed_url: URL to the feed to import.
+        :keyword force: Force import of feed even if it's been updated
+            too recently.
+
+        """
         logger = self.logger
         feed_url = feed_url.strip()
         feed = None
@@ -219,12 +345,19 @@ class FeedImporter(object):
         return feed_obj
 
     def get_categories(self, obj):
+        """Get and save categories."""
         if hasattr(obj, "categories"):
             return [self.create_category(*cat)
                         for cat in obj.categories]
         return []
 
     def create_category(self, domain, name):
+        """Create new category.
+
+        :param domain: The category domain.
+        :param name: The name of the category.
+
+        """
         domain = domain.strip()
         name = name.strip()
         fields = {"name": name, "domain": domain}
@@ -232,6 +365,19 @@ class FeedImporter(object):
         return cat
 
     def update_feed(self, feed_obj, feed=None, force=False):
+        """Update (refresh) feed.
+
+        The feed must already exist in the system, if not you have
+        to import it using :meth:`import_feed`.
+
+        :param feed_obj: URL of the feed to refresh.
+        :keyword feed: If feed has already been parsed you can pass the
+            structure returned by the parser so it doesn't have to be parsed
+            twice.
+        :keyword force: Force refresh of the feed even if it has been
+            recently refreshed already.
+
+        """
         logger = self.logger
         
         if feed_obj.date_last_refresh and datetime.now() < \
@@ -297,11 +443,13 @@ class FeedImporter(object):
         return feed_obj
 
     def create_enclosure(self, **kwargs):
+        """Create new enclosure."""
         kwargs["length"] = kwargs.get("length", 0) or 0
         enclosure, created = Enclosure.objects.get_or_create(**kwargs)
         return enclosure
 
     def get_enclosures(self, entry):
+        """Get and create enclosures for feed."""
         if not hasattr(entry, 'enclosures'):
             return []
             return [self.create_enclosure(url=enclosure.href,
@@ -311,11 +459,13 @@ class FeedImporter(object):
                         if enclosure and hasattr(enclosure, "length")]
 
     def post_fields_parsed(self, entry, feed_obj):
+        """Parse post fields."""
         fields = [(key, handler(feed_obj, entry))
                         for key, handler in self.post_field_handlers.items()]
         return dict(fields)
 
     def import_entry(self, entry, feed_obj):
+        """Import feed post entry."""
         self.logger.debug("ie: %s Importing entry..." % (feed_obj.feed_url))
         self.logger.debug("ie: %s parsing field data..." %
                 (feed_obj.feed_url))
@@ -363,6 +513,7 @@ class FeedImporter(object):
 
 
 def print_feed_summary(feed_obj):
+    """Dump a summary of the feed (how many posts etc.)."""
     posts = feed_obj.get_posts()
     enclosures_count = sum([post.enclosures.count() for post in posts])
     categories_count = sum([post.categories.count() for post in posts]) \
