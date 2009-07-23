@@ -11,7 +11,6 @@ import math
 from datetime import datetime, timedelta
 
 DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
-DEFAULT_FEED_TIMEOUT = 10 # seconds
 DEFAULT_FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
 DEFAULT_FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
 
@@ -37,18 +36,6 @@ Taken from: ``settings.DJANGOFEEDS_ROUTING_KEY_PREFIX``.
 """
 ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
                              AMQP_PUBLISHER_ROUTING_KEY)
-
-"""
-.. data:: FEED_TIMEOUT
-
-Timeout in seconds for processing a single feed.
-Default: 10 seconds
-Taken from: ``settings.DJANGOFEEDS_FEED_TIMEOUT``.
-
-"""
-FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
-                       DEFAULT_FEED_TIMEOUT)
-
 
 """
 .. data:: FEED_LOCK_CACHE_KEY_FMT

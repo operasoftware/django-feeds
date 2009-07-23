@@ -1,6 +1,6 @@
 import sys
 import time
-import threading
+import socket
 import feedparser
 from datetime import datetime, timedelta
 from djangofeeds.models import Feed, Post, Enclosure, Category
@@ -264,21 +264,17 @@ class FeedImporter(object):
         :keyword timeout: Parser timeout in seconds.
 
         """
+        prev_timeout = socket.getdefaulttimeout()
         timeout = timeout or self.timeout
 
-        def on_timeout():
-            """Raise timeout exception."""
-            raise TimeoutError("The feed %s timed out" % feed_url)
-
-        timeout_timer = threading.Timer(timeout, on_timeout)
-        timeout_timer.start()
-
+        socket.setdefaulttimeout(timeout)
         try:
             feed = self.parser.parse(feed_url,
                                      etag=etag,
                                      modified=modified)
         finally:
-            timeout_timer.cancel()
+            socket.setdefaulttimeout(prev_timeout)
+
         return feed
 
     def import_feed(self, feed_url, force=None):
@@ -302,7 +298,7 @@ class FeedImporter(object):
             logger.debug("Starting import of %s." % feed_url)
             try:
                 feed = self.parse_feed(feed_url)
-            except TimeoutError:
+            except socket.timeout:
                 error = FEED_TIMEDOUT_ERROR
             except Exception:
                 feed = {"status": 500}
@@ -400,7 +396,7 @@ class FeedImporter(object):
                 feed = self.parse_feed(feed_obj.feed_url,
                                        etag=feed_obj.http_etag,
                                        modified=last_modified)
-            except TimeoutError:
+            except socket.timeout:
                 feed_obj.last_error = FEED_TIMEDOUT_ERROR
                 feed_obj.save()
                 return feed_obj
