@@ -1,4 +1,5 @@
 from celery.task import tasks, Task, PeriodicTask, TaskSet
+from carrot.connection import DjangoAMQPConnection
 from djangofeeds.importers import FeedImporter
 from djangofeeds.models import Feed
 from django.conf import settings
