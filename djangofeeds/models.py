@@ -4,11 +4,11 @@ Model Classes
 -------------
 
 .. class:: Category
-        
+
     :class:`Category` associated with :class:`Post` or :class:`Feed`.
 
 .. class:: Feed
-        
+
     Model representing a feed.
 
 .. class:: Enclosure
@@ -51,6 +51,7 @@ FEED_ERROR_CHOICES = (
         (FEED_NOT_FOUND_ERROR, FEED_NOT_FOUND_ERROR_TEXT),
         (FEED_GENERIC_ERROR, FEED_GENERIC_ERROR_TEXT),
 )
+
 
 class Category(models.Model):
     """Category associated with :class:`Post`` or :class:`Feed`.

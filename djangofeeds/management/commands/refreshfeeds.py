@@ -13,6 +13,7 @@ def refresh_all_feeds():
     with TransactionContext():
         refresh_all()
 
+
 class Command(NoArgsCommand):
     option_list = NoArgsCommand.option_list + (
         make_option('--lazy', '-l', action="store_true", dest="lazy",
@@ -38,4 +39,3 @@ class Command(NoArgsCommand):
             refresh_all_feeds_delayed()
         else:
             refresh_all_feeds()
-

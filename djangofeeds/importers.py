@@ -141,7 +141,7 @@ def _find_post_summary(feed_obj, entry):
 def _gen_parsed_date_to_datetime(field_name):
     """Given a post field, convert its :mod:`feedparser` date tuple to
     :class:`datetime.datetime` objects.
-   
+
     :param field_name: The post field to use.
     """
 
@@ -162,7 +162,7 @@ def _gen_parsed_date_to_datetime(field_name):
 
 def truncate_by_field(field, value):
     """Truncate string value by model fields ``max_length`` attribute.
-   
+
     :param field: A Django model field instance.
     :param value: The value to truncate.
 
@@ -176,7 +176,7 @@ def truncate_by_field(field, value):
 def truncate_field_data(model, data):
     """Truncate all data fields for model by its ``max_length`` field
     attributes.
-    
+
     :param model: Kind of data (A Django Model instance).
     :param data: The data to truncate.
 
@@ -309,7 +309,7 @@ class FeedImporter(object):
             if status not in ACCEPTED_STATUSES:
                 raise FeedCriticalError(unicode(FEED_GENERIC_ERROR_TEXT),
                                         status=status)
-                
+
             logger.debug("%s parsed" % feed_url)
             # Feed can be local/fetched with a HTTP client.
             status = feed.get("status\n", HTTP_OK)
@@ -324,7 +324,7 @@ class FeedImporter(object):
                             "name": feed_name,
                             "description": feed.channel.get("description", ""),
             })
-            feed_data["last_error"] = last_error 
+            feed_data["last_error"] = last_error
             feed_obj, created = Feed.objects.get_or_create(feed_url=feed_url,
                                                            **feed_data)
             if not created:
@@ -375,7 +375,7 @@ class FeedImporter(object):
 
         """
         logger = self.logger
-        
+
         if feed_obj.date_last_refresh and datetime.now() < \
                 feed_obj.date_last_refresh + MIN_REFRESH_INTERVAL:
             logger.info("Feed %s don't need to be refreshed" % \

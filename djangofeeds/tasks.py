@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
 DEFAULT_FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
-DEFAULT_FEED_LOCK_EXPIRE = 60 * 3; # lock expires in 3 minutes.
+DEFAULT_FEED_LOCK_EXPIRE = 60 * 3 # lock expires in 3 minutes.
 
 """
 .. data:: REFRESH_EVERY
@@ -121,21 +121,4 @@ class RefreshAllFeeds(PeriodicTask):
                                 "feed_id": feed.pk})
         finally:
             connection.close()
-
-            
-        #total = feeds.count()
-        #if not total:
-        #    return
-
-        # Time window is 75% of refresh interval in minutes.
-        #time_window = REFRESH_EVERY * 0.75 / 60
-
-        #def iter_feed_task_args(iterable):
-        #    """For a feed in the db, return valid arguments for a
-        #    :class:`RefreshFeedTask`` task."""
-        #    for feed in iterable:
-        #        yield ([feed.feed_url], {}) # args,kwargs tuple
-        
-        #it = iter_feed_task_args(feeds.iterator())
-        #even_time_distribution(RefreshFeedTask, total, time_window, it) 
 tasks.register(RefreshAllFeeds)
