@@ -534,7 +534,7 @@ class FeedImporter(object):
 
         for possible in Post.objects.filter(**lookup_fields).iterator():
             for field in cmp_fields:
-                orig_attr = getattr(possible_dupe, field, None)
+                orig_attr = getattr(possible, field, None)
                 this_attr = fields.get(field)
                 if orig_attr == this_attr:
                     return possible
