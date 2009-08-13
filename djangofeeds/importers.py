@@ -474,16 +474,35 @@ class FeedImporter(object):
             # Unique on GUID, feed
             self.logger.debug("ie: %s Is unique on GUID, storing post." % (
                 feed_obj.feed_url))
-            post, created = Post.objects.get_or_create(guid=fields["guid"],
-                                                       feed=feed_obj,
-                                                       defaults=fields)
+            post, created = Post.objects.get_or_create(
+                                            guid=fields["guid"],
+                                            feed=feed_obj,
+                                            defaults=fields)
         else:
-            # Unique on title, feed
+            # Unique on title, feed, date_published
             self.logger.debug("ie: %s No GUID, storing post." % (
                 feed_obj.feed_url))
-            post, created = Post.objects.get_or_create(title=fields["title"],
-                                                       feed=feed_obj,
-                                                       defaults=fields)
+            try:
+                lookup_fields = {"title": fields["title"],
+                                 "feed": feed_obj,
+                                 "date_published": fields["date_published"]}
+                post, created = Post.objects.get_or_create(defaults=fields,
+                                                           **lookup_fields)
+            except Post.MultipleObjectsReturned:
+                self.logger.debug("ie: %s Possible duplicate found." % (
+                    feed_obj.feed_url))
+                dupe = self._find_duplicate_post(lookup_fields, fields)
+                if dupe:
+                    self.logger.debug("ie: %s Duplicate found: %d" % (
+                        feed_obj.feed_url, dupe.pk))
+                    post = dupe
+                    created = False
+                else:
+                    self.logger.debug(
+                        "ie: %s No duplicates. Creating new post." % (
+                            feed_obj.feed_url))
+                    post = Post.objects.create(**fields)
+                    created = True
 
         if not created:
             # Update post with new values (if any)
@@ -506,6 +525,19 @@ class FeedImporter(object):
             feed_obj.feed_url))
 
         return post
+
+    def _find_duplicate_post(self, lookup_fields, fields):
+        # If any of these fields matches, it's a dupe.
+        # Compare in order, because you want to compare short fields
+        # before having to match the content.
+        cmp_fields = ("author", "link", "content")
+
+        for possible in Post.objects.filter(**lookup_fields).iterator():
+            for field in cmp_fields:
+                orig_attr = getattr(possible_dupe, field, None)
+                this_attr = fields.get(field)
+                if orig_attr == this_attr:
+                    return possible
 
 
 def print_feed_summary(feed_obj):
