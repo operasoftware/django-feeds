@@ -277,7 +277,7 @@ class FeedImporter(object):
 
         return feed
 
-    def import_feed(self, feed_url, force=None):
+    def import_feed(self, feed_url, force=None, local=False):
         """Import feed.
 
         If feed is not seen before it will be created, otherwise
@@ -303,7 +303,9 @@ class FeedImporter(object):
             except Exception:
                 feed = {"status": 500}
 
-            status = feed.get("status", HTTP_NOT_FOUND)
+            default_status = HTTP_OK if local else HTTP_NOT_FOUND
+
+            status = feed.get("status", default_status)
             if status == HTTP_NOT_FOUND:
                 raise FeedNotFoundError(unicode(FEED_NOT_FOUND_ERROR_TEXT))
             if status not in ACCEPTED_STATUSES:
