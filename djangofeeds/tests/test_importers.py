@@ -36,7 +36,7 @@ class TestFeedImporter(unittest.TestCase):
     def test_import_feed(self):
         feed = self.feed
         importer = self.importer
-        feed_obj = importer.import_feed(feed)
+        feed_obj = importer.import_feed(feed, local=True)
         self.assertEqual(feed_obj.name, "Lifehacker", "feed title is set")
         self.assertEqual(feed_obj.post_set.count(), 20, "feed has 20 items")
         self.assertEqual(feed_obj.feed_url, feed, "feed url is filename")
@@ -62,7 +62,7 @@ class TestFeedImporter(unittest.TestCase):
         self.assertEqual(feed_obj2.post_set.count(), 20,
                         "Re-importing feed doesn't give duplicates")
 
-        def test_404_feed_raises_ok(self):
-            importer = self.importer
-            self.assertRaises(FeedNotFoundError, importer.import_feed,
-                    FEED_YIELDING_404)
+    def test_404_feed_raises_ok(self):
+        importer = self.importer
+        self.assertRaises(FeedNotFoundError, importer.import_feed,
+                FEED_YIELDING_404)
