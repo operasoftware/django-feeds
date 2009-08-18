@@ -30,6 +30,8 @@ from yadayada.models import StdModel
 from tagging.models import Tag
 from djangofeeds.managers import FeedManager, PostManager
 from django.utils.translation import ugettext_lazy as _
+from djangofeeds.utils import naturaldate
+from datetime import datetime
 
 __all__ = ["Feed", "Enclosure", "Post", "Category"]
 
@@ -143,6 +145,10 @@ class Feed(StdModel):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
 
+    @property
+    def date_last_refresh_naturaldate(self):
+        return unicode(naturaldate(self.date_last_refresh))
+
 
 class Enclosure(models.Model):
     """Media enclosure for a Post
@@ -235,3 +241,14 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.title
+    
+    @property
+    def date_published_naturaldate(self):
+        date = self.date_published
+        as_datetime = datetime(date.year, date.month, date.day)
+        return unicode(naturaldate(as_datetime))
+
+    @property
+    def date_updated_naturaldate(self):
+        return unicode(naturaldate(self.date_updated))
+
