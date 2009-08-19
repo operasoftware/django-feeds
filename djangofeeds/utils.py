@@ -27,7 +27,8 @@ def _un(singular, plural, n=None):
 def naturaldate(date):
 
     if not date:
-        return
+        # a simple return will return a None
+        return ''
 
     now = datetime.now()
     today = datetime(now.year, now.month, now.day)
