@@ -20,7 +20,8 @@ OLDER_CHUNKS = (
 OLDER_AGO = _("%(number)d %(type)s ago")
 
 
-def _un(singular, plural, n=None):
+def _un(singular__plural, n=None):
+    singular, plural = singular__plural
     return ungettext(singular, plural, n)
 
 
@@ -46,11 +47,11 @@ def naturaldate(date):
     if days == 0:
         if hours == 0:
             if minutes > 0:
-                return _un(*MINUTES_AGO, n=minutes) % {"minutes": minutes}
+                return _un(MINUTES_AGO, n=minutes) % {"minutes": minutes}
             else:
                 return JUST_NOW
         else:
-            return _un(*HOURS_AGO, n=hours) % {"hours": hours}
+            return _un(HOURS_AGO, n=hours) % {"hours": hours}
 
     if delta_midnight.days == 0:
         return YESTERDAY_AT % {"time": date.strftime("%H:%M")}
@@ -59,8 +60,7 @@ def naturaldate(date):
     for chunk, singular_plural in OLDER_CHUNKS:
         if days >= chunk:
             count = round((delta_midnight.days + 1) / chunk, 0)
-            type_ = _un(*singular_plural, n=count)
+            type_ = _un(singular_plural, n=count)
             break
 
     return OLDER_AGO % {"number": count, "type": type_}
-
