@@ -4,6 +4,7 @@ from djangofeeds.utils import truncate_field_data
 
 DEFAULT_POST_LIMIT = 5
 
+
 def update_with_dict(obj, fields):
     set_value = lambda (name, val): setattr(obj, name, val)
     map(set_value, fields.items())
@@ -15,7 +16,7 @@ class ExtendedQuerySet(QuerySet):
 
     def update_or_create(self, **kwargs):
         obj, created = self.get_or_create(**kwargs)
-       
+
         if not created:
             fields = dict(kwargs.pop("defaults", {}))
             fields.update(kwargs)
@@ -65,3 +66,17 @@ class PostManager(ExtendedManager):
                     return update_with_dict(dupe, fields)
                 else:
                     return self.create(**fields)
+
+    def _find_duplicate_post(self, lookup_fields, fields):
+        # If any of these fields matches, it's a dupe.
+        # Compare in order, because you want to compare short fields
+        # before having to match the content.
+        cmp_fields = ("author", "link", "content")
+        range = self.filter(**lookup_fields).iterator()
+
+        for possible in range:
+            for field in cmp_fields:
+                orig_attr = getattr(possible, field, None)
+                this_attr = fields.get(field)
+                if orig_attr == this_attr:
+                    return possible
