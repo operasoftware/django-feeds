@@ -1,8 +1,9 @@
 from __future__ import with_statement
 import os
 import unittest
-from djangofeeds.importers import FeedImporter, FeedCriticalError
-from djangofeeds.importers import TimeoutError, FeedNotFoundError
+from djangofeeds.importers import FeedImporter
+from djangofeeds.exceptions import FeedCriticalError
+from djangofeeds.exceptions import TimeoutError, FeedNotFoundError
 from djangofeeds.models import Feed, Post, Enclosure
 from yadayada.test.user import create_random_user
 from django.contrib.auth import authenticate

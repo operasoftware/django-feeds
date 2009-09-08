@@ -1,39 +1,18 @@
-"""Model working with Feeds and Posts.
-
-Model Classes
--------------
-
-.. class:: Category
-
-    :class:`Category` associated with :class:`Post` or :class:`Feed`.
-
-.. class:: Feed
-
-    Model representing a feed.
-
-.. class:: Enclosure
-
-    Model representing media attached to a :class:`Post`.
-
-.. class:: Post
-
-    Model representing a single post in a :class:`Feed`.
-
-
-portal-dev@list.opera.com
-Copyright (c) 2009 Opera Software ASA.
-
-"""
+"""Model working with Feeds and Posts."""
 
 from django.db import models
+from django.db.models import signals
 from yadayada.models import StdModel
 from tagging.models import Tag
 from djangofeeds.managers import FeedManager, PostManager
+from djangofeeds.managers import EnclosureManager, CategoryManager
 from django.utils.translation import ugettext_lazy as _
 from djangofeeds.utils import naturaldate
 from datetime import datetime
+import httplib as http
 
-__all__ = ["Feed", "Enclosure", "Post", "Category"]
+ACCEPTED_STATUSES = [http.FOUND, http.MOVED_PERMANENTLY,
+                     http.OK, http.TEMPORARY_REDIRECT]
 
 FEED_TIMEDOUT_ERROR = "TIMEDOUT_ERROR"
 FEED_NOT_FOUND_ERROR = "NOT_FOUND_ERROR"
@@ -71,6 +50,8 @@ class Category(models.Model):
     name = models.CharField(_(u"name"), max_length=128)
     domain = models.CharField(_(u"domain"), max_length=128, null=True,
                                                             blank=True)
+
+    objects = CategoryManager()
 
     class Meta:
         unique_together = ("name", "domain")
@@ -145,9 +126,44 @@ class Feed(StdModel):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
 
+    def is_error_status(self, status):
+        return status in [http.NOT_FOUND] or status not in ACCEPTED_STATUSES
+
+    def error_for_status(self, status):
+        if status == http.NOT_FOUND:
+            return FEED_NOT_FOUND_ERROR
+        if status not in ACCEPTED_STATUSES:
+            return FEED_GENERIC_ERROR
+
+    def save_error(self, error_msg):
+        self._set_last_error = True
+        self.last_error = error_msg
+        self.save()
+        return self
+
+    def save_generic_error(self):
+        return self.save_error(FEED_GENERIC_ERROR)
+
+    def save_timeout_error(self):
+        return self.save_error(FEED_TIMEDOUT_ERROR)
+
+    def set_error_status(self, status):
+        return self.save_error(self.error_for_status(status))
+
     @property
     def date_last_refresh_naturaldate(self):
         return unicode(naturaldate(self.date_last_refresh))
+    
+    
+def sig_reset_last_error(sender, instance, **kwargs):
+    if not instance._set_last_error:
+        instance.last_error = u""
+signals.pre_save.connect(sig_reset_last_error, sender=Feed)
+
+def sig_init_feed_set_last_error(sender, instance, **kwargs):
+    instance._set_last_error = False
+signals.post_init.connect(sig_init_feed_set_last_error, sender=Feed)
+
 
 
 class Enclosure(models.Model):
@@ -171,6 +187,8 @@ class Enclosure(models.Model):
     url = models.URLField(_(u"URL"))
     type = models.CharField(_(u"type"), max_length=200)
     length = models.PositiveIntegerField(_(u"length"), default=0)
+
+    objects = EnclosureManager()
 
     class Meta:
         verbose_name = _(u"enclosure")
