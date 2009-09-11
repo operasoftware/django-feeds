@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.query import QuerySet
 from djangofeeds.utils import truncate_field_data
+import sys
 
 DEFAULT_POST_LIMIT = 5
 
@@ -15,7 +16,13 @@ def update_with_dict(obj, fields):
 class ExtendedQuerySet(QuerySet):
 
     def update_or_create(self, **kwargs):
-        obj, created = self.get_or_create(**kwargs)
+        try:
+            obj, created = self.get_or_create(**kwargs)
+        except self.model.MultipleObjectsReturned:
+            sys.stderr.write("djfeedsMultipleObjectsReturned: %s" % (
+                str(kwargs)))
+            self.filter(**kwargs).delete()
+            obj, created = self.get_or_create(**kwargs)
 
         if not created:
             fields = dict(kwargs.pop("defaults", {}))
