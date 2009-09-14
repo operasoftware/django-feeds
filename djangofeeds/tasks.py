@@ -105,6 +105,7 @@ class RefreshAllFeeds(PeriodicTask):
     interval available. (DISABLED)
 
     """
+    routing_key = ".".join([ROUTING_KEY_PREFIX, "allrefresh"])
     run_every = REFRESH_EVERY
     ignore_result = True
 

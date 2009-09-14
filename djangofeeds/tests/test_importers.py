@@ -45,7 +45,8 @@ class TestFeedImporter(unittest.TestCase):
 
         posts = feed_obj.post_set.all()
         first_post = posts[0]
-        self.assertEqual(first_post.guid, "Lifehacker-5147831")
+        self.assertEquals(first_post.guid, "Lifehacker-5147831")
+        self.assertEquals(str(first_post.date_updated), "2009-02-06 12:30:00")
         for post in posts:
             self.assertTrue(post.guid, "post has GUID")
             self.assertTrue(post.title, "post has title")
