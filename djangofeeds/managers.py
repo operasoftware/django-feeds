@@ -19,12 +19,14 @@ class ExtendedQuerySet(QuerySet):
         try:
             obj, created = self.get_or_create(**kwargs)
         except self.model.MultipleObjectsReturned:
-            fields = dict(kwargs.pop("default", {}))
-            fields.update(kwargs)
+            # Make copy of kwargs so the pop below will work.
+            kwargs_copy = dict(kwargs)
+            defaults = kwargs_copy.pop("defaults", {}))
+            fields.update(kwargs_copy)
             sys.stderr.write("djfeedsMultipleObjectsReturned: %s" % (
                 str(kwargs)))
             self.filter(**fields).delete()
-            obj, created = self.get_or_create(**kwargs)
+            obj, created = self.get_or_create(**kwargs_copy)
 
         if not created:
             fields = dict(kwargs.pop("defaults", {}))
