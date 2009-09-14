@@ -21,7 +21,8 @@ class ExtendedQuerySet(QuerySet):
         except self.model.MultipleObjectsReturned:
             # Make copy of kwargs so the pop below will work.
             kwargs_copy = dict(kwargs)
-            defaults = kwargs_copy.pop("defaults", {})
+            
+            fields = kwargs_copy.pop("defaults", {})
             fields.update(kwargs_copy)
             sys.stderr.write("djfeedsMultipleObjectsReturned: %s" % (
                 str(kwargs)))
