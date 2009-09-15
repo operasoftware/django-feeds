@@ -1,5 +1,5 @@
 from celery.task import tasks, Task, PeriodicTask, TaskSet
-from carrot.connection import DjangoAMQPConnection
+from carrot.connection import DjangoBrokerConnection
 from djangofeeds.importers import FeedImporter
 from djangofeeds.models import Feed
 from django.conf import settings
@@ -146,7 +146,7 @@ class RefreshAllFeeds(PeriodicTask):
         logger.info("TOTAL: %s WIN: %s SIZE: %s" % (total, win, size))
 
         for i in xrange(iterations):
-            print("APPLYING PAGE: %s (%s -> %s) c:%s" % (
+            logger.info("APPLYING PAGE: %s (%s -> %s) c:%s" % (
                 i, i*size, (i+1)*size, ceil(win/ iterations)*i))
             RefreshFeedSlice.apply_async((i*size, (i+1)*size),
                                    countdown=ceil(win / iterations)*i)
