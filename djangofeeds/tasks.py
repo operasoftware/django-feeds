@@ -140,7 +140,7 @@ class RefreshAllFeeds(PeriodicTask):
 
     def run(self, iterations=4, **kwargs):
         logger = self.get_logger(**kwargs)
-        total = get_feeds.count()
+        total = get_feeds().count()
         win = REFRESH_EVERY * 0.80
         size = ceil(win / iterations) * floor(total / win)
         logger.info("TOTAL: %s WIN: %s SIZE: %s" % (total, win, size))
@@ -150,6 +150,4 @@ class RefreshAllFeeds(PeriodicTask):
                 i, i*size, (i+1)*size, ceil(win/ iterations)*i))
             RefreshFeedSlice.apply_async((i*size, (i+1)*size),
                                    countdown=ceil(win / iterations)*i)
-        
-
 tasks.register(RefreshAllFeeds)
