@@ -1,4 +1,5 @@
-from djangofeeds.text import summarize_html
+from djangofeeds.text import summarize, summarize_html
+from djangofeeds import conf
 from datetime import datetime
 import time
 
@@ -34,7 +35,18 @@ def find_post_summary(feed_obj, entry):
         content = entry["content"][0]["value"]
     except (IndexError, KeyError):
         content = ""
-    return summarize_html(entry.get("summary", content))
+
+    def summarize_force(content):
+        return content[:conf.DEFAULT_SUMMARY_MAX_WORDS * 10]
+
+    content = entry.get("summary", content)
+    for summarize_fun in (summarize_html, summarize):
+        try:
+            return summarize_fun(content)
+        except UnicodeDecodeError:
+            pass
+
+    return summarize_force(content)
 
 
 def date_to_datetime(field_name):
