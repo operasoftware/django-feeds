@@ -16,18 +16,7 @@ def update_with_dict(obj, fields):
 class ExtendedQuerySet(QuerySet):
 
     def update_or_create(self, **kwargs):
-        try:
-            obj, created = self.get_or_create(**kwargs)
-        except self.model.MultipleObjectsReturned:
-            # Make copy of kwargs so the pop below will work.
-            kwargs_copy = dict(kwargs)
-            
-            fields = kwargs_copy.pop("defaults", {})
-            fields.update(kwargs_copy)
-            sys.stderr.write("djfeedsMultipleObjectsReturned: %s" % (
-                str(kwargs)))
-            self.filter(**fields).delete()
-            obj, created = self.get_or_create(**kwargs_copy)
+        obj, created = self.get_or_create(**kwargs)
 
         if not created:
             fields = dict(kwargs.pop("defaults", {}))
@@ -57,6 +46,18 @@ class PostManager(ExtendedManager):
     def all_by_order(self, limit=DEFAULT_POST_LIMIT):
         ordering = self.model._meta.ordering
         return self.all().order_by(*ordering)[:limit]
+
+    def update_or_create(self, **kwargs):
+        try:
+            obj = super(PostManager, self).update_or_create(**kwargs)
+        except self.model.MultipleObjectsReturned:
+            guid = kwargs.get("guid")
+            feed = kwargs.get("feed")
+            if guid:
+                self.filter(guid=guid, feed=feed).delete()
+                obj, created = self.get_or_create(**kwargs)
+
+        return obj
 
     def update_post(self, feed_obj, **fields):
         fields = truncate_field_data(self.model, fields)
