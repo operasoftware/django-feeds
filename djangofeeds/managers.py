@@ -56,6 +56,8 @@ class PostManager(ExtendedManager):
             if guid:
                 self.filter(guid=guid, feed=feed).delete()
                 obj, created = self.get_or_create(**kwargs)
+            else:
+                raise
 
         return obj
 
