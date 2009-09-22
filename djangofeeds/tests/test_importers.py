@@ -32,7 +32,17 @@ class TestFeedImporter(unittest.TestCase):
         self.assertTrue(self.user.is_authenticated(),
                         "Random user created successfully")
         self.feed = get_data_filename("example_feed.rss")
+        self.empty_feed = get_data_filename("example_empty_feed.rss")
         self.importer = FeedImporter()
+
+    def test_import_empty_feed(self):
+        """Regression for OPAL-513"""
+        feed = self.empty_feed
+        importer = self.importer
+        feed_obj = importer.import_feed(feed, local=True)
+        self.assertEqual(feed_obj.name, "(no title)")
+        self.assertEqual(feed_obj.post_set.count(), 0, "feed has 0 items")
+        self.assertEqual(feed_obj.feed_url, feed, "feed url is filename")
 
     def test_import_feed(self):
         feed = self.feed
