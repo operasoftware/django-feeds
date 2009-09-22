@@ -229,17 +229,20 @@ class FeedImporter(object):
         if feed_obj.is_error_status(status):
             return feed_obj.set_error_status(status)
 
-        sorted_by_date = feedutil.entries_by_date(feed.entries, limit)
-        entries = [self.import_entry(entry, feed_obj)
-                    for entry in sorted_by_date]
+        if feed.entries:
+            sorted_by_date = feedutil.entries_by_date(feed.entries, limit)
+
+            entries = [self.import_entry(entry, feed_obj)
+                            for entry in sorted_by_date]
+
         feed_obj.date_last_refresh = datetime.now()
         feed_obj.http_etag = feed.get("etag", "")
         if hasattr(feed, "modified"):
             feed_obj.http_last_modified = datetime.fromtimestamp(
                                             time.mktime(feed.modified))
 
-        self.logger.debug("uf: %s Saving feed object..." %
-                (feed_obj.feed_url))
+        self.logger.debug("uf: %s Saving feed object..." % (
+                            feed_obj.feed_url))
 
         feed_obj.save()
         return feed_obj
