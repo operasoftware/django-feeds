@@ -86,12 +86,13 @@ class PostManager(ExtendedManager):
         # If any of these fields matches, it's a dupe.
         # Compare in order, because you want to compare short fields
         # before having to match the content.
-        cmp_fields = ("author", "link", "content")
+        cmp_fields = ("link", "title", "content")
         range = self.filter(**lookup_fields).iterator()
 
         for possible in range:
             for field in cmp_fields:
                 orig_attr = getattr(possible, field, None)
                 this_attr = fields.get(field)
-                if orig_attr == this_attr:
-                    return possible
+                if orig_attr and this_attr: # Skip if empty
+                    if orig_attr == this_attr:
+                        return possible
