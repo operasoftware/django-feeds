@@ -237,9 +237,12 @@ class FeedImporter(object):
 
         feed_obj.date_last_refresh = datetime.now()
         feed_obj.http_etag = feed.get("etag", "")
-        if hasattr(feed, "modified"):
-            feed_obj.http_last_modified = datetime.fromtimestamp(
-                                            time.mktime(feed.modified))
+        if hasattr(feed, "modified") and feed.modified:
+            try:
+                as_ts = time.mktime(feed.modified)
+                feed_obj.http_last_modified = datetime.fromtimestamp(as_ts)
+            except TypeError:
+                pass
 
         self.logger.debug("uf: %s Saving feed object..." % (
                             feed_obj.feed_url))
