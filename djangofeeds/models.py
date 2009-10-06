@@ -12,7 +12,8 @@ from datetime import datetime
 import httplib as http
 
 ACCEPTED_STATUSES = [http.FOUND, http.MOVED_PERMANENTLY,
-                     http.OK, http.TEMPORARY_REDIRECT]
+                     http.OK, http.TEMPORARY_REDIRECT,
+                     http.NOT_MODIFIED]
 
 FEED_TIMEDOUT_ERROR = "TIMEDOUT_ERROR"
 FEED_NOT_FOUND_ERROR = "NOT_FOUND_ERROR"

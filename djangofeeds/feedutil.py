@@ -1,4 +1,4 @@
-from djangofeeds.text import summarize, summarize_html
+from django.utils.text import truncate_html_words
 from djangofeeds import conf
 from datetime import datetime
 import time
@@ -28,26 +28,15 @@ def entries_by_date(entries, limit=-1):
     sorted_entries.reverse()
     return [entry for (date, entry) in sorted_entries[:limit]]
 
-
-def find_post_summary(feed_obj, entry):
-    """Find the correct summary field for a post."""
+def find_post_content(feed_obj, entry):
+    """Find the correct content field for a post."""
     try:
         content = entry["content"][0]["value"]
     except (IndexError, KeyError):
-        content = ""
+        content = entry["description"]
 
-    def summarize_force(content):
-        return content[:conf.DEFAULT_SUMMARY_MAX_WORDS * 10]
-
-    content = entry.get("summary", content)
-    for summarize_fun in (summarize_html, summarize):
-        try:
-            return summarize_fun(content)
-        except UnicodeDecodeError:
-            pass
-
-    return summarize_force(content)
-
+    content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
+    return content
 
 def date_to_datetime(field_name):
     """Given a post field, convert its :mod:`feedparser` date tuple to

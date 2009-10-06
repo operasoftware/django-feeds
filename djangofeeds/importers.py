@@ -62,7 +62,7 @@ class FeedImporter(object):
     category_model = models.Category
     enclosure_model = models.Enclosure
     post_field_handlers = {
-        "content": feedutil.find_post_summary,
+        "content": feedutil.find_post_content,
         "date_published": feedutil.date_to_datetime("published_parsed"),
         "date_updated": feedutil.date_to_datetime("updated_parsed"),
         "link": lambda feed_obj, entry: entry.get("link") or feed_obj.feed_url,
@@ -190,7 +190,7 @@ class FeedImporter(object):
         The feed must already exist in the system, if not you have
         to import it using :meth:`import_feed`.
 
-        :param feed_obj: URL of the feed to refresh.
+        :param feed_obj: the Feed object
         :keyword feed: If feed has already been parsed you can pass the
             structure returned by the parser so it doesn't have to be parsed
             twice.
@@ -209,7 +209,7 @@ class FeedImporter(object):
         limit = self.post_limit
         if not feed:
             last_modified = None
-            if feed_obj.http_last_modified:
+            if feed_obj.http_last_modified and not force:
                 last_modified = feed_obj.http_last_modified.timetuple()
 
             try:
@@ -223,7 +223,7 @@ class FeedImporter(object):
 
         # Feed can be local/ not fetched with HTTP client.
         status = feed.get("status", http.OK)
-        if status == http.NOT_MODIFIED:
+        if status == http.NOT_MODIFIED and not force:
             return feed_obj
 
         if feed_obj.is_error_status(status):
