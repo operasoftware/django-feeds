@@ -35,7 +35,11 @@ def find_post_content(feed_obj, entry):
     except (IndexError, KeyError):
         content = entry["description"]
 
-    content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
+    try:
+        content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
+    except UnicodeDecodeError:
+        content = ""
+    
     return content
 
 def date_to_datetime(field_name):
