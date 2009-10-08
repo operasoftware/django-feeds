@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import with_statement
 import os
 import unittest
@@ -33,7 +34,56 @@ class TestFeedImporter(unittest.TestCase):
                         "Random user created successfully")
         self.feed = get_data_filename("example_feed.rss")
         self.empty_feed = get_data_filename("example_empty_feed.rss")
+        self.feed_content_encoded = get_data_filename(
+                                        "example_feed-content_encoded.rss")
         self.importer = FeedImporter()
+
+    def test_import_feed_with_content_encoded_regr_OPAL552(self):
+        """See https://bugs.opera.com/browse/OPAL-552"""
+        feed = self.feed_content_encoded
+        importer = self.importer
+        feed_obj = importer.import_feed(feed, local=True)
+        self.assertEqual(feed_obj.name, u"La Bande Pas Dessinée")
+        posts = feed_obj.post_set.all()
+        post_map = [
+            (u"NEWS 4", None),
+            (u"268 - Technique", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/268
+"""),
+                    (u"267 - Phénomène de Groupe", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/267
+"""),
+                    (u"266 - VDM", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/266
+"""),
+                    (u"265 - Inspecteur Sanchez : Encore Du Sang", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/265
+"""),
+                    (u"264 - Manque", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/264
+"""),
+                    (u"263 - Rosbeef", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/263
+"""),
+                    (u"262 - Geek Smic", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/262
+"""),
+                    (u"Résultats du Concours We Are The 90’s", u"""
+étais un lèche-cul
+"""),
+                    (u"261 - Papy", """
+<img src="http://www.labandepasdessinee.com/bpd/images/saison3/261
+"""),
+        ]
+        for i, post in enumerate(posts):
+            try:
+                expects = post_map[i]
+            except IndexError:
+                expects = ("UNEXPECTED INDEX TITLE", "UNEXPECTED INDEX IMG")
+            title, find_text = expects
+            self.assertEqual(post.title, title)
+            if find_text:
+                self.assertTrue(post.content.find(find_text.strip()) != -1)
 
     def test_import_empty_feed(self):
         """Regression for OPAL-513"""
