@@ -48,7 +48,7 @@ class RunTests(Command):
         this_dir = os.getcwd()
         testproj_dir = os.path.join(this_dir, "testproj")
         os.chdir(testproj_dir)
-        sys.path.append(testproj_dir)
+        sys.path.insert(0, testproj_dir)
         from django.core.management import execute_manager
         os.environ["DJANGO_SETTINGS_MODULE"] = os.environ.get(
                         "DJANGO_SETTINGS_MODULE", "settings")
@@ -92,7 +92,6 @@ setup(
     author=djangofeeds.__author__,
     author_email=djangofeeds.__contact__,
     packages=packages,
-    #cmdclass = cmdclasses,
     url=djangofeeds.__homepage__,
     cmdclass = {"test": RunTests},
     zip_safe=False,
