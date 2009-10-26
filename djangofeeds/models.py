@@ -1,6 +1,6 @@
 """Model working with Feeds and Posts."""
 
-from django.db import models
+from django.db import models, transaction
 from django.db.models import signals
 from yadayada.models import StdModel
 from tagging.models import Tag
@@ -127,6 +127,18 @@ class Feed(StdModel):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
 
+    @transaction.commit_manually
+    def expire_old_posts(self, min_posts=20):
+        all_by_date = self.post_set.all().order_by('-date_published')
+        expired_posts = list(all_by_date[min_posts:])
+        if expired_posts:
+            try:
+                deleted = len([post.delete() for post in expired_posts])
+            finally:
+                transaction.commit()
+            return deleted
+        return 0
+
     def is_error_status(self, status):
         return status in [http.NOT_FOUND] or status not in ACCEPTED_STATUSES
 
@@ -154,17 +166,17 @@ class Feed(StdModel):
     @property
     def date_last_refresh_naturaldate(self):
         return unicode(naturaldate(self.date_last_refresh))
-    
-    
+
+
 def sig_reset_last_error(sender, instance, **kwargs):
     if not instance._set_last_error:
         instance.last_error = u""
 signals.pre_save.connect(sig_reset_last_error, sender=Feed)
 
+
 def sig_init_feed_set_last_error(sender, instance, **kwargs):
     instance._set_last_error = False
 signals.post_init.connect(sig_init_feed_set_last_error, sender=Feed)
-
 
 
 class Enclosure(models.Model):
@@ -260,7 +272,7 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.title
-    
+
     @property
     def date_published_naturaldate(self):
         date = self.date_published
@@ -270,4 +282,3 @@ class Post(models.Model):
     @property
     def date_updated_naturaldate(self):
         return unicode(naturaldate(self.date_updated))
-

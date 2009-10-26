@@ -121,7 +121,7 @@ def get_feeds(start=None, stop=None, step=None):
     feeds = Feed.objects.filter(date_last_refresh__lt=threshold)
     if start or stop or step:
         return feeds[slice(start, stop, step)]
-    return feeds 
+    return feeds
 
 
 class RefreshAllFeeds(PeriodicTask):

@@ -28,6 +28,7 @@ def entries_by_date(entries, limit=-1):
     sorted_entries.reverse()
     return [entry for (date, entry) in sorted_entries[:limit]]
 
+
 def find_post_content(feed_obj, entry):
     """Find the correct content field for a post."""
     try:
@@ -39,14 +40,16 @@ def find_post_content(feed_obj, entry):
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
     except UnicodeDecodeError:
         content = ""
-    
+
     return content
+
 
 def date_to_datetime(field_name):
     """Given a post field, convert its :mod:`feedparser` date tuple to
     :class:`datetime.datetime` objects.
 
     :param field_name: The post field to use.
+
     """
 
     def _parsed_date_to_datetime(feed_obj, entry):

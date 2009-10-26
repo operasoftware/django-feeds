@@ -12,7 +12,6 @@ from djangofeeds import exceptions
 from djangofeeds.utils import truncate_field_data
 
 
-
 class FeedImporter(object):
     """Import/Update feeds.
 
