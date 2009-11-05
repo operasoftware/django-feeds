@@ -34,7 +34,7 @@ def find_post_content(feed_obj, entry):
     try:
         content = entry["content"][0]["value"]
     except (IndexError, KeyError):
-        content = entry["description"]
+        content = entry.get("description") or entry.get("summary", "")
 
     try:
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
