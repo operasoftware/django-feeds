@@ -210,10 +210,11 @@ class FeedImporter(object):
             last_modified = None
             if feed_obj.http_last_modified and not force:
                 last_modified = feed_obj.http_last_modified.timetuple()
+            etag = feed_obj.http_etag if not force else None
 
             try:
                 feed = self.parse_feed(feed_obj.feed_url,
-                                       etag=feed_obj.http_etag,
+                                       etag=etag,
                                        modified=last_modified)
             except socket.timeout:
                 return feed_obj.save_timeout_error()
