@@ -1,4 +1,4 @@
-from datetime import datetime 
+from datetime import datetime
 from django.utils.translation import ugettext as _
 from django.utils.translation import ungettext
 
@@ -64,3 +64,29 @@ def naturaldate(date):
             break
 
     return OLDER_AGO % {"number": count, "type": type_}
+
+
+def truncate_by_field(field, value):
+    """Truncate string value by model fields ``max_length`` attribute.
+
+    :param field: A Django model field instance.
+    :param value: The value to truncate.
+
+    """
+    if isinstance(value, basestring) and \
+            hasattr(field, "max_length") and value > field.max_length:
+                return value[:field.max_length]
+    return value
+
+
+def truncate_field_data(model, data):
+    """Truncate all data fields for model by its ``max_length`` field
+    attributes.
+
+    :param model: Kind of data (A Django Model instance).
+    :param data: The data to truncate.
+
+    """
+    fields = dict([(field.name, field) for field in model._meta.fields])
+    return dict([(name, truncate_by_field(fields[name], value))
+                    for name, value in data.items()])

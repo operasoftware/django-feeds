@@ -1,5 +1,5 @@
 from celery.task import tasks, Task, PeriodicTask, TaskSet
-from carrot.connection import DjangoAMQPConnection
+from carrot.connection import DjangoBrokerConnection
 from djangofeeds.importers import FeedImporter
 from djangofeeds.models import Feed
 from django.conf import settings
@@ -7,7 +7,7 @@ from django.core.cache import cache
 from celery.conf import AMQP_PUBLISHER_ROUTING_KEY
 from celery.utils import chunks
 from celery.task.strategy import even_time_distribution
-import math
+from math import floor, ceil
 from datetime import datetime, timedelta
 
 DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
@@ -98,22 +98,14 @@ class RefreshFeedTask(Task):
 tasks.register(RefreshFeedTask)
 
 
-class RefreshAllFeeds(PeriodicTask):
-    """Periodic Task to refresh all the feeds.
-
-    We evenly distribute the refreshing of feeds over the time
-    interval available. (DISABLED)
-
-    """
-    run_every = REFRESH_EVERY
+class RefreshFeedSlice(Task):
+    routing_key = ".".join([ROUTING_KEY_PREFIX, "slice"])
     ignore_result = True
 
-    def run(self, **kwargs):
-        now = datetime.now()
-        threshold = now - timedelta(seconds=REFRESH_EVERY)
-        feeds = Feed.objects.filter(date_last_refresh__lt=threshold)
+    def run(self, start=None, stop=None, step=None, **kwargs):
+        feeds = get_feeds(start=start, stop=stop, step=None)
 
-        connection = DjangoAMQPConnection()
+        connection = DjangoBrokerConnection()
         try:
             for feed in feeds:
                 RefreshFeedTask.apply_async(connection=connection,
@@ -121,4 +113,41 @@ class RefreshAllFeeds(PeriodicTask):
                                 "feed_id": feed.pk})
         finally:
             connection.close()
+tasks.register(RefreshFeedSlice)
+
+
+def get_feeds(start=None, stop=None, step=None):
+    threshold = datetime.now() - timedelta(seconds=REFRESH_EVERY)
+    feeds = Feed.objects.filter(date_last_refresh__lt=threshold)
+    if start or stop or step:
+        return feeds[slice(start, stop, step)]
+    return feeds
+
+
+class RefreshAllFeeds(PeriodicTask):
+    """Periodic Task to refresh all the feeds.
+
+    Splits the feeds into slices, depending how many feeds there are in
+    total and how many iterations you want it to run in.
+
+    :keyword iterations: The number of iterations you want the
+        work to complete in (default: 4).
+
+    """
+    routing_key = ".".join([ROUTING_KEY_PREFIX, "allrefresh"])
+    run_every = REFRESH_EVERY
+    ignore_result = True
+
+    def run(self, iterations=4, **kwargs):
+        logger = self.get_logger(**kwargs)
+        total = get_feeds().count()
+        win = REFRESH_EVERY * 0.80
+        size = ceil(win / iterations) * floor(total / win)
+        logger.info("TOTAL: %s WIN: %s SIZE: %s" % (total, win, size))
+
+        for i in xrange(iterations):
+            logger.info("APPLYING PAGE: %s (%s -> %s) c:%s" % (
+                i, i*size, (i+1)*size, ceil(win/ iterations)*i))
+            RefreshFeedSlice.apply_async((i*size, (i+1)*size),
+                                   countdown=ceil(win / iterations)*i)
 tasks.register(RefreshAllFeeds)
