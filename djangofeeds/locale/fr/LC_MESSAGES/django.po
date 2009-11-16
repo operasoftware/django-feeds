@@ -2,41 +2,31 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-14 06:27+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-11-16 07:54\n"
+"Last-Translator: <admin@toto.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.4.6.svn\n"
 
 #: models.py:41
 msgid "The feed does not seem to be respond. We will try again later."
-msgstr ""
-"Le flux n'a pas l'air de répondre. Un autre essai sera effectué "
-"prochainement."
+msgstr "Le flux n'a pas l'air de répondre. Un autre essai sera effectué prochainement."
 
 #: models.py:43
-msgid ""
-"You entered an incorrect URL or the feed you requested does not exist "
-"anymore."
-msgstr ""
-"Vous avez saisi une URL incorrecte ou le flux que vous avez spécifié "
-"n'existe plus."
+msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgstr "Vous avez saisi une URL incorrecte ou le flux que vous avez spécifié n'existe plus."
 
 #: models.py:46
-msgid ""
-"There was a problem with the feed you provided, please check the URL for "
-"mispellings or try again later."
-msgstr ""
-"Il y a un problème avec le flux que vous avez spécifié; veuillez vérifier "
-"l'URL ou réessayer ultérieurement."
+msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
+msgstr "Il y a un problème avec le flux que vous avez spécifié; veuillez vérifier l'URL ou réessayer ultérieurement."
 
 #: models.py:68 models.py:114
 msgid "name"
@@ -68,11 +58,11 @@ msgstr "lien"
 
 #: models.py:118
 msgid "E-Tag"
-msgstr ""
+msgstr "E-Tag"
 
 #: models.py:121
 msgid "Last-Modified"
-msgstr ""
+msgstr "Last-Modified"
 
 #: models.py:125
 msgid "date of last refresh"
@@ -92,55 +82,55 @@ msgstr "flux de d'aggrégation"
 
 #: models.py:164
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: models.py:165
 msgid "type"
-msgstr ""
+msgstr "type"
 
 #: models.py:166
 msgid "length"
-msgstr ""
+msgstr "longueur"
 
 #: models.py:169
 msgid "enclosure"
-msgstr ""
+msgstr "enclosure"
 
 #: models.py:170
 msgid "enclosures"
-msgstr ""
+msgstr "enclosures"
 
 #: models.py:218
 msgid "title"
-msgstr ""
+msgstr "titre"
 
 #: models.py:220
 msgid "content"
-msgstr ""
+msgstr "contenu"
 
 #: models.py:221
 msgid "guid"
-msgstr ""
+msgstr "guid"
 
 #: models.py:222
 msgid "author"
-msgstr ""
+msgstr "Auteur"
 
 #: models.py:223
 msgid "date published"
-msgstr ""
+msgstr "Date de publication"
 
 #: models.py:224
 msgid "date updated"
-msgstr ""
+msgstr "Date de mise à jour"
 
 #: models.py:232
 msgid "post"
-msgstr ""
+msgstr "post"
 
 #: models.py:233
 msgid "posts"
-msgstr ""
+msgstr "posts"
 
 #: templates/opal_feeds/display_feeds.html:28
 msgid "This is a test sentence for the demo."
