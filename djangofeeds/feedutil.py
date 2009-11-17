@@ -1,7 +1,10 @@
 from django.utils.text import truncate_html_words
 from djangofeeds import conf
 from datetime import datetime
+from djangofeeds.optimization import BeaconDetector
 import time
+
+_beacon_detector = BeaconDetector()
 
 
 def entries_by_date(entries, limit=-1):
@@ -37,6 +40,7 @@ def find_post_content(feed_obj, entry):
         content = entry.get("description") or entry.get("summary", "")
 
     try:
+        content = beacon_detector.stripsafe(content)
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
     except UnicodeDecodeError:
         content = ""
