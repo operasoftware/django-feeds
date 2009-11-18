@@ -17,7 +17,7 @@ class BeaconDetector(object):
         self.min_img_size = min_image_size or self.min_image_size
         self.verify_zero_bytes = verify_zero_bytes or self.verify_zero_bytes
         self.request_method = request_method or self.request_method
-        self._http = Http(".cache")
+        self._http = Http()
 
     def _get_image_size(self, image_url, request_method):
         resp, content = self._http.request(image_url, request_method)
