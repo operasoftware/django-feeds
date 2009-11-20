@@ -102,7 +102,8 @@ setup(
         'django-unittest-depth',
         'celery',
         'django-tagging',
-
+        'BeautifulSoup',
+        'httplib2',
     ],
     classifiers=[
         "Framework :: Django",
