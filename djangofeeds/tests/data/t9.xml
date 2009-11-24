@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rss version="2.0">
+  <channel>
+    <title>Monsieur Le Chien</title>
+    <link>http://www.monsieur-le-chien.fr</link>
+    <description>Réflexions vaines et assertions sans fondement d'un contribuable moyen.</description>
+    <managingEditor>clebard@monsieur-le-chien.fr</managingEditor>
+    <language>fr</language>
+    <copyright>www.hugues.biz</copyright>
+    <webMaster>webmaster@monsieur-le-chien.fr</webMaster>
+    <image>
+      <title>Le blog de Monsieur le Chien</title>
+      <url>http://www.monsieur-le-chien.fr/i/rss.jpg</url>
+      <link>http://www.monsieur-le-chien.fr</link>
+    </image>
+    <item>
+      <author>clebard@monsieur-le-chien.fr</author>
+      <title>La dernière planche de Monsieur le Chien - 13/09/2009</title>
+      <link>http://www.monsieur-le-chien.fr/index.php?planche=397</link>
+      <pubDate>13/09/2009 CET</pubDate>
+      <guid>http://www.monsieur-le-chien.fr/index.php?planche=397</guid>
+      <comments/>
+      <description/>
+    </item>
+  </channel>
+</rss>
