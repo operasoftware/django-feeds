@@ -39,12 +39,12 @@ class BeaconDetector(object):
         return False
 
     def stripsafe(self, text):
-        if "<img" not in html:
-            return html
+        if "<img" not in text:
+            return text
         try:
-            return self.strip(html)
+            return self.strip(text)
         except HTMLParseError:
-            return html
+            return text
 
     def strip(self, html):
         soup = BeautifulSoup(html)
