@@ -3,3 +3,5 @@ include README
 include MANIFEST.in
 include LICENSE
 recursive-include djangofeeds *
+global-exclude *pyc
+global-exclude *pyo
