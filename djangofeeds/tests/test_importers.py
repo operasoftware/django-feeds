@@ -36,6 +36,7 @@ class TestRegressionOPAL578(unittest.TestCase):
         self.importer = FeedImporter()
         self.feeds = map(get_data_filename, ["t%d.xml" % i
                                                 for i in range(1, 10)])
+
     def assertImportFeed(self, filename, name):
         importer = self.importer
         feed_obj = importer.import_feed(filename, local=True, force=True)
