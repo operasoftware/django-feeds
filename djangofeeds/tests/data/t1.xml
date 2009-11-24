@@ -1,107 +1,18 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 <rss version="2.0">
   <channel>
-    <title>Monsieur Le Chien</title>
-    <link>http://www.monsieur-le-chien.fr</link>
-    <description>Réflexions vaines et assertions sans fondement d'un contribuable moyen.</description>
-    <managingEditor>clebard@monsieur-le-chien.fr</managingEditor>
-    <language>fr</language>
-    <copyright>www.hugues.biz</copyright>
-    <webMaster>webmaster@monsieur-le-chien.fr</webMaster>
-    <image>
-      <title>Le blog de Monsieur le Chien</title>
-      <url>http://www.monsieur-le-chien.fr/i/rss.jpg</url>
-      <link>http://www.monsieur-le-chien.fr</link>
-    </image>
+    <title>Saturday Morning Breakfast Cereal (updated daily)</title>
+    <link>http://www.smbc-comics.com</link>
+    <description>The Saturday Morning Breakfast Cereal Blog</description>
+    <language>en-us</language>
     <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 08/11/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=406</link>
-      <pubDate>08/11/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=406</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 30/10/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=405</link>
-      <pubDate>30/10/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=405</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 19/10/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=404</link>
-      <pubDate>19/10/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=404</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 10/10/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=403</link>
-      <pubDate>10/10/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=403</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 08/10/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=402</link>
-      <pubDate>08/10/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=402</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 02/10/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=401</link>
-      <pubDate>02/10/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=401</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 21/09/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=400</link>
-      <pubDate>21/09/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=400</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 18/09/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=399</link>
-      <pubDate>18/09/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=399</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 17/09/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=398</link>
-      <pubDate>17/09/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=398</guid>
-      <comments/>
-      <description/>
-    </item>
-    <item>
-      <author>clebard@monsieur-le-chien.fr</author>
-      <title>La dernière planche de Monsieur le Chien - 13/09/2009</title>
-      <link>http://www.monsieur-le-chien.fr/index.php?planche=397</link>
-      <pubDate>13/09/2009 CET</pubDate>
-      <guid>http://www.monsieur-le-chien.fr/index.php?planche=397</guid>
-      <comments/>
-      <description/>
+      <link>http://www.smbc-comics.com/index.php?db=comics&amp;id=1705</link>
+      <title>November 20, 2009</title>
+      <description><![CDATA[<img src="http://www.smbc-comics.com/comics/20091120.gif"><br>
+BAM! Comic on time!<br>
+<br>
+Can anyone explain to me why SMBC might get banned from being submitted on digg? I haven't had any luck getting through to a human, so I thought I'd ask the INTERNET. (PS: To be clear, I'm not looking for anyone to cause trouble or go for "Internet justice." Just thought I'd see if I could reach someone in the know)]]></description>
+      <pubDate>Fri, 20 Nov 2009 00:00:00 -0500</pubDate>
     </item>
   </channel>
 </rss>

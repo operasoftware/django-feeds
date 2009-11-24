@@ -35,7 +35,7 @@ class TestRegressionOPAL578(unittest.TestCase):
     def setUp(self):
         self.importer = FeedImporter()
         self.feeds = map(get_data_filename, ["t%d.xml" % i
-                                                for i in range(1, 10)])
+                                              for i in reversed(range(1, 6))])
 
     def assertImportFeed(self, filename, name):
         importer = self.importer
@@ -45,12 +45,27 @@ class TestRegressionOPAL578(unittest.TestCase):
 
     def test_does_not_duplicate_posts(self):
         spool = tempfile.mktemp(suffix="ut", prefix="djangofeeds")
-        for i in range(20):
+        for i in range(40):
             for filename in self.feeds:
-                with nested(open(filename), open(spool, "w")) as (r, w):
-                    w.write(r.read())
-                    f = self.assertImportFeed(spool, "Monsieur Le Chien")
-        self.assertEqual(f.post_set.all().count(), 10)
+                try:
+                    with nested(open(filename), open(spool, "w")) as (r, w):
+                        w.write(r.read())
+                    f = self.assertImportFeed(spool,
+                            "Saturday Morning Breakfast Cereal (updated daily)")
+                finally:
+                    os.unlink(spool)
+        posts = list(f.post_set.all())
+        self.assertEqual(len(posts), 4)
+
+        seen = set()
+        for post in posts:
+            self.assertFalse(post.title in seen)
+            seen.add(post.title)
+
+        self.assertEqual(posts[0].title, "November 23, 2009")
+        self.assertEqual(posts[1].title, "November 22, 2009")
+        self.assertEqual(posts[2].title, "November 21, 2009")
+        self.assertEqual(posts[3].title, "November 20, 2009")
 
 
 class TestFeedImporter(unittest.TestCase):
