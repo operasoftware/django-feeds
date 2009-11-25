@@ -3,7 +3,6 @@
 from django.db import models, transaction
 from django.db.models import signals
 from yadayada.models import StdModel
-from tagging.models import Tag
 from djangofeeds.managers import FeedManager, PostManager
 from djangofeeds.managers import EnclosureManager, CategoryManager
 from django.utils.translation import ugettext_lazy as _

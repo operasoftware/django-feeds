@@ -101,7 +101,6 @@ setup(
         'yadayada',
         'django-unittest-depth',
         'celery',
-        'django-tagging',
         'BeautifulSoup',
         'httplib2',
     ],
