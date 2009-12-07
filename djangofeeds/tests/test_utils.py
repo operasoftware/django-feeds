@@ -1,6 +1,7 @@
 import os
 import unittest
 from djangofeeds.utils import naturaldate
+from djangofeeds.feedutil import entries_by_date
 from datetime import datetime, timedelta
 
 
@@ -98,3 +99,26 @@ class TestNaturalDate(unittest.TestCase):
             n_years_ago = datetime.now() - timedelta(days=n * 365)
             self.assertEquals(naturaldate(n_years_ago),
                 "%d years ago" % n)
+
+
+    def test_entries_by_date(self):
+        now = datetime.now()
+        proper_list = [
+            {'title':'proper 1', "date_parsed":now},
+            {'title':'proper 2', "date_parsed":now -
+                timedelta(seconds=10)},
+            {'title':'proper 3', "date_parsed":now -
+                timedelta(seconds=20)},
+            {'title':'proper 4', "date_parsed":now -
+                timedelta(seconds=30)}
+        ]
+        self.assertEqual(proper_list, entries_by_date(proper_list))
+
+        improper_list = [
+            {'title':'improper 1'},
+            {'title':'improper 2'},
+            {'title':'improper 3'},
+            {'title':'improper 4'}
+        ]
+
+        self.assertEqual(improper_list, entries_by_date(improper_list))

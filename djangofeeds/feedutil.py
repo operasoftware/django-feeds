@@ -3,19 +3,19 @@ from djangofeeds import conf
 from datetime import datetime
 from djangofeeds.optimization import BeaconDetector
 import time
+from datetime import datetime, timedelta
 
 _beacon_detector = BeaconDetector()
 
 
-def entries_by_date(entries, limit=-1):
+def entries_by_date(entries, limit=None):
     """Sort the feed entries by date
 
     :param entries: Entries given from :mod:`feedparser``.
     :param limit: Limit number of posts.
 
     """
-
-    def date_entry_tuple(entry):
+    def date_entry_tuple(entry, counter):
         """Find the most current date entry tuple."""
         if "date_parsed" in entry:
             return (entry["date_parsed"], entry)
@@ -23,13 +23,21 @@ def entries_by_date(entries, limit=-1):
             return (entry["updated_parsed"], entry)
         if "published_parsed" in entry:
             return (entry["published_parsed"], entry)
-        return (time.localtime(), entry)
+        return (now - timedelta(seconds = (counter * 30)), entry)
 
-    sorted_entries = [date_entry_tuple(entry)
-                            for entry in entries]
+    sorted_entries = []
+    counter = 0
+    now = datetime.now()
+    for entry in entries:
+        sorted_entries.append(date_entry_tuple(entry, counter))
+        counter += 1
+
     sorted_entries.sort()
     sorted_entries.reverse()
-    return [entry for (date, entry) in sorted_entries[:limit]]
+    if limit:
+        return [entry for (date, entry) in sorted_entries[:limit]]
+    else:
+        return [entry for (date, entry) in sorted_entries]
 
 
 def find_post_content(feed_obj, entry):

@@ -173,3 +173,4 @@ class TestFeedImporter(unittest.TestCase):
         importer = self.importer
         self.assertRaises(FeedNotFoundError, importer.import_feed,
                 FEED_YIELDING_404)
+
