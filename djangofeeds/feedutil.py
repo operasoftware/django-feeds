@@ -32,7 +32,7 @@ def entries_by_date(entries, limit=None):
 
     sorted_entries.sort()
     sorted_entries.reverse()
-    return [entry for (date, entry) in sorted_entries[slice(0, limit)]]
+    return [entry for _date, entry in sorted_entries[:limit]]
 
 
 def find_post_content(feed_obj, entry):
