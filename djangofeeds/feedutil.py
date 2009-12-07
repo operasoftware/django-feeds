@@ -19,18 +19,18 @@ def entries_by_date(entries, limit=None):
 
     def date_entry_tuple(entry, counter):
         """Find the most current date entry tuple."""
-        if "date_parsed" in entry:
-            return (entry["date_parsed"].encode("utf-8"), entry)
         if "updated_parsed" in entry:
-            return (entry["updated_parsed"].encode("utf-8"), entry)
+            return (entry["updated_parsed"], entry)
         if "published_parsed" in entry:
-            return (entry["published_parsed"].encode("utf-8"), entry)
+            return (entry["published_parsed"], entry)
+        if "date_parsed" in entry:
+            return (entry["date_parsed"], entry)
         return (now - timedelta(seconds=(counter * 30)), entry)
 
-    sortede_entries = [date_entry_tuple(entry, counter)
+    sorted_entries = [date_entry_tuple(entry, counter)
                         for counter, entry in enumerate(entries)]
 
-    sorted_entries.sort()
+    sorted_entries.sort(key=lambda k: k[0])
     sorted_entries.reverse()
     return [entry for _date, entry in sorted_entries[:limit]]
 
