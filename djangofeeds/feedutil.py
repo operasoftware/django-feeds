@@ -15,6 +15,8 @@ def entries_by_date(entries, limit=None):
     :param limit: Limit number of posts.
 
     """
+    now = datetime.now()
+
     def date_entry_tuple(entry, counter):
         """Find the most current date entry tuple."""
         if "date_parsed" in entry:
@@ -23,21 +25,14 @@ def entries_by_date(entries, limit=None):
             return (entry["updated_parsed"].encode("utf-8"), entry)
         if "published_parsed" in entry:
             return (entry["published_parsed"].encode("utf-8"), entry)
-        return (now - timedelta(seconds = (counter * 30)), entry)
+        return (now - timedelta(seconds=(counter * 30)), entry)
 
-    sorted_entries = []
-    counter = 0
-    now = datetime.now()
-    for entry in entries:
-        sorted_entries.append(date_entry_tuple(entry, counter))
-        counter += 1
+    sortede_entries = [date_entry_tuple(entry, counter)
+                        for counter, entry in enumerate(entries)]
 
     sorted_entries.sort()
     sorted_entries.reverse()
-    if limit:
-        return [entry for (date, entry) in sorted_entries[:limit]]
-    else:
-        return [entry for (date, entry) in sorted_entries]
+    return [entry for (date, entry) in sorted_entries[slice(0, limit)]]
 
 
 def find_post_content(feed_obj, entry):
