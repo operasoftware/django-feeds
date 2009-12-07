@@ -8,6 +8,12 @@ from datetime import datetime, timedelta
 _beacon_detector = BeaconDetector()
 
 
+def format_time(t):
+    if isinstance(t, time.struct_time):
+        return datetime(*t[:6])
+    return t
+
+
 def entries_by_date(entries, limit=None):
     """Sort the feed entries by date
 
@@ -20,11 +26,11 @@ def entries_by_date(entries, limit=None):
     def date_entry_tuple(entry, counter):
         """Find the most current date entry tuple."""
         if "updated_parsed" in entry:
-            return (entry["updated_parsed"], entry)
+            return (format_time(entry["updated_parsed"]), entry)
         if "published_parsed" in entry:
-            return (entry["published_parsed"], entry)
+            return (format_time(entry["published_parsed"]), entry)
         if "date_parsed" in entry:
-            return (entry["date_parsed"], entry)
+            return (format_time(entry["date_parsed"]), entry)
         return (now - timedelta(seconds=(counter * 30)), entry)
 
     sorted_entries = [date_entry_tuple(entry, counter)
