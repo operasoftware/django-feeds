@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 _beacon_detector = BeaconDetector()
 
 
-def format_time(t):
+def format_date(t):
     if isinstance(t, time.struct_time):
         return datetime(*t[:6])
     return t
@@ -23,17 +23,16 @@ def entries_by_date(entries, limit=None):
     """
     now = datetime.now()
 
-    def date_entry_tuple(entry, counter):
+    def find_date(entry, counter):
         """Find the most current date entry tuple."""
-        if "updated_parsed" in entry:
-            return (format_time(entry["updated_parsed"]), entry)
-        if "published_parsed" in entry:
-            return (format_time(entry["published_parsed"]), entry)
-        if "date_parsed" in entry:
-            return (format_time(entry["date_parsed"]), entry)
-        return (now - timedelta(seconds=(counter * 30)), entry)
 
-    sorted_entries = [date_entry_tuple(entry, counter)
+        return (entry.get("updated_parsed") or
+                entry.get("published_parsed") or
+                entry.get("date_parsed") or
+                now - timedelta(seconds=(counter * 30)))
+
+
+    sorted_entries = [(format_date(find_date(entry, counter)), entry)
                         for counter, entry in enumerate(entries)]
 
     sorted_entries.sort(key=lambda k: k[0])
