@@ -6,6 +6,9 @@ BEACON_REQUEST_METHOD = "HEAD"
 BEACON_MIN_IMAGE_SIZE = 100
 BEACON_VERIFY_ZERO_BYTES = True
 
+_known_beacons = set()
+_known_images = set()
+
 
 class BeaconDetector(object):
     min_image_size = BEACON_MIN_IMAGE_SIZE
@@ -24,6 +27,14 @@ class BeaconDetector(object):
         return int(resp.get("content-length", 0)) or len(content)
 
     def looks_like_beacon(self, image_url, verify=None):
+        if image_url not in _known_beacons | _known_images:
+            ret = self._looks_like_beacon(image_url, verify=verify)
+            (ret and _known_beacons or _known_images).add(image_url)
+            return ret
+        return image_url not in _known_images and image_url in _known_beacons
+
+
+    def _looks_like_beacon(self, image_url, verify=None):
         verify = verify or self.verify_zero_bytes
         request_method = "GET" if verify else self.request_method
         try:

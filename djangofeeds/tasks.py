@@ -1,18 +1,19 @@
-from celery.task import tasks, Task, PeriodicTask, TaskSet
-from carrot.connection import DjangoBrokerConnection
-from djangofeeds.importers import FeedImporter
-from djangofeeds.models import Feed
-from django.conf import settings
-from django.core.cache import cache
-from celery.conf import AMQP_PUBLISHER_ROUTING_KEY
-from celery.utils import chunks
-from celery.task.strategy import even_time_distribution
 from math import floor, ceil
 from datetime import datetime, timedelta
+
+from django.conf import settings
+from django.core.cache import cache
+
+from celery import conf as celeryconf
+from celery.task import Task, PeriodicTask
+
+from djangofeeds.models import Feed
+from djangofeeds.importers import FeedImporter
 
 DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
 DEFAULT_FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
 DEFAULT_FEED_LOCK_EXPIRE = 60 * 3 # lock expires in 3 minutes.
+
 
 """
 .. data:: REFRESH_EVERY
@@ -35,7 +36,7 @@ Taken from: ``settings.DJANGOFEEDS_ROUTING_KEY_PREFIX``.
 
 """
 ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
-                             AMQP_PUBLISHER_ROUTING_KEY)
+                             celeryconf.DEFAULT_ROUTING_KEY)
 
 """
 .. data:: FEED_LOCK_CACHE_KEY_FMT
@@ -95,7 +96,6 @@ class RefreshFeedTask(Task):
             release_lock()
 
         return feed_url
-tasks.register(RefreshFeedTask)
 
 
 class RefreshFeedSlice(Task):
@@ -105,7 +105,7 @@ class RefreshFeedSlice(Task):
     def run(self, start=None, stop=None, step=None, **kwargs):
         feeds = get_feeds(start=start, stop=stop, step=None)
 
-        connection = DjangoBrokerConnection()
+        connection = self.establish_connection()
         try:
             for feed in feeds:
                 RefreshFeedTask.apply_async(connection=connection,
@@ -113,7 +113,6 @@ class RefreshFeedSlice(Task):
                                 "feed_id": feed.pk})
         finally:
             connection.close()
-tasks.register(RefreshFeedSlice)
 
 
 def get_feeds(start=None, stop=None, step=None):
@@ -150,4 +149,3 @@ class RefreshAllFeeds(PeriodicTask):
                 i, i*size, (i+1)*size, ceil(win/ iterations)*i))
             RefreshFeedSlice.apply_async((i*size, (i+1)*size),
                                    countdown=ceil(win / iterations)*i)
-tasks.register(RefreshAllFeeds)

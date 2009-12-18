@@ -48,7 +48,6 @@ def find_post_content(feed_obj, entry):
         content = entry.get("description") or entry.get("summary", "")
 
     try:
-        #content = _beacon_detector.stripsafe(content)
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
     except UnicodeDecodeError:
         content = ""
