@@ -111,6 +111,7 @@ class Feed(StdModel):
     categories = models.ManyToManyField(Category)
     last_error = models.CharField(_(u"last error"), blank=True, default="",
                                  max_length=32, choices=FEED_ERROR_CHOICES)
+    ratio = models.FloatField(default=0.0)
 
     objects = FeedManager()
 
