@@ -27,6 +27,10 @@ class ExtendedQuerySet(QuerySet):
 
         return obj
 
+    def since(self, interval):
+        threshold = datetime.now() - timedelta(seconds=interval)
+        return self.filter(date_last_refresh__lt=threshold)
+
 
 class ExtendedManager(models.Manager):
 
@@ -35,11 +39,6 @@ class ExtendedManager(models.Manager):
 
     def update_or_create(self, **kwargs):
         return self.get_query_set().update_or_create(**kwargs)
-
-    def since(self, interval):
-        threshold = datetime.now() - timedelta(seconds=interval)
-        return self.filter(date_last_refresh__lt=threshold)
-
 
 
 FeedManager = ExtendedManager
