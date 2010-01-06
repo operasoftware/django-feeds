@@ -1,7 +1,9 @@
+import sys
+
 from django.db import models
 from django.db.models.query import QuerySet
+
 from djangofeeds.utils import truncate_field_data
-import sys
 
 DEFAULT_POST_LIMIT = 5
 
@@ -38,6 +40,17 @@ class ExtendedManager(models.Manager):
 FeedManager = ExtendedManager
 CategoryManager = ExtendedManager
 EnclosureManager = ExtendedManager
+
+
+class FeedManager(ExtendedManager):
+
+    def ratio(self, min=None, max=None):
+        query = {}
+        if min is not None:
+            query["ratio__gt"] = min
+        if max is not None:
+            query["ratio__lt"] = max
+        return self.filter(**query)
 
 
 class PostManager(ExtendedManager):

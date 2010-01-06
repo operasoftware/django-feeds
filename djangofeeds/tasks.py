@@ -147,5 +147,5 @@ class RefreshAllFeeds(PeriodicTask):
         for i in xrange(iterations):
             logger.info("APPLYING PAGE: %s (%s -> %s) c:%s" % (
                 i, i*size, (i+1)*size, ceil(win/ iterations)*i))
-            RefreshFeedSlice.apply_async((i*size, (i+1)*size),
+            RefreshFeedSlice.apply_async(args=[(i*size, (i+1)*size)],
                                    countdown=ceil(win / iterations)*i)
