@@ -12,6 +12,11 @@ from djangofeeds import exceptions
 from djangofeeds.utils import truncate_field_data
 
 
+def get_guid(feed_obj, entry):
+    return entry.get("guid") or hash("|".join((
+                entry.title, entry.link, entry.author)))
+
+
 class FeedImporter(object):
     """Import/Update feeds.
 
@@ -66,7 +71,7 @@ class FeedImporter(object):
         "date_updated": feedutil.date_to_datetime("updated_parsed"),
         "link": lambda feed_obj, entry: entry.get("link") or feed_obj.feed_url,
         "feed": lambda feed_obj, entry: feed_obj,
-        "guid": lambda feed_obj, entry: entry.get("guid", "").strip(),
+        "guid": get_guid,
         "title": lambda feed_obj, entry: entry.get("title",
                                                     "(no title)").strip(),
         "author": lambda feed_obj, entry: entry.get("author", "").strip(),
