@@ -66,7 +66,7 @@ class FeedImporter(object):
         "date_updated": feedutil.date_to_datetime("updated_parsed"),
         "link": lambda feed_obj, entry: entry.get("link") or feed_obj.feed_url,
         "feed": lambda feed_obj, entry: feed_obj,
-        "guid": lambda feed_obj, entry: entry.get("guid", "").strip(),
+        "guid": feedutil.entry_guid,
         "title": lambda feed_obj, entry: entry.get("title",
                                                     "(no title)").strip(),
         "author": lambda feed_obj, entry: entry.get("author", "").strip(),

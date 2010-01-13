@@ -3,6 +3,7 @@ from djangofeeds import conf
 from datetime import datetime
 from djangofeeds.optimization import BeaconDetector
 import time
+import hashlib
 from datetime import datetime, timedelta
 
 _beacon_detector = BeaconDetector()
@@ -13,6 +14,14 @@ def format_date(t):
         return datetime(*t[:6])
     return t
 
+def entry_guid(feed_obj, entry):
+    guid = entry.get("guid", None)
+    if guid:
+        return guid
+    link = entry.get("link", entry.get("title", ""))
+    md5 = hashlib.md5()
+    md5.update(link)
+    return md5.hexdigest()
 
 def entries_by_date(entries, limit=None):
     """Sort the feed entries by date
