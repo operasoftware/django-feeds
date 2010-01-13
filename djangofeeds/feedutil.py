@@ -3,6 +3,7 @@ from djangofeeds import conf
 from datetime import datetime
 from djangofeeds.optimization import BeaconDetector
 import time
+import hashlib
 from datetime import datetime, timedelta
 
 _beacon_detector = BeaconDetector()
@@ -12,6 +13,12 @@ def format_date(t):
     if isinstance(t, time.struct_time):
         return datetime(*t[:6])
     return t
+
+
+def get_entry_guid(feed_obj, entry):
+    guid = entry.get("guid") or hash("|".join((
+                entry.title, entry.link, entry.author)))
+    return guid.strip()
 
 
 def entries_by_date(entries, limit=None):
@@ -32,8 +39,17 @@ def entries_by_date(entries, limit=None):
                 now - timedelta(seconds=(counter * 30)))
 
 
-    sorted_entries = [(format_date(find_date(entry, counter)), entry)
-                        for counter, entry in enumerate(entries)]
+    sorted_entries = []
+    for counter, entry in enumerate(entries):
+        date = format_date(find_date(entry, counter))
+        # the found date is put into the entry
+        # because some feed just don't have any valid dates.
+        # This will ensure that the posts will be properly ordered
+        # later on
+        entry["updated_parsed"] = date.timetuple()
+        entry["published_parsed"] = entry.get("published_parsed",
+            date.timetuple())
+        sorted_entries.append((date, entry))
 
     sorted_entries.sort(key=lambda k: k[0])
     sorted_entries.reverse()
