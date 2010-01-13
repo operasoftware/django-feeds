@@ -1,7 +1,7 @@
 import os
 import unittest
 from djangofeeds.utils import naturaldate
-from djangofeeds.feedutil import entries_by_date
+from djangofeeds.feedutil import entries_by_date, entry_guid
 from datetime import datetime, timedelta
 
 
@@ -122,3 +122,29 @@ class TestNaturalDate(unittest.TestCase):
         ]
 
         self.assertEqual(improper_list, entries_by_date(improper_list))
+
+    def test_missing_guid(self):
+        entries  = [
+            {'title': u'first',
+            'link': u'toto'},
+            {'title': u'second'}
+        ]
+        self.assertTrue(len(entry_guid(None, entries[0])) > 0)
+        self.assertNotEqual(
+            entry_guid(None, entries[0]),
+            entry_guid(None, entries[1])
+        )
+
+    def test_faulty_dates(self):
+        entries  = [
+            {'title': u'first',
+            'updated': u'06/01/2010 CET',
+            'updated_parsed': None},
+            {'title': u'second',
+            'updated': u'23/12/2009 CET',
+            'updated_parsed': None},
+        ]
+        self.assertEqual(entries, entries_by_date(entries))
+        entries.reverse()
+        self.assertEqual(entries, entries_by_date(entries))
+        

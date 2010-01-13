@@ -17,8 +17,8 @@ def format_date(t):
 def entry_guid(feed_obj, entry):
     guid = entry.get("guid", None)
     if guid:
-        return guid
-    link = entry.get("link", entry.get("title", ""))
+        return guid.strip()
+    link = entry.get("link", entry.get("title", "")).strip()
     md5 = hashlib.md5()
     md5.update(link)
     return md5.hexdigest()
