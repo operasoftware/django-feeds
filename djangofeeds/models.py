@@ -273,6 +273,9 @@ class Post(models.Model):
     def __unicode__(self):
         return u"%s" % self.title
 
+    def __hash__(self):
+        return hash("|".join((self.title, self.link, self.author)))
+
     @property
     def date_published_naturaldate(self):
         date = self.date_published
