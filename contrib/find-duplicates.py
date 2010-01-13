@@ -12,6 +12,11 @@ def Feeds(reducer, start=None, stop=None):
     return QuerySetMapper(reducer, Feed.objects.all(), start, stop)
 
 
+def NoGuidFeeds(reducer, start=None, stop=None):
+    return QuerySetMapper(reducer, Feed.objects.filter(guid__isnull=True),
+                          start, stop)
+
+
 class DuplicateReducer(Reducer):
 
     def iterduplicates(self, feed):
@@ -25,6 +30,18 @@ class DuplicateReducer(Reducer):
 
     def process(self, feed):
         return self.iterduplicates(feed)
+
+
+class GUIDReducer(Reducer):
+
+    def process(self, feed):
+        for post in feed.post_set.filter(guid__isnull=True):
+            post.guid = hash(post)
+            post.save()
+            yield post
+
+    def flush(self):
+        transaction.commit()
 
 
 def duplicate_posts():
@@ -44,6 +61,14 @@ def delete_duplicates(commit_every=1000):
                 transaction.commit()
     except BaseException:
         transaction.rollback()
+
+
+@transaction.commit_manually
+def set_missing_guids(commit_every=1000):
+    for post in Feeds(GUIDReducer()):
+        for post in duplicates:
+            pass
+
 
 
 if __name__ == "__main__":
