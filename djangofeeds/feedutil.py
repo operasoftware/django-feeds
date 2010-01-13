@@ -16,9 +16,9 @@ def format_date(t):
 
 
 def get_entry_guid(feed_obj, entry):
-    guid = entry.get("guid") or hash("|".join((
-                entry.title, entry.link, entry.author)))
-    return guid.strip()
+    guid = entry.get("guid") or hash("|".join(str(entry.get(key))
+                                    for key in ("title", "link", "author")))
+    return str(guid).strip()
 
 
 def entries_by_date(entries, limit=None):

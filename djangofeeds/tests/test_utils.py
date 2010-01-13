@@ -1,7 +1,8 @@
 import os
 import unittest
 from djangofeeds.utils import naturaldate
-from djangofeeds.feedutil import entries_by_date, entry_guid, date_to_datetime
+from djangofeeds.feedutil import (entries_by_date, get_entry_guid,
+                                  date_to_datetime)
 from datetime import datetime, timedelta
 
 
@@ -127,12 +128,13 @@ class TestNaturalDate(unittest.TestCase):
         entries  = [
             {'title': u'first',
             'link': u'toto'},
-            {'title': u'second'}
+            {'title': u'first',
+             "link": u'tata'}
         ]
-        self.assertTrue(len(entry_guid(None, entries[0])) > 0)
+        self.assertTrue(len(get_entry_guid(None, entries[0])) > 0)
         self.assertNotEqual(
-            entry_guid(None, entries[0]),
-            entry_guid(None, entries[1])
+            get_entry_guid(None, entries[0]),
+            get_entry_guid(None, entries[1])
         )
 
     def test_faulty_dates(self):
@@ -148,10 +150,9 @@ class TestNaturalDate(unittest.TestCase):
         d1 = date_to_datetime("published_parsed")(None, entries[0])
         d2 = date_to_datetime("published_parsed")(None, entries[1])
         self.assertTrue(d1 > d2)
-        
+
         self.assertEqual(entries, entries_by_date(entries))
         reversed_entries = list(entries)
         reversed_entries.reverse()
         self.assertNotEqual(entries, reversed_entries)
         self.assertEqual(entries, entries_by_date(reversed_entries))
-        
