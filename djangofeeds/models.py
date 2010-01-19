@@ -128,12 +128,12 @@ class Feed(StdModel):
         return self.post_set.all_by_order(**kwargs)
 
     @transaction.commit_manually
-    def expire_old_posts(self, min_posts=20):
+    def expire_old_posts(self, min_posts=20, commit=False):
         all_by_date = self.post_set.all().order_by('-date_published')
         expired_posts = list(all_by_date[min_posts:])
         if expired_posts:
             try:
-                deleted = len([post.delete() for post in expired_posts])
+                deleted = len(post.delete() for post in expired_posts)
             finally:
                 transaction.commit()
             return deleted
