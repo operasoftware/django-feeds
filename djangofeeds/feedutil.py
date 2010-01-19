@@ -45,7 +45,7 @@ def entries_by_date(entries, limit=None):
         # the found date is put into the entry
         # because some feed just don't have any valid dates.
         # This will ensure that the posts will be properly ordered
-        # later on
+        # later on when put into the database.
         entry["updated_parsed"] = date.timetuple()
         entry["published_parsed"] = entry.get("published_parsed",
             date.timetuple())
