@@ -1,10 +1,11 @@
-from django.utils.text import truncate_html_words
-from djangofeeds import conf
-from datetime import datetime
-from djangofeeds.optimization import BeaconDetector
 import time
-import hashlib
 from datetime import datetime, timedelta
+
+from django.utils.hashcompat import md5_constructor
+from django.utils.text import truncate_html_words
+
+from djangofeeds import conf
+from djangofeeds.optimization import BeaconDetector
 
 _beacon_detector = BeaconDetector()
 
@@ -15,8 +16,12 @@ def format_date(t):
     return t
 
 
+def md5sum(text):
+    return md5_constructor(text).hexdigest()
+
+
 def get_entry_guid(feed_obj, entry):
-    guid = entry.get("guid") or hash("|".join(str(entry.get(key))
+    guid = entry.get("guid") or md5sum("|".join(str(entry.get(key))
                                     for key in ("title", "link", "author")))
     return str(guid).strip()
 
