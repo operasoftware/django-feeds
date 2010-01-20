@@ -81,5 +81,13 @@ class PostManager(ExtendedManager):
 
     def update_post(self, feed_obj, **fields):
         fields = truncate_field_data(self.model, fields)
-        post = self.update_or_create(guid=fields["guid"], feed=feed_obj,
+        # posts entry with no valid dates will recieve a new
+        # different date every time and be updated. That's
+        # not what we want. Besides, what do we need to update here?
+        # A change in the title, or link will create a new GUID
+        try:
+            post = self.get(guid=fields["guid"], feed=feed_obj)
+            # TODO: Update some field here
+        except self.model.DoesNotExist:
+            post = self.create(guid=fields["guid"], feed=feed_obj,
                                      defaults=fields)
