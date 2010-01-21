@@ -174,3 +174,39 @@ class TestFeedImporter(unittest.TestCase):
         self.assertRaises(FeedNotFoundError, importer.import_feed,
                 FEED_YIELDING_404)
 
+
+    def test_missing_date_feed(self):
+        """Try to reproduce the constant date update bug."""
+        feed = get_data_filename("buggy_dates.rss")
+        importer = self.importer
+        feed_obj = importer.import_feed(feed, local=True)
+        last_post = feed_obj.get_posts()[0]
+
+        import time
+        time.sleep(1)
+
+        feed2 = get_data_filename("buggy_dates.rss")
+        feed_obj2 = importer.import_feed(feed2, local=True)
+        last_post2 = feed_obj2.get_posts()[0]
+
+        # if the post is updated, we should see a different in datetime
+        self.assertEqual(last_post.date_updated, last_post2.date_updated)
+
+    def test_missing_date_and_guid_feed(self):
+        """Try to reproduce the constant date update bug."""
+        feed = get_data_filename("buggy_dates_and_guid.rss")
+        importer = self.importer
+        feed_obj = importer.import_feed(feed, local=True)
+        last_post = feed_obj.get_posts()[0]
+
+        import time
+        time.sleep(1)
+
+        feed2 = get_data_filename("buggy_dates_and_guid.rss")
+        feed_obj2 = importer.import_feed(feed2, local=True)
+        last_post2 = feed_obj2.get_posts()[0]
+
+        # if the post is updated, we should see a different in datetime
+        self.assertEqual(last_post.date_updated, last_post2.date_updated)
+
+        
