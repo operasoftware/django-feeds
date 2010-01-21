@@ -189,7 +189,7 @@ class TestFeedImporter(unittest.TestCase):
         feed_obj2 = importer.import_feed(feed2, local=True)
         last_post2 = feed_obj2.get_posts()[0]
 
-        # if the post is updated, we should see a different in datetime
+        # if the post is updated, we should see a different datetime
         self.assertEqual(last_post.date_updated, last_post2.date_updated)
 
     def test_missing_date_and_guid_feed(self):
@@ -206,7 +206,7 @@ class TestFeedImporter(unittest.TestCase):
         feed_obj2 = importer.import_feed(feed2, local=True)
         last_post2 = feed_obj2.get_posts()[0]
 
-        # if the post is updated, we should see a different in datetime
+        # if the post is updated, we should see a different datetime
         self.assertEqual(last_post.date_updated, last_post2.date_updated)
 
         
