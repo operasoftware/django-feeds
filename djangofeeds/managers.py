@@ -4,6 +4,8 @@ from datetime import timedelta, datetime
 from django.db import models
 from django.db.models.query import QuerySet
 
+from celery.utils import mitemgetter
+
 from djangofeeds.utils import truncate_field_data
 
 DEFAULT_POST_LIMIT = 5
@@ -69,25 +71,14 @@ class PostManager(ExtendedManager):
         try:
             obj = super(PostManager, self).update_or_create(**kwargs)
         except self.model.MultipleObjectsReturned:
-            guid = kwargs.get("guid")
-            feed = kwargs.get("feed")
-            if guid:
-                self.filter(guid=guid, feed=feed).delete()
-                obj, created = self.get_or_create(**kwargs)
-            else:
+            guid, feed = mitemgetter("guid", "feed")(kwargs)
+            if not guid:
                 raise
+            self.filter(guid=guid, feed=feed).delete()
+            obj, created = self.get_or_create(**kwargs)
 
         return obj
 
     def update_post(self, feed_obj, **fields):
-        fields = truncate_field_data(self.model, fields)
-        # posts entry with no valid dates will recieve a new
-        # different date every time and be updated. That's
-        # not what we want. Besides, what do we need to update here?
-        # A change in the title, or link will create a new GUID
-        try:
-            post = self.get(guid=fields["guid"], feed=feed_obj)
-            # TODO: Update some field here
-        except self.model.DoesNotExist:
-            post = self.create(guid=fields["guid"], feed=feed_obj,
-                                     defaults=fields)
+        return self.update_or_create(guid=fields["guid"], feed=feed_obj,
+                        defaults=truncate_field_data(self.model, fields))
