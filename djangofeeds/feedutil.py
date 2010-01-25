@@ -23,7 +23,7 @@ def md5sum(text):
 def get_entry_guid(feed_obj, entry):
     guid = entry.get("guid") or md5sum("|".join(entry.get(key, "").encode('utf8')
                                     for key in ("title", "link", "author")))
-    return str(guid).strip()
+    return str(guid.encode("utf-8")).strip()
 
 
 def entries_by_date(entries, limit=None):
