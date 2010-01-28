@@ -21,8 +21,10 @@ def md5sum(text):
 
 
 def get_entry_guid(feed_obj, entry):
-    guid = entry.get("guid") or md5sum("|".join(entry.get(key, "").encode('utf8')
-                                    for key in ("title", "link", "author")))
+    guid = entry.get("guid") or md5sum("|".join(entry.get(key, "")
+                                    for key in ("title",
+                                                "link",
+                                                "author")).encode("utf-8"))
     return str(guid.encode("utf-8")).strip()
 
 
