@@ -1,14 +1,17 @@
 """Model working with Feeds and Posts."""
+import httplib as http
+from datetime import datetime
 
 from django.db import models, transaction
 from django.db.models import signals
+from django.utils.translation import ugettext_lazy as _
+from django.utils.hashcompat import md5_constructor
+
 from yadayada.models import StdModel
+
+from djangofeeds.utils import naturaldate
 from djangofeeds.managers import FeedManager, PostManager
 from djangofeeds.managers import EnclosureManager, CategoryManager
-from django.utils.translation import ugettext_lazy as _
-from djangofeeds.utils import naturaldate
-from datetime import datetime
-import httplib as http
 
 ACCEPTED_STATUSES = [http.FOUND, http.MOVED_PERMANENTLY,
                      http.OK, http.TEMPORARY_REDIRECT,
@@ -133,7 +136,7 @@ class Feed(StdModel):
         expired_posts = list(all_by_date[min_posts:])
         if expired_posts:
             try:
-                deleted = len(post.delete() for post in expired_posts)
+                deleted = len([post.delete() for post in expired_posts])
             finally:
                 transaction.commit()
             return deleted
@@ -273,8 +276,9 @@ class Post(models.Model):
     def __unicode__(self):
         return u"%s" % self.title
 
-    def __hash__(self):
-        return hash("|".join((self.title, self.link, self.author)))
+    def auto_guid(self):
+        return md5_constructor("|".join((
+                    self.title, self.link, self.author))).hexdigest()
 
     @property
     def date_published_naturaldate(self):

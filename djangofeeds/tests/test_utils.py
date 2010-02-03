@@ -9,6 +9,9 @@ from datetime import datetime, timedelta
 
 class TestNaturalDate(unittest.TestCase):
 
+    def test_empty_date(self):
+        self.assertEquals(naturaldate(None), "")
+
     def test_in_the_future(self):
         then = datetime.now() + timedelta(seconds=1)
         self.assertEquals(naturaldate(then), "just now")

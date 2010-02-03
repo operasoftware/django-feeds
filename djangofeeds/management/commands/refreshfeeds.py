@@ -12,7 +12,29 @@ from django.core.management.base import CommandError, NoArgsCommand
 
 from djangofeeds.tasks import refresh_feed
 from djangofeeds.models import Feed
-from djangofeeds.importers import refresh_all
+from djangofeeds.importers import FeedImporter
+
+
+def print_feed_summary(feed_obj):
+    """Dump a summary of the feed (how many posts etc.)."""
+    posts = feed_obj.get_posts()
+    enclosures_count = sum([post.enclosures.count() for post in posts])
+    categories_count = sum([post.categories.count() for post in posts]) \
+                        + feed_obj.categories.count()
+    sys.stderr.write("*** Total %d posts, %d categories, %d enclosures\n" % \
+            (len(posts), categories_count, enclosures_count))
+
+
+def refresh_all(verbose=True):
+    """ Refresh all feeds in the system. """
+    importer = FeedImporter()
+    for feed_obj in importer.feed_model.objects.all():
+        sys.stderr.write(">>> Refreshing feed %s...\n" % \
+                (feed_obj.name))
+        feed_obj = importer.update_feed(feed_obj)
+
+        if verbose:
+            print_feed_summary(feed_obj)
 
 
 def refresh_all_feeds_delayed(from_file=None):

@@ -3,8 +3,13 @@ from __future__ import with_statement
 
 import os
 import sys
+import time
+import socket
+import httplib as http
 import tempfile
 import unittest
+from datetime import datetime
+from UserDict import UserDict
 from contextlib import nested
 
 from django.contrib.auth import authenticate
@@ -14,7 +19,8 @@ from yadayada.test.user import create_random_user
 from djangofeeds.importers import FeedImporter
 from djangofeeds.exceptions import FeedCriticalError
 from djangofeeds.exceptions import TimeoutError, FeedNotFoundError
-from djangofeeds.models import Feed, Post, Enclosure
+from djangofeeds import models
+from djangofeeds.models import Feed, Post, Enclosure, FEED_TIMEDOUT_ERROR
 
 data_path = os.path.join(os.path.dirname(__file__), 'data')
 
@@ -157,7 +163,6 @@ class TestFeedImporter(unittest.TestCase):
             self.assertTrue(post.title, "post has title")
             self.assertEquals(post.enclosures.count(), 0,
                 "post has no enclosures")
-            #self.assertTrue(len(post.author), "post has author")
             self.assertTrue(post.link, "post has link")
             self.assertTrue(post.content)
 
@@ -174,7 +179,6 @@ class TestFeedImporter(unittest.TestCase):
         self.assertRaises(FeedNotFoundError, importer.import_feed,
                 FEED_YIELDING_404)
 
-
     def test_missing_date_feed(self):
         """Try to reproduce the constant date update bug."""
         feed = get_data_filename("buggy_dates.rss")
@@ -182,7 +186,6 @@ class TestFeedImporter(unittest.TestCase):
         feed_obj = importer.import_feed(feed, local=True)
         last_post = feed_obj.get_posts()[0]
 
-        import time
         time.sleep(1)
 
         feed2 = get_data_filename("buggy_dates.rss")
@@ -199,7 +202,6 @@ class TestFeedImporter(unittest.TestCase):
         feed_obj = importer.import_feed(feed, local=True)
         last_post = feed_obj.get_posts()[0]
 
-        import time
         time.sleep(1)
 
         feed2 = get_data_filename("buggy_dates_and_guid.rss")
@@ -209,4 +211,163 @@ class TestFeedImporter(unittest.TestCase):
         # if the post is updated, we should see a different in datetime
         self.assertEqual(last_post.date_updated, last_post2.date_updated)
 
-        
+    def test_socket_timeout(self):
+
+        class _TimeoutFeedImporter(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                raise socket.timeout(1)
+
+        feed2 = "foofoobar.rss"
+        self.assertRaises(TimeoutError,
+                _TimeoutFeedImporter().import_feed, feed2, local=True)
+        self.assertTrue(Feed.objects.get(feed_url=feed2))
+
+    def test_update_feed_socket_timeout(self):
+
+        class _TimeoutFeedImporter(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                raise socket.timeout(1)
+
+        Feed.objects.all().delete()
+        importer = FeedImporter(update_on_import=False)
+        feed_obj = importer.import_feed(self.feed, local=True, force=True)
+
+        simporter = _TimeoutFeedImporter()
+        feed_obj = simporter.update_feed(feed_obj=feed_obj, force=True)
+        self.assertEquals(feed_obj.last_error, models.FEED_TIMEDOUT_ERROR)
+
+    def test_update_feed_parse_feed_raises(self):
+
+        class _RaisingFeedImporter(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                raise KeyError("foo")
+
+        Feed.objects.all().delete()
+        importer = FeedImporter(update_on_import=False)
+        feed_obj = importer.import_feed(self.feed, local=True, force=True)
+
+        simporter = _RaisingFeedImporter()
+        feed_obj = simporter.update_feed(feed_obj=feed_obj, force=True)
+        self.assertEquals(feed_obj.last_error, models.FEED_GENERIC_ERROR)
+
+    def test_update_feed_not_modified(self):
+
+        class _Verify(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                feed = super(_Verify, self).parse_feed(*args, **kwargs)
+                feed["status"] = http.NOT_MODIFIED
+                return feed
+
+        Feed.objects.all().delete()
+        importer = FeedImporter(update_on_import=False)
+        feed_obj = importer.import_feed(self.feed, local=True, force=True)
+        self.assertTrue(_Verify().update_feed(feed_obj=feed_obj, force=False))
+
+    def test_update_feed_error_status(self):
+
+        class _Verify(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                return {"status": http.NOT_FOUND}
+
+        Feed.objects.all().delete()
+        importer = FeedImporter(update_on_import=False)
+        feed_obj = importer.import_feed(self.feed, local=True, force=True)
+
+        feed_obj = _Verify().update_feed(feed_obj=feed_obj, force=True)
+        self.assertEquals(feed_obj.last_error, models.FEED_NOT_FOUND_ERROR)
+
+    def test_parse_feed_raises(self):
+
+        class _RaisingFeedImporter(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                raise KeyError("foo")
+
+        feed2 = "foo1foo2bar3.rss"
+        self.assertRaises(FeedCriticalError,
+                _RaisingFeedImporter().import_feed, feed2, local=True)
+        self.assertRaises(Feed.DoesNotExist, Feed.objects.get, feed_url=feed2)
+
+    def test_http_modified(self):
+        now = time.localtime()
+        now_as_dt = datetime.fromtimestamp(time.mktime(now))
+
+        class _Verify(FeedImporter):
+
+            def parse_feed(self, *args, **kwargs):
+                feed = super(_Verify, self).parse_feed(*args, **kwargs)
+                feed.modified = now
+                return feed
+
+        i = _Verify()
+        feed = i.import_feed(self.feed, local=True, force=True)
+        self.assertEquals(feed.http_last_modified, now_as_dt)
+
+    def test_http_redirects(self):
+
+        class MockFeed(UserDict):
+
+            def __init__(self, status, href):
+                self.href = href
+                self.data = {"status": status}
+
+        class _Verify(FeedImporter):
+
+            def __init__(self, *args, **kwargs):
+                self.redirect_to = kwargs.pop("redirect_to", None)
+                super(_Verify, self).__init__(*args, **kwargs)
+
+            def import_feed(self, feed_url, local=False, force=False):
+                if not local:
+                    return feed_url
+                return super(_Verify, self).import_feed(feed_url,
+                                                        local=local,
+                                                        force=force)
+
+            def parse_feed(self, feed_url):
+                return MockFeed(http.FOUND, self.redirect_to)
+
+        i1 = _Verify(redirect_to="http://redirect.ed/")
+        href = i1.import_feed("xxxyyyzzz", local=True)
+        self.assertEquals(href, "http://redirect.ed/")
+
+        i2 = _Verify(redirect_to="xxxyyyzzz")
+        self.assertRaises(AttributeError, i2.import_feed, "xxxyyyzzz",
+                    local=True)
+
+    def test_import_categories(self):
+        Feed.objects.all().delete()
+        importer = FeedImporter(include_categories=True)
+        feed = importer.import_feed(self.feed, local=True, force=True)
+        post = feed.post_set.all()[0]
+        categories = [cat.name for cat in post.categories.all()]
+        for should in ("Downloads", "Screenshots", "Skins", "Themes"):
+            self.assertTrue(should in categories)
+
+        self.assertEquals(len(categories), 13)
+
+    def test_import_enclosures(self):
+        # FIXME Use something that actually has enclosures.
+        importer = FeedImporter(include_enclosures=True)
+        feed = importer.import_feed(self.feed, local=True, force=True)
+
+    def test_update_on_import(self):
+
+        class _Verify(FeedImporter):
+            updated = False
+
+            def update_feed(self, *args, **kwargs):
+                self.updated = True
+
+        imp1 = _Verify(update_on_import=False)
+        f1 = imp1.import_feed(self.feed, local=True, force=True)
+        self.assertFalse(imp1.updated)
+
+        imp2 = _Verify(update_on_import=True)
+        f2 = imp1.import_feed(self.feed, local=True, force=True)
+        self.assertFalse(imp2.updated)

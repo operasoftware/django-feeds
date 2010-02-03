@@ -66,7 +66,7 @@ FEED_LOCK_EXPIRE = getattr(settings,
 
 
 @task(routing_key="%s.feedimporter" % ROUTING_KEY_PREFIX, ignore_result=True)
-def refresh_feed(feed_url, feed_id=None, **kwargs):
+def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
     """Refresh a djangofeed feed, supports multiprocessing.
 
     :param feed_url: The URL of the feed to refresh.
@@ -74,6 +74,7 @@ def refresh_feed(feed_url, feed_id=None, **kwargs):
         the ``feed_url`` is used instead.
 
     """
+    importer_cls = importer_cls or FeedImporter
     feed_id = feed_id or feed_url
     lock_id = FEED_LOCK_CACHE_KEY_FMT % feed_id
 
@@ -94,7 +95,7 @@ def refresh_feed(feed_url, feed_id=None, **kwargs):
 
     acquire_lock()
     try:
-        importer = FeedImporter(update_on_import=True, logger=logger)
+        importer = importer_cls(update_on_import=True, logger=logger)
         importer.import_feed(feed_url)
     finally:
         release_lock()

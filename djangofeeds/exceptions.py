@@ -7,12 +7,10 @@ class TimeoutError(Exception):
 
 class FeedCriticalError(Exception):
     """An unrecoverable error happened that the user must deal with."""
-    status = None
 
     def __init__(self, msg, status=None):
-        if status:
-            self.status = status
-        super(FeedCriticalError, self).__init__(msg, self.status)
+        self.status = status
+        super(FeedCriticalError, self).__init__(msg, status)
 
 
 class FeedNotFoundError(FeedCriticalError):

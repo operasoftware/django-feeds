@@ -50,9 +50,14 @@ Taken from: ``settings.DJANGOFEEDS_FEED_TIMEOUT``.
 FEED_TIMEOUT = getattr(settings, "DJANGOFEEDS_FEED_TIMEOUT",
                        DEFAULT_FEED_TIMEOUT)
 
+
+def _interval(interval):
+    if isinstance(interval, int):
+        return timedelta(seconds=interval)
+    return interval
+
 # Make sure MIN_REFRESH_INTERVAL is a timedelta object.
-if isinstance(MIN_REFRESH_INTERVAL, int):
-    MIN_REFRESH_INTERVAL = timedelta(seconds=MIN_REFRESH_INTERVAL)
+MIN_REFRESH_INTERVAL = _interval(MIN_REFRESH_INTERVAL)
 
 
 """

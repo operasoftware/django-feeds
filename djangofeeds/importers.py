@@ -127,7 +127,9 @@ class FeedImporter(object):
             try:
                 feed = self.parse_feed(feed_url)
             except socket.timeout:
-                error = models.FEED_TIMEDOUT_ERROR
+                self.feed_model.objects.create(feed_url=feed_url, sort=0)
+                raise exceptions.TimeoutError(
+                        unicode(models.FEED_TIMEDOUT_ERROR_TEXT))
             except Exception:
                 feed = {"status": 500}
 
@@ -144,11 +146,11 @@ class FeedImporter(object):
                         status=status)
 
             # Feed can be local/fetched with a HTTP client.
-            status = feed.get("status\n", http.OK)
+            status = feed.get("status") or feed.get("status\n") or http.OK
 
             if status == http.FOUND or status == http.MOVED_PERMANENTLY:
                 if feed_url != feed.href:
-                    return self.import_feed(feed.href, force)
+                    return self.import_feed(feed.href, force=force)
 
             feed_name = feed.channel.get("title", "(no title)").strip()
             feed_data = truncate_field_data(self.feed_model, {
@@ -181,6 +183,7 @@ class FeedImporter(object):
         :param name: The name of the category.
 
         """
+        domain = domain and domain.strip() or ""
         return self.category_model.objects.update_or_create(
                                      name=name.strip(), domain=domain.strip())
 
@@ -287,25 +290,3 @@ class FeedImporter(object):
             feed_obj.feed_url))
 
         return post
-
-
-def print_feed_summary(feed_obj):
-    """Dump a summary of the feed (how many posts etc.)."""
-    posts = feed_obj.get_posts()
-    enclosures_count = sum([post.enclosures.count() for post in posts])
-    categories_count = sum([post.categories.count() for post in posts]) \
-                        + feed_obj.categories.count()
-    sys.stderr.write("*** Total %d posts, %d categories, %d enclosures\n" % \
-            (len(posts), categories_count, enclosures_count))
-
-
-def refresh_all(verbose=True):
-    """ Refresh all feeds in the system. """
-    importer = FeedImporter()
-    for feed_obj in importer.feed_model.objects.all():
-        sys.stderr.write(">>> Refreshing feed %s...\n" % \
-                (feed_obj.name))
-        feed_obj = importer.update_feed(feed_obj)
-
-        if verbose:
-            print_feed_summary(feed_obj)

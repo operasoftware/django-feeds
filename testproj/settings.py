@@ -21,6 +21,16 @@ TEST_APPS = (
     "djangofeeds",
 )
 
+COVERAGE_EXCLUDE_MODULES = ("djangofeeds.__init__",
+                            "djangofeeds.admin",
+                            "djangofeeds.maintenance",
+                            "djangofeeds.management.*",
+                            "djangofeeds.optimization",
+                            "djangofeeds.tests.*",
+)
+COVERAGE_HTML_REPORT = True
+COVERAGE_BRANCH_COVERAGE = True
+
 AMQP_SERVER = "localhost"
 AMQP_PORT = 5672
 AMQP_VHOST = "/"
@@ -53,7 +63,6 @@ try:
 except ImportError:
     pass
 else:
-    pass
-    #INSTALLED_APPS += ("test_extensions", )
+    INSTALLED_APPS += ("test_extensions", )
 
 SEND_CELERY_TASK_ERROR_EMAILS = False
