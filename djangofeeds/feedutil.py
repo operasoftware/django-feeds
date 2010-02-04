@@ -11,16 +11,23 @@ _beacon_detector = BeaconDetector()
 
 
 def format_date(t):
+    """Make sure time object is a :class:`datetime.datetime` object."""
     if isinstance(t, time.struct_time):
         return datetime(*t[:6])
     return t
 
 
 def md5sum(text):
+    """Return the md5sum of a text string."""
     return md5_constructor(text).hexdigest()
 
 
 def get_entry_guid(feed_obj, entry):
+    """Get the guid for a post.
+
+    If the post doesn't have a guid, a new guid is generated.
+
+    """
     guid = entry.get("guid") or md5sum("|".join(entry.get(key, "")
                                     for key in ("title",
                                                 "link",
