@@ -98,7 +98,6 @@ setup(
     data_files = data_files,
     install_requires=[
         'feedparser',
-        'yadayada',
         'django-unittest-depth',
         'celery>=0.9.7',
         'BeautifulSoup',
