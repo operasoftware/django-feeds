@@ -31,15 +31,21 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds.__init__",
 COVERAGE_HTML_REPORT = True
 COVERAGE_BRANCH_COVERAGE = True
 
-AMQP_SERVER = "localhost"
-AMQP_PORT = 5672
-AMQP_VHOST = "/"
-AMQP_USER = "guest"
-AMQP_PASSWORD = "guest"
+BROKER_HOST = "localhost"
+BROKER_PORT = 5672
+BROKER_VHOST = "/"
+BROKER_USER = "guest"
+BROKER_PASSWORD = "guest"
 
-CELERY_AMQP_EXCHANGE = "testdjangofeeds"
-CELERY_AMQP_ROUTING_KEY = "testdjangofeeds"
-CELERY_AMQP_CONSUMER_QUEUE = "testdjangofeeds"
+CELERY_DEFAULT_EXCHANGE = "testdjangofeeds"
+CELERY_DEFAULT_QUEUE = "testdjangofeeds"
+CELERY_QUEUES = {
+    "testdjangofeeds": {
+        "binding_key": "testdjangofeeds",
+    }
+}
+CELERY_DEFAULT_ROUTING_KEY = "testdjangofeeds"
+
 
 MANAGERS = ADMINS
 

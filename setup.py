@@ -100,7 +100,7 @@ setup(
         'feedparser',
         'yadayada',
         'django-unittest-depth',
-        'celery',
+        'celery>=0.9.7',
         'BeautifulSoup',
         'httplib2',
     ],

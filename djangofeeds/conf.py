@@ -1,5 +1,8 @@
-from django.conf import settings
 from datetime import timedelta
+
+from django.conf import settings
+
+from celery import conf as celeryconf
 
 DEFAULT_DEFAULT_POST_LIMIT = 20
 DEFAULT_NUM_POSTS = -1
@@ -7,19 +10,20 @@ DEFAULT_CACHE_MIN = 30
 DEFAULT_ENTRY_WORD_LIMIT = 100
 DEFAULT_FEED_TIMEOUT = 10
 DEFAULT_MIN_REFRESH_INTERVAL = timedelta(seconds=60 * 20)
+DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
+DEFAULT_FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
+DEFAULT_FEED_LOCK_EXPIRE = 60 * 3 # lock expires in 3 minutes.
 
-"""
-.. data:: STORE_ENCLOSURES
+""" .. data:: STORE_ENCLOSURES
 
 Keep post enclosures.
 Default: False
 Taken from: ``settings.DJANGOFEEDS_STORE_ENCLOSURES``.
-"""
 
+"""
 STORE_ENCLOSURES = getattr(settings, "DJANGOFEEDS_STORE_ENCLOSURES", False)
 
-"""
-.. data:: STORE_CATEGORIES
+""" .. data:: STORE_CATEGORIES
 
 Keep feed/post categories
 Default: False
@@ -60,11 +64,55 @@ def _interval(interval):
 MIN_REFRESH_INTERVAL = _interval(MIN_REFRESH_INTERVAL)
 
 
-"""
-.. data:: DEFAULT_POST_LIMIT
+""" .. data:: DEFAULT_POST_LIMIT
 
 The default number of posts to import.
 Taken from: ``settings.DJANGOFEEDS_DEFAULT_POST_LIMIT``.
+
 """
 DEFAULT_POST_LIMIT = getattr(settings, "DJANGOFEEDS_DEFAULT_POST_LIMIT",
                        DEFAULT_DEFAULT_POST_LIMIT)
+
+
+""" .. data:: REFRESH_EVERY
+
+Interval in seconds between feed refreshes.
+Default: 3 hours
+Taken from: ``settings.DJANGOFEEDS_REFRESH_EVERY``.
+
+"""
+REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
+                        DEFAULT_REFRESH_EVERY)
+
+
+""" .. data:: ROUTING_KEY_PREFIX
+
+Prefix for AMQP routing key.
+Default: ``celery.conf.AMQP_PUBLISHER_ROUTING_KEY``.
+Taken from: ``settings.DJANGOFEEDS_ROUTING_KEY_PREFIX``.
+
+"""
+ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
+                             celeryconf.DEFAULT_ROUTING_KEY)
+
+""" .. data:: FEED_LOCK_CACHE_KEY_FMT
+
+Format used for feed cache lock. Takes one argument: the feeds URL.
+Default: "djangofeeds.import_lock.%s"
+Taken from: ``settings.DJANGOFEEDS_FEED_LOCK_CACHE_KEY_FMT``.
+
+"""
+FEED_LOCK_CACHE_KEY_FMT = getattr(settings,
+                            "DJANGOFEEDS_FEED_LOCK_CACHE_KEY_FMT",
+                            DEFAULT_FEED_LOCK_CACHE_KEY_FMT)
+
+""" .. data:: FEED_LOCK_EXPIRE
+
+Time in seconds which after the feed lock expires.
+Default: 3 minutes
+Taken from: ``settings.DJANGOFEEDS_FEED_LOCK_EXPIRE``.
+
+"""
+FEED_LOCK_EXPIRE = getattr(settings,
+                    "DJANGOFEEDS_FEED_LOCK_EXPIRE",
+                    DEFAULT_FEED_LOCK_EXPIRE)

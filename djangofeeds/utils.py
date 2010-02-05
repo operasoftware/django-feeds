@@ -1,6 +1,9 @@
+import logging
 from datetime import datetime
-from django.utils.translation import ugettext as _
-from django.utils.translation import ungettext
+
+from django.utils.translation import ungettext, ugettext as _
+
+_logger = None
 
 JUST_NOW = _("just now")
 SECONDS_AGO = (_("%(seconds)d second ago"), _("%(seconds)d seconds ago"))
@@ -26,9 +29,9 @@ def _un(singular__plural, n=None):
 
 
 def naturaldate(date):
+    """Convert datetime into a human natural date string."""
 
     if not date:
-        # a simple return will return a None
         return ''
 
     now = datetime.now()
@@ -67,7 +70,7 @@ def naturaldate(date):
 
 
 def truncate_by_field(field, value):
-    """Truncate string value by model fields ``max_length`` attribute.
+    """Truncate string value by the model fields ``max_length`` attribute.
 
     :param field: A Django model field instance.
     :param value: The value to truncate.
@@ -87,6 +90,18 @@ def truncate_field_data(model, data):
     :param data: The data to truncate.
 
     """
-    fields = dict([(field.name, field) for field in model._meta.fields])
-    return dict([(name, truncate_by_field(fields[name], value))
-                    for name, value in data.items()])
+    fields = dict((field.name, field) for field in model._meta.fields)
+    return dict((name, truncate_by_field(fields[name], value))
+                    for name, value in data.items())
+
+
+def get_default_logger():
+    """Get the default logger for this application."""
+    global _logger
+
+    if _logger is None:
+        _logger = logging.getLogger("djangofeeds")
+        channel = logging.StreamHandler()
+        _logger.addHandler(channel)
+        _logger.setLevel(logging.WARNING)
+    return _logger

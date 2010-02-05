@@ -4,12 +4,12 @@ import socket
 import feedparser
 import httplib as http
 from datetime import datetime
+
 from djangofeeds import conf
-from djangofeeds import feedutil
 from djangofeeds import models
-from djangofeeds import logger as default_logger
+from djangofeeds import feedutil
 from djangofeeds import exceptions
-from djangofeeds.utils import truncate_field_data
+from djangofeeds.utils import get_default_logger, truncate_field_data
 
 
 class FeedImporter(object):
@@ -76,7 +76,7 @@ class FeedImporter(object):
         self.post_limit = kwargs.get("post_limit", self.post_limit)
         self.update_on_import = kwargs.get("update_on_import",
                                             self.update_on_import)
-        self.logger = kwargs.get("logger", default_logger)
+        self.logger = kwargs.get("logger", get_default_logger())
         self.include_categories = kwargs.get("include_categories",
                                         self.include_categories)
         self.include_enclosures = kwargs.get("include_enclosures",
@@ -171,10 +171,8 @@ class FeedImporter(object):
 
     def get_categories(self, obj):
         """Get and save categories."""
-        if hasattr(obj, "categories"):
-            return [self.create_category(*cat)
-                        for cat in obj.categories]
-        return []
+        return [self.create_category(*cat)
+                    for cat in getattr(obj, "categories", [])]
 
     def create_category(self, domain, name):
         """Create new category.
@@ -183,9 +181,9 @@ class FeedImporter(object):
         :param name: The name of the category.
 
         """
-        domain = domain and domain.strip() or ""
         return self.category_model.objects.update_or_create(
-                                     name=name.strip(), domain=domain.strip())
+                      name=name.strip(),
+                      domain=domain and domain.strip() or "")
 
     def update_feed(self, feed_obj, feed=None, force=False):
         """Update (refresh) feed.
@@ -205,8 +203,8 @@ class FeedImporter(object):
                 feed_obj.date_last_refresh + conf.MIN_REFRESH_INTERVAL
 
         if already_fresh and not force:
-            self.logger.info("Feed %s is fresh. Skipping refresh." % \
-                                            feed_obj.feed_url)
+            self.logger.info(
+                    "Feed %s is fresh. Skipping refresh." % feed_obj.feed_url)
             return feed_obj
 
         limit = self.post_limit
@@ -256,17 +254,15 @@ class FeedImporter(object):
 
     def create_enclosure(self, **kwargs):
         """Create new enclosure."""
-        kwargs["length"] = kwargs.get("length", 0) or 0
+        kwargs.setdefault("length", 0)
         return self.enclosure_model.objects.update_or_create(**kwargs)
 
     def get_enclosures(self, entry):
         """Get and create enclosures for feed."""
-        if not hasattr(entry, 'enclosures'):
-            return []
         return [self.create_enclosure(url=enclosure.href,
                                     length=enclosure.length,
                                     type=enclosure.type)
-                    for enclosure in entry.enclosures
+                    for enclosure in getattr(entry, "enclosures", [])
                         if enclosure and hasattr(enclosure, "length")]
 
     def post_fields_parsed(self, entry, feed_obj):
@@ -276,7 +272,7 @@ class FeedImporter(object):
 
     def import_entry(self, entry, feed_obj):
         """Import feed post entry."""
-        self.logger.debug("ie: %s Importing entry..." % (feed_obj.feed_url))
+        self.logger.debug("ie: %s Importing entry..." % feed_obj.feed_url)
 
         fields = self.post_fields_parsed(entry, feed_obj)
         post = self.post_model.objects.update_post(feed_obj, **fields)
