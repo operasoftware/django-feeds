@@ -43,15 +43,12 @@ class TestRefreshFeed(unittest.TestCase):
             def get(self, key, *args, **kwargs):
                 return "true"
 
-
         prev = tasks.cache
         tasks.cache = MockCache()
         try:
             f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
-
             self.assertTrue(
                     "http://example.com/t.rss" in MockImporter.imported)
         finally:
             tasks.cache = prev
-

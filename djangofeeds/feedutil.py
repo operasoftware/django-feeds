@@ -1,13 +1,12 @@
 import time
 from datetime import datetime, timedelta
 
-from django.utils.hashcompat import md5_constructor
 from django.utils.text import truncate_html_words
+from django.utils.hashcompat import md5_constructor
 
 from djangofeeds import conf
-from djangofeeds.optimization import BeaconDetector
 
-_beacon_detector = BeaconDetector()
+GUID_FIELDS = frozenset(("title", "link", "author"))
 
 
 def format_date(t):
@@ -22,17 +21,22 @@ def md5sum(text):
     return md5_constructor(text).hexdigest()
 
 
+def generate_guid(entry):
+    """Generate missing guid for post entry."""
+    return md5sum("|".join(entry.get(key) or ""
+                              for key in GUID_FIELDS).encode("utf-8"))
+
+
 def get_entry_guid(feed_obj, entry):
     """Get the guid for a post.
 
     If the post doesn't have a guid, a new guid is generated.
 
     """
-    guid = entry.get("guid") or md5sum("|".join(entry.get(key, "")
-                                    for key in ("title",
-                                                "link",
-                                                "author")).encode("utf-8"))
-    return str(guid.encode("utf-8")).strip()
+    try:
+        return str(entry["guid"]).encode("utf-8").strip()
+    except KeyError:
+        return generate_guid(entry)
 
 
 def entries_by_date(entries, limit=None):
@@ -61,11 +65,11 @@ def entries_by_date(entries, limit=None):
         # This will ensure that the posts will be properly ordered
         # later on when put into the database.
         entry["updated_parsed"] = date.timetuple()
-        entry["published_parsed"] = entry.get("published_parsed",
-            date.timetuple())
+        entry["published_parsed"] = entry.get("published_parsed") or \
+                                        date.timetuple()
         sorted_entries.append((date, entry))
 
-    sorted_entries.sort(key=lambda k: k[0])
+    sorted_entries.sort(key=lambda key: key[0])
     sorted_entries.reverse()
     return [entry for _date, entry in sorted_entries[:limit]]
 
@@ -75,7 +79,7 @@ def find_post_content(feed_obj, entry):
     try:
         content = entry["content"][0]["value"]
     except (IndexError, KeyError):
-        content = entry.get("description") or entry.get("summary", "")
+        content = entry.get("description") or entry.get("summary") or ""
 
     try:
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
@@ -93,8 +97,7 @@ def date_to_datetime(field_name):
 
     """
 
-    def _parsed_date_to_datetime(feed_obj, entry):
-        """generated below"""
+    def _field_to_datetime(feed_obj, entry):
         if field_name in entry:
             try:
                 time_ = time.mktime(entry[field_name])
@@ -103,6 +106,6 @@ def date_to_datetime(field_name):
                 date = datetime.now()
             return date
         return datetime.now()
-    _parsed_date_to_datetime.__doc__ = \
-            """Convert %s to :class:`datetime.datetime` object""" % field_name
-    return _parsed_date_to_datetime
+    _field_to_datetime.__doc__ = "Convert %s to datetime" % repr(field_name)
+
+    return _field_to_datetime

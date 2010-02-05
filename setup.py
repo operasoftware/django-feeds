@@ -77,7 +77,8 @@ for scheme in INSTALL_SCHEMES.values():
 for dirpath, dirnames, filenames in os.walk(src_dir):
     # Ignore dirnames that start with '.'
     for i, dirname in enumerate(dirnames):
-        if dirname.startswith("."): del dirnames[i]
+        if dirname.startswith("."):
+            del dirnames[i]
     for filename in filenames:
         if filename.endswith(".py"):
             packages.append('.'.join(fullsplit(dirpath)))

@@ -70,6 +70,5 @@ def set_missing_guids(commit_every=1000):
             pass
 
 
-
 if __name__ == "__main__":
     delete_duplicates()

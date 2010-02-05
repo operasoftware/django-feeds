@@ -51,15 +51,20 @@ class TestRegressionOPAL578(unittest.TestCase):
 
     def test_does_not_duplicate_posts(self):
         spool = tempfile.mktemp(suffix="ut", prefix="djangofeeds")
+
+        def test_file(filename):
+            try:
+                with nested(open(filename), open(spool, "w")) as (r, w):
+                    w.write(r.read())
+                return self.assertImportFeed(spool,
+                        "Saturday Morning Breakfast Cereal (updated daily)")
+            finally:
+                os.unlink(spool)
+
         for i in range(40):
             for filename in self.feeds:
-                try:
-                    with nested(open(filename), open(spool, "w")) as (r, w):
-                        w.write(r.read())
-                    f = self.assertImportFeed(spool,
-                            "Saturday Morning Breakfast Cereal (updated daily)")
-                finally:
-                    os.unlink(spool)
+                f = test_file(filename)
+
         posts = list(f.post_set.all())
         self.assertEqual(len(posts), 4)
 

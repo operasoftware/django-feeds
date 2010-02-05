@@ -4,7 +4,6 @@ import sys
 from optparse import make_option
 
 from yadayada.db import TransactionContext
-from yadayada.models import Language
 
 from django.conf import settings
 from django.core import exceptions
@@ -46,15 +45,11 @@ def refresh_all_feeds_delayed(from_file=None):
     map(refresh_feed.delay, urls)
 
 
-def refresh_all_feeds():
-    with TransactionContext():
-        refresh_all()
-
-
 class Command(NoArgsCommand):
     option_list = NoArgsCommand.option_list + (
-        make_option('--lazy', '-l', action="store_true", dest="lazy",
-                    default=False, help="Delay the actual importing to celery"),
+        make_option('--lazy', '-l',
+                    action="store_true", dest="lazy", default=False,
+                    help="Delay the actual importing to celery"),
         make_option('--file', '-f', action="store", dest="file",
                     help="Import all feeds from a file with feed URLs "
                     "seperated by newline."),
@@ -71,4 +66,4 @@ class Command(NoArgsCommand):
         if from_file or lazy:
             refresh_all_feeds_delayed(from_file)
         else:
-            refresh_all_feeds()
+            refresh_all()

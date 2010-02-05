@@ -33,7 +33,6 @@ class BeaconDetector(object):
             return ret
         return image_url not in _known_images and image_url in _known_beacons
 
-
     def _looks_like_beacon(self, image_url, verify=None):
         verify = verify or self.verify_zero_bytes
         request_method = "GET" if verify else self.request_method

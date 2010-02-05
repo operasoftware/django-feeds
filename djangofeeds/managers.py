@@ -8,8 +8,8 @@ from djangofeeds.utils import truncate_field_data
 
 """ .. data:: DEFAULT_POST_LIMIT
 
-The default limit of number of posts to keep in a feed.
-Default is 5 posts.
+    The default limit of number of posts to keep in a feed.
+    Default is 5 posts.
 
 """
 DEFAULT_POST_LIMIT = 5
@@ -52,11 +52,6 @@ class ExtendedManager(models.Manager):
         return self.get_query_set().update_or_create(**kwargs)
 
 
-FeedManager = ExtendedManager
-CategoryManager = ExtendedManager
-EnclosureManager = ExtendedManager
-
-
 class FeedManager(ExtendedManager):
     """Manager for :class:`djangofeeds.models.Feed`."""
 
@@ -87,3 +82,11 @@ class PostManager(ExtendedManager):
         """Update post with new values."""
         return self.update_or_create(guid=fields["guid"], feed=feed_obj,
                         defaults=truncate_field_data(self.model, fields))
+
+
+class CategoryManager(ExtendedManager):
+    pass
+
+
+class EnclosureManager(ExtendedManager):
+    pass

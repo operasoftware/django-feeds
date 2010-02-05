@@ -1,4 +1,4 @@
-from httplib import NOT_FOUND as HTTP_NOT_FOUND
+import httplib as http
 
 
 class TimeoutError(Exception):
@@ -6,13 +6,16 @@ class TimeoutError(Exception):
 
 
 class FeedCriticalError(Exception):
-    """An unrecoverable error happened that the user must deal with."""
+    """An unrecoverable feed error happened.
 
+    :keyword status: Optional HTTP status code associated with the error.
+
+    """
     def __init__(self, msg, status=None):
         self.status = status
         super(FeedCriticalError, self).__init__(msg, status)
 
 
 class FeedNotFoundError(FeedCriticalError):
-    """The feed URL provieded does not exist."""
-    status = HTTP_NOT_FOUND
+    """The feed URL provided did not exist."""
+    status = http.NOT_FOUND

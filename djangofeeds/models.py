@@ -7,15 +7,15 @@ from django.db.models import signals
 from django.utils.translation import ugettext_lazy as _
 from django.utils.hashcompat import md5_constructor
 
-from yadayada.models import StdModel
-
 from djangofeeds.utils import naturaldate
 from djangofeeds.managers import FeedManager, PostManager
 from djangofeeds.managers import EnclosureManager, CategoryManager
 
-ACCEPTED_STATUSES = [http.FOUND, http.MOVED_PERMANENTLY,
-                     http.OK, http.TEMPORARY_REDIRECT,
-                     http.NOT_MODIFIED]
+ACCEPTED_STATUSES = frozenset([http.OK,
+                               http.FOUND,
+                               http.NOT_MODIFIED,
+                               http.MOVED_PERMANENTLY,
+                               http.TEMPORARY_REDIRECT])
 
 FEED_TIMEDOUT_ERROR = "TIMEDOUT_ERROR"
 FEED_NOT_FOUND_ERROR = "NOT_FOUND_ERROR"
@@ -49,10 +49,9 @@ class Category(models.Model):
         The type of category
 
     """
-
     name = models.CharField(_(u"name"), max_length=128)
-    domain = models.CharField(_(u"domain"), max_length=128, null=True,
-                                                            blank=True)
+    domain = models.CharField(_(u"domain"),
+                              max_length=128, null=True, blank=True)
 
     objects = CategoryManager()
 
@@ -67,7 +66,7 @@ class Category(models.Model):
         return u"%s" % self.name
 
 
-class Feed(StdModel):
+class Feed(models.Model):
     """An RSS feed
 
     .. attribute:: name
@@ -96,30 +95,36 @@ class Feed(StdModel):
 
         The last error message (if any).
 
+    .. attribute:: ratio
+
+        The apparent importance of this feed.
+
     """
 
     name = models.CharField(_(u"name"), max_length=200)
     feed_url = models.URLField(_(u"feed URL"), unique=True)
     description = models.TextField(_(u"description"))
     link = models.URLField(_(u"link"), max_length=200, blank=True)
-    http_etag = models.CharField(_(u"E-Tag"), editable=False, blank=True,
-                                                              null=True,
-                                                              max_length=200)
-    http_last_modified = models.DateTimeField(_(u"Last-Modified"),
-                                                               null=True,
-                                                               editable=False,
-                                                               blank=True)
+    http_etag = models.CharField(_(u"E-Tag"),
+                                 editable=False, blank=True,
+                                 null=True, max_length=200)
+    http_last_modified = models.DateTimeField(_(u"Last-Modified"), null=True,
+                                              editable=False, blank=True)
     date_last_refresh = models.DateTimeField(_(u"date of last refresh"),
                                         null=True, blank=True, editable=False)
     categories = models.ManyToManyField(Category)
     last_error = models.CharField(_(u"last error"), blank=True, default="",
                                  max_length=32, choices=FEED_ERROR_CHOICES)
     ratio = models.FloatField(default=0.0)
+    sort = models.SmallIntegerField(_(u"sort order"), default=0)
+    date_created = models.DateTimeField(_(u"date created"), auto_now_add=True)
+    date_changed = models.DateTimeField(_(u"date changed"), auto_now=True)
+    is_active = models.BooleanField(_(u"is active"), default=True)
 
     objects = FeedManager()
 
     class Meta:
-        ordering = ['name', 'feed_url']
+        ordering = ["name", "feed_url"]
         verbose_name = _(u"syndication feed")
         verbose_name_plural = _(u"syndication feeds")
 
@@ -132,7 +137,16 @@ class Feed(StdModel):
 
     @transaction.commit_manually
     def expire_old_posts(self, min_posts=20, commit=False):
-        all_by_date = self.post_set.all().order_by('-date_published')
+        """Expire old posts.
+
+        :keyword min_posts: The maximum number of posts to keep for a feed.
+        :keyword commit: Commit the transaction, set to ``False`` if you want
+            to manually handle the transaction.
+
+        :returns: The number of messages deleted.
+
+        """
+        all_by_date = self.post_set.all().order_by("-date_published")
         expired_posts = list(all_by_date[min_posts:])
         if expired_posts:
             try:
@@ -143,7 +157,7 @@ class Feed(StdModel):
         return 0
 
     def is_error_status(self, status):
-        return status in [http.NOT_FOUND] or status not in ACCEPTED_STATUSES
+        return status == http.NOT_FOUND or status not in ACCEPTED_STATUSES
 
     def error_for_status(self, status):
         if status == http.NOT_FOUND:
@@ -199,7 +213,6 @@ class Enclosure(models.Model):
         pointed to at :attr:`url`.
 
     """
-
     url = models.URLField(_(u"URL"))
     type = models.CharField(_(u"type"), max_length=200)
     length = models.PositiveIntegerField(_(u"length"), default=0)
@@ -269,16 +282,17 @@ class Post(models.Model):
     objects = PostManager()
 
     class Meta:
-        ordering = ['-date_updated', 'date_published']
+        ordering = ["-date_updated", "date_published"]
         verbose_name = _(u"post")
         verbose_name_plural = _(u"posts")
 
-    def __unicode__(self):
-        return u"%s" % self.title
-
     def auto_guid(self):
+        """Automatically generate a new guid from the metadata available."""
         return md5_constructor("|".join((
                     self.title, self.link, self.author))).hexdigest()
+
+    def __unicode__(self):
+        return u"%s" % self.title
 
     @property
     def date_published_naturaldate(self):
