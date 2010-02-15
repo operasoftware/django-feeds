@@ -9,6 +9,50 @@ BEACON_VERIFY_ZERO_BYTES = True
 _known_beacons = set()
 _known_images = set()
 
+"""
+Tracker Use Case
+================
+
+I tried all the default feeds in the overlay plus my personnal feeds
+and I identified those tools:
+
+    * Feedburner toolbar -- 4 toolbar images, 1 tracker image.
+    * Pheedcontent.com toolbar -- 4 toolbar images, 1 advertisement image.
+    * Digg/Reddit generic toolbar - 3 toolbar, no tracker image.
+    * http://res.feedsportal.com/ -- 2 toolbar images, 1 tracker image.
+    * http://a.rfihub.com/ -- associated with http://rocketfuelinc.com/,
+        used for ads or tracking. Not quite sure.
+
+feedburner toolbar and tracker
+-------------------------------
+
+  * WULFMORGENSTALLER
+  * MarketWatch.com - Top Stories
+  * Hollywood.com - Recent News
+  * Wired: entertainement
+  * Livescience.com
+  * Reader Digest
+
+Pheedcontent.com toolbar
+--------------------------
+
+  * Sports News : CBSSports.com
+
+
+Digg/Reddit toolbar
+-------------------
+
+  * Abstruse goose
+
+http://res.feedsportal.com/
+------------------
+
+  * New scientist.com
+
+
+"""
+
+
 
 class BeaconDetector(object):
     min_image_size = BEACON_MIN_IMAGE_SIZE
