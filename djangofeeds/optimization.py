@@ -64,18 +64,20 @@ class BeaconRemover(object):
                 return True
         return False
 
-    def stripsafe(self, text):
+    def strip(self, text):
         """This method is called by the parser."""
         if not DJANGOFEEDS_REMOVE_BEACON:
             return text
+        # to avoid unecessary parsing
         if "<img" not in text:
             return text
         try:
-            return self.strip(text)
+            return self.parse_and_strip(text)
         except HTMLParseError:
             return text
 
-    def strip(self, html):
+    def parse_and_strip(self, html):
+        """Do the stripping work using beautiful soup."""
         soup = BeautifulSoup(html)
         stripped_count = 0
         for image in soup("img"):

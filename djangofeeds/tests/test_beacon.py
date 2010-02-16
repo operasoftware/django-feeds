@@ -37,3 +37,10 @@ thaler?i=aFiizovyBmA:qUKuBzXJMEQ:V_sGLiPBpWU'
 
         self.assertEqual(br.strip(content), expected_result)
 
+        # test the no img optimization
+        self.assertEqual(br.strip(' test '), ' test ')
+
+        # generate a parse error
+        parse_error = '<a< <img>'
+        self.assertEqual(br.strip(parse_error), parse_error)
+
