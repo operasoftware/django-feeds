@@ -5,6 +5,8 @@ from django.utils.text import truncate_html_words
 from django.utils.hashcompat import md5_constructor
 
 from djangofeeds import conf
+from djangofeeds.optimization import BeaconRemover
+beacon_remover = BeaconRemover()
 
 GUID_FIELDS = frozenset(("title", "link", "author"))
 
@@ -86,7 +88,7 @@ def find_post_content(feed_obj, entry):
     except UnicodeDecodeError:
         content = ""
 
-    return content
+    return beacon_remover.strip(content)
 
 
 def date_to_datetime(field_name):
