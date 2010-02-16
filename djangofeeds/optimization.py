@@ -1,20 +1,23 @@
 from httplib2 import Http
 from BeautifulSoup import BeautifulSoup
 from HTMLParser import HTMLParseError
+from django.conf import settings
+import re
 
-BEACON_REQUEST_METHOD = "HEAD"
-BEACON_MIN_IMAGE_SIZE = 100
-BEACON_VERIFY_ZERO_BYTES = True
+DJANGO_FEEDS_BEACON_REMOVER = getattr(settings,
+    "DJANGO_FEEDS_BEACON_REMOVER", True)
 
-_known_beacons = set()
-_known_images = set()
+DJANGO_FEEDS_BEACON_SERVICES = [
+    r'http://feeds.feedburner.com/~r/.+',
+    r'http://ads.pheedo.com/.+',
+    r'http://a.rfihub.com/.+',
+]
 
 """
-Tracker Use Case
-================
+Beacon detector use case
+=========================
 
-I tried all the default feeds in the overlay plus my personnal feeds
-and I identified those tools:
+Identified tools that add tracker images and tools into the feeds
 
     * Feedburner toolbar -- 4 toolbar images, 1 tracker image.
     * Pheedcontent.com toolbar -- 4 toolbar images, 1 advertisement image.
@@ -22,6 +25,8 @@ and I identified those tools:
     * http://res.feedsportal.com/ -- 2 toolbar images, 1 tracker image.
     * http://a.rfihub.com/ -- associated with http://rocketfuelinc.com/,
         used for ads or tracking. Not quite sure.
+
+About 80% of them use feedburner. Few use case of feeds:
 
 feedburner toolbar and tracker
 -------------------------------
@@ -38,7 +43,6 @@ Pheedcontent.com toolbar
 
   * Sports News : CBSSports.com
 
-
 Digg/Reddit toolbar
 -------------------
 
@@ -49,50 +53,21 @@ http://res.feedsportal.com/
 
   * New scientist.com
 
-
 """
 
+class BeaconRemover(object):
 
-
-class BeaconDetector(object):
-    min_image_size = BEACON_MIN_IMAGE_SIZE
-    verify_zero_bytes = BEACON_VERIFY_ZERO_BYTES
-    request_method = BEACON_REQUEST_METHOD
-
-    def __init__(self, min_image_size=None, verify_zero_bytes=None,
-            request_method=None):
-        self.min_img_size = min_image_size or self.min_image_size
-        self.verify_zero_bytes = verify_zero_bytes or self.verify_zero_bytes
-        self.request_method = request_method or self.request_method
-        self._http = Http()
-
-    def _get_image_size(self, image_url, request_method):
-        resp, content = self._http.request(image_url, request_method)
-        return int(resp.get("content-length", 0)) or len(content)
-
-    def looks_like_beacon(self, image_url, verify=None):
-        if image_url not in _known_beacons | _known_images:
-            ret = self._looks_like_beacon(image_url, verify=verify)
-            (ret and _known_beacons or _known_images).add(image_url)
-            return ret
-        return image_url not in _known_images and image_url in _known_beacons
-
-    def _looks_like_beacon(self, image_url, verify=None):
-        verify = verify or self.verify_zero_bytes
-        request_method = "GET" if verify else self.request_method
-        try:
-            image_size = self._get_image_size(image_url, request_method)
-        except TypeError:
-            return True
-        if not image_size:
-            if not verify and self.verify_zero_bytes:
-                return self.looks_like_beacon(image_url, verify=True)
-            return True
-        if image_size < self.min_image_size:
-            return True
+    def looks_like_beacon(self, image_url):
+        """Return True if the image URL has to be removed."""
+        for reg in DJANGO_FEEDS_BEACON_SERVICES:
+            if re.match(reg, image_url):
+                return True
         return False
 
     def stripsafe(self, text):
+        """This method is called by the parser."""
+        if not DJANGO_FEEDS_BEACON_REMOVER:
+            return text
         if "<img" not in text:
             return text
         try:
