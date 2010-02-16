@@ -7,6 +7,7 @@ import re
 DJANGOFEEDS_REMOVE_BEACON = getattr(settings,
     "DJANGO_FEEDS_REMOVE_BEACON", True)
 
+# for now only the obvious tracker images
 DJANGOFEEDS_BEACON_SERVICES = [
     r'http://feeds.feedburner.com/~r/.+',
     r'http://ads.pheedo.com/.+',
@@ -16,6 +17,9 @@ DJANGOFEEDS_BEACON_SERVICES = [
 """
 Beacon detector use case
 =========================
+
+The idea is to remove some tracker images in the feeds because these images
+are a pollution to the user.
 
 Identified tools that add tracker images and tools into the feeds
 
@@ -31,27 +35,27 @@ About 80% of them use feedburner. Few use case of feeds:
 feedburner toolbar and tracker
 -------------------------------
 
-  * WULFMORGENSTALLER
-  * MarketWatch.com - Top Stories
-  * Hollywood.com - Recent News
-  * Wired: entertainement
-  * Livescience.com
-  * Reader Digest
+    * WULFMORGENSTALLER
+    * MarketWatch.com - Top Stories
+    * Hollywood.com - Recent News
+    * Wired: entertainement
+    * Livescience.com
+    * Reader Digest
 
 Pheedcontent.com toolbar
 --------------------------
 
-  * Sports News : CBSSports.com
+    * Sports News : CBSSports.com
 
 Digg/Reddit toolbar
 -------------------
 
-  * Abstruse goose
+    * Abstruse goose
 
 http://res.feedsportal.com/
 ------------------
 
-  * New scientist.com
+    * New scientist.com
 
 """
 
