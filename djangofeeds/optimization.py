@@ -4,10 +4,10 @@ from HTMLParser import HTMLParseError
 from django.conf import settings
 import re
 
-DJANGO_FEEDS_BEACON_REMOVER = getattr(settings,
+DJANGOFEEDS_BEACON_REMOVER = getattr(settings,
     "DJANGO_FEEDS_BEACON_REMOVER", True)
 
-DJANGO_FEEDS_BEACON_SERVICES = [
+DJANGOFEEDS_BEACON_SERVICES = [
     r'http://feeds.feedburner.com/~r/.+',
     r'http://ads.pheedo.com/.+',
     r'http://a.rfihub.com/.+',
@@ -59,14 +59,14 @@ class BeaconRemover(object):
 
     def looks_like_beacon(self, image_url):
         """Return True if the image URL has to be removed."""
-        for reg in DJANGO_FEEDS_BEACON_SERVICES:
+        for reg in DJANGOFEEDS_BEACON_SERVICES:
             if re.match(reg, image_url):
                 return True
         return False
 
     def stripsafe(self, text):
         """This method is called by the parser."""
-        if not DJANGO_FEEDS_BEACON_REMOVER:
+        if not DJANGOFEEDS_BEACON_REMOVER:
             return text
         if "<img" not in text:
             return text
