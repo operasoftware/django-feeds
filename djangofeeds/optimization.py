@@ -4,8 +4,8 @@ from HTMLParser import HTMLParseError
 from django.conf import settings
 import re
 
-DJANGOFEEDS_BEACON_REMOVER = getattr(settings,
-    "DJANGO_FEEDS_BEACON_REMOVER", True)
+DJANGOFEEDS_REMOVE_BEACON = getattr(settings,
+    "DJANGO_FEEDS_REMOVE_BEACON", True)
 
 DJANGOFEEDS_BEACON_SERVICES = [
     r'http://feeds.feedburner.com/~r/.+',
@@ -66,7 +66,7 @@ class BeaconRemover(object):
 
     def stripsafe(self, text):
         """This method is called by the parser."""
-        if not DJANGOFEEDS_BEACON_REMOVER:
+        if not DJANGOFEEDS_REMOVE_BEACON:
             return text
         if "<img" not in text:
             return text
