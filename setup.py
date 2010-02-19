@@ -105,6 +105,7 @@ setup(
         'BeautifulSoup',
         'httplib2',
         'carrot',
+        'billiard',
     ],
     classifiers=[
         "Framework :: Django",
