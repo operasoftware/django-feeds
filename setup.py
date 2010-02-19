@@ -106,6 +106,7 @@ setup(
         'httplib2',
         'carrot',
         'billiard',
+        'yadayada',
     ],
     classifiers=[
         "Framework :: Django",
