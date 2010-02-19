@@ -98,11 +98,13 @@ setup(
     zip_safe=False,
     data_files = data_files,
     install_requires=[
+        'importlib',
         'feedparser',
         'django-unittest-depth',
         'celery>=0.9.7',
         'BeautifulSoup',
         'httplib2',
+        'carrot',
     ],
     classifiers=[
         "Framework :: Django",
