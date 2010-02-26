@@ -28,6 +28,15 @@ def generate_guid(entry):
     return md5sum("|".join(entry.get(key) or ""
                               for key in GUID_FIELDS).encode("utf-8"))
 
+def search_alternate_links(feed):
+    """Search for alternate links into a parsed feed."""
+    alternate_links = []
+    if len(feed.get('entries', 1)) == 0:
+        links = feed['feed'].get('links', [])
+        for link in links:
+            if link.get('type', '').find('rss') != -1:
+                alternate_links.append(link.get('href', ''))
+    return alternate_links
 
 def get_entry_guid(feed_obj, entry):
     """Get the guid for a post.

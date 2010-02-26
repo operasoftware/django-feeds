@@ -102,6 +102,15 @@ class FeedImporter(object):
             feed = self.parser.parse(feed_url,
                                      etag=etag,
                                      modified=modified)
+
+            alternate_links = feedutil.search_alternate_links(feed)
+            # if there is not entries and we have some alternate links
+            if len(feed['entries']) == 0 and len(alternate_links):
+                feed = self.parser.parse(
+                    alternate_links[0],
+                    etag=etag,
+                    modified=modified
+                )
         finally:
             socket.setdefaulttimeout(prev_timeout)
 
