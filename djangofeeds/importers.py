@@ -135,6 +135,8 @@ class FeedImporter(object):
         except self.feed_model.DoesNotExist:
             try:
                 feed = self.parse_feed(feed_url)
+                # the feed URL could be modified at import
+                feed_url = feed.get('href', feed_url)
             except socket.timeout:
                 self.feed_model.objects.create(feed_url=feed_url, sort=0)
                 raise exceptions.TimeoutError(
