@@ -25,7 +25,7 @@ from djangofeeds import feedutil
 
 data_path = os.path.join(os.path.dirname(__file__), 'data')
 
-FEED_YIELDING_404 = "http://www.yahoo.fr/rssmhwqgiuyeqwgeqygqfyf"
+FEED_YIELDING_404 = "http://fr.yahoo.com/rssmhwqgiuyeqwgeqygqfyf"
 
 
 def get_data_filename(name):
