@@ -97,10 +97,6 @@ setup(
     cmdclass = {"test": RunTests},
     zip_safe=False,
     data_files = data_files,
-    dependency_links = [
-        "http://chishop.opera.com/simple/",
-        "http://chishop.opera.com/simple/multiprocessing/"
-    ],
     install_requires=[
         'yadayada',
         'feedparser',
