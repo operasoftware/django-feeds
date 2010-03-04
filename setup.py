@@ -102,14 +102,11 @@ setup(
         "http://chishop.opera.com/simple/multiprocessing/"
     ],
     install_requires=[
-        'importlib',
+        'yadayada',
         'feedparser',
         'celery>=0.9.7',
         'BeautifulSoup',
         'httplib2',
-        'carrot',
-        'billiard',
-        'yadayada',
     ],
     classifiers=[
         "Framework :: Django",

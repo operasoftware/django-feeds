@@ -3,8 +3,9 @@ nose-cover3
 coverage
 nosexunit
 django-nose
+importlib
 feedparser
-celery>=1.0.0
+celery
 BeautifulSoup
 httplib2
-
+yadayada
