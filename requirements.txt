@@ -1,0 +1,10 @@
+nose
+nose-cover3
+coverage
+nosexunit
+django-nose
+feedparser
+celery>=1.0.0
+BeautifulSoup
+httplib2
+

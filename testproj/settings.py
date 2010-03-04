@@ -16,10 +16,7 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
-TEST_RUNNER = "djangofeeds.tests.runners.run_tests"
-TEST_APPS = (
-    "djangofeeds",
-)
+TEST_RUNNER = "django_nose.run_tests"
 
 COVERAGE_EXCLUDE_MODULES = ("djangofeeds.__init__",
                             "djangofeeds.admin",
@@ -28,8 +25,14 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds.__init__",
                             "djangofeeds.optimization",
                             "djangofeeds.tests.*",
 )
-COVERAGE_HTML_REPORT = True
-COVERAGE_BRANCH_COVERAGE = True
+
+TEST_RUNNER = "django_nose.run_tests"
+here = os.path.abspath(os.path.dirname(__file__))
+NOSE_ARGS = [os.path.join(here, os.pardir, "djangofeeds", "tests"),
+            "--cover3-package=djangofeeds",
+            "--cover3-branch",
+            "--cover3-exclude=%s" % ",".join(COVERAGE_EXCLUDE_MODULES)]
+
 
 BROKER_HOST = "localhost"
 BROKER_PORT = 5672
@@ -61,14 +64,9 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django_nose',
     'djangofeeds',
 )
 
-try:
-    import test_extensions
-except ImportError:
-    pass
-else:
-    INSTALLED_APPS += ("test_extensions", )
 
 SEND_CELERY_TASK_ERROR_EMAILS = False

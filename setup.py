@@ -99,7 +99,6 @@ setup(
     data_files = data_files,
     install_requires=[
         'feedparser',
-        'django-unittest-depth',
         'celery>=0.9.7',
         'BeautifulSoup',
         'httplib2',
