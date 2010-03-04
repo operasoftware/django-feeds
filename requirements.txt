@@ -1,8 +1,8 @@
 nose
 nose-cover3
 coverage
-nosexunit
 django-nose
+
 importlib
 feedparser
 celery
