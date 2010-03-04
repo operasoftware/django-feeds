@@ -1,62 +1,87 @@
 from httplib2 import Http
 from BeautifulSoup import BeautifulSoup
 from HTMLParser import HTMLParseError
+from django.conf import settings
+import re
 
-BEACON_REQUEST_METHOD = "HEAD"
-BEACON_MIN_IMAGE_SIZE = 100
-BEACON_VERIFY_ZERO_BYTES = True
+DJANGOFEEDS_REMOVE_BEACON = getattr(settings,
+    "DJANGO_FEEDS_REMOVE_BEACON", True)
 
-_known_beacons = set()
-_known_images = set()
+# for now only the obvious tracker images
+DJANGOFEEDS_BEACON_SERVICES = [
+    r'http://feeds.feedburner.com/~r/.+',
+    r'http://ads.pheedo.com/.+',
+    r'http://a.rfihub.com/.+',
+]
 
+"""
+Beacon detector use case
+=========================
 
-class BeaconDetector(object):
-    min_image_size = BEACON_MIN_IMAGE_SIZE
-    verify_zero_bytes = BEACON_VERIFY_ZERO_BYTES
-    request_method = BEACON_REQUEST_METHOD
+The idea is to remove some tracker images in the feeds because these images
+are a pollution to the user.
 
-    def __init__(self, min_image_size=None, verify_zero_bytes=None,
-            request_method=None):
-        self.min_img_size = min_image_size or self.min_image_size
-        self.verify_zero_bytes = verify_zero_bytes or self.verify_zero_bytes
-        self.request_method = request_method or self.request_method
-        self._http = Http()
+Identified tools that add tracker images and tools into the feeds
 
-    def _get_image_size(self, image_url, request_method):
-        resp, content = self._http.request(image_url, request_method)
-        return int(resp.get("content-length", 0)) or len(content)
+    * Feedburner toolbar -- 4 toolbar images, 1 tracker image.
+    * Pheedcontent.com toolbar -- 4 toolbar images, 1 advertisement image.
+    * Digg/Reddit generic toolbar - 3 toolbar, no tracker image.
+    * http://res.feedsportal.com/ -- 2 toolbar images, 1 tracker image.
+    * http://a.rfihub.com/ -- associated with http://rocketfuelinc.com/,
+        used for ads or tracking. Not quite sure.
 
-    def looks_like_beacon(self, image_url, verify=None):
-        if image_url not in _known_beacons | _known_images:
-            ret = self._looks_like_beacon(image_url, verify=verify)
-            (ret and _known_beacons or _known_images).add(image_url)
-            return ret
-        return image_url not in _known_images and image_url in _known_beacons
+About 80% of them use feedburner. Few use case of feeds:
 
-    def _looks_like_beacon(self, image_url, verify=None):
-        verify = verify or self.verify_zero_bytes
-        request_method = "GET" if verify else self.request_method
-        try:
-            image_size = self._get_image_size(image_url, request_method)
-        except TypeError:
-            return True
-        if not image_size:
-            if not verify and self.verify_zero_bytes:
-                return self.looks_like_beacon(image_url, verify=True)
-            return True
-        if image_size < self.min_image_size:
-            return True
+feedburner toolbar and tracker
+-------------------------------
+
+    * WULFMORGENSTALLER
+    * MarketWatch.com - Top Stories
+    * Hollywood.com - Recent News
+    * Wired: entertainement
+    * Livescience.com
+    * Reader Digest
+
+Pheedcontent.com toolbar
+--------------------------
+
+    * Sports News : CBSSports.com
+
+Digg/Reddit toolbar
+-------------------
+
+    * Abstruse goose
+
+http://res.feedsportal.com/
+------------------
+
+    * New scientist.com
+
+"""
+
+class BeaconRemover(object):
+
+    def looks_like_beacon(self, image_url):
+        """Return True if the image URL has to be removed."""
+        for reg in DJANGOFEEDS_BEACON_SERVICES:
+            if re.match(reg, image_url):
+                return True
         return False
 
-    def stripsafe(self, text):
+    def strip(self, text):
+        """This method is called by the parser."""
+        if not DJANGOFEEDS_REMOVE_BEACON:
+            return text
+        # to avoid unecessary parsing
         if "<img" not in text:
             return text
         try:
-            return self.strip(text)
+            return self.parse_and_strip(text)
         except HTMLParseError:
             return text
 
-    def strip(self, html):
+    def parse_and_strip(self, html):
+        """Do the stripping work using beautiful soup."""
         soup = BeautifulSoup(html)
         stripped_count = 0
         for image in soup("img"):

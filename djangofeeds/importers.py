@@ -102,6 +102,15 @@ class FeedImporter(object):
             feed = self.parser.parse(feed_url,
                                      etag=etag,
                                      modified=modified)
+
+            alternate_links = feedutil.search_alternate_links(feed)
+            # if there is not entries and we have some alternate links
+            if len(feed['entries']) == 0 and len(alternate_links):
+                feed = self.parser.parse(
+                    alternate_links[0],
+                    etag=etag,
+                    modified=modified
+                )
         finally:
             socket.setdefaulttimeout(prev_timeout)
 
@@ -126,6 +135,14 @@ class FeedImporter(object):
         except self.feed_model.DoesNotExist:
             try:
                 feed = self.parse_feed(feed_url)
+                # the feed URL could be modified at import because the parser
+                # can follow a RSS alternate link in a web page.
+                new_feed_url = feed.get('href', feed_url)
+                # if it's the case, we need to try again with the new feed URL
+                # because otherwise it would skip the self.feed_model.DoesNotExist
+                # check.
+                if new_feed_url != feed_url:
+                    return self.import_feed(new_feed_url, force, local)
             except socket.timeout:
                 self.feed_model.objects.create(feed_url=feed_url, sort=0)
                 raise exceptions.TimeoutError(

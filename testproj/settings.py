@@ -22,7 +22,6 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds.__init__",
                             "djangofeeds.admin",
                             "djangofeeds.maintenance",
                             "djangofeeds.management.*",
-                            "djangofeeds.optimization",
                             "djangofeeds.tests.*",
 )
 
