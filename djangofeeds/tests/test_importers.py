@@ -398,3 +398,11 @@ front_page/rss.xml']
             ['http://feeds.newsweek.com/newsweek/TopNews']
         )
 
+    def test_generate_utf8_encode_guid_bug(self):
+        """Some feeds trigger utf8 bugs when the guid is generated."""
+        import feedparser
+        feed_str = get_data_file("mobile_it.rss")
+        feed = feedparser.parse(feed_str)
+        for entry in feed['entries']:
+            guid = feedutil.get_entry_guid(feed, entry)
+            self.assertTrue(guid.startswith('http://'))

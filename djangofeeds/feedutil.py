@@ -45,7 +45,10 @@ def get_entry_guid(feed_obj, entry):
 
     """
     try:
-        return str(entry["guid"]).encode("utf-8").strip()
+        guid = entry["guid"]
+        guid = guid.encode("utf-8").strip()
+        print guid
+        return guid
     except KeyError:
         return generate_guid(entry)
 
