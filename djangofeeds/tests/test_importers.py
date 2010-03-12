@@ -7,7 +7,8 @@ import time
 import socket
 import httplib as http
 import tempfile
-import unittest
+import unittest2 as unittest
+import feedparser
 from datetime import datetime
 from UserDict import UserDict
 from contextlib import nested
@@ -71,7 +72,7 @@ class TestRegressionOPAL578(unittest.TestCase):
 
         seen = set()
         for post in posts:
-            self.assertFalse(post.title in seen)
+            self.assertNotIn(post.title, seen)
             seen.add(post.title)
 
         self.assertEqual(posts[0].title, "November 23, 2009")
@@ -162,12 +163,12 @@ class TestFeedImporter(unittest.TestCase):
 
         posts = feed_obj.post_set.all()
         first_post = posts[0]
-        self.assertEquals(first_post.guid, "Lifehacker-5147831")
-        self.assertEquals(str(first_post.date_updated), "2009-02-06 12:30:00")
+        self.assertEqual(first_post.guid, "Lifehacker-5147831")
+        self.assertEqual(str(first_post.date_updated), "2009-02-06 12:30:00")
         for post in posts:
             self.assertTrue(post.guid, "post has GUID")
             self.assertTrue(post.title, "post has title")
-            self.assertEquals(post.enclosures.count(), 0,
+            self.assertEqual(post.enclosures.count(), 0,
                 "post has no enclosures")
             self.assertTrue(post.link, "post has link")
             self.assertTrue(post.content)
@@ -182,8 +183,8 @@ class TestFeedImporter(unittest.TestCase):
 
     def test_404_feed_raises_ok(self):
         importer = self.importer
-        self.assertRaises(FeedNotFoundError, importer.import_feed,
-                FEED_YIELDING_404)
+        with self.assertRaises(FeedNotFoundError):
+            importer.import_feed(FEED_YIELDING_404)
 
     def test_missing_date_feed(self):
         """Try to reproduce the constant date update bug."""
@@ -225,8 +226,8 @@ class TestFeedImporter(unittest.TestCase):
                 raise socket.timeout(1)
 
         feed2 = "foofoobar.rss"
-        self.assertRaises(TimeoutError,
-                _TimeoutFeedImporter().import_feed, feed2, local=True)
+        with self.assertRaises(TimeoutError):
+                _TimeoutFeedImporter().import_feed(feed2, local=True)
         self.assertTrue(Feed.objects.get(feed_url=feed2))
 
     def test_update_feed_socket_timeout(self):
@@ -257,7 +258,7 @@ class TestFeedImporter(unittest.TestCase):
 
         simporter = _RaisingFeedImporter()
         feed_obj = simporter.update_feed(feed_obj=feed_obj, force=True)
-        self.assertEquals(feed_obj.last_error, models.FEED_GENERIC_ERROR)
+        self.assertEqual(feed_obj.last_error, models.FEED_GENERIC_ERROR)
 
     def test_update_feed_not_modified(self):
 
@@ -285,7 +286,7 @@ class TestFeedImporter(unittest.TestCase):
         feed_obj = importer.import_feed(self.feed, local=True, force=True)
 
         feed_obj = _Verify().update_feed(feed_obj=feed_obj, force=True)
-        self.assertEquals(feed_obj.last_error, models.FEED_NOT_FOUND_ERROR)
+        self.assertEqual(feed_obj.last_error, models.FEED_NOT_FOUND_ERROR)
 
     def test_parse_feed_raises(self):
 
@@ -295,9 +296,10 @@ class TestFeedImporter(unittest.TestCase):
                 raise KeyError("foo")
 
         feed2 = "foo1foo2bar3.rss"
-        self.assertRaises(FeedCriticalError,
-                _RaisingFeedImporter().import_feed, feed2, local=True)
-        self.assertRaises(Feed.DoesNotExist, Feed.objects.get, feed_url=feed2)
+        with self.assertRaises(FeedCriticalError):
+                _RaisingFeedImporter().import_feed(feed2, local=True)
+        with self.assertRaises(Feed.DoesNotExist):
+            Feed.objects.get(feed_url=feed2)
 
     def test_http_modified(self):
         now = time.localtime()
@@ -312,7 +314,7 @@ class TestFeedImporter(unittest.TestCase):
 
         i = _Verify()
         feed = i.import_feed(self.feed, local=True, force=True)
-        self.assertEquals(feed.http_last_modified, now_as_dt)
+        self.assertEqual(feed.http_last_modified, now_as_dt)
 
     def test_http_redirects(self):
 
@@ -340,11 +342,11 @@ class TestFeedImporter(unittest.TestCase):
 
         i1 = _Verify(redirect_to="http://redirect.ed/")
         href = i1.import_feed("xxxyyyzzz", local=True)
-        self.assertEquals(href, "http://redirect.ed/")
+        self.assertEqual(href, "http://redirect.ed/")
 
         i2 = _Verify(redirect_to="xxxyyyzzz")
-        self.assertRaises(AttributeError, i2.import_feed, "xxxyyyzzz",
-                    local=True)
+        with self.assertRaises(AttributeError):
+            i2.import_feed("xxxyyyzzz", local=True)
 
     def test_import_categories(self):
         Feed.objects.all().delete()
@@ -353,9 +355,9 @@ class TestFeedImporter(unittest.TestCase):
         post = feed.post_set.all()[0]
         categories = [cat.name for cat in post.categories.all()]
         for should in ("Downloads", "Screenshots", "Skins", "Themes"):
-            self.assertTrue(should in categories)
+            self.assertIn(should, categories)
 
-        self.assertEquals(len(categories), 13)
+        self.assertEqual(len(categories), 13)
 
     def test_import_enclosures(self):
         # FIXME Use something that actually has enclosures.
@@ -379,30 +381,23 @@ class TestFeedImporter(unittest.TestCase):
         self.assertFalse(imp2.updated)
 
     def test_search_alternate_links(self):
-        
-        import feedparser
         feed_str = get_data_file("bbc_homepage.html")
         feed = feedparser.parse(feed_str)
         links = feedutil.search_alternate_links(feed)
-        self.assertEqual(
-            links,
-            ['http://newsrss.bbc.co.uk/rss/newsonline_world_edition/\
-front_page/rss.xml']
-        )
+        self.assertListEqual(links, [
+            "http://newsrss.bbc.co.uk/rss/newsonline_world_edition/"
+            "front_page/rss.xml"])
 
         feed_str = get_data_file("newsweek_homepage.html")
         feed = feedparser.parse(feed_str)
         links = feedutil.search_alternate_links(feed)
-        self.assertEqual(
-            links,
-            ['http://feeds.newsweek.com/newsweek/TopNews']
-        )
+        self.assertListEqual(links, [
+            "http://feeds.newsweek.com/newsweek/TopNews"])
 
     def test_generate_utf8_encode_guid_bug(self):
         """Some feeds trigger utf8 bugs when the guid is generated."""
-        import feedparser
         feed_str = get_data_file("mobile_it.rss")
         feed = feedparser.parse(feed_str)
-        for entry in feed['entries']:
+        for entry in feed["entries"]:
             guid = feedutil.get_entry_guid(feed, entry)
-            self.assertTrue(guid.startswith('http://'))
+            self.assertTrue(guid.startswith("http://"))

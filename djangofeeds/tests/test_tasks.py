@@ -1,4 +1,4 @@
-import unittest
+import unittest2 as unittest
 
 from djangofeeds import tasks
 
@@ -19,7 +19,7 @@ class TestRefreshFeed(unittest.TestCase):
         f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
 
-        self.assertTrue("http://example.com/t.rss" in MockImporter.imported)
+        self.assertIn("http://example.com/t.rss", MockImporter.imported)
 
     def test_refresh_with_locks(self):
         prev = tasks.ENABLE_LOCKS
@@ -28,8 +28,7 @@ class TestRefreshFeed(unittest.TestCase):
             f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
 
-            self.assertTrue(
-                    "http://example.com/t.rss" in MockImporter.imported)
+            self.assertIn("http://example.com/t.rss", MockImporter.imported)
         finally:
             tasks.ENABLE_LOCKS = prev
 
@@ -48,7 +47,7 @@ class TestRefreshFeed(unittest.TestCase):
         try:
             f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
-            self.assertTrue(
-                    "http://example.com/t.rss" in MockImporter.imported)
+            self.assertIn(
+                    "http://example.com/t.rss", MockImporter.imported)
         finally:
             tasks.cache = prev

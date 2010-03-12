@@ -1,64 +1,61 @@
-import os
-import unittest
-from djangofeeds.optimization import BeaconRemover
-from django.conf import settings
+import unittest2 as unittest
 
-SERVICE_URLS = [
-    'http://a.rfihub.com/eus.gif?eui=2224',
-    'http://feeds.feedburner.com/~r/Wulffmorgenthaler/~4/aFiizovyBmA'
-]
+from djangofeeds import optimization
 
-class TestBeacon(unittest.TestCase):
+IMG1 = "http://feeds.feedburner.com/~r/Wulffmorgenthaler/~4/aFiizovyBmA"
+IMG2 = IMG1 + ":qUKuBzXJMEQ:V_sGLiPBpWU"
+IMG3 = "http://a.rfihub.com/eus.gif?eui=2224"
+
+SERVICE_URLS = [IMG3, IMG1]
+
+
+class test_BeaconRemover(unittest.TestCase):
+
+    def setUp(self):
+        self.beacon_remover = optimization.BeaconRemover()
 
     def test_01_urls(self):
-        br = BeaconRemover()
-
-        for url in SERVICE_URLS:
-            self.assertTrue(br.looks_like_beacon(url))
-
-        urls = [
-            'http://feeds.feedburner.com/~ff/Wulffmorgen\
-thaler?i=aFiizovyBmA:qUKuBzXJMEQ:V_sGLiPBpWU'
-        ]
-
-        for url in urls:
-            self.assertFalse(br.looks_like_beacon(url))
+        self.assertIsBeacons(SERVICE_URLS + [IMG2])
 
     def test_02_strip(self):
-        
-        br = BeaconRemover()
-        text = '''test %s %s'''
+        some_text = """test %s %s"""
+        to_img_tag = """<img src="%s" />"""
+        img1 = to_img_tag % IMG2
+        img2 = to_img_tag % "http://feeds.feedburner.com/"
 
-        img = '<img src="%s" />'
-        img1 = img % 'http://feeds.feedburner.com/~r/Wulffmorgenthaler/~4/aFiizovyBmA'
-        img2 = img % 'http://feeds.feedburner.com/'
+        content = some_text % (img1, img2)
+        expected_result = some_text % ("", img2)
 
-        content = text % (img1, img2)
-        expected_result = text % ('', img2)
+        self.assertEqual(self.beacon_remover.strip(content), expected_result)
 
-        self.assertEqual(br.strip(content), expected_result)
+    def test_no_img_optimization(self):
+        self.assertEqual(self.beacon_remover.strip(" test "), " test ")
 
-        # test the no img optimization
-        self.assertEqual(br.strip(' test '), ' test ')
+    def test_parse_error(self):
+        unparseable_text = """<a< <img>"""
+        self.assertEqual(self.beacon_remover.strip(unparseable_text),
+                         unparseable_text)
 
-        # generate a parse error
-        parse_error = '<a< <img>'
-        self.assertEqual(br.strip(parse_error), parse_error)
-
-        # special codition
-        condition = '<img src="">'
-        br.strip(condition)
-
-        
+    def test_special_condition(self):
+        condition = """<img src="">"""
+        # FIXME shouldn't it assert something?
+        self.beacon_remover.strip(condition)
 
     def test_03_settings(self):
+        prev = optimization.DJANGOFEEDS_REMOVE_BEACON
+        optimization.DJANGOFEEDS_REMOVE_BEACON = False
+        try:
+            to_img_tag = """<img src="%s" />"""
 
-        from djangofeeds import optimization
-        setattr(optimization, 'DJANGOFEEDS_REMOVE_BEACON', False)
-        img = '<img src="%s" />'
+            for url in SERVICE_URLS:
+                self.assertEqual(self.beacon_remover.strip(to_img_tag % url),
+                                 to_img_tag % url)
+        finally:
+            optimization.DJANGOFEEDS_REMOVE_BEACON = prev
 
-        br = BeaconRemover()
-        for url in SERVICE_URLS:
-            self.assertEqual(br.strip(img % url), img % url)
+    def assertIsBeacon(self, url):
+        self.assertTrue(self.beacon_remover.looks_like_beacon(url))
 
-        setattr(optimization, 'DJANGOFEEDS_REMOVE_BEACON', True)
+    def assertIsBeacons(self, urls):
+        print("URLS: %s" % urls)
+        map(self.assertIsBeacon, urls)

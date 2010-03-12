@@ -1,4 +1,5 @@
 import time
+from base64 import b64encode
 from datetime import datetime, timedelta
 
 from django.utils.text import truncate_html_words
@@ -23,20 +24,30 @@ def md5sum(text):
     return md5_constructor(text).hexdigest()
 
 
+def safe_encode(value):
+    """Try encode unicode value, if that's not possible encode it with
+    b64 encoding."""
+    try:
+        return value.encode("utf-8")
+    except UnicodeDecodeError:
+        return b64encode(value)
+
+
 def generate_guid(entry):
     """Generate missing guid for post entry."""
-    return md5sum("|".join(entry.get(key) or ""
-                              for key in GUID_FIELDS).encode("utf-8"))
+    return md5sum("|".join(safe_encode(entry.get(key) or "")
+                              for key in GUID_FIELDS))
+
 
 def search_alternate_links(feed):
     """Search for alternate links into a parsed feed."""
-    alternate_links = []
-    if len(feed.get('entries', 1)) == 0:
-        links = feed['feed'].get('links', [])
-        for link in links:
-            if link.get('type', '').find('rss') != -1:
-                alternate_links.append(link.get('href', ''))
-    return alternate_links
+    if not feed.get("entries", 1):
+        links = feed["feed"].get("links") or []
+        return [link.get("href") or ""
+                    for link in feed["feed"].get("links") or []
+                        if "rss" in link.get("type")]
+    return []
+
 
 def get_entry_guid(feed_obj, entry):
     """Get the guid for a post.
