@@ -43,3 +43,16 @@ class test_find_post_content(unittest.TestCase):
             feedutil.truncate_html_words = prev
 
 
+class test_generate_guid(unittest.TestCase):
+
+    def test_handles_not_encodable_text(self):
+        entry = dict(title=NOT_ENCODEABLE, link="http://foo.com")
+        guid = feedutil.generate_guid(entry)
+        self.assertTrue(guid)
+
+    def test_is_unique(self):
+        entry1 = dict(title="First", link="http://foo1.com")
+        guid1 = feedutil.generate_guid(entry1)
+        entry2 = dict(title="Second", link="http://foo1.com")
+        guid2 = feedutil.generate_guid(entry2)
+        self.assertNotEqual(entry1, entry2)
