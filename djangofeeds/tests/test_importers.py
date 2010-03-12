@@ -243,7 +243,7 @@ class TestFeedImporter(unittest.TestCase):
 
         simporter = _TimeoutFeedImporter()
         feed_obj = simporter.update_feed(feed_obj=feed_obj, force=True)
-        self.assertEquals(feed_obj.last_error, models.FEED_TIMEDOUT_ERROR)
+        self.assertEqual(feed_obj.last_error, models.FEED_TIMEDOUT_ERROR)
 
     def test_update_feed_parse_feed_raises(self):
 
