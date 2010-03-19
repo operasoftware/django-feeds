@@ -25,6 +25,7 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
                             "djangofeeds.tests*",
                             "djangofeeds.models",
                             "djangofeeds.managers",
+                            "djangofeeds.utils",
 )
 
 TEST_RUNNER = "django_nose.run_tests"
