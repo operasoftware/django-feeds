@@ -34,7 +34,7 @@ def osx_install_data(install_data):
 
 
 class RunTests(Command):
-    description = "Run the django test suite from the testproj dir."
+    description = "Run the django test suite from the tests dir."
 
     user_options = []
 
@@ -46,7 +46,7 @@ class RunTests(Command):
 
     def run(self):
         this_dir = os.getcwd()
-        testproj_dir = os.path.join(this_dir, "testproj")
+        testproj_dir = os.path.join(this_dir, "tests")
         os.chdir(testproj_dir)
         sys.path.insert(0, testproj_dir)
         from django.core.management import execute_manager
