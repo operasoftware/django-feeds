@@ -105,7 +105,7 @@ class FeedImporter(object):
 
             alternate_links = feedutil.search_alternate_links(feed)
             # if there is not entries and we have some alternate links
-            if len(feed['entries']) == 0 and len(alternate_links):
+            if not feed["entries"] and alternate_links:
                 feed = self.parser.parse(alternate_links[0],
                                          etag=etag, modified=modified)
         finally:
@@ -134,7 +134,7 @@ class FeedImporter(object):
                 feed = self.parse_feed(feed_url)
                 # the feed URL could be modified at import because the parser
                 # can follow a RSS alternate link in a web page.
-                new_feed_url = feed.get('href', feed_url)
+                new_feed_url = feed.get("href", feed_url)
                 # if it's the case, we need to try again with the new feed URL
                 # because otherwise it would skip the
                 # self.feed_model.DoesNotExist # check.

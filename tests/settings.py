@@ -18,11 +18,13 @@ ADMINS = (
 
 TEST_RUNNER = "django_nose.run_tests"
 
-COVERAGE_EXCLUDE_MODULES = ("djangofeeds.__init__",
+COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
                             "djangofeeds.admin",
                             "djangofeeds.maintenance",
-                            "djangofeeds.management.*",
-                            "djangofeeds.tests.*",
+                            "djangofeeds.management*",
+                            "djangofeeds.tests*",
+                            "djangofeeds.models",
+                            "djangofeeds.managers",
 )
 
 TEST_RUNNER = "django_nose.run_tests"
