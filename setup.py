@@ -86,6 +86,17 @@ for dirpath, dirnames, filenames in os.walk(src_dir):
             data_files.append([dirpath, [os.path.join(dirpath, f) for f in
                 filenames]])
 
+def requirements(fh):
+    for line in fh:
+        entry = line.strip()
+        if not entry.startswith("#"):
+            yield entry
+
+install_requires = []
+for req in ("requirements/default.txt"):
+    with file(req) as reqfh:
+        install_requires.extend(list(requirements(reqfh)))
+
 setup(
     name='django-feeds',
     version=djangofeeds.__version__,
@@ -97,6 +108,7 @@ setup(
     cmdclass = {"test": RunTests},
     zip_safe=False,
     data_files = data_files,
+    install_requires=install_requires,
     install_requires=[
         'yadayada',
         'feedparser',
