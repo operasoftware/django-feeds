@@ -400,3 +400,16 @@ class TestFeedImporter(unittest.TestCase):
         for entry in feed["entries"]:
             guid = feedutil.get_entry_guid(feed, entry)
             self.assertTrue(guid.startswith("http://"))
+
+        feed_str = get_data_file("no-steam.rss")
+        feed = feedparser.parse(feed_str)
+        for entry in feed["entries"]:
+            guid = feedutil.get_entry_guid(feed, entry)
+            self.assertTrue(guid)
+
+        feed_str = get_data_file("fakultet.xml")
+        feed = feedparser.parse(feed_str)
+        for entry in feed["entries"]:
+            guid = feedutil.get_entry_guid(feed, entry)
+            self.assertTrue(guid)
+
