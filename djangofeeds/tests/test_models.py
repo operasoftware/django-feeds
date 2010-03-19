@@ -108,9 +108,9 @@ class TestFeed(unittest.TestCase):
 
     def test_objects_ratio(self):
         models.Feed.objects.all().delete()
-        feeds = [models.Feed.objects.create(name=gen_unique_id(),
-                                            feed_url=gen_unique_id(),
-                                            sort=0, ratio=i)
+        [models.Feed.objects.create(name=gen_unique_id(),
+                                    feed_url=gen_unique_id(),
+                                    sort=0, ratio=i)
                     for i in (0, 0.23, 0.24, 0.25, 1.12, 2.43)]
         self.assertEqual(models.Feed.objects.ratio(min=0).count(), 5)
         self.assertEqual(
@@ -126,10 +126,10 @@ class TestFeed(unittest.TestCase):
         now = datetime.now()
         f = models.Feed.objects.create(name="foozalaz",
                 feed_url=gen_unique_id(), sort=0)
-        posts = [models.Post.objects.create(feed=f,
-                                            title=gen_unique_id(),
-                                            date_published=now,
-                                            date_updated=now)
+        [models.Post.objects.create(feed=f,
+                                    title=gen_unique_id(),
+                                    date_published=now,
+                                    date_updated=now)
                     for i in range(10)]
         self.assertEqual(f.expire_old_posts(min_posts=5), 5)
         self.assertEqual(models.Post.objects.filter(feed=f).count(), 5)

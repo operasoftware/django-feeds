@@ -3,11 +3,7 @@ from __future__ import with_statement
 import sys
 from optparse import make_option
 
-from yadayada.db import TransactionContext
-
-from django.conf import settings
-from django.core import exceptions
-from django.core.management.base import CommandError, NoArgsCommand
+from django.core.management.base import NoArgsCommand
 
 from djangofeeds.tasks import refresh_feed
 from djangofeeds.models import Feed

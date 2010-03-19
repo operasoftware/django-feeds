@@ -1,4 +1,3 @@
-from httplib2 import Http
 from BeautifulSoup import BeautifulSoup
 from HTMLParser import HTMLParseError
 from django.conf import settings

@@ -42,7 +42,6 @@ def generate_guid(entry):
 def search_alternate_links(feed):
     """Search for alternate links into a parsed feed."""
     if not feed.get("entries", 1):
-        links = feed["feed"].get("links") or []
         return [link.get("href") or ""
                     for link in feed["feed"].get("links") or []
                         if "rss" in link.get("type")]

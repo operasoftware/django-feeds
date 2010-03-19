@@ -42,7 +42,6 @@ def naturaldate(date):
     days = delta.days
     hours = round(delta.seconds / 3600, 0)
     minutes = delta.seconds / 60
-    seconds = delta.seconds
 
     if days < 0:
         return JUST_NOW

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import with_statement
+
 import codecs
 import os
 
@@ -86,6 +88,7 @@ for dirpath, dirnames, filenames in os.walk(src_dir):
             data_files.append([dirpath, [os.path.join(dirpath, f) for f in
                 filenames]])
 
+
 def requirements(fh):
     for line in fh:
         entry = line.strip()
@@ -93,7 +96,7 @@ def requirements(fh):
             yield entry
 
 install_requires = []
-for req in ("requirements/default.txt"):
+for req in ("requirements/default.txt", ):
     with file(req) as reqfh:
         install_requires.extend(list(requirements(reqfh)))
 
@@ -109,13 +112,6 @@ setup(
     zip_safe=False,
     data_files = data_files,
     install_requires=install_requires,
-    install_requires=[
-        'yadayada',
-        'feedparser',
-        'celery>=0.9.7',
-        'BeautifulSoup',
-        'httplib2',
-    ],
     classifiers=[
         "Framework :: Django",
         "Development Status :: 3 - Alpha",

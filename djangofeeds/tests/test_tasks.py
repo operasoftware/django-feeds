@@ -16,7 +16,7 @@ class MockImporter(object):
 class TestRefreshFeed(unittest.TestCase):
 
     def test_refresh(self):
-        f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
+        tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
 
         self.assertIn("http://example.com/t.rss", MockImporter.imported)
@@ -25,7 +25,7 @@ class TestRefreshFeed(unittest.TestCase):
         prev = tasks.ENABLE_LOCKS
         tasks.ENABLE_LOCKS = True
         try:
-            f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
+            tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
 
             self.assertIn("http://example.com/t.rss", MockImporter.imported)
@@ -45,7 +45,7 @@ class TestRefreshFeed(unittest.TestCase):
         prev = tasks.cache
         tasks.cache = MockCache()
         try:
-            f = tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
+            tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
             self.assertIn(
                     "http://example.com/t.rss", MockImporter.imported)

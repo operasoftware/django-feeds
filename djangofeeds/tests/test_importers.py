@@ -2,7 +2,6 @@
 from __future__ import with_statement
 
 import os
-import sys
 import time
 import socket
 import httplib as http
@@ -21,7 +20,7 @@ from djangofeeds.importers import FeedImporter
 from djangofeeds.exceptions import FeedCriticalError
 from djangofeeds.exceptions import TimeoutError, FeedNotFoundError
 from djangofeeds import models
-from djangofeeds.models import Feed, Post, Enclosure, FEED_TIMEDOUT_ERROR
+from djangofeeds.models import Feed
 from djangofeeds import feedutil
 
 data_path = os.path.join(os.path.dirname(__file__), 'data')
@@ -362,7 +361,7 @@ class TestFeedImporter(unittest.TestCase):
     def test_import_enclosures(self):
         # FIXME Use something that actually has enclosures.
         importer = FeedImporter(include_enclosures=True)
-        feed = importer.import_feed(self.feed, local=True, force=True)
+        importer.import_feed(self.feed, local=True, force=True)
 
     def test_update_on_import(self):
 
@@ -373,11 +372,11 @@ class TestFeedImporter(unittest.TestCase):
                 self.updated = True
 
         imp1 = _Verify(update_on_import=False)
-        f1 = imp1.import_feed(self.feed, local=True, force=True)
+        imp1.import_feed(self.feed, local=True, force=True)
         self.assertFalse(imp1.updated)
 
         imp2 = _Verify(update_on_import=True)
-        f2 = imp1.import_feed(self.feed, local=True, force=True)
+        imp1.import_feed(self.feed, local=True, force=True)
         self.assertFalse(imp2.updated)
 
     def test_search_alternate_links(self):

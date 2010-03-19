@@ -52,7 +52,7 @@ class test_generate_guid(unittest.TestCase):
 
     def test_is_unique(self):
         entry1 = dict(title="First", link="http://foo1.com")
-        guid1 = feedutil.generate_guid(entry1)
+        feedutil.generate_guid(entry1)
         entry2 = dict(title="Second", link="http://foo1.com")
-        guid2 = feedutil.generate_guid(entry2)
+        feedutil.generate_guid(entry2)
         self.assertNotEqual(entry1, entry2)

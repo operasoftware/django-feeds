@@ -1,4 +1,3 @@
-import sys
 import time
 import socket
 import feedparser
@@ -124,7 +123,6 @@ class FeedImporter(object):
             too recently.
 
         """
-        logger = self.logger
         feed_url = feed_url.strip()
         feed = None
         try:
@@ -235,7 +233,7 @@ class FeedImporter(object):
                                        modified=last_modified)
             except socket.timeout:
                 return feed_obj.save_timeout_error()
-            except Exception, e:
+            except Exception:
                 return feed_obj.save_generic_error()
 
         # Feed can be local/ not fetched with HTTP client.
@@ -248,9 +246,8 @@ class FeedImporter(object):
 
         if feed.entries:
             sorted_by_date = feedutil.entries_by_date(feed.entries, limit)
-
-            entries = [self.import_entry(entry, feed_obj)
-                            for entry in sorted_by_date]
+            for entry in sorted_by_date:
+                self.import_entry(entry, feed_obj)
 
         feed_obj.date_last_refresh = datetime.now()
         feed_obj.http_etag = feed.get("etag", "")

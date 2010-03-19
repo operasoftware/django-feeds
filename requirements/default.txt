@@ -3,4 +3,3 @@ feedparser
 celery
 BeautifulSoup
 httplib2
-yadayada
