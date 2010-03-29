@@ -40,20 +40,6 @@ class ExtendedQuerySet(QuerySet):
         threshold = datetime.now() - timedelta(seconds=interval)
         return self.filter(date_last_refresh__lt=threshold)
 
-
-class ExtendedManager(models.Manager):
-    """Manager supporting :meth:`update_or_create`."""
-
-    def get_query_set(self):
-        return ExtendedQuerySet(self.model)
-
-    def update_or_create(self, **kwargs):
-        return self.get_query_set().update_or_create(**kwargs)
-
-
-class FeedManager(ExtendedManager):
-    """Manager for :class:`djangofeeds.models.Feed`."""
-
     def ratio(self, min=None, max=None):
         """Select feeds based on ratio.
 
@@ -67,6 +53,45 @@ class FeedManager(ExtendedManager):
         if max is not None:
             query["ratio__lt"] = max
         return self.filter(**query)
+
+    def frequency(self, min=None, max=None):
+        """Select feeds based on update frequency.
+
+        :param min: Don't include feeds with a frequency lower than this.
+        :param max: Don't include feeds with a frequency higher than this.
+
+        """
+        query = {}
+        if min is not None:
+            query["freq__gt"] = min
+        if max is not None:
+            query["freq__lt"] = max
+        return self.filter(**query)
+
+
+class ExtendedManager(models.Manager):
+    """Manager supporting :meth:`update_or_create`."""
+
+    def get_query_set(self):
+        return ExtendedQuerySet(self.model)
+
+    def update_or_create(self, **kwargs):
+        return self.get_query_set().update_or_create(**kwargs)
+
+
+
+class FeedManager(ExtendedManager):
+    """Manager for :class:`djangofeeds.models.Feed`."""
+
+    def since(self, interval):
+        return self.get_query_set().since(interval)
+
+    def ratio(self, *args, **kwargs):
+        return self.get_query_set().ratio(*args, **kwargs)
+
+    def frequency(self, *args, **kwargs):
+        return self.get_query_set().frequency(*args, **kwargs)
+
 
 
 class PostManager(ExtendedManager):
