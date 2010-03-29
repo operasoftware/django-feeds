@@ -54,7 +54,6 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
 def update_frequency_chunk(feeds):
     for feed in feeds:
         feed.update_frequency()
-        print("%s -> %s" % (feed.name, feed.freq))
 
 
 @task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
