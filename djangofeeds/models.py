@@ -1,12 +1,15 @@
 """Model working with Feeds and Posts."""
 import httplib as http
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.db import models, transaction
 from django.db.models import signals
 from django.utils.translation import ugettext_lazy as _
 from django.utils.hashcompat import md5_constructor
 
+from celery.utils import timedelta_seconds
+
+from djangofeeds import conf
 from djangofeeds.utils import naturaldate
 from djangofeeds.managers import FeedManager, PostManager
 from djangofeeds.managers import EnclosureManager, CategoryManager
@@ -120,6 +123,7 @@ class Feed(models.Model):
     date_created = models.DateTimeField(_(u"date created"), auto_now_add=True)
     date_changed = models.DateTimeField(_(u"date changed"), auto_now=True)
     is_active = models.BooleanField(_(u"is active"), default=True)
+    freq = models.IntegerField(_(u"frequency"), default=conf.REFRESH_EVERY)
 
     objects = FeedManager()
 
@@ -134,6 +138,24 @@ class Feed(models.Model):
     def get_posts(self, **kwargs):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
+
+    def frequencies(self, limit=None):
+        posts = self.get_posts(limit=limit)
+        return [posts[i - 1].date_updated - post.date_updated
+                    for i, post in enumerate(posts)
+                        if i]
+
+    def average_frequency(self, limit=None, min=5,
+            default=timedelta(hours=2)):
+        freqs = self.frequencies(limit=limit)
+        if len(freqs) < min:
+            return default
+        average = sum(map(timedelta_seconds, freqs)) / len(freqs)
+        return timedelta(seconds=average)
+
+    def update_frequency(self, limit=None, min=5, save=True):
+        self.freq = timedelta_seconds(self.average_frequency(limit, min))
+        save and self.save()
 
     @transaction.commit_manually
     def expire_old_posts(self, min_posts=20, commit=False):

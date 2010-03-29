@@ -1,10 +1,11 @@
 from django.core.cache import cache
 
-from celery.utils import noop
+from celery.utils import noop, chunks
 from celery.decorators import task
 
 from djangofeeds import conf
 from djangofeeds.conf import ROUTING_KEY_PREFIX
+from djangofeeds.models import Feed
 from djangofeeds.importers import FeedImporter
 
 ENABLE_LOCKS = False
@@ -47,3 +48,16 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
         release_lock()
 
     return feed_url
+
+
+@task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
+def update_frequency_chunk(feeds):
+    for feed in feeds:
+        feed.update_frequency()
+        print("%s -> %s" % (feed.name, feed.freq))
+
+
+@task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
+def collect_frequencies(chunksize=10):
+    for chunk in chunks(Feed.objects.all().iterator(), chunksize):
+        update_frequency_chunk.delay(chunk)
