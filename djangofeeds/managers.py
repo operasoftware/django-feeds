@@ -2,6 +2,7 @@ from datetime import timedelta, datetime
 
 from django.db import models
 from django.db.models.query import QuerySet
+from django.core.exceptions import MultipleObjectsReturned
 
 from djangofeeds.utils import truncate_field_data
 
@@ -104,8 +105,16 @@ class PostManager(ExtendedManager):
 
     def update_post(self, feed_obj, **fields):
         """Update post with new values."""
-        return self.update_or_create(guid=fields["guid"], feed=feed_obj,
-                        defaults=truncate_field_data(self.model, fields))
+        defaults = truncate_field_data(self.model, fields)
+        try:
+            return self.update_or_create(guid=fields["guid"], feed=feed_obj,
+                                         defaults=defaults)
+        except MultipleObjectsReturned:
+            print("MULTIPLEOBJECTS FOR %s %s" % (fields["guid"],
+                                                 feed_obj.name))
+            self.filter(guid=fields["guid"], feed=feed_obj).delete()
+            self.update_or_create(guid=fields["guid"], feed=feed_obj,
+                                  defaults=defaults)
 
 
 class CategoryManager(ExtendedManager):
