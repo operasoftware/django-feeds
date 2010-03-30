@@ -110,8 +110,9 @@ class PostManager(ExtendedManager):
             return self.update_or_create(guid=fields["guid"], feed=feed_obj,
                                          defaults=defaults)
         except MultipleObjectsReturned:
-            print("MULTIPLEOBJECTS FOR %s %s" % (fields["guid"],
-                                                 feed_obj.name))
+            print("MULTIPLEOBJECTS FOR %s %s" %
+                    (fields["guid"].encode("utf-8"),
+                     feed_obj.name.encode("utf-8")))
             self.filter(guid=fields["guid"], feed=feed_obj).delete()
             self.update_or_create(guid=fields["guid"], feed=feed_obj,
                                   defaults=defaults)
