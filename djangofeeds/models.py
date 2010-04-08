@@ -141,7 +141,7 @@ class Feed(models.Model):
 
     def frequencies(self, limit=None):
         posts = self.get_posts(limit=limit).values('date_updated')
-        return [posts[i - 1].date_updated - post.date_updated
+        return [posts[i - 1]['date_updated'] - post['date_updated']
                     for i, post in enumerate(posts)
                         if i]
 
