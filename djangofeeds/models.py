@@ -140,7 +140,7 @@ class Feed(models.Model):
         return self.post_set.all_by_order(**kwargs)
 
     def frequencies(self, limit=None):
-        posts = self.get_posts(limit=limit)
+        posts = self.get_posts(limit=limit).values('date_updated')
         return [posts[i - 1].date_updated - post.date_updated
                     for i, post in enumerate(posts)
                         if i]
