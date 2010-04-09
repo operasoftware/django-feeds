@@ -304,7 +304,9 @@ class Post(models.Model):
     objects = PostManager()
 
     class Meta:
-        ordering = ["-date_updated", "date_published"]
+        # Please be very careful. A double sort without index is
+        # very bad for performance, especially when there is so much posts
+        ordering = ["date_published"]
         verbose_name = _(u"post")
         verbose_name_plural = _(u"posts")
 
