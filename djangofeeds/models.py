@@ -305,7 +305,7 @@ class Post(models.Model):
 
     class Meta:
         # double sorting could have catastrophic performance issues.
-        ordering = ["date_published"]
+        ordering = ["-date_published"]
         verbose_name = _(u"post")
         verbose_name_plural = _(u"posts")
 
