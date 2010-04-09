@@ -304,8 +304,9 @@ class Post(models.Model):
     objects = PostManager()
 
     class Meta:
-        # double sorting could have catastrophic performance issues.
-        ordering = ["-date_published"]
+        # sorting on anything else than id is catastrophic for
+        # performance
+        ordering = ["-id"]
         verbose_name = _(u"post")
         verbose_name_plural = _(u"posts")
 
