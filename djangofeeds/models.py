@@ -304,8 +304,7 @@ class Post(models.Model):
     objects = PostManager()
 
     class Meta:
-        # Please be very careful. A double sort without index is
-        # very bad for performance, especially when there is so much posts
+        # double sorting could have catastrophic performance issues.
         ordering = ["date_published"]
         verbose_name = _(u"post")
         verbose_name_plural = _(u"posts")
