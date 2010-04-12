@@ -128,7 +128,9 @@ class Feed(models.Model):
     objects = FeedManager()
 
     class Meta:
-        ordering = ["name", "feed_url"]
+        # it's extremly to order on unindexed field
+        #ordering = ["name", "feed_url"]
+        ordering = ["id"]
         verbose_name = _(u"syndication feed")
         verbose_name_plural = _(u"syndication feeds")
 
