@@ -221,12 +221,12 @@ msgstr "jour"
 
 #: utils.py:16
 msgid "days"
-msgstr ""
+msgstr "jours"
 
 #: utils.py:23
 #, python-format
 msgid "%(number)d %(type)s ago"
-msgstr ""
+msgstr "il y a %(number)d %(type)s"
 
 #~ msgid "This is a test sentence for the demo."
 #~ msgstr "Phrase de test pour la démo."
