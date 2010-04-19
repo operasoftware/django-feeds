@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 16:10+0200\n"
+"POT-Creation-Date: 2010-04-15 13:40+0200\n"
 "PO-Revision-Date: 2009-11-16 07:54\n"
 "Last-Translator: <admin@toto.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,25 +18,15 @@ msgstr ""
 
 #: models.py:28
 msgid "The feed does not seem to be respond. We will try again later."
-msgstr ""
-"Le flux n'a pas l'air de répondre. Un autre essai sera effectué "
-"prochainement."
+msgstr "Le flux n'a pas l'air de répondre. Un autre essai sera effectué prochainement."
 
 #: models.py:30
-msgid ""
-"You entered an incorrect URL or the feed you requested does not exist "
-"anymore."
-msgstr ""
-"Vous avez saisi une URL incorrecte ou le flux que vous avez spécifié "
-"n'existe plus."
+msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgstr "Vous avez saisi une URL incorrecte ou le flux que vous avez spécifié n'existe plus."
 
 #: models.py:33
-msgid ""
-"There was a problem with the feed you provided, please check the URL for "
-"mispellings or try again later."
-msgstr ""
-"Il y a un problème avec le flux que vous avez spécifié; veuillez vérifier "
-"l'URL ou réessayer ultérieurement."
+msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
+msgstr "Il y a un problème avec le flux que vous avez spécifié; veuillez vérifier l'URL ou réessayer ultérieurement."
 
 #: models.py:55 models.py:107
 msgid "name"
@@ -84,25 +74,23 @@ msgstr "dernière erreur"
 
 #: models.py:122
 msgid "sort order"
-msgstr ""
+msgstr "ordre"
 
 #: models.py:123
-#, fuzzy
 msgid "date created"
-msgstr "Date de mise à jour"
+msgstr "date de création"
 
 #: models.py:124
-#, fuzzy
 msgid "date changed"
-msgstr "Date de mise à jour"
+msgstr "date de mise à jour"
 
 #: models.py:125
 msgid "is active"
-msgstr ""
+msgstr "actif"
 
 #: models.py:126
 msgid "frequency"
-msgstr ""
+msgstr "fréquence"
 
 #: models.py:134
 msgid "syndication feed"
@@ -166,70 +154,70 @@ msgstr "posts"
 
 #: utils.py:8
 msgid "just now"
-msgstr ""
+msgstr "récemment"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d second ago"
-msgstr ""
+msgstr "il y a %(seconds)d seconde"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d seconds ago"
-msgstr ""
+msgstr "il y a %(seconds)d secondes"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minute ago"
-msgstr ""
+msgstr "il y a %(minutes)d minute"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minutes ago"
-msgstr ""
+msgstr "il y a %(minutes)d minutes"
 
 #: utils.py:11
 #, python-format
 msgid "%(hours)d hour ago"
-msgstr ""
+msgstr "il y a %(hours)d heure"
 
 #: utils.py:11
 #, python-format
 msgid "%(hours)d hours ago"
-msgstr ""
+msgstr "il y a %(hours)d heures"
 
 #: utils.py:12
 #, python-format
 msgid "yesterday at %(time)s"
-msgstr ""
+msgstr "hier à %(time)s"
 
 #: utils.py:13
 msgid "year"
-msgstr ""
+msgstr "année"
 
 #: utils.py:13
 msgid "years"
-msgstr ""
+msgstr "années"
 
 #: utils.py:14
 msgid "month"
-msgstr ""
+msgstr "mois"
 
 #: utils.py:14
 msgid "months"
-msgstr ""
+msgstr "mois"
 
 #: utils.py:15
 msgid "week"
-msgstr ""
+msgstr "semaine"
 
 #: utils.py:15
 msgid "weeks"
-msgstr ""
+msgstr "semaines"
 
 #: utils.py:16
 msgid "day"
-msgstr ""
+msgstr "jour"
 
 #: utils.py:16
 msgid "days"
