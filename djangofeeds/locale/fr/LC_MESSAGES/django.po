@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 13:40+0200\n"
+"POT-Creation-Date: 2010-04-19 10:10+0200\n"
 "PO-Revision-Date: 2009-11-16 07:54\n"
 "Last-Translator: <admin@toto.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,25 @@ msgstr ""
 
 #: models.py:28
 msgid "The feed does not seem to be respond. We will try again later."
-msgstr "Le flux n'a pas l'air de répondre. Un autre essai sera effectué prochainement."
+msgstr ""
+"Le flux n'a pas l'air de répondre. Un autre essai sera effectué "
+"prochainement."
 
 #: models.py:30
-msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
-msgstr "Vous avez saisi une URL incorrecte ou le flux que vous avez spécifié n'existe plus."
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr ""
+"Vous avez saisi une URL incorrecte ou le flux que vous avez spécifié "
+"n'existe plus."
 
 #: models.py:33
-msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
-msgstr "Il y a un problème avec le flux que vous avez spécifié; veuillez vérifier l'URL ou réessayer ultérieurement."
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"Il y a un problème avec le flux que vous avez spécifié; veuillez vérifier "
+"l'URL ou réessayer ultérieurement."
 
 #: models.py:55 models.py:107
 msgid "name"
