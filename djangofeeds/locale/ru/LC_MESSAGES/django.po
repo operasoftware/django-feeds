@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-14 06:27+0200\n"
+"POT-Creation-Date: 2010-04-15 16:10+0200\n"
 "PO-Revision-Date: 2009-06-26 14:11+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <ru@li.org>\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: models.py:41
+#: models.py:28
 msgid "The feed does not seem to be respond. We will try again later."
 msgstr "Лента не отвечает на запросы. Мы попробуем позже."
 
-#: models.py:43
+#: models.py:30
 msgid ""
 "You entered an incorrect URL or the feed you requested does not exist "
 "anymore."
 msgstr "Вы ввели неверный URL или запрашиваемая лента больше не существует."
 
-#: models.py:46
+#: models.py:33
 msgid ""
 "There was a problem with the feed you provided, please check the URL for "
 "mispellings or try again later."
@@ -34,110 +34,207 @@ msgstr ""
 "С указанной вами лентой возникли проблемы, проверьте правильность URL или "
 "повторите попытку позже."
 
-#: models.py:68 models.py:114
+#: models.py:55 models.py:107
 msgid "name"
 msgstr "имя"
 
-#: models.py:69
+#: models.py:56
 msgid "domain"
 msgstr "домен"
 
-#: models.py:74
+#: models.py:63
 msgid "category"
 msgstr "категория"
 
-#: models.py:75
+#: models.py:64
 msgid "categories"
 msgstr "категории"
 
-#: models.py:115
+#: models.py:108
 msgid "feed URL"
 msgstr "URL ленты"
 
-#: models.py:116
+#: models.py:109
 msgid "description"
 msgstr "описание"
 
-#: models.py:117 models.py:219
+#: models.py:110 models.py:299
 msgid "link"
 msgstr "ссылка"
 
-#: models.py:118
+#: models.py:111
 msgid "E-Tag"
 msgstr "E-Tag"
 
-#: models.py:121
+#: models.py:114
 msgid "Last-Modified"
 msgstr "Last-Modified"
 
-#: models.py:125
+#: models.py:116
 msgid "date of last refresh"
 msgstr "дата последнего обновления"
 
-#: models.py:128
+#: models.py:119
 msgid "last error"
 msgstr "последняя ошибка"
 
-#: models.py:135
+#: models.py:122
+msgid "sort order"
+msgstr ""
+
+#: models.py:123
+#, fuzzy
+msgid "date created"
+msgstr "дата обновления"
+
+#: models.py:124
+#, fuzzy
+msgid "date changed"
+msgstr "дата обновления"
+
+#: models.py:125
+msgid "is active"
+msgstr ""
+
+#: models.py:126
+msgid "frequency"
+msgstr ""
+
+#: models.py:134
 msgid "syndication feed"
 msgstr "лента новостей"
 
-#: models.py:136
+#: models.py:135
 msgid "syndication feeds"
 msgstr "ленты новостей"
 
-#: models.py:164
+#: models.py:242
 msgid "URL"
 msgstr "URL"
 
-#: models.py:165
+#: models.py:243
 msgid "type"
 msgstr "тип"
 
-#: models.py:166
+#: models.py:244
 msgid "length"
 msgstr "длина"
 
-#: models.py:169
+#: models.py:249
 msgid "enclosure"
 msgstr "вложение"
 
-#: models.py:170
+#: models.py:250
 msgid "enclosures"
 msgstr "вложения"
 
-#: models.py:218
+#: models.py:298
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:220
+#: models.py:300
 msgid "content"
 msgstr "содержимое"
 
-#: models.py:221
+#: models.py:301
 msgid "guid"
 msgstr "guid"
 
-#: models.py:222
+#: models.py:302
 msgid "author"
 msgstr "автор"
 
-#: models.py:223
+#: models.py:303
 msgid "date published"
 msgstr "дата публикации"
 
-#: models.py:224
+#: models.py:304
 msgid "date updated"
 msgstr "дата обновления"
 
-#: models.py:232
+#: models.py:314
 msgid "post"
 msgstr "сообщение"
 
-#: models.py:233
+#: models.py:315
 msgid "posts"
 msgstr "сообщения"
 
-#: templates/opal_feeds/display_feeds.html:28
-msgid "This is a test sentence for the demo."
-msgstr "Это тестовое сообщение для демонстрации."
+#: utils.py:8
+msgid "just now"
+msgstr ""
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr ""
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr ""
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr ""
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr ""
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr ""
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr ""
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr ""
+
+#: utils.py:13
+msgid "year"
+msgstr ""
+
+#: utils.py:13
+msgid "years"
+msgstr ""
+
+#: utils.py:14
+msgid "month"
+msgstr ""
+
+#: utils.py:14
+msgid "months"
+msgstr ""
+
+#: utils.py:15
+msgid "week"
+msgstr ""
+
+#: utils.py:15
+msgid "weeks"
+msgstr ""
+
+#: utils.py:16
+msgid "day"
+msgstr ""
+
+#: utils.py:16
+msgid "days"
+msgstr ""
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr ""
+
+#~ msgid "This is a test sentence for the demo."
+#~ msgstr "Это тестовое сообщение для демонстрации."
