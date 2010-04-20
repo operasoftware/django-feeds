@@ -168,8 +168,6 @@ class Feed(models.Model):
         :returns: The number of messages deleted.
 
         """
-        # TODO: optimize this query. Use values() at least to avoid
-        # tranfering all the data. That will be faster.
         all_by_date = self.post_set.all().order_by("-date_published")
         expired_posts = list(all_by_date[min_posts:])
         if expired_posts:
