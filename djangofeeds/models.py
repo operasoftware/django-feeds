@@ -139,8 +139,8 @@ class Feed(models.Model):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
 
-    def frequencies(self, limit=None):
-        posts = self.post_set.values("date_updated").order_by("-date_updated")[0:limit]
+    def frequencies(self, limit=None, order="-date_updated"):
+        posts = self.post_set.values("date_updated").order_by(order)[0:limit]
         return [posts[i - 1]["date_updated"] - post["date_updated"]
                     for i, post in enumerate(posts)
                         if i]

@@ -80,7 +80,6 @@ class ExtendedManager(models.Manager):
         return self.get_query_set().update_or_create(**kwargs)
 
 
-
 class FeedManager(ExtendedManager):
     """Manager for :class:`djangofeeds.models.Feed`."""
 
@@ -92,7 +91,6 @@ class FeedManager(ExtendedManager):
 
     def frequency(self, *args, **kwargs):
         return self.get_query_set().frequency(*args, **kwargs)
-
 
 
 class PostManager(ExtendedManager):

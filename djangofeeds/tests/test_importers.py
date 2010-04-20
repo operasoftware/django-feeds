@@ -412,4 +412,3 @@ class TestFeedImporter(unittest.TestCase):
         for entry in feed["entries"]:
             guid = feedutil.get_entry_guid(feed, entry)
             self.assertTrue(guid)
-
