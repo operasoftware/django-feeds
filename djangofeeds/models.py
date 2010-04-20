@@ -139,13 +139,13 @@ class Feed(models.Model):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
         return self.post_set.all_by_order(**kwargs)
 
-    def frequencies(self, limit=10):
+    def frequencies(self, limit=None):
         posts = self.post_set.values("date_updated").order_by("-date_updated")[0:limit]
         return [posts[i - 1]["date_updated"] - post["date_updated"]
                     for i, post in enumerate(posts)
                         if i]
 
-    def average_frequency(self, limit=10, min=5,
+    def average_frequency(self, limit=None, min=5,
             default=timedelta(hours=2)):
         freqs = self.frequencies(limit=limit)
         if len(freqs) < min:
@@ -153,7 +153,7 @@ class Feed(models.Model):
         average = sum(map(timedelta_seconds, freqs)) / len(freqs)
         return timedelta(seconds=average)
 
-    def update_frequency(self, limit=10, min=5, save=True):
+    def update_frequency(self, limit=None, min=5, save=True):
         self.freq = timedelta_seconds(self.average_frequency(limit, min))
         save and self.save()
 

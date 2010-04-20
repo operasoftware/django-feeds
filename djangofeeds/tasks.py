@@ -51,12 +51,12 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
 
 
 @task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
-def update_frequency_chunk(feeds):
+def update_frequency_chunk(feeds, post_limit=10):
     for feed in feeds:
-        feed.update_frequency()
+        feed.update_frequency(limit=post_limit)
 
 
 @task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
-def collect_frequencies(chunksize=10):
+def collect_frequencies(chunksize=10, post_limit=10):
     for chunk in chunks(Feed.objects.all().iterator(), chunksize):
-        update_frequency_chunk.delay(chunk)
+        update_frequency_chunk.delay(chunk, post_limit=post_limit)
