@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-19 10:10+0200\n"
+"POT-Creation-Date: 2010-04-20 13:50+0200\n"
 "PO-Revision-Date: 2009-11-16 07:54\n"
 "Last-Translator: <admin@toto.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr "URL du flux"
 msgid "description"
 msgstr "description"
 
-#: models.py:110 models.py:299
+#: models.py:110 models.py:295
 msgid "link"
 msgstr "lien"
 
@@ -102,63 +102,63 @@ msgstr "actif"
 msgid "frequency"
 msgstr "fréquence"
 
-#: models.py:134
+#: models.py:132
 msgid "syndication feed"
 msgstr "flux de d'aggrégation"
 
-#: models.py:135
+#: models.py:133
 msgid "syndication feeds"
 msgstr "flux de d'aggrégation"
 
-#: models.py:242
+#: models.py:238
 msgid "URL"
 msgstr "URL"
 
-#: models.py:243
+#: models.py:239
 msgid "type"
 msgstr "type"
 
-#: models.py:244
+#: models.py:240
 msgid "length"
 msgstr "longueur"
 
-#: models.py:249
+#: models.py:245
 msgid "enclosure"
 msgstr "enclosure"
 
-#: models.py:250
+#: models.py:246
 msgid "enclosures"
 msgstr "enclosures"
 
-#: models.py:298
+#: models.py:294
 msgid "title"
 msgstr "titre"
 
-#: models.py:300
+#: models.py:296
 msgid "content"
 msgstr "contenu"
 
-#: models.py:301
+#: models.py:297
 msgid "guid"
 msgstr "guid"
 
-#: models.py:302
+#: models.py:298
 msgid "author"
 msgstr "Auteur"
 
-#: models.py:303
+#: models.py:299
 msgid "date published"
 msgstr "Date de publication"
 
-#: models.py:304
+#: models.py:300
 msgid "date updated"
 msgstr "Date de mise à jour"
 
-#: models.py:314
+#: models.py:310
 msgid "post"
 msgstr "post"
 
-#: models.py:315
+#: models.py:311
 msgid "posts"
 msgstr "posts"
 
