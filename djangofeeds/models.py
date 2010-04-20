@@ -128,9 +128,7 @@ class Feed(models.Model):
     objects = FeedManager()
 
     class Meta:
-        # it's extremly expensive to order by unindexed field
-        #ordering = ["name", "feed_url"]
-        ordering = ["id"]
+        ordering = ("id", )
         verbose_name = _(u"syndication feed")
         verbose_name_plural = _(u"syndication feeds")
 
@@ -142,8 +140,8 @@ class Feed(models.Model):
         return self.post_set.all_by_order(**kwargs)
 
     def frequencies(self, limit=10):
-        posts = self.post_set.values('date_updated').order_by('-date_updated')[0:limit]
-        return [posts[i - 1]['date_updated'] - post['date_updated']
+        posts = self.post_set.values("date_updated").order_by("-date_updated")[0:limit]
+        return [posts[i - 1]["date_updated"] - post["date_updated"]
                     for i, post in enumerate(posts)
                         if i]
 
