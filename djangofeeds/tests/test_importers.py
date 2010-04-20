@@ -23,7 +23,7 @@ from djangofeeds import models
 from djangofeeds.models import Feed
 from djangofeeds import feedutil
 
-data_path = os.path.join(os.path.dirname(__file__), 'data')
+data_path = os.path.join(os.path.dirname(__file__), "data")
 
 FEED_YIELDING_404 = "http://fr.yahoo.com/rssmhwqgiuyeqwgeqygqfyf"
 
@@ -101,7 +101,7 @@ class TestFeedImporter(unittest.TestCase):
         importer = self.importer
         feed_obj = importer.import_feed(feed, local=True)
         self.assertEqual(feed_obj.name, u"La Bande Pas Dessinée")
-        posts = feed_obj.post_set.order_by('-date_published')
+        posts = feed_obj.post_set.order_by("-date_published")
         post_map = [
             (u"NEWS 4", None),
             (u"268 - Technique", """
@@ -160,7 +160,7 @@ class TestFeedImporter(unittest.TestCase):
         self.assertEqual(feed_obj.feed_url, feed, "feed url is filename")
         self.assertTrue(feed_obj.description, "feed has description")
 
-        posts = feed_obj.post_set.order_by('-date_published')
+        posts = feed_obj.post_set.order_by("-date_published")
         first_post = posts[0]
         self.assertEqual(first_post.guid, "Lifehacker-5147831")
         self.assertEqual(str(first_post.date_updated), "2009-02-06 12:30:00")
@@ -351,7 +351,7 @@ class TestFeedImporter(unittest.TestCase):
         Feed.objects.all().delete()
         importer = FeedImporter(include_categories=True)
         feed = importer.import_feed(self.feed, local=True, force=True)
-        post = feed.post_set.order_by('-date_published')[0]
+        post = feed.post_set.order_by("-date_published")[0]
         categories = [cat.name for cat in post.categories.all()]
         for should in ("Downloads", "Screenshots", "Skins", "Themes"):
             self.assertIn(should, categories)
