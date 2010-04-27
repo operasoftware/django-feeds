@@ -101,19 +101,20 @@ class PostManager(ExtendedManager):
         ordering = self.model._meta.ordering
         return self.all().order_by(*ordering)[:limit]
 
-    def update_post(self, feed_obj, **fields):
+    def update_or_create(self, feed_obj, **fields):
         """Update post with new values."""
+        super_update = super(PostManager, self).update_or_create
         defaults = truncate_field_data(self.model, fields)
         try:
-            return self.update_or_create(guid=fields["guid"], feed=feed_obj,
+            return super_update(guid=fields["guid"], feed=feed_obj,
                                          defaults=defaults)
         except MultipleObjectsReturned:
             print("MULTIPLEOBJECTS FOR %s %s" %
                     (fields["guid"].encode("utf-8"),
                      feed_obj.name.encode("utf-8")))
             self.filter(guid=fields["guid"], feed=feed_obj).delete()
-            self.update_or_create(guid=fields["guid"], feed=feed_obj,
-                                  defaults=defaults)
+            super_update(guid=fields["guid"], feed=feed_obj,
+                         defaults=defaults)
 
 
 class CategoryManager(ExtendedManager):

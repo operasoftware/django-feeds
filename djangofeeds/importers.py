@@ -287,7 +287,7 @@ class FeedImporter(object):
         self.logger.debug("ie: %s Importing entry..." % feed_obj.feed_url)
 
         fields = self.post_fields_parsed(entry, feed_obj)
-        post = self.post_model.objects.update_post(feed_obj, **fields)
+        post = self.post_model.objects.update_or_create(feed_obj, **fields)
 
         if self.include_enclosures:
             post.enclosures.add(*(self.get_enclosures(entry) or []))
