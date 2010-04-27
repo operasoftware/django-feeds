@@ -13,14 +13,14 @@ DJANGOFEEDS_BEACON_SERVICES = [
     r'http://a.rfihub.com/.+',
 ]
 
-"""
-Beacon detector use case
-=========================
 
-The idea is to remove some tracker images in the feeds because these images
-are a pollution to the user.
+class BeaconRemover(object):
+    """Beacon detector.
 
-Identified tools that add tracker images and tools into the feeds
+    The idea is to remove some tracker images in the feeds because these images
+    are a pollution to the user.
+
+    Identified tools that add tracker images and tools into the feeds
 
     * Feedburner toolbar -- 4 toolbar images, 1 tracker image.
     * Pheedcontent.com toolbar -- 4 toolbar images, 1 advertisement image.
@@ -29,36 +29,30 @@ Identified tools that add tracker images and tools into the feeds
     * http://a.rfihub.com/ -- associated with http://rocketfuelinc.com/,
         used for ads or tracking. Not quite sure.
 
-About 80% of them use feedburner. Few use case of feeds:
+    About 80% of them use feedburner. Few use cases of feeds:
 
-feedburner toolbar and tracker
--------------------------------
+    * feedburner toolbar and tracker
 
-    * WULFMORGENSTALLER
-    * MarketWatch.com - Top Stories
-    * Hollywood.com - Recent News
-    * Wired: entertainement
-    * Livescience.com
-    * Reader Digest
+        * WULFMORGENSTALLER
+        * MarketWatch.com - Top Stories
+        * Hollywood.com - Recent News
+        * Wired: entertainement
+        * Livescience.com
+        * Reader Digest
 
-Pheedcontent.com toolbar
---------------------------
+    * Pheedcontent.com toolbar
 
-    * Sports News : CBSSports.com
+        * Sports News : CBSSports.com
 
-Digg/Reddit toolbar
--------------------
+    * Digg/Reddit toolbar
 
-    * Abstruse goose
+        * Abstruse goose
 
-http://res.feedsportal.com/
-------------------
+    * http://res.feedsportal.com/
 
-    * New scientist.com
+        * New scientist.com
 
-"""
-
-class BeaconRemover(object):
+    """
 
     def looks_like_beacon(self, image_url):
         """Return True if the image URL has to be removed."""
