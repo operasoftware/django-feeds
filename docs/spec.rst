@@ -25,7 +25,7 @@ But if some other service at Opera needs this, we could add a
 below.
 
 
-.. _`PubSubHubub`: http://en.wikipedia.org/wiki/PubSubHubbub
+.. _`PubSubHubbub`: http://en.wikipedia.org/wiki/PubSubHubbub
 
 
 Support for storing posts in Redis
@@ -33,39 +33,32 @@ Support for storing posts in Redis
 
 * post.save()
 
-  Create/modify post.
-  **IMPLEMENTED**
+    Create/modify post.  **IMPLEMENTED**
 
 * post.delete()
 
-  Delete a post.
-  **IMPLEMENTED**
+    Delete a post.  **IMPLEMENTED**
 
 * post.objects.get(id)
 
-  Get post by id.
-  **IMPLEMENTED**
+    Get post by id.  **IMPLEMENTED**
 
 * post.objects.get_by_guid(feed_url, guid)
 
-  Get post by guid
-  **IMPLEMENTED**
+    Get post by guid **IMPLEMENTED**
 
 * post.objects.all_by_order(feed_url, limit=20)
 
-  Get a list of a feeds posts, sorted by timestamp.
-  **IMPLEMENTED**
+    Get a list of a feeds posts, sorted by timestamp.  **IMPLEMENTED**
 
 * post.objects.update_or_create(feed_url, \*\*fields)
 
-  Update post by guid, or create new post if guid does not
-  already exist.
-  **IMPLEMENTED**
+    Update post by guid, or create new post if guid does not
+    already exist.  **IMPLEMENTED**
 
 * post.objects.expire(feed_url, limit=50)
 
-  Expire old posts in a feed.
-  *NOT IMPLEMENTED*
+    Expire old posts in a feed. *NOT IMPLEMENTED*
 
 Data structure
 ==============
@@ -83,7 +76,7 @@ Example keys::
     Entry:3
 
 
-Pseudocode creating a new id:
+Pseudocode for creating a new id::
 
     new_id = "Entry:%s" % (db.incr("ids:Entry"), )
 
@@ -93,17 +86,17 @@ Posts
 
 Posts must have the following required fields:
 
-    * feed_url (:class:`str`)
+* feed_url (:class:`str`)
 
         Url of the parent feed. To be able to point back to which feed
         an entry belongs to.
 
-    * guid (:class:`str`)
+* guid (:class:`str`)
 
         The unique id of the post. This is only unique per post, so can
-        not be used as a primary key (see `Id`_ above).
+        not be used as a primary key (see `Ids`_ above).
 
-    * timestamp (:class:`datetime.datetime`)
+* timestamp (:class:`datetime.datetime`)
 
         The timestamp corresponding to the date and time this entry
         was last updated.
@@ -118,18 +111,18 @@ Indexes
 
 * $feed_url:sort -> SortedSet(entry_id, timestamp)
 
-A sorted set (:class:`redish.types.SortedSet`) that stores the
-ordering of posts in a feed.
+    A sorted set (:class:`redish.types.SortedSet`) that stores the
+    ordering of posts in a feed.
 
-The members of the sets are entry ids, and the score of the members is the
-timestamp (as a 32-bit int, unix timestamp) the post was last updated.
+    The members of the sets are entry ids, and the score of the members is the
+    timestamp (as a 32-bit int, unix timestamp) the post was last updated.
 
-Used to retreive posts in order, and to easily find older items to expire.
+    Used to retreive posts in order, and to easily find older items to expire.
 
 * $feed_url:guidmap -> Hash(guid, id)
 
-A mapping of guids and their entry ids, used to check for the existence
-of a post by guid, and to update existing posts by guid.
+    A mapping of guids and their entry ids, used to check for the existence
+    of a post by guid, and to update existing posts by guid.
 
 Missing features
 ----------------
