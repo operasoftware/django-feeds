@@ -13,6 +13,7 @@ from djangofeeds import conf
 from djangofeeds.utils import naturaldate
 from djangofeeds.managers import FeedManager, PostManager
 from djangofeeds.managers import EnclosureManager, CategoryManager
+from djangofeeds.backends.pyredis import Entries
 
 ACCEPTED_STATUSES = frozenset([http.OK,
                                http.FOUND,
@@ -103,6 +104,8 @@ class Feed(models.Model):
         The apparent importance of this feed.
 
     """
+    supports_categories = False
+    supports_enclosures = False
 
     name = models.CharField(_(u"name"), max_length=200)
     feed_url = models.URLField(_(u"feed URL"), unique=True)
@@ -137,7 +140,11 @@ class Feed(models.Model):
 
     def get_posts(self, **kwargs):
         """Get all :class:`Post`s for this :class:`Feed` in order."""
-        return self.post_set.all_by_order(**kwargs)
+        return Entries().all_by_order(self.feed_url, **kwargs)
+        #return self.post_set.all_by_order(**kwargs)
+
+    def get_post_count(self):
+        return len(Entries().get_sort_index(self.feed_url))
 
     def frequencies(self, limit=None, order="-date_updated"):
         posts = self.post_set.values("date_updated").order_by(order)[0:limit]
