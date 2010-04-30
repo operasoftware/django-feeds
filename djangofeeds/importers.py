@@ -9,6 +9,7 @@ from djangofeeds import models
 from djangofeeds import feedutil
 from djangofeeds import exceptions
 from djangofeeds.utils import get_default_logger, truncate_field_data
+from djangofeeds.backends import default_post_backend
 
 
 class FeedImporter(object):
@@ -81,6 +82,7 @@ class FeedImporter(object):
         self.include_enclosures = kwargs.get("include_enclosures",
                                         self.include_enclosures)
         self.timeout = kwargs.get("timeout", conf.FEED_TIMEOUT)
+        self.post_model = default_post_backend().get_post_model()
 
     def parse_feed(self, feed_url, etag=None, modified=None, timeout=None):
         """Parse feed using the current feed parser.
@@ -287,7 +289,7 @@ class FeedImporter(object):
         self.logger.debug("ie: %s Importing entry..." % feed_obj.feed_url)
 
         fields = self.post_fields_parsed(entry, feed_obj)
-        post = self.post_model.objects.update_post(feed_obj, **fields)
+        post = self.post_model.objects.update_or_create(feed_obj, **fields)
 
         if self.include_enclosures:
             post.enclosures.add(*(self.get_enclosures(entry) or []))

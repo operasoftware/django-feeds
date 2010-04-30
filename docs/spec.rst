@@ -51,7 +51,7 @@ Support for storing posts in Redis
 
     Get a list of a feeds posts, sorted by timestamp.  **IMPLEMENTED**
 
-* post.objects.update_or_create(feed_url, \*\*fields)
+* post.objects.update_or_create(feed_obj, \*\*fields)
 
     Update post by guid, or create new post if guid does not
     already exist.  **IMPLEMENTED**

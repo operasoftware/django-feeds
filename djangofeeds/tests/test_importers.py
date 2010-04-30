@@ -66,7 +66,7 @@ class TestRegressionOPAL578(unittest.TestCase):
             for filename in self.feeds:
                 f = test_file(filename)
 
-        posts = list(f.post_set.all())
+        posts = list(f.get_posts(limit=None))
         self.assertEqual(len(posts), 4)
 
         seen = set()
@@ -148,7 +148,7 @@ class TestFeedImporter(unittest.TestCase):
         importer = self.importer
         feed_obj = importer.import_feed(feed, local=True)
         self.assertEqual(feed_obj.name, "(no title)")
-        self.assertEqual(feed_obj.post_set.count(), 0, "feed has 0 items")
+        self.assertEqual(feed_obj.get_post_count(), 0, "feed has 0 items")
         self.assertEqual(feed_obj.feed_url, feed, "feed url is filename")
 
     def test_import_feed(self):
@@ -156,19 +156,20 @@ class TestFeedImporter(unittest.TestCase):
         importer = self.importer
         feed_obj = importer.import_feed(feed, local=True)
         self.assertEqual(feed_obj.name, "Lifehacker", "feed title is set")
-        self.assertEqual(feed_obj.post_set.count(), 20, "feed has 20 items")
+        self.assertEqual(feed_obj.get_post_count(), 20, "feed has 20 items")
         self.assertEqual(feed_obj.feed_url, feed, "feed url is filename")
         self.assertTrue(feed_obj.description, "feed has description")
 
-        posts = feed_obj.post_set.order_by("-date_published")
+        posts = feed_obj.get_posts(limit=None)
         first_post = posts[0]
         self.assertEqual(first_post.guid, "Lifehacker-5147831")
         self.assertEqual(str(first_post.date_updated), "2009-02-06 12:30:00")
         for post in posts:
             self.assertTrue(post.guid, "post has GUID")
             self.assertTrue(post.title, "post has title")
-            self.assertEqual(post.enclosures.count(), 0,
-                "post has no enclosures")
+            if hasattr(post, "enclosures"):
+                self.assertEqual(post.enclosures.count(), 0,
+                    "post has no enclosures")
             self.assertTrue(post.link, "post has link")
             self.assertTrue(post.content)
 
@@ -177,7 +178,7 @@ class TestFeedImporter(unittest.TestCase):
                         "Refresh date set")
         self.assertEqual(feed_obj2.id, feed_obj.id,
                         "Importing same feed doesn't create new object")
-        self.assertEqual(feed_obj2.post_set.count(), 20,
+        self.assertEqual(feed_obj2.get_post_count(), 20,
                         "Re-importing feed doesn't give duplicates")
 
     def test_404_feed_raises_ok(self):
@@ -348,6 +349,8 @@ class TestFeedImporter(unittest.TestCase):
             i2.import_feed("xxxyyyzzz", local=True)
 
     def test_import_categories(self):
+        if not Feed.supports_categories:
+            return
         Feed.objects.all().delete()
         importer = FeedImporter(include_categories=True)
         feed = importer.import_feed(self.feed, local=True, force=True)
@@ -357,11 +360,6 @@ class TestFeedImporter(unittest.TestCase):
             self.assertIn(should, categories)
 
         self.assertEqual(len(categories), 13)
-
-    def test_import_enclosures(self):
-        # FIXME Use something that actually has enclosures.
-        importer = FeedImporter(include_enclosures=True)
-        importer.import_feed(self.feed, local=True, force=True)
 
     def test_update_on_import(self):
 
