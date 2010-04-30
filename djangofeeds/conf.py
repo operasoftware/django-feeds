@@ -116,3 +116,18 @@ FEED_LOCK_CACHE_KEY_FMT = getattr(settings,
 FEED_LOCK_EXPIRE = getattr(settings,
                     "DJANGOFEEDS_FEED_LOCK_EXPIRE",
                     DEFAULT_FEED_LOCK_EXPIRE)
+
+
+POST_STORAGE_BACKEND = getattr(settings,
+                            "DJANGOFEEDS_POST_STORAGE_BACKEND",
+                            "djangofeeds.backends.database.DatabaseBackend")
+
+REDIS_POST_HOST = getattr(settings,
+                          "DJANGOFEEDS_REDIS_POST_HOST",
+                          "localhost")
+REDIS_POST_PORT = getattr(settings,
+                          "DJANGOFEEDS_REDIS_POST_PORT",
+                          None)
+REDIS_POST_DB = getattr(settings,
+                        "DJANGOFEEDS_REDIS_POST_DB",
+                        "djangofeeds:post")

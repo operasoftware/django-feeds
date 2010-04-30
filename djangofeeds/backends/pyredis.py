@@ -1,6 +1,7 @@
 from redish.utils import maybe_datetime
 from redish.models import Model, Manager
 
+from djangofeeds import conf
 from djangofeeds.managers import DEFAULT_POST_LIMIT
 
 
@@ -54,3 +55,24 @@ class Entries(Manager):
 
     def get_guid_map(self, feed_url):
         return self.Dict((feed_url, "guidmap"))
+
+
+class RedisBackend(object):
+    _entry = None
+
+    def get_post_model(self):
+        return Entries(host=conf.REDIS_POST_HOST,
+                       port=conf.REDIS_POST_PORT,
+                       db=conf.REDIS_POST_DB).Entry()
+
+    def all_posts_by_order(self, feed, **kwargs):
+        return self.Entry.objects.all_by_order(feed.feed_url, **kwargs)
+
+    def get_post_count(self, feed):
+        return len(self.Entry.objects.get_sort_index(feed.feed_url))
+
+    @property
+    def Entry(self):
+        if self._entry is None:
+            self._entry = self.get_post_model()
+        return self._entry

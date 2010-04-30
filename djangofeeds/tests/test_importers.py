@@ -160,7 +160,7 @@ class TestFeedImporter(unittest.TestCase):
         self.assertEqual(feed_obj.feed_url, feed, "feed url is filename")
         self.assertTrue(feed_obj.description, "feed has description")
 
-        posts = feed_obj.get_posts(limit=-1)
+        posts = feed_obj.get_posts(limit=None)
         first_post = posts[0]
         self.assertEqual(first_post.guid, "Lifehacker-5147831")
         self.assertEqual(str(first_post.date_updated), "2009-02-06 12:30:00")
