@@ -34,7 +34,7 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
         is_locked = lambda: False
 
     logger = refresh_feed.get_logger(**kwargs)
-    logger.info("Importing feed %s" % feed_url)
+    print("Importing feed %s" % feed_url)
     if is_locked():
         logger.error("Feed is already being imported by another process.")
         return feed_url
@@ -43,7 +43,7 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
     acquire_lock()
     try:
         importer = importer_cls(update_on_import=True, logger=logger)
-        importer.import_feed(feed_url)
+        importer.import_feed(feed_url, force=True)
     finally:
         release_lock()
 
