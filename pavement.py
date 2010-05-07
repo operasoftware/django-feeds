@@ -46,7 +46,7 @@ def flakes(options):
 
 @task
 def bump(options):
-    sh("bump -c %s" % (dist, ))
+    sh("bump -c %s" % (DIST, ))
 
 
 @task
