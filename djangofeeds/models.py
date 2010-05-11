@@ -168,7 +168,6 @@ class Feed(models.Model):
         self.freq = timedelta_seconds(self.average_frequency(limit, min))
         save and self.save()
 
-    @transaction.commit_manually
     def expire_old_posts(self, min_posts=20, commit=False):
         """Expire old posts.
 
@@ -179,14 +178,12 @@ class Feed(models.Model):
         :returns: The number of messages deleted.
 
         """
-        all_by_date = self.post_set.all().order_by("-date_published")
-        expired_posts = list(all_by_date[min_posts:])
+        by_date = self.post_set.order_by("-date_published")
+        expired_posts = [post["id"]
+                            for post in by_date.values("id")[min_posts:]]
         if expired_posts:
-            try:
-                deleted = len([post.delete() for post in expired_posts])
-            finally:
-                transaction.commit()
-            return deleted
+            Post.objects.filter(pk__in=expired_posts).delete()
+            return len(expired_posts)
         return 0
 
     def is_error_status(self, status):
