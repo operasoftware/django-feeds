@@ -44,7 +44,8 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
     try:
         importer = importer_cls(update_on_import=True, logger=logger)
         feed = importer.import_feed(feed_url, force=True)
-        feed.expire_old_posts()
+        if feed:
+            feed.expire_old_posts()
     finally:
         release_lock()
 
