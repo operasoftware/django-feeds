@@ -317,7 +317,8 @@ class Post(models.Model):
     class Meta:
         # sorting on anything else than id is catastrophic for
         # performance
-        ordering = ["-id"]
+        # even an ordering by id is not smart
+        # ordering = ["-id"]
         verbose_name = _(u"post")
         verbose_name_plural = _(u"posts")
 
