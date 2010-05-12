@@ -4,3 +4,4 @@ nose-cover3
 coverage
 django-nose
 yadayada
+redish

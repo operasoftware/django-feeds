@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-30 11:20+0200\n"
+"POT-Creation-Date: 2010-05-11 17:20+0200\n"
 "PO-Revision-Date: 2009-06-26 14:11+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <ru@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "URL ленты"
 msgid "description"
 msgstr "описание"
 
-#: models.py:113 models.py:306
+#: models.py:113 models.py:303
 msgid "link"
 msgstr "ссылка"
 
@@ -108,55 +108,55 @@ msgstr "лента новостей"
 msgid "syndication feeds"
 msgstr "ленты новостей"
 
-#: models.py:249
+#: models.py:246
 msgid "URL"
 msgstr "URL"
 
-#: models.py:250
+#: models.py:247
 msgid "type"
 msgstr "тип"
 
-#: models.py:251
+#: models.py:248
 msgid "length"
 msgstr "длина"
 
-#: models.py:256
+#: models.py:253
 msgid "enclosure"
 msgstr "вложение"
 
-#: models.py:257
+#: models.py:254
 msgid "enclosures"
 msgstr "вложения"
 
-#: models.py:305
+#: models.py:302
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:307
+#: models.py:304
 msgid "content"
 msgstr "содержимое"
 
-#: models.py:308
+#: models.py:305
 msgid "guid"
 msgstr "guid"
 
-#: models.py:309
+#: models.py:306
 msgid "author"
 msgstr "автор"
 
-#: models.py:310
+#: models.py:307
 msgid "date published"
 msgstr "дата публикации"
 
-#: models.py:311
+#: models.py:308
 msgid "date updated"
 msgstr "дата обновления"
 
-#: models.py:321
+#: models.py:318
 msgid "post"
 msgstr "сообщение"
 
-#: models.py:322
+#: models.py:319
 msgid "posts"
 msgstr "сообщения"
 
