@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 17:20+0200\n"
+"POT-Creation-Date: 2010-05-12 13:20+0200\n"
 "PO-Revision-Date: 2009-06-18 17:08+0100\n"
 "Last-Translator: Pål Eivind Jacobsen Nes <paaln@opera.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,11 +152,11 @@ msgstr "dato publisert"
 msgid "date updated"
 msgstr "dato oppdatert"
 
-#: models.py:318
+#: models.py:319
 msgid "post"
 msgstr "artikkel"
 
-#: models.py:319
+#: models.py:320
 msgid "posts"
 msgstr "artikler"
 

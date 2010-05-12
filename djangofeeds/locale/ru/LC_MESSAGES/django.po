@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 17:20+0200\n"
+"POT-Creation-Date: 2010-05-12 13:20+0200\n"
 "PO-Revision-Date: 2009-06-26 14:11+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <ru@li.org>\n"
@@ -152,11 +152,11 @@ msgstr "дата публикации"
 msgid "date updated"
 msgstr "дата обновления"
 
-#: models.py:318
+#: models.py:319
 msgid "post"
 msgstr "сообщение"
 
-#: models.py:319
+#: models.py:320
 msgid "posts"
 msgstr "сообщения"
 
