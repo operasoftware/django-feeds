@@ -127,7 +127,7 @@ class Feed(models.Model):
     date_changed = models.DateTimeField(_(u"date changed"), auto_now=True)
 
     # last time a real user requested the feed
-    date_last_requested = models.DateTimeField(_(u"last requested"), auto_now=True)
+    date_last_requested = models.DateTimeField(_(u"last requested"), auto_now_add=True)
     
     is_active = models.BooleanField(_(u"is active"), default=True)
     freq = models.IntegerField(_(u"frequency"), default=conf.REFRESH_EVERY)
