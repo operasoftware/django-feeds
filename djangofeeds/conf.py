@@ -85,6 +85,15 @@ REFRESH_EVERY = getattr(settings, "DJANGOFEEDS_REFRESH_EVERY",
                         DEFAULT_REFRESH_EVERY)
 
 
+"""".. data:: FEED_LAST_REQUESTED_REFRESH_LIMIT
+
+    the maximum amount of time a feed can be unused
+    before stopping refreshing it. Used by opal-feed.
+"""
+FEED_LAST_REQUESTED_REFRESH_LIMIT = getattr(settings,
+                    "FEED_LAST_REQUESTED_REFRESH_LIMIT", None)
+
+
 """ .. data:: ROUTING_KEY_PREFIX
 
     Prefix for AMQP routing key.
