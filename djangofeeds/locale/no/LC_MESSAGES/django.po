@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-11 17:20+0200\n"
+"POT-Creation-Date: 2010-05-12 15:50+0200\n"
 "PO-Revision-Date: 2009-06-18 17:08+0100\n"
 "Last-Translator: Pål Eivind Jacobsen Nes <paaln@opera.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "kanal adresse"
 msgid "description"
 msgstr "beskrivelse"
 
-#: models.py:113 models.py:303
+#: models.py:113 models.py:307
 msgid "link"
 msgstr "lenke"
 
@@ -92,71 +92,76 @@ msgstr "dato oppdatert"
 msgid "date changed"
 msgstr "dato oppdatert"
 
-#: models.py:128
+#: models.py:130
+#, fuzzy
+msgid "last requested"
+msgstr "dato oppdatert"
+
+#: models.py:132
 msgid "is active"
 msgstr ""
 
-#: models.py:129
+#: models.py:133
 msgid "frequency"
 msgstr ""
 
-#: models.py:135
+#: models.py:139
 msgid "syndication feed"
 msgstr "syndikeringskanal"
 
-#: models.py:136
+#: models.py:140
 msgid "syndication feeds"
 msgstr "syndikeringskanaler"
 
-#: models.py:246
+#: models.py:250
 msgid "URL"
 msgstr "URL\t"
 
-#: models.py:247
+#: models.py:251
 msgid "type"
 msgstr "type"
 
-#: models.py:248
+#: models.py:252
 msgid "length"
 msgstr "lengde"
 
-#: models.py:253
+#: models.py:257
 msgid "enclosure"
 msgstr "vedlegg"
 
-#: models.py:254
+#: models.py:258
 msgid "enclosures"
 msgstr "vedlegg"
 
-#: models.py:302
+#: models.py:306
 msgid "title"
 msgstr "tittel"
 
-#: models.py:304
+#: models.py:308
 msgid "content"
 msgstr "innhold"
 
-#: models.py:305
+#: models.py:309
 msgid "guid"
 msgstr "guid"
 
-#: models.py:306
+#: models.py:310
 msgid "author"
 msgstr "forfatter"
 
-#: models.py:307
+#: models.py:311
 msgid "date published"
 msgstr "dato publisert"
 
-#: models.py:308
+#: models.py:312
 msgid "date updated"
 msgstr "dato oppdatert"
 
-#: models.py:318
+#: models.py:323
 msgid "post"
 msgstr "artikkel"
 
-#: models.py:319
+#: models.py:324
 msgid "posts"
 msgstr "artikler"
 

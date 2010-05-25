@@ -56,3 +56,9 @@ class test_generate_guid(unittest.TestCase):
         entry2 = dict(title="Second", link="http://foo1.com")
         feedutil.generate_guid(entry2)
         self.assertNotEqual(entry1, entry2)
+
+    def test_utf8_url(self):
+        """Try to reproduce a utf8 encoding error."""
+        utf8_entry = dict(title="UTF-8",
+            link="premi\xc3\xa8re_")
+        feedutil.get_entry_guid(None, utf8_entry)
