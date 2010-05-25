@@ -52,7 +52,6 @@ class TestRedisBackend(unittest.TestCase):
         ordered = self.b.all_by_order(entries[0].feed_url)
         self.assertEqual(len(ordered), len(posts))
 
-
     def test_entry_lifecycle(self):
         data = self.create_post()
         posts = self.b

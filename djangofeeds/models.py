@@ -2,7 +2,7 @@
 import httplib as http
 from datetime import datetime, timedelta
 
-from django.db import models, transaction
+from django.db import models
 from django.db.models import signals
 from django.utils.translation import ugettext_lazy as _
 from django.utils.hashcompat import md5_constructor
@@ -137,7 +137,6 @@ class Feed(models.Model):
 
     def __init__(self, *args, **kwargs):
         super(Feed, self).__init__(*args, **kwargs)
-        from djangofeeds.backends import default_post_backend
         self.poststore = default_post_backend()
 
     def __unicode__(self):
