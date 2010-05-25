@@ -125,10 +125,8 @@ class Feed(models.Model):
     sort = models.SmallIntegerField(_(u"sort order"), default=0)
     date_created = models.DateTimeField(_(u"date created"), auto_now_add=True)
     date_changed = models.DateTimeField(_(u"date changed"), auto_now=True)
-
-    # last time a real user requested the feed
-    date_last_requested = models.DateTimeField(_(u"last requested"), auto_now_add=True)
-    
+    date_last_requested = models.DateTimeField(_(u"last requested"),
+                                               auto_now_add=True)
     is_active = models.BooleanField(_(u"is active"), default=True)
     freq = models.IntegerField(_(u"frequency"), default=conf.REFRESH_EVERY)
 
