@@ -140,3 +140,7 @@ REDIS_POST_PORT = getattr(settings,
 REDIS_POST_DB = getattr(settings,
                         "DJANGOFEEDS_REDIS_POST_DB",
                         "djangofeeds:post")
+
+FSCK_ON_UPDATE = getattr(settings,
+                         "DJANGOFEEDS_FSCK_ON_UPDATE",
+                         False)
