@@ -1,3 +1,5 @@
+from itertools import imap
+
 from redish.utils import maybe_datetime
 from redish.models import Model, Manager
 
@@ -67,7 +69,8 @@ class Entries(Manager):
         except KeyError:
             return self.create(**fields)
 
-    def _verify_guidmap_consistency(self, feed_url):
+    def _verify_guidmap_consistency(self, feed_url, clean=True, full=False):
+        # Verify that all pks in the guid map exists.
         guid_map = self.get_guid_map(feed_url)
         reverse = dict((pk, guid) for guid, pk in guid_map.items())
         pks = reverse.keys()
@@ -81,11 +84,13 @@ class Entries(Manager):
                         "related key does not exist anymore." % (
                             feed_url, pks[i], guid_map[pks[i]]),
                         InconsistencyWarning)
-                    del(guid_map[pks[i]])
+                    if clean:
+                        del(guid_map[pks[i]])
                     issues += 1
         return issues
 
-    def _verify_sort_index_consistency(self, feed_url):
+    def _verify_sort_index_consistency(self, feed_url, clean=True, full=False):
+        # Verify that all pks in the sort index exists.
         index = self.get_sort_index(self, feed_url)
         pks = list(index)
         postdata = self.api.mget(pks)
@@ -98,11 +103,27 @@ class Entries(Manager):
                         "related key does not exist anymore." % (
                             feed_url, pks[i]),
                         InconsistencyWarning)
-                    index.remove(pks[i])
+                    if clean:
+                        index.remove(pks[i])
                     issues += 1
+        if full:
+            # Verify that all entries in the system is in one or more
+            # sort indices.
+            seen = set()
+            entrypks = set(self.keys("Entry:*"))
+            for index in imap(self.SortedSet, self.iterkeys("*:sort")):
+                seen.update(set(index))
+            for missing in entrypks ^ seen:
+                warnings.warn(
+                    "Loose entry not in any sort index: %s (%s)" % (
+                            missing, self[missing]),
+                        InconsistencyWarning)
+                if clean:
+                    del(self[missing])
+                issues += 1
         return issues
 
-    def fsck(self, feed_urls=None):
+    def fsck(self, feed_urls=None, clean=True, full=False):
         if feed_urls is None:
             # Verify all existing feeds.
             _gkeys = set(k[:-8] for k in self.keys("*:guidmap"))
@@ -110,8 +131,8 @@ class Entries(Manager):
             feed_urls = _gkeys | _skeys
 
         for feed_url in feed_urls:
-            self.verify_guidmap_consistency(feed_url)
-            self.verify_sort_index_consistency(self, feed_url)
+            self.verify_guidmap_consistency(feed_url, clean, full)
+            self.verify_sort_index_consistency(feed_url, clean, full)
 
     def get_by_guid(self, feed_url, guid):
         return self.get(self.get_guid_map(feed_url)[guid])
