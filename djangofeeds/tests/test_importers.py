@@ -103,7 +103,7 @@ class TestFeedImporter(unittest.TestCase):
         self.assertEqual(feed_obj.name, u"La Bande Pas Dessinée")
         posts = feed_obj.post_set.order_by("-date_published")
         post_map = [
-            (u"NEWS 4", None)
+            (u"NEWS 4", None),
             (u"268 - Technique", """
 <img src="http://www.labandepasdessinee.com/bpd/images/saison3/268
 """),
