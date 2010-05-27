@@ -1,4 +1,5 @@
 from itertools import imap
+from datetime import datetime
 
 from redish.utils import maybe_datetime
 from redish.models import Model, Manager
@@ -59,7 +60,7 @@ class Entries(Manager):
         fields["feed_url"] = feed_obj.feed_url
         fields["timestamp"] = fields["date_updated"]
 
-        conf.FSCK_ON_UPDATE and self.fsck([feed_url])
+        conf.FSCK_ON_UPDATE and self.fsck([feed_url], full=False)
 
         try:
             entry = self.get_by_guid(fields["feed_url"], fields["guid"])
@@ -68,6 +69,34 @@ class Entries(Manager):
             return entry
         except KeyError:
             return self.create(**fields)
+
+    def _verify_post_consistency(self, pk, post, clean=True):
+        is_string = lambda s: isinstance(s, basestring)
+        is_datetime = lambda s: isinstance(s, datetime)
+
+        tests = {"feed_url": [is_string],
+                 "guid": [is_string],
+                 "date_updated": [is_datetime],
+                 "content": [],
+                 "title": []}
+
+        for key, checks in tests.items():
+            if key in post:
+                value = post[key]
+                if any(check(value) for check in checks):
+                    failure = "invalid"
+            else:
+                failure = "missing"
+                value = None
+
+            if failure:
+                warnings.warn(
+                    "%s key for entry %s: %s (value: '%s')" % (
+                        failure, pk, key, value),
+                    InconsistencyWarning)
+                if clean:
+                    del(self[pk])
+
 
     def _verify_guidmap_consistency(self, feed_url, clean=True, full=False):
         # Verify that all pks in the guid map exists.
@@ -149,6 +178,10 @@ class Entries(Manager):
         for feed_url in feed_urls:
             self.verify_guidmap_consistency(feed_url, clean, full)
             self.verify_sort_index_consistency(feed_url, clean, full)
+
+        if full:
+            for pk, post in self.iteritems("Entry:*"):
+                self._verify_post_consistency(pk, post, clean)
 
     def get_by_guid(self, feed_url, guid):
         return self.get(self.get_guid_map(feed_url)[guid])
