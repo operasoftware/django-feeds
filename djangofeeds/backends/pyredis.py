@@ -87,6 +87,22 @@ class Entries(Manager):
                     if clean:
                         del(guid_map[pks[i]])
                     issues += 1
+        if full:
+            # Verify that all entries in the system is in one or more
+            # guid maps.
+            seen = set()
+            entrypks = set(self.keys("Entry:*"))
+            for guidmap in imap(self.Dict, self.keys("*:guidmap")):
+                seen.update(set(guidmap.values()))
+            for missing in entrypks ^ seen:
+                warnings.warn(
+                    "Loose entry not in any guid map: %s (%s)" % (
+                            missing, self[missing]),
+                        InconsistencyWarning)
+                if clean:
+                    del(self[missing])
+                issues += 1
+
         return issues
 
     def _verify_sort_index_consistency(self, feed_url, clean=True, full=False):
