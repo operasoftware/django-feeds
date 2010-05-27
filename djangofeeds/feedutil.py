@@ -54,12 +54,16 @@ def get_entry_guid(feed_obj, entry):
     If the post doesn't have a guid, a new guid is generated.
 
     """
-    try:
-        guid = entry["guid"]
-        guid = guid.encode("utf-8").strip()
-        return guid
-    except KeyError:
+    if not entry.has_key('guid'):
         return generate_guid(entry)
+
+    guid = entry["guid"]
+    try:
+        guid = guid.encode("utf-8").strip()
+    except UnicodeDecodeError:
+        guid = guid.strip()
+    return guid
+
 
 
 def entries_by_date(entries, limit=None):
