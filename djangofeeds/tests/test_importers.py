@@ -410,3 +410,26 @@ class TestFeedImporter(unittest.TestCase):
         for entry in feed["entries"]:
             guid = feedutil.get_entry_guid(feed, entry)
             self.assertTrue(guid)
+
+        feed_str = get_data_file("poker_pl.rss")
+        feed = feedparser.parse(feed_str)
+        for entry in feed["entries"]:
+            guid = feedutil.get_entry_guid(feed, entry)
+            self.assertTrue(guid)
+
+    def test_generate_utf8_encode_guid_bug_time_mk(self):
+        
+        feed_str = get_data_file("time_mk.rss")
+        feed = feedparser.parse(feed_str)
+        self.assertTrue(len(feed["entries"]) > 0)
+        for entry in feed["entries"]:
+            guid = feedutil.get_entry_guid(feed, entry)
+            self.assertTrue(guid)
+        
+        imported_feed = self.importer.import_feed(feed_str, local=True, force=True)
+        self.assertTrue(imported_feed.post_set.count() > 0)
+        for post in imported_feed.post_set.all():
+            guid = post.guid
+            self.assertTrue(guid)
+
+        

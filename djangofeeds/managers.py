@@ -109,9 +109,6 @@ class PostManager(ExtendedManager):
             return super_update(guid=fields["guid"], feed=feed_obj,
                                          defaults=defaults)
         except MultipleObjectsReturned:
-            print("MULTIPLEOBJECTS FOR %s %s" %
-                    (fields["guid"].encode("utf-8"),
-                     feed_obj.name.encode("utf-8")))
             self.filter(guid=fields["guid"], feed=feed_obj).delete()
             super_update(guid=fields["guid"], feed=feed_obj,
                          defaults=defaults)
