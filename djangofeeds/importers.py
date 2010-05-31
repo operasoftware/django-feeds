@@ -137,7 +137,7 @@ class FeedImporter(object):
                 new_feed_url = feed.get("href", feed_url)
                 # if it's the case, we need to try again with the new feed URL
                 # because otherwise it would skip the
-                # self.feed_model.DoesNotExist # check.
+                # self.feed_model.DoesNotExist check.
                 if new_feed_url != feed_url:
                     return self.import_feed(new_feed_url, force, local)
             except socket.timeout:
