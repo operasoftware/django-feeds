@@ -2,9 +2,36 @@ from __future__ import with_statement
 
 import unittest2 as unittest
 from datetime import datetime, timedelta
+from functools import wraps
 from itertools import count
 
-from djangofeeds.backends.pyredis import Entries
+from nose import SkipTest
+
+try:
+    from redis.exceptions import ConnectionError
+except ImportError:
+    class ConnectionError(socket.error):
+        pass
+
+try:
+    import redis
+except ImportError:
+    Entries = None
+else:
+    from djangofeeds.backends.pyredis import Entries
+
+
+def skip_if_redis_not_running(fun):
+
+    @wraps(fun)
+    def _inner(*args, **kwargs):
+        if Entries is None:
+            raise SkipTest("The redis library is not installed.")
+        try:
+            return fun(*args, **kwargs)
+        except ConnectionError, exc:
+            raise SkipTest("Can't connect to redis server: %s" % (exc, ))
+
 
 
 class TestRedisBackend(unittest.TestCase):
@@ -33,6 +60,7 @@ class TestRedisBackend(unittest.TestCase):
         ret = dict(self.test_data, **fields)
         return ret
 
+    @skip_if_redis_not_running
     def test_is_sorted(self):
         f = "http://google.com/reader/rss/123"
         posts = [self.create_post(feed_url=f, delta=timedelta(hours=-1)),
@@ -52,6 +80,7 @@ class TestRedisBackend(unittest.TestCase):
         ordered = self.b.all_by_order(entries[0].feed_url)
         self.assertEqual(len(ordered), len(posts))
 
+    @skip_if_redis_not_running
     def test_entry_lifecycle(self):
         data = self.create_post()
         posts = self.b
