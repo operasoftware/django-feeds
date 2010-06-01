@@ -16,7 +16,7 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
-TEST_RUNNER = "django_nose.run_tests"
+TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
 
 COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
                             "djangofeeds.admin",
