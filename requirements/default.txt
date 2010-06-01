@@ -1,5 +1,6 @@
 importlib
 feedparser
 celery
+django-celery
 BeautifulSoup
 httplib2
