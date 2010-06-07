@@ -11,10 +11,10 @@ from djangofeeds.managers import DEFAULT_POST_LIMIT
 class InconsistencyWarning(UserWarning):
     """An inconsistency with the data has been found."""
 
-
 class Entry(Model):
 
     def post_save(self):
+        self.recent_imports.add(self.feed_url)
         self.sort_index.add(self.id, maybe_datetime(self.timestamp))
         self.guid_map[self.guid] = self.id
 
@@ -29,6 +29,10 @@ class Entry(Model):
     @property
     def guid_map(self):
         return self.objects.get_guid_map(self["feed_url"])
+
+    @property
+    def recent_imports(self):
+        return self.objects.Set("Recent:imports")
 
     def __repr__(self):
         if "guid" in self and "title" in self:
@@ -176,8 +180,8 @@ class Entries(Manager):
             feed_urls = _gkeys | _skeys
 
         for feed_url in feed_urls:
-            self.verify_guidmap_consistency(feed_url, clean, full)
-            self.verify_sort_index_consistency(feed_url, clean, full)
+            self._verify_guidmap_consistency(feed_url, clean, full)
+            self._verify_sort_index_consistency(feed_url, clean, full)
 
         if full:
             for pk, post in self.iteritems("Entry:*"):
