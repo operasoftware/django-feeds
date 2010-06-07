@@ -13,8 +13,12 @@ class InconsistencyWarning(UserWarning):
 
 class Entry(Model):
 
-    def post_save(self):
+    def prepare_save(self, fields):
+        # Save set of recently imported feeds, for faster integrity checks.
         self.recent_imports.add(self.feed_url)
+        return fields
+
+    def post_save(self):
         self.sort_index.add(self.id, maybe_datetime(self.timestamp))
         self.guid_map[self.guid] = self.id
 
