@@ -9,6 +9,7 @@ DJANGOFEEDS_REMOVE_BEACON = getattr(settings,
 # for now only the obvious tracker images
 DJANGOFEEDS_BEACON_SERVICES = [
     r'http://feeds.feedburner.com/~r/.+',
+    r'http://feeds.feedburner.com/~ff/.+',
     r'http://ads.pheedo.com/.+',
     r'http://a.rfihub.com/.+',
 ]
