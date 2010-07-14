@@ -12,6 +12,8 @@ DJANGOFEEDS_BEACON_SERVICES = [
     r'http://feeds.feedburner.com/~ff/.+',
     r'http://ads.pheedo.com/.+',
     r'http://a.rfihub.com/.+',
+    r'http://segment-pixel.invitemedia.com/.+',
+    r'http://pixel.quantserve.com/.+',
 ]
 
 
@@ -83,5 +85,11 @@ class BeaconRemover(object):
             if image_source and "://" in image_source:
                 if self.looks_like_beacon(image_source):
                     image.replaceWith("")
+                    stripped_count += 1
+        for link in soup("a"):
+            link_href = link.get("href")
+            if link_href and "://" in link_href:
+                if self.looks_like_beacon(link_href):
+                    link.replaceWith("")
                     stripped_count += 1
         return str(soup) if stripped_count else html
