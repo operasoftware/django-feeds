@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-15 13:40+0200\n"
+"POT-Creation-Date: 2010-09-14 13:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,143 +16,148 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:28
-msgid "The feed does not seem to be responding. We will try again later."
+#: models.py:29
+msgid "The feed does not seem to be respond. We will try again later."
 msgstr ""
 
-#: models.py:30
+#: models.py:31
 msgid ""
-"You entered an incorrect URL, or the feed you requested does not exist. "
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
 msgstr ""
 
-#: models.py:33
+#: models.py:34
 msgid ""
-"There was a problem with the feed you provided. Please check the URL for "
+"There was a problem with the feed you provided, please check the URL for "
 "mispellings or try again later."
 msgstr ""
 
-#: models.py:55 models.py:107
-msgid "Name"
+#: models.py:56 models.py:110
+msgid "name"
 msgstr ""
 
-#: models.py:56
-msgid "Domain"
-msgstr ""
-
-#: models.py:63
-msgid "Category"
+#: models.py:57
+msgid "domain"
 msgstr ""
 
 #: models.py:64
-msgid "Categories"
+msgid "category"
 msgstr ""
 
-#: models.py:108
-msgid "Feed URL"
-msgstr ""
-
-#: models.py:109
-msgid "Description"
-msgstr ""
-
-#: models.py:110 models.py:299
-msgid "Link"
+#: models.py:65
+msgid "categories"
 msgstr ""
 
 #: models.py:111
-msgid "E-Tag"
+msgid "feed URL"
+msgstr ""
+
+#: models.py:112
+msgid "description"
+msgstr ""
+
+#: models.py:113 models.py:304
+msgid "link"
 msgstr ""
 
 #: models.py:114
+msgid "E-Tag"
+msgstr ""
+
+#: models.py:117
 msgid "Last-Modified"
 msgstr ""
 
-#: models.py:116
-msgid "Date of last refresh"
-msgstr ""
-
 #: models.py:119
-msgid "Last error"
+msgid "date of last refresh"
 msgstr ""
 
 #: models.py:122
-msgid "Sort order"
-msgstr ""
-
-#: models.py:123
-msgid "Date created"
-msgstr ""
-
-#: models.py:124
-msgid "Date changed"
+msgid "last error"
 msgstr ""
 
 #: models.py:125
-msgid "is active"
+msgid "sort order"
 msgstr ""
 
 #: models.py:126
-msgid "Frequency"
+msgid "date created"
 msgstr ""
 
-#: models.py:134
-msgid "Syndication feed"
+#: models.py:127
+msgid "date changed"
 msgstr ""
 
-#: models.py:135
-msgid "Syndication feeds"
+#: models.py:128
+msgid "last requested"
 msgstr ""
 
-#: models.py:242
+#: models.py:130
+msgid "is active"
+msgstr ""
+
+#: models.py:131
+msgid "frequency"
+msgstr ""
+
+#: models.py:137
+msgid "syndication feed"
+msgstr ""
+
+#: models.py:138
+msgid "syndication feeds"
+msgstr ""
+
+#: models.py:247
 msgid "URL"
 msgstr ""
 
-#: models.py:243
-msgid "Type"
-msgstr ""
-
-#: models.py:244
-msgid "Length"
+#: models.py:248
+msgid "type"
 msgstr ""
 
 #: models.py:249
-msgid "Enclosure"
+msgid "length"
 msgstr ""
 
-#: models.py:250
-msgid "Enclosures"
+#: models.py:254
+msgid "enclosure"
 msgstr ""
 
-#: models.py:298
-msgid "Title"
-msgstr ""
-
-#: models.py:300
-msgid "Content"
-msgstr ""
-
-#: models.py:301
-msgid "guid"
-msgstr ""
-
-#: models.py:302
-msgid "Author"
+#: models.py:255
+msgid "enclosures"
 msgstr ""
 
 #: models.py:303
-msgid "Date published"
+msgid "title"
 msgstr ""
 
-#: models.py:304
-msgid "Date updated"
+#: models.py:305
+msgid "content"
 msgstr ""
 
-#: models.py:314
-msgid "Post"
+#: models.py:306
+msgid "guid"
 msgstr ""
 
-#: models.py:315
-msgid "Posts"
+#: models.py:307
+msgid "author"
+msgstr ""
+
+#: models.py:308
+msgid "date published"
+msgstr ""
+
+#: models.py:309
+msgid "date updated"
+msgstr ""
+
+#: models.py:320
+msgid "post"
+msgstr ""
+
+#: models.py:321
+msgid "posts"
 msgstr ""
 
 #: utils.py:8
