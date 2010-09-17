@@ -187,46 +187,46 @@ msgstr "%(hours)d 小时前"
 #: utils.py:11
 #, python-format
 msgid "%(hours)d hours ago"
-msgstr ""
+msgstr "%(hours)d 小时前"
 
 #: utils.py:12
 #, python-format
 msgid "yesterday at %(time)s"
-msgstr ""
+msgstr "昨天 %(time)s"
 
 #: utils.py:13
 msgid "year"
-msgstr ""
+msgstr "年"
 
 #: utils.py:13
 msgid "years"
-msgstr ""
+msgstr "年"
 
 #: utils.py:14
 msgid "month"
-msgstr ""
+msgstr "月"
 
 #: utils.py:14
 msgid "months"
-msgstr ""
+msgstr "月"
 
 #: utils.py:15
 msgid "week"
-msgstr ""
+msgstr "周"
 
 #: utils.py:15
 msgid "weeks"
-msgstr ""
+msgstr "周"
 
 #: utils.py:16
 msgid "day"
-msgstr ""
+msgstr "天"
 
 #: utils.py:16
 msgid "days"
-msgstr ""
+msgstr "天"
 
 #: utils.py:23
 #, python-format
 msgid "%(number)d %(type)s ago"
-msgstr ""
+msgstr "%(number)d %(type)s 之前"
