@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-02 14:40+0200\n"
+"POT-Creation-Date: 2010-09-17 12:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,15 @@ msgid "The feed does not seem to be respond. We will try again later."
 msgstr "Feed 无响应，我们将稍后再试。"
 
 #: models.py:31
-msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
 msgstr "请求的 feed 不存在或您输入了错误的 URL"
 
 #: models.py:34
-msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
 msgstr "缝隙 feed 时遇到问题，请检查 URL 是否拼写正确或再试一次"
 
 #: models.py:56 models.py:110
