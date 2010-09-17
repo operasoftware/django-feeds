@@ -101,88 +101,88 @@ msgstr "联合 feed"
 
 #: models.py:138
 msgid "syndication feeds"
-msgstr ""
+msgstr "联合 feed"
 
 #: models.py:247
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: models.py:248
 msgid "type"
-msgstr ""
+msgstr "类型"
 
 #: models.py:249
 msgid "length"
-msgstr ""
+msgstr "长度"
 
 #: models.py:254
 msgid "enclosure"
-msgstr ""
+msgstr "附件"
 
 #: models.py:255
 msgid "enclosures"
-msgstr ""
+msgstr "附件"
 
 #: models.py:303
 msgid "title"
-msgstr ""
+msgstr "标题"
 
 #: models.py:305
 msgid "content"
-msgstr ""
+msgstr "内容"
 
 #: models.py:306
 msgid "guid"
-msgstr ""
+msgstr "guid"
 
 #: models.py:307
 msgid "author"
-msgstr ""
+msgstr "作者"
 
 #: models.py:308
 msgid "date published"
-msgstr ""
+msgstr "发布日期"
 
 #: models.py:309
 msgid "date updated"
-msgstr ""
+msgstr "更新日期"
 
 #: models.py:320
 msgid "post"
-msgstr ""
+msgstr "文章"
 
 #: models.py:321
 msgid "posts"
-msgstr ""
+msgstr "文章"
 
 #: utils.py:8
 msgid "just now"
-msgstr ""
+msgstr "现在"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d second ago"
-msgstr ""
+msgstr "%(seconds)d 秒前"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d seconds ago"
-msgstr ""
+msgstr "%(seconds)d 秒前"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minute ago"
-msgstr ""
+msgstr "%(minutes)d 分钟前"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minutes ago"
-msgstr ""
+msgstr "%(minutes)d 分钟前"
 
 #: utils.py:11
 #, python-format
 msgid "%(hours)d hour ago"
-msgstr ""
+msgstr "%(hours)d 小时前"
 
 #: utils.py:11
 #, python-format
