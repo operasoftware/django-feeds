@@ -73,7 +73,7 @@ def test(options):
 ])
 def pep8(options):
     noerror = getattr(options, "noerror", False)
-    return sh("""find . -name "*.py" | xargs pep8 | perl -nle'\
+    return sh("""find djangofeeds -name "*.py" | xargs pep8 | perl -nle'\
             print; $a=1 if $_}{exit($a)'""", ignore_error=noerror)
 
 
