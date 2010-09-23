@@ -133,7 +133,6 @@ class FeedImporter(object):
             except Exception:
                 feed = {"status": 500}
 
-
             default_status = http.OK if local else http.NOT_FOUND
 
             status = feed.get("status", default_status)

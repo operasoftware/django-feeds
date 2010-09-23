@@ -14,36 +14,36 @@ from docutils import nodes
 
 def setup(app):
     app.add_crossref_type(
-        directivename = "setting",
-        rolename = "setting",
-        indextemplate = "pair: %s; setting",
+        directivename="setting",
+        rolename="setting",
+        indextemplate="pair: %s; setting",
     )
     app.add_crossref_type(
-        directivename = "templatetag",
-        rolename = "ttag",
-        indextemplate = "pair: %s; template tag",
+        directivename="templatetag",
+        rolename="ttag",
+        indextemplate="pair: %s; template tag",
     )
     app.add_crossref_type(
-        directivename = "templatefilter",
-        rolename = "tfilter",
-        indextemplate = "pair: %s; template filter",
+        directivename="templatefilter",
+        rolename="tfilter",
+        indextemplate="pair: %s; template filter",
     )
     app.add_crossref_type(
-        directivename = "fieldlookup",
-        rolename = "lookup",
-        indextemplate = "pair: %s, field lookup type",
+        directivename="fieldlookup",
+        rolename="lookup",
+        indextemplate="pair: %s, field lookup type",
     )
     app.add_description_unit(
-        directivename = "django-admin",
-        rolename = "djadmin",
-        indextemplate = "pair: %s; django-admin command",
-        parse_node = parse_django_admin_node,
+        directivename="django-admin",
+        rolename="djadmin",
+        indextemplate="pair: %s; django-admin command",
+        parse_node=parse_django_admin_node,
     )
     app.add_description_unit(
-        directivename = "django-admin-option",
-        rolename = "djadminopt",
-        indextemplate = "pair: %s; django-admin command-line option",
-        parse_node = lambda env, sig, signode: \
+        directivename="django-admin-option",
+        rolename="djadminopt",
+        indextemplate="pair: %s; django-admin command-line option",
+        parse_node=lambda env, sig, signode: \
                 sphinx.directives.parse_option_desc(signode, sig),
     )
     app.add_config_value('django_next_version', '0.0', True)
@@ -71,7 +71,7 @@ def parse_version_directive(name, arguments, options, content, lineno,
         node['version'] = "Development version"
     node['type'] = name
     if len(arguments) == 2:
-        inodes, messages = state.inline_text(arguments[1], lineno+1)
+        inodes, messages = state.inline_text(arguments[1], lineno + 1)
         node.extend(inodes)
         if content:
             state.nested_parse(content, content_offset, node)

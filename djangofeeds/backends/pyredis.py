@@ -11,6 +11,7 @@ from djangofeeds.managers import DEFAULT_POST_LIMIT
 class InconsistencyWarning(UserWarning):
     """An inconsistency with the data has been found."""
 
+
 class Entry(Model):
 
     def prepare_save(self, fields):
@@ -104,7 +105,6 @@ class Entries(Manager):
                     InconsistencyWarning)
                 if clean:
                     del(self[pk])
-
 
     def _verify_guidmap_consistency(self, feed_url, clean=True, full=False):
         # Verify that all pks in the guid map exists.

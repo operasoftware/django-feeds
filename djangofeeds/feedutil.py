@@ -54,7 +54,7 @@ def get_entry_guid(feed_obj, entry):
     If the post doesn't have a guid, a new guid is generated.
 
     """
-    if not entry.has_key('guid'):
+    if "guid" not in entry:
         return generate_guid(entry)
 
     guid = entry["guid"]
@@ -63,7 +63,6 @@ def get_entry_guid(feed_obj, entry):
     except UnicodeDecodeError:
         guid = guid.strip()
     return guid
-
 
 
 def entries_by_date(entries, limit=None):
@@ -82,7 +81,6 @@ def entries_by_date(entries, limit=None):
                 entry.get("published_parsed") or
                 entry.get("date_parsed") or
                 now - timedelta(seconds=(counter * 30)))
-
 
     sorted_entries = []
     for counter, entry in enumerate(entries):

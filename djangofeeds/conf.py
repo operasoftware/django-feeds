@@ -9,10 +9,10 @@ DEFAULT_NUM_POSTS = -1
 DEFAULT_CACHE_MIN = 30
 DEFAULT_ENTRY_WORD_LIMIT = 100
 DEFAULT_FEED_TIMEOUT = 10
+DEFAULT_REFRESH_EVERY = 3 * 60 * 60             # 3 hours
+DEFAULT_FEED_LOCK_EXPIRE = 60 * 3               # lock expires in 3 minutes.
 DEFAULT_MIN_REFRESH_INTERVAL = timedelta(seconds=60 * 20)
-DEFAULT_REFRESH_EVERY = 3 * 60 * 60 # 3 hours
 DEFAULT_FEED_LOCK_CACHE_KEY_FMT = "djangofeeds.import_lock.%s"
-DEFAULT_FEED_LOCK_EXPIRE = 60 * 3 # lock expires in 3 minutes.
 
 """ .. data:: STORE_ENCLOSURES
 

@@ -33,7 +33,6 @@ def skip_if_redis_not_running(fun):
             raise SkipTest("Can't connect to redis server: %s" % (exc, ))
 
 
-
 class TestRedisBackend(unittest.TestCase):
     next_id = count(1).next
 
@@ -72,7 +71,6 @@ class TestRedisBackend(unittest.TestCase):
         class MockFeed(object):
             def __init__(self, feed_url):
                 self.feed_url = feed_url
-
 
         entries = [self.b.update_or_create(MockFeed(f), **fields)
                         for fields in posts]

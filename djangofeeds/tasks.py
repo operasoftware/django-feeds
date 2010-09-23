@@ -39,7 +39,6 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
         logger.error("Feed is already being imported by another process.")
         return feed_url
 
-
     acquire_lock()
     try:
         importer = importer_cls(update_on_import=True, logger=logger)
