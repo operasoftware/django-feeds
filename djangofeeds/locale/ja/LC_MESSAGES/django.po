@@ -2,13 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-17 13:18+0200\n"
+"POT-Creation-Date: 2010-09-02 14:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,87 +17,83 @@ msgstr ""
 
 #: models.py:29
 msgid "The feed does not seem to be respond. We will try again later."
-msgstr ""
+msgstr "フィードが反応していません。少し時間をおいてから、もう一度試します。"
 
 #: models.py:31
-msgid ""
-"You entered an incorrect URL or the feed you requested does not exist "
-"anymore."
-msgstr ""
+msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgstr "入力されたURLが間違っているか、ページが削除されているようです。"
 
 #: models.py:34
-msgid ""
-"There was a problem with the feed you provided, please check the URL for "
-"mispellings or try again later."
-msgstr ""
+msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
+msgstr "入力されたフードに問題があるようです。URLをご確認いただくか、少し時間をおいてからお試し下さい。"
 
 #: models.py:56 models.py:110
 msgid "name"
-msgstr ""
+msgstr "名前"
 
 #: models.py:57
 msgid "domain"
-msgstr ""
+msgstr "ドメイン"
 
 #: models.py:64
 msgid "category"
-msgstr ""
+msgstr "カテゴリー"
 
 #: models.py:65
 msgid "categories"
-msgstr ""
+msgstr "カテゴリー"
 
 #: models.py:111
 msgid "feed URL"
-msgstr ""
+msgstr "フィードURL"
 
 #: models.py:112
 msgid "description"
-msgstr ""
+msgstr "説明"
 
 #: models.py:113 models.py:304
 msgid "link"
-msgstr ""
+msgstr "リンク"
 
 #: models.py:114
 msgid "E-Tag"
-msgstr ""
+msgstr "eタグ"
 
 #: models.py:117
 msgid "Last-Modified"
-msgstr ""
+msgstr "最終変更"
 
 #: models.py:119
 msgid "date of last refresh"
-msgstr ""
+msgstr "最終更新"
 
 #: models.py:122
 msgid "last error"
-msgstr ""
+msgstr "最終エラー"
 
 #: models.py:125
 msgid "sort order"
-msgstr ""
+msgstr "ソート"
 
 #: models.py:126
 msgid "date created"
-msgstr ""
+msgstr "制作日"
 
 #: models.py:127
 msgid "date changed"
-msgstr ""
+msgstr "変更日"
 
 #: models.py:128
 msgid "last requested"
-msgstr ""
+msgstr "最終リクエスト"
 
 #: models.py:130
 msgid "is active"
-msgstr ""
+msgstr "アクティブ"
 
 #: models.py:131
 msgid "frequency"
-msgstr ""
+msgstr "頻度"
 
 #: models.py:137
 msgid "syndication feed"
