@@ -97,23 +97,23 @@ msgstr "frecuencia"
 
 #: models.py:137
 msgid "syndication feed"
-msgstr ""
+msgstr "fuente de sindicación "
 
 #: models.py:138
 msgid "syndication feeds"
-msgstr ""
+msgstr "fentes de sindicación"
 
 #: models.py:247
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: models.py:248
 msgid "type"
-msgstr ""
+msgstr "tipo"
 
 #: models.py:249
 msgid "length"
-msgstr ""
+msgstr "tamaño"
 
 #: models.py:254
 msgid "enclosure"
@@ -125,35 +125,35 @@ msgstr ""
 
 #: models.py:303
 msgid "title"
-msgstr ""
+msgstr "título "
 
 #: models.py:305
 msgid "content"
-msgstr ""
+msgstr "contenido"
 
 #: models.py:306
 msgid "guid"
-msgstr ""
+msgstr "guid"
 
 #: models.py:307
 msgid "author"
-msgstr ""
+msgstr "autor"
 
 #: models.py:308
 msgid "date published"
-msgstr ""
+msgstr "fecha de publicación"
 
 #: models.py:309
 msgid "date updated"
-msgstr ""
+msgstr "fecha de actualización"
 
 #: models.py:320
 msgid "post"
-msgstr ""
+msgstr "entrada"
 
 #: models.py:321
 msgid "posts"
-msgstr ""
+msgstr "entradas"
 
 #: utils.py:8
 msgid "just now"
