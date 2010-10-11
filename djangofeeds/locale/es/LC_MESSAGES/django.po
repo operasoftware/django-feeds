@@ -196,35 +196,35 @@ msgstr ""
 
 #: utils.py:13
 msgid "year"
-msgstr ""
+msgstr "año"
 
 #: utils.py:13
 msgid "years"
-msgstr ""
+msgstr "años"
 
 #: utils.py:14
 msgid "month"
-msgstr ""
+msgstr "mes"
 
 #: utils.py:14
 msgid "months"
-msgstr ""
+msgstr "meses"
 
 #: utils.py:15
 msgid "week"
-msgstr ""
+msgstr "semana"
 
 #: utils.py:15
 msgid "weeks"
-msgstr ""
+msgstr "semanas"
 
 #: utils.py:16
 msgid "day"
-msgstr ""
+msgstr "día"
 
 #: utils.py:16
 msgid "days"
-msgstr ""
+msgstr "días"
 
 #: utils.py:23
 #, python-format
