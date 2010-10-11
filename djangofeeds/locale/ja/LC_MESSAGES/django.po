@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-02 14:40+0200\n"
+"POT-Creation-Date: 2010-10-11 10:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,12 +20,18 @@ msgid "The feed does not seem to be respond. We will try again later."
 msgstr "フィードが反応していません。少し時間をおいてから、もう一度試します。"
 
 #: models.py:31
-msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
 msgstr "入力されたURLが間違っているか、ページが削除されているようです。"
 
 #: models.py:34
-msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
-msgstr "入力されたフードに問題があるようです。URLをご確認いただくか、少し時間をおいてからお試し下さい。"
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"入力されたフードに問題があるようです。URLをご確認いただくか、少し時間をおいて"
+"からお試し下さい。"
 
 #: models.py:56 models.py:110
 msgid "name"

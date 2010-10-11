@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-02 14:40+0200\n"
+"POT-Creation-Date: 2010-10-11 10:02+0200\n"
 "PO-Revision-Date: 2010-10-01 00:00+0700\n"
 "Last-Translator: Yeni Setiawan <sandalian@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,21 @@ msgid "The feed does not seem to be respond. We will try again later."
 msgstr "Umpan sepertinya tidak merespon. Kami akan mencoba kembali nanti."
 
 #: models.py:31
-msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
-msgstr "Anda memasukkan URL yang salah atau umpan yang Anda minta sudah tidak ada."
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr ""
+"Anda memasukkan URL yang salah atau umpan yang Anda minta sudah tidak ada."
 
 #: models.py:34
-msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
-msgstr "Ada masalah dengan umpan yang Anda masukkan, mohon periksa kembali URL tersebut atau coba kembali nanti."
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"Ada masalah dengan umpan yang Anda masukkan, mohon periksa kembali URL "
+"tersebut atau coba kembali nanti."
 
-#: models.py:56
-#: models.py:110
+#: models.py:56 models.py:110
 msgid "name"
 msgstr "nama"
 
@@ -52,8 +58,7 @@ msgstr "URL feed"
 msgid "description"
 msgstr "keterangan"
 
-#: models.py:113
-#: models.py:304
+#: models.py:113 models.py:304
 msgid "link"
 msgstr "link"
 
@@ -232,4 +237,3 @@ msgstr "hari"
 #, python-format
 msgid "%(number)d %(type)s ago"
 msgstr "%(number)d %(type)s yang lalu"
-
