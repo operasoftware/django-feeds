@@ -76,19 +76,16 @@ msgid "sort order"
 msgstr "sorteringsrekkefølge"
 
 #: models.py:126
-#, fuzzy
 msgid "date created"
-msgstr "dato oppdatert"
+msgstr "dato opprettet"
 
 #: models.py:127
-#, fuzzy
 msgid "date changed"
 msgstr "dato oppdatert"
 
 #: models.py:128
-#, fuzzy
 msgid "last requested"
-msgstr "dato oppdatert"
+msgstr "sist forespurt"
 
 #: models.py:130
 msgid "is active"
@@ -223,16 +220,16 @@ msgstr "uker"
 
 #: utils.py:16
 msgid "day"
-msgstr ""
+msgstr "dag"
 
 #: utils.py:16
 msgid "days"
-msgstr ""
+msgstr "dager"
 
 #: utils.py:23
 #, python-format
 msgid "%(number)d %(type)s ago"
-msgstr ""
+msgstr "%(number)d %(type)s siden"
 
 #~ msgid "This is a test sentence for the demo."
 #~ msgstr "Dette er en testsetning for demonstrasjonen."
