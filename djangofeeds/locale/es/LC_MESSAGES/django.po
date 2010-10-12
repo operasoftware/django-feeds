@@ -116,12 +116,14 @@ msgid "length"
 msgstr "tamaño"
 
 #: models.py:254
+#, fuzzy
 msgid "enclosure"
-msgstr ""
+msgstr "enclosure"
 
 #: models.py:255
+#, fuzzy
 msgid "enclosures"
-msgstr ""
+msgstr "enclosures"
 
 #: models.py:303
 msgid "title"
@@ -157,42 +159,42 @@ msgstr "entradas"
 
 #: utils.py:8
 msgid "just now"
-msgstr ""
+msgstr "ahora mísmo"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d second ago"
-msgstr ""
+msgstr "hace %(seconds)d segundo"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d seconds ago"
-msgstr ""
+msgstr "hace %(seconds)d segundos"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minute ago"
-msgstr ""
+msgstr "hace %(minutes)d minuto"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minutes ago"
-msgstr ""
+msgstr "hace %(minutes)d minutos"
 
 #: utils.py:11
 #, python-format
 msgid "%(hours)d hour ago"
-msgstr ""
+msgstr "hace %(hours)d hora"
 
 #: utils.py:11
 #, python-format
 msgid "%(hours)d hours ago"
-msgstr ""
+msgstr "hace %(hours)d horas"
 
 #: utils.py:12
 #, python-format
 msgid "yesterday at %(time)s"
-msgstr ""
+msgstr "ayer a las %(time)s "
 
 #: utils.py:13
 msgid "year"
@@ -229,4 +231,4 @@ msgstr "días"
 #: utils.py:23
 #, python-format
 msgid "%(number)d %(type)s ago"
-msgstr ""
+msgstr "hace %(number)d %(type)s"
