@@ -116,12 +116,10 @@ msgid "length"
 msgstr "tamaño"
 
 #: models.py:254
-#, fuzzy
 msgid "enclosure"
 msgstr "enclosure"
 
 #: models.py:255
-#, fuzzy
 msgid "enclosures"
 msgstr "enclosures"
 
