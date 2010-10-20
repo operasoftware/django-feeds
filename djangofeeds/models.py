@@ -169,10 +169,12 @@ class Feed(models.Model):
         self.freq = timedelta_seconds(self.average_frequency(limit, min))
         save and self.save()
 
-    def expire_old_posts(self, min_posts=20, commit=False):
+    def expire_old_posts(self, max_posts=100, commit=False):
         """Expire old posts.
 
-        :keyword min_posts: The maximum number of posts to keep for a feed.
+        :keyword max_posts: The maximum number of posts to keep for a feed.
+            We keep this value high to avoid incessant delete on feed that
+            have a lot of posts.
         :keyword commit: Commit the transaction, set to ``False`` if you want
             to manually handle the transaction.
 
@@ -181,7 +183,7 @@ class Feed(models.Model):
         """
         by_date = self.post_set.order_by("-date_published")
         expired_posts = [post["id"]
-                            for post in by_date.values("id")[min_posts:]]
+                            for post in by_date.values("id")[max_posts:]]
         if expired_posts:
             Post.objects.filter(pk__in=expired_posts).delete()
             return len(expired_posts)
