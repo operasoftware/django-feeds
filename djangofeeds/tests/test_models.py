@@ -133,5 +133,5 @@ class TestFeed(unittest.TestCase):
                     for i in range(10)]
         self.assertEqual(f.expire_old_posts(max_posts=5), 5)
         self.assertEqual(models.Post.objects.filter(feed=f).count(), 5)
-        self.assertEqual(f.expire_old_posts(max_posts=3), 3)
+        self.assertEqual(f.expire_old_posts(max_posts=3), 2)
         self.assertEqual(models.Post.objects.filter(feed=f).count(), 3)
