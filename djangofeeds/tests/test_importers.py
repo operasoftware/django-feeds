@@ -438,4 +438,3 @@ class TestFeedImporter(unittest.TestCase):
         feed_obj = importer.import_feed(feed, local=True)
         self.assertEqual(feed_obj.name, "Lifehacker", "feed title is set")
         self.assertEqual(feed_obj.get_post_count(), 10, "feed has 10 items")
-
