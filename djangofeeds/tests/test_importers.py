@@ -431,3 +431,11 @@ class TestFeedImporter(unittest.TestCase):
         for post in imported_feed.post_set.all():
             guid = post.guid
             self.assertTrue(guid)
+
+    def test_entry_limit(self):
+        feed = self.feed
+        importer = FeedImporter(post_limit=10)
+        feed_obj = importer.import_feed(feed, local=True)
+        self.assertEqual(feed_obj.name, "Lifehacker", "feed title is set")
+        self.assertEqual(feed_obj.get_post_count(), 10, "feed has 10 items")
+
