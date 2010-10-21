@@ -125,6 +125,8 @@ class Feed(models.Model):
     sort = models.SmallIntegerField(_(u"sort order"), default=0)
     date_created = models.DateTimeField(_(u"date created"), auto_now_add=True)
     date_changed = models.DateTimeField(_(u"date changed"), auto_now=True)
+    # this date is used to know if the feed is still used by some
+    # real users. Update the value when the user use the feed.
     date_last_requested = models.DateTimeField(_(u"last requested"),
                                                auto_now_add=True)
     is_active = models.BooleanField(_(u"is active"), default=True)
@@ -169,7 +171,7 @@ class Feed(models.Model):
         self.freq = timedelta_seconds(self.average_frequency(limit, min))
         save and self.save()
 
-    def expire_old_posts(self, min_posts=30, max_posts=60, commit=False):
+    def expire_old_posts(self, min_posts=30, max_posts=120, commit=False):
         """Expire old posts.
 
         :keyword min_posts: Minimum number of post by feed.
