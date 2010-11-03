@@ -41,7 +41,8 @@ class Entry(Model):
 
     def __repr__(self):
         if "guid" in self and "title" in self:
-            return "<Entry: %s '%s'>" % (self.guid, self.title)
+            return "<Entry: %s '%s'>" % (self.guid.encode("utf8"),
+                                         self.title.encode("utf8"))
         return super(Entry, self).__repr__()
 
 
@@ -66,6 +67,7 @@ class Entries(Manager):
         return posts
 
     def update_or_create(self, feed_obj, **fields):
+        fields.pop("feed", None)
         fields["feed_url"] = feed_obj.feed_url
         fields["timestamp"] = fields["date_updated"]
 
