@@ -12,7 +12,7 @@ from djangofeeds.utils import truncate_field_data
     Default is 5 posts.
 
 """
-DEFAULT_POST_LIMIT = 5
+DEFAULT_POST_LIMIT = 25
 
 
 def update_with_dict(obj, fields):
