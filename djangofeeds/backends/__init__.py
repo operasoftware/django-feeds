@@ -16,5 +16,8 @@ def get_backend_cls(backend):
     return _backend_cache[backend]
 
 
-def default_post_backend():
-    return get_backend_cls(conf.POST_STORAGE_BACKEND)()
+def backend_or_default(backend=None):
+    backend = backend or conf.POST_STORAGE_BACKEND
+    if isinstance(backend, basestring):
+        return get_backend_cls(backend)()
+    return backend

@@ -7,13 +7,16 @@ from django.db.models import signals
 from django.utils.translation import ugettext_lazy as _
 from django.utils.hashcompat import md5_constructor
 
-from celery.utils import timedelta_seconds
+try:
+    from celery.utils import timedelta_seconds
+except ImportError:
+    from celery.utils.timeutils import timedelta_seconds
 
 from djangofeeds import conf
 from djangofeeds.utils import naturaldate
 from djangofeeds.managers import FeedManager, PostManager
 from djangofeeds.managers import EnclosureManager, CategoryManager
-from djangofeeds.backends import default_post_backend
+from djangofeeds.backends import backend_or_default
 
 ACCEPTED_STATUSES = frozenset([http.OK,
                                http.FOUND,
@@ -141,7 +144,7 @@ class Feed(models.Model):
 
     def __init__(self, *args, **kwargs):
         super(Feed, self).__init__(*args, **kwargs)
-        self.poststore = default_post_backend()
+        self.poststore = backend_or_default()
 
     def __unicode__(self):
         return u"%s (%s)" % (self.name, self.feed_url)
