@@ -2,6 +2,8 @@ import time
 import socket
 import feedparser
 import httplib as http
+import urllib2
+
 from datetime import datetime
 
 from djangofeeds import conf
@@ -85,7 +87,8 @@ class FeedImporter(object):
         self.backend = backend_or_default(kwargs.get("backend"))
         self.post_model = self.backend.get_post_model()
 
-    def parse_feed(self, feed_url, etag=None, modified=None, timeout=None):
+    def parse_feed(self, feed_url, etag=None, modified=None, timeout=None,
+            maxlen=None):
         """Parse feed using the current feed parser.
 
         :param feed_url: URL to the feed to parse.
@@ -101,6 +104,12 @@ class FeedImporter(object):
 
         socket.setdefaulttimeout(timeout)
         try:
+            if maxlen:
+                headers = self.early_headers(feed_url)
+                contentlen = int(headers.get("content-length") or 0)
+                if contentlen > maxlen:
+                    raise ContentLengthLimitExceeded()
+
             feed = self.parser.parse(feed_url,
                                      etag=etag,
                                      modified=modified)
@@ -108,6 +117,18 @@ class FeedImporter(object):
             socket.setdefaulttimeout(prev_timeout)
 
         return feed
+
+    def early_headers(self, feed_url):
+
+        class HeadRequest(urllib2.Request):
+
+            def get_method(self):
+                return "HEAD"
+
+        return urllib2.urlopen(HeadRequest(feed_url)).headers
+
+    def real_headers(self, feed_url):
+        return urllib2.urlopen(urllib2.Request(feed_url))
 
     def import_feed(self, feed_url, force=None, local=False):
         """Import feed.
