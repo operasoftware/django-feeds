@@ -4,14 +4,13 @@ from celery.utils import noop, chunks
 from celery.decorators import task
 
 from djangofeeds import conf
-from djangofeeds.conf import ROUTING_KEY_PREFIX
 from djangofeeds.models import Feed
 from djangofeeds.importers import FeedImporter
 
 ENABLE_LOCKS = False
 
 
-@task(routing_key="%s.feedimporter" % ROUTING_KEY_PREFIX, ignore_result=True)
+@task(ignore_result=True)
 def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
     """Refresh a djangofeed feed, supports multiprocessing.
 
@@ -51,13 +50,13 @@ def refresh_feed(feed_url, feed_id=None, importer_cls=None, **kwargs):
     return feed_url
 
 
-@task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
+@task(ignore_result=True)
 def update_frequency_chunk(feeds, post_limit=10):
     for feed in feeds:
         feed.update_frequency(limit=post_limit)
 
 
-@task(routing_key="%s.freqs" % ROUTING_KEY_PREFIX, ignore_result=True)
+@task(ignore_result=True)
 def collect_frequencies(chunksize=10, post_limit=10):
     for chunk in chunks(Feed.objects.all().iterator(), chunksize):
         update_frequency_chunk.delay(chunk, post_limit=post_limit)
