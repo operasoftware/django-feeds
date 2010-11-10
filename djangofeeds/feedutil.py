@@ -1,4 +1,7 @@
 import time
+import urllib
+from sgmllib import SGMLParser
+
 from base64 import b64encode
 from datetime import datetime, timedelta
 
@@ -46,6 +49,43 @@ def search_alternate_links(feed):
                     for link in feed["feed"].get("links") or []
                         if "rss" in link.get("type")]
     return []
+
+
+def search_links_url(url):
+    """
+	Search for rss links in html file
+    """
+    def _map(link):
+	""" add the url if to the link if doesn't start with http
+		ie: "/rss.xml"
+	"""
+        if link.startswith('http'):
+	    return link
+	else:
+	    return url+link
+
+    class URLLister(SGMLParser):
+        def reset(self):                              
+            SGMLParser.reset(self)
+            self.feeds = []
+    
+        def start_link(self, attrs):                     
+	    rss_xml = 'application/rss+xml'
+	    atom_xml = 'application/atom+xml'
+    	    d = dict(attrs)
+    	    try:
+    	       if d['type'] == rss_xml or d['type'] == atom_xml:
+    	           self.feeds.append(d['href'])
+            except KeyError:
+       	       pass
+    
+    sock = urllib.urlopen(url)
+    parser = URLLister()
+    parser.feed(sock.read())
+    sock.close()
+    parser.close()
+    # Check that the urls are well formed
+    return map(_map, parser.feeds)
 
 
 def get_entry_guid(feed_obj, entry):
