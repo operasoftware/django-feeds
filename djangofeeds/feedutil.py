@@ -51,7 +51,7 @@ def search_alternate_links(feed):
     return []
 
 
-def search_links_url(url):
+def search_links_url(html, url):
     """
 	Search for rss links in html file
     """
@@ -60,9 +60,12 @@ def search_links_url(url):
 		ie: "/rss.xml"
 	"""
         if link.startswith('http'):
-	    return link
-	else:
-	    return url+link
+            return link
+        elif link.startswith('/'):
+            # use the url as the domain, need to remove the / of the link
+            return url+link[1:]
+        else:
+            return url+link
 
     class URLLister(SGMLParser):
         def reset(self):                              
@@ -79,10 +82,8 @@ def search_links_url(url):
             except KeyError:
        	       pass
     
-    sock = urllib.urlopen(url)
     parser = URLLister()
-    parser.feed(sock.read())
-    sock.close()
+    parser.feed(html)
     parser.close()
     # Check that the urls are well formed
     return map(_map, parser.feeds)
