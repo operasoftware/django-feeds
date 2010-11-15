@@ -53,35 +53,35 @@ def search_alternate_links(feed):
 
 def search_links_url(html, url):
     """
-	Search for rss links in html file
+    Search for rss links in html file
     """
     def _map(link):
-	""" add the url if to the link if doesn't start with http
-		ie: "/rss.xml"
-	"""
+        """ add the url if to the link if doesn't start with http
+            ie: "/rss.xml"
+        """
         if link.startswith('http'):
             return link
         elif link.startswith('/'):
             # use the url as the domain, need to remove the / of the link
-            return url+link[1:]
+            return url + link[1:]
         else:
-            return url+link
+            return url + link
 
     class URLLister(SGMLParser):
-        def reset(self):                              
+        def reset(self):
             SGMLParser.reset(self)
             self.feeds = []
-    
-        def start_link(self, attrs):                     
-	    rss_xml = 'application/rss+xml'
-	    atom_xml = 'application/atom+xml'
-    	    d = dict(attrs)
-    	    try:
-    	       if d['type'] == rss_xml or d['type'] == atom_xml:
-    	           self.feeds.append(d['href'])
+
+        def start_link(self, attrs):
+            rss_xml = 'application/rss+xml'
+            atom_xml = 'application/atom+xml'
+            d = dict(attrs)
+            try:
+                if d['type'] == rss_xml or d['type'] == atom_xml:
+                    self.feeds.append(d['href'])
             except KeyError:
-       	       pass
-    
+                pass
+
     parser = URLLister()
     parser.feed(html)
     parser.close()
