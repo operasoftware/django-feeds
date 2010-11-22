@@ -1,0 +1,3816 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" xmlns:fb="http://www.facebook.com/2008/fbml">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Sunnmørsposten</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="google-site-verification" content="g8qAM8GkKgpM87rPSC3jd8Om05G5ndMvFFBy_XYkFzg" />
+<meta content="all,index" name="robots"/>
+<meta name="description" content="Nyheter fra Sunnmørsposten" />
+<meta name="keywords" content="Siste nytt fra Molde, Fræna, Rauma, Vestnes, Gjemnes, Eide, Nesset, Aukra, Sandøy og Midsund" />
+<link rel="alternate" type="application/rss+xml" title="Siste nytt fra Sunnmørsposten." href="http://www.smp.no/?service=rss" />
+<link rel="alternate" type="application/rss+xml" title="Sunnmørsposten - Forsiden" href="http://www.smp.no/?service=rss&amp;t=0" />
+<link rel="alternate" type="application/rss+xml" title="Nyheter" href="http://www.smp.no/nyheter/?service=rss" />
+<link rel="alternate" type="application/rss+xml" title="Kultur" href="http://www.smp.no/kultur/?service=rss" />
+<link href="http://www.smp.no/template/ver2-0/css/global/global.css" media="screen" rel="styleSheet" type="text/css"/>
+<link href="http://www.smp.no/template/ver2-0/css/global/header.css" media="screen" rel="styleSheet" type="text/css"/>
+<link href="http://www.smp.no/template/ver2-0/css/global/footer.css" media="screen" rel="styleSheet" type="text/css"/>
+<link href="http://www.smp.no/template/ver2-0/css/global/polling.css" media="screen" rel="styleSheet" type="text/css"/>
+<link href="http://www.smp.no/template/ver2-0/css/global/bannertemplate.css" media="screen" rel="styleSheet" type="text/css"/>
+<link href="http://www.smp.no/template/ver2-0/css/local/smp/frontpage.css" media="screen" rel="styleSheet" type="text/css"/>
+<link href="http://www.smp.no/template/ver2-0/css/print.css" media="print" rel="styleSheet" type="text/css"/>
+<!--[if lte IE 6]>
+<link href="http://www.smp.no/template/ver2-0/css/global/ie6Warning.css" media="screen" rel="styleSheet" type="text/css"/>
+<![endif]-->
+<link href="http://www.smp.no/template/ver2-0/css/local/smp/smp.css" media="screen" rel="styleSheet" type="text/css"/>
+<script type="text/javascript" src="http://www.smp.no/template/ver2-0/javascript/lib/jquery.tools.full.1.1.2.js"></script>
+<script type="text/javascript" src="http://www.smp.no/template/ver2-0/javascript/lib/swfobject.2.1.js"></script>
+<script type="text/javascript" src="http://www.smp.no/template/ver2-0/javascript/adtech_lib.js"></script>
+<script type="text/javascript">
+//Turns on/off jQuery animations
+jQuery.fx.off = false;
+</script>
+<script type="text/javascript">
+/* Device cookie functions */
+function deviceGetCookie(name) {
+var nameEQ = name + "=";
+var ca = document.cookie.split(';');
+for(var i=0;i < ca.length;i++) {
+var c = ca[i];
+while (c.charAt(0)==' ') c = c.substring(1,c.length);
+if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+}
+return null;
+}
+function deviceEraseCookie(name) {
+deviceSetCookie(name,"",-1);
+}
+function deviceSetCookie(name, value, days) {
+var expires;
+if (days) {
+var date = new Date();
+date.setTime(date.getTime()+(days*24*60*60*1000));
+expires = "; expires="+date.toGMTString();
+}
+else expires = "";
+document.cookie = name+"="+value+expires+"; path=/";
+}
+/* Opera test */
+if((navigator.userAgent.toLowerCase().indexOf('iphone; opera mini')!=-1)) {
+// Show webversion
+} else if((navigator.userAgent.toLowerCase().indexOf('opera mini')!=-1)) {
+// Show webversion
+} else if ((navigator.userAgent.toLowerCase().indexOf('iphone')!=-1)){
+// iPhone version
+if(navigator.cookieEnabled) {
+// Get device cookie
+var deviceCookie = deviceGetCookie('DEVICE_TMPL');
+// Check cookie
+if(deviceCookie == null || deviceCookie.indexOf('true') != -1){
+// Show iPhone version
+window.location.href = 'http://www.smp.no/?service=iphone';
+} else {
+// Show webversion
+}
+} else {
+if(confirm('Vil du bruke tilpasset versjon?')){
+window.location.href = 'http://www.smp.no/?service=iphone';
+}
+}
+} else if ((navigator.userAgent.toLowerCase().indexOf('ipad')!=-1)) {
+// iPad version
+// window.location.href = 'http://www.smp.no/?service=ipad';
+} else {
+// Mobileversion if small screensize.
+var myScreen = screen.width;
+if( myScreen < 800 ) {
+if(navigator.cookieEnabled) {
+// Get device cookie
+var deviceCookie = deviceGetCookie('DEVICE_TMPL');
+// Check cookie
+if(deviceCookie == null || deviceCookie.indexOf('true') != -1){
+if( myScreen <= 240 ) {
+// Smallscreen mobile version
+window.location.href = "http://www.smp.no/?service=mobile";
+} else {
+// Bigscreen smartphone -> use iphone version
+window.location.href = 'http://www.smp.no/?service=iphone';
+}
+} else {
+// Show webversion
+}
+} else {
+if(confirm('Vil du bruke tilpasset versjon?')){
+if( myScreen <= 240 ) {
+// Smallscreen mobile version
+window.location.href = "http://www.smp.no/?service=mobile";
+} else {
+// Bigscreen smartphone -> use iphone version
+window.location.href = 'http://www.smp.no/?service=iphone';
+}
+}
+}
+}
+}
+</script>
+<link rel="apple-touch-icon" href="http://www.smp.no/template/ver2-0/img/iphone_icon.png"/>
+<link href="http://www.smp.no/favicon.ico" type="image/png" rel="icon"/>
+<!-- TradeDoubler site verification -->
+</head>
+<body>
+<!--[if lte IE 6]>
+<div id="ie6Warning">
+<div class="text">Vi registrerer at du benytter Internet Explorer 6 som din nettleser. Den ble sist oppdatert 06.08.2004, har 142 sikkerhetshull, og f&oslash;lger ikke moderne nettstandarer. Vi har gjort v&aring;rt beste for &aring; sikre kompatibilitet for denne nettleseren, men vil anbefale deg &aring; installere en nyere nettleser for en bedre nettopplevelse. Oppdater ved &aring; velge nettleser til h&oslash;yre.<br />
+</div>
+<div class="browserIcons">
+<ul>
+<li><a rel="nofollow" href="http://www.microsoft.com/norge/windows/ie/downloads/default.mspx"><img src="http://www.smp.no/template/ver2-0/img/global/ie6Warning/icon_ie.png" alt="Internet Explorer" /></a></li>
+<li><a rel="nofollow" href="http://www.opera.com"><img src="http://www.smp.no/template/ver2-0/img/global/ie6Warning/icon_opera.png" alt="Opera" /></a></li>
+<li><a rel="nofollow" href="http://www.firefox.no"><img src="http://www.smp.no/template/ver2-0/img/global/ie6Warning/icon_fireFox.png" alt="Mozilla Firefox" /></a></li>
+<li><a rel="nofollow" href="http://www.google.com/chrome"><img src="http://www.smp.no/template/ver2-0/img/global/ie6Warning/icon_chrome.png" alt="Google Chrome" /></a></li>
+<li><a rel="nofollow" href="http://www.apple.com/no/safari/download"><img src="http://www.smp.no/template/ver2-0/img/global/ie6Warning/icon_safari.png" alt="Apple Safari" /></a></li>
+</ul>
+</div>
+</div>
+<![endif]-->
+<div class="blueContainer">
+<div id="viewport"><div id="headerBg"></div>
+<div id="ad_ticker" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|2950687|0|16|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|2950687|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|2950687|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="1280" height="25" alt="Click here"></a></noscript>
+</div>
+<div id="ad_overlay" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|2927292|0|16|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|2927292|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|2927292|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="" height="" alt="Click here"></a></noscript>
+</div>
+<div id="viewportAds">
+<div id="ad_viewportTop" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1673893|0|16|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1673893|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1673893|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="1" height="1" alt="Click here"></a></noscript>
+</div>
+<div id="ad_Sidebanner1" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1673891|0|16|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1673891|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1673891|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="1" height="1" alt="Click here"></a></noscript>
+</div>
+<div id="ad_Sidebanner2" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1673892|0|16|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1673892|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1673892|0|16|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="1" height="1" alt="Click here"></a></noscript>
+</div>
+</div>
+<div id="page"><div id="adTopContainer"><div id="adTopLeft">
+<div id="ad_ToppLeft" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1419515|0|615|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1419515|0|615|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1419515|0|615|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="205" height="150" alt="Click here"></a></noscript>
+</div>
+</div>
+<div id="adTopRight">
+<div id="ad_Toppbanner" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1052771|0|316|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1052771|0|316|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1052771|0|316|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="768" height="150" alt="Click here"></a></noscript>
+</div>
+</div>
+<div id="ad_Toppstripe" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|2367385|0|2952|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|2367385|0|2952|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|2367385|0|2952|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="1010" height="25" alt="Click here"></a></noscript>
+</div>
+</div>
+<div id="headerWrapper">
+<div id="header"><div id="headerTop">
+<div id="logo">
+<a href="http://www.smp.no/"><img alt="Sunnmørsposten" src="http://www.smp.no/template/ver2-0/img/local/smp/logo.png"/></a>
+</div>
+<div class="headerModule customerCenter">
+<div class="fpHeader">
+<h2>Sunnmørsposten</h2>
+<ul>
+<li><a href="http://minside.smp.no">Kundesenter</a></li>
+<li><a href="http://www.smp.no/produkter/">Nettannonsering</a></li>
+<li><a href="http://kundesenter.smp.no/default.asp?page=5630&lang=1">Kontakt oss</a></li>
+<li><h3><a href="http://minside.smp.no"><img class="minsideHeaderLink" src="/template/ver2-0/img/global/minside-neg.png" alt="minside" /></a></h3></li>
+</ul>
+</div>
+</div>
+<div class="headerModule default">
+<div class="fpHeader">
+<div class="image">
+<a href="http://skatt.smp.no/" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00324/Skattelogo_324002o.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://skatt.smp.no/">
+Skattesøk 2009
+</a>
+</h2>
+<p class="leadIn">
+</p>
+</div>
+<div class="imageMask"></div>
+</div>
+<div id="weather" style="visibility:hidden;">
+<div class="icon" class="iconDiv">
+<a id="weatherImageLink" href="#">
+<img style="display:none;" id="weatherImage" height="48" width="48" src="http://www.smp.no/template/ver2-0/img/global/weatherIcons/1.png"/>
+</a>
+</div>
+<div class="location" id="locationDiv">Ålesund</div>
+<div class="temperature" id="temperatureDiv"></div>
+<div class="moreWeather"><a href="http://vaer.smp.no">Klikk for mer v&aelig;r</a></div>
+</div>
+<script type="text/javascript">
+/*<[CDATA[*/
+var weatherIndex = 1;
+var xmlUrl = "http://www.smp.no/template/ver2-0/xml/yr/";
+var imageUrl = "http://www.smp.no/template/ver2-0/img/";
+var filenames = new Array();
+filenames[1] = xmlUrl + "aalesund" + ".xml";
+filenames[2] = xmlUrl + "maaloey" + ".xml";
+filenames[3] = xmlUrl + "stryn" + ".xml";
+filenames[4] = xmlUrl + "ulsteinvik" + ".xml";
+filenames[5] = xmlUrl + "tafjord" + ".xml";
+filenames[6] = xmlUrl + "oersta" + ".xml";
+filenames[7] = xmlUrl + "brattvaag" + ".xml";
+filenames[8] = xmlUrl + "sandoey" + ".xml";
+var currentXmlUrl = filenames[weatherIndex];
+function loopWeather() {
+$.ajax({
+type: "GET",
+url: currentXmlUrl,
+dataType: "xml",
+success: function(xml) {
+symbolIndex = $(xml).find("tabular").find("time:first").find("symbol").attr("number");
+$("#locationDiv").html($(xml).find("location").find("name").text());
+$("#temperatureDiv").html($(xml).find("tabular").find("time:first").find("temperature ").attr("value") + "&deg;");
+$("#weatherImage").attr("src",imageUrl + "global/weatherIcons/" + symbolIndex + ".png").show();
+$("#weather").css("visibility","visible");
+$("#weather").show();
+weatherIndex++;
+if (weatherIndex > filenames.length-1) {
+weatherIndex = 1;
+}
+currentXmlUrl = filenames[weatherIndex];
+setTimeout("loopWeather()",300000);
+}
+});
+}
+$(document).ready(function(){
+loopWeather();
+});
+/*]]>*/
+</script>
+</div>
+<div id="headerBottom">
+<div class="tipBox">
+<a class="tipButton" href="#" rel="#overlay_tip">Tips oss <br />800 30 007</a>
+<div class="date">22.11.2010</div>
+</div>
+<div class="menu menu">
+<ul>
+<li>
+<a href="http://www.smp.no/nyheter/">
+Nyheter
+</a>
+<ul>
+<li>
+<a href="http://www.smp.no/nyheter/innenriks/">
+Innenriks
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/nyheter/utenriks/">
+Utenriks
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/nyheter/alesundogomland/">
+Ålesund og omland
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/nyheter/indre/">
+Indre
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/nyheter/nordre/">
+Nordre
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/nyheter/soere/">
+Søre
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://www.smp.no/sport/">
+Sport
+</a>
+</li>
+<li>
+<a href="http://fotball.smp.no/">
+Fotball
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/kultur/">
+Kultur
+</a>
+<ul>
+<li>
+<a href="http://tvguiden.smp.no/">
+TV guiden
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://www.smp.no/ung/">
+Ung
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/search/">
+Søk
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/">
+Forbruker
+</a>
+<ul>
+<li>
+<a href="http://www.smp.no/forbruker/bilogtrafikk/">
+Bil og trafikk
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/livsstil/">
+Livsstil
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/matogvin/">
+Mat og vin
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/reise/">
+Reise
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/spill/">
+Spill
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/elektronikk/">
+Elektronikk
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/bolig/">
+Bolig
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/bat/">
+Båt
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/privatokonomi/">
+Privat økonomi
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/helse/">
+Helse
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/okonomi/">
+Økonomi
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://dittogmitt.smp.no/">
+Lesernes SMP
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/5rette/">
+5 rette
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/meninger/">
+Meninger
+</a>
+</li>
+<li>
+<a href="http://em-sm.tinde.no/">
+Markedsplass
+</a>
+</li>
+<li>
+<a href="http://smp.lokalguiden.no/">
+Lokalguiden
+</a>
+</li>
+<li>
+<a href="#innhold">
+Alt innhold
+</a>
+<div class="allContent">
+<ul class="menuList">
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<h2>A</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/alpint/">Alpint</a>
+</li>
+<li class="listItem">
+<h2>B</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/bilogtrafikk/">Bil</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/bildeserier/">Bildeserier</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/bolig/">Bolig</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/bat/">Båt</a>
+</li>
+<li class="listItem">
+<h2>C</h2>
+</li>
+<li class="listItem">
+<h2>D</h2>
+</li>
+<li class="listItem">
+<h2>E</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/elektronikk/">Elektronikk</a>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/england/">Engelsk fotball</a>
+</li>
+<li class="listItem">
+<h2>F</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/kultur/film/">Film</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/">Forbruker</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/fortuna/">Fortuna</a>
+</li>
+<li class="listItem">
+<a href="http://radio.smp.no/services/liveradio/">Fotballradio</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/friidrett/">Friidrett</a>
+</li>
+<li class="listItem">
+<h2>G</h2>
+</li>
+<li class="listItem">
+<h2>H</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/handball/">Håndball</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/helse/">Helse</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/hoedd/">Hødd</a>
+</li>
+<li class="listItem">
+<h2>I</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/indre/">Indre</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/innenriks/">Innenriks</a>
+</li>
+<li class="listItem">
+<h2>J</h2>
+</li>
+<li class="listItem">
+<h2>K</h2>
+</li>
+<li class="listItem">
+<a href="https://www.buyandread.com/mediaport/custom/ePaper.htm?pub=sunnmorsposten">Kjøp Sunnmørsposten som eAvis</a>
+</li>
+<li class="listItem">
+<a href="https://www.buyandread.com/mediaport/buy.htm?pub=sunnmorsposten">Kjøp Sunnmørsposten som pdf-utgave</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/kommentar/">Kommentar</a>
+</li>
+<li class="listItem">
+<a href="http://konsert.smp.no/">Konserter</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/kronikk/">Kronikk</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/kultur/">Kultur</a>
+</li>
+<li class="listItem">
+<a href="http://kundesenter.smp.no/default.asp?page=5630&lang=1">Kundeservice</a>
+</li>
+<li class="listItem">
+<h2>L</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/langrenn/">Langrenn</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/leder/">Leder</a>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/bildeoversikt.php">Leserbilder</a>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/hilsenoversikt.php">Lesernes hilsener</a>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/">Lesernes smp</a>
+</li>
+<li class="listItem">
+<a href="http://live.smp.no/">LIVE-tjeneste fotball</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/livsstil/">Livsstil</a>
+</li>
+<li class="listItem">
+<a href="http://smp.lokalguiden.no/">Lokalguiden</a>
+</li>
+<li class="listItem">
+<h2>M</h2>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<a href="http://em-sm.tinde.no/">Markedsplass</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/matogvin/">Mat og vin</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/">Meninger</a>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/mesterligaen/">Mesterligaen</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/kultur/musikk/">Musikk</a>
+</li>
+<li class="listItem">
+<h2>N</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tema/nettmoter/">Nettmøter</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/nordre/">Nordre</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/">Nyheter</a>
+</li>
+<li class="listItem">
+<h2>O</h2>
+</li>
+<li class="listItem">
+<h2>P</h2>
+</li>
+<li class="listItem">
+<h2>Q</h2>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/quiz.php">Quiz</a>
+</li>
+<li class="listItem">
+<h2>R</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/reise/">Reise</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<h2>S</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/sandvolleyball/">Sandvolleyball</a>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/blogg/sindre_halkjelsvik/">Sindres AaFK-blogg</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tjenester/skatt/">Skatt</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/skarboevik/">Skarbøvik</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/skiskyting/">Skiskyting</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/">Sport</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/soere/">Søre</a>
+</li>
+<li class="listItem">
+<h2>T</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tegneserie/">Tegneserie</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tjenester/">Tjenester</a>
+</li>
+<li class="listItem">
+<a href="http://tvguiden.smp.no/">TV-guide</a>
+</li>
+<li class="listItem">
+<h2>U</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/ung/">Ung</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/utenriks/">Utenriks</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<h2>V</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/video/">Video</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/vaeret/">Været</a>
+</li>
+<li class="listItem">
+<h2>W</h2>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/webtv/">Web-TV fotball</a>
+</li>
+<li class="listItem">
+<h2>x</h2>
+</li>
+<li class="listItem">
+<h2>Y</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/ytring/">Ytring</a>
+</li>
+<li class="listItem">
+<h2>Z</h2>
+</li>
+<li class="listItem">
+<h2>Æ</h2>
+</li>
+<li class="listItem">
+<h2>Ø</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/okonomi/">Økonomi</a>
+</li>
+<li class="listItem">
+<h2>Å</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/alesundogomland/">Ålesund og omland</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/alesund/">AaFK</a>
+</li>
+</ul>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+</li>
+<li id="frontpage" class="current">
+<ul>
+<li>
+<a href="javascript:void(window.open('http://assets.smp.no/services/radio/default.asp'%20,%20'',%20'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,%20width=300,height=136,left=300,top=300,screenX=300,screenY=300'))">
+Nettradio
+</a>
+</li>
+<li>
+<a href="http://radio.smp.no/">
+Fotballradio
+</a>
+</li>
+<li>
+<a href="http://vaer.smp.no/">
+Været
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/tjenester/article180194.ece">
+Scoringsvarsel på SMS
+</a>
+</li>
+<li>
+<a href="http://dittogmitt.smp.no/quiz.php">
+Quiz
+</a>
+</li>
+<li>
+<a href="http://konsert.smp.no/">
+Konserter
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/kultur/kulturkalender/">
+Kulturkalender
+</a>
+</li>
+<li>
+<a href="#tips">
+Tips oss
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<form id="searchForm" method="get" action="http://www.smp.no/search/">
+<div id="siteSearch">
+<input type="hidden" name="searchOption" value="www.smp.no/search/" />
+<input id="searchQuery" type="text" name="query" class="searchForm required" />
+<input type="hidden" name="sitesearch" value="www.smp.no" />
+<input id="searchButton" type="submit" value="S&oslash;k" tabindex="2" class="searchFormSubmit"/>
+</div>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+$("form#searchForm").submit(function() {
+$(this).validate();
+if ($(this).valid()) {
+window.location.href = $(this).attr("action") + "?query=" + $(this).find("#searchQuery").val();
+}
+return false;
+});
+});
+</script>
+</div>
+</div>
+<div id="leftAndCenterContainer">
+<div id="leftContainer">
+<div class="fp30 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article284260.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/boligillustrasjon2__329487d.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article284260.ece">
+Fortsatt tid til å måle opp boligen
+</a>
+</h2>
+<p class="leadIn">
+13 prosent av oss har ennå ikke gjort det, men det er ikke for sent.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article284260.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div id="ad_Banner" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1055119|0|1|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1055119|0|1|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1055119|0|1|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="468" height="60" alt="Click here"></a></noscript>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186428.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/22SPOlinde_129861o_329485g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/england/article186428.ece">
+- Må være en klassespiller
+</a>
+</h2>
+<p class="leadIn">
+United-fansen er spent på Lindegaard.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/england/article186428.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article284239.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/fiskemaase_329420g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article284239.ece">
+Sjøfuglbestandane framleis pressa
+</a>
+</h2>
+<p class="leadIn">
+Teljingar i sommar viser kva slags bestandar som slit mest.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article284239.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/forbruker/helse/article284227.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/fotball1_329413g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/forbruker/helse/article284227.ece">
+Hvilke skadetyper er mest utbredt i fotball?
+</a>
+</h2>
+<p class="leadIn">
+Mange skader, også i ung alder.
+<a target="_top" class="artType_news" href="http://www.smp.no/forbruker/helse/article284227.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/sport/article284224.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/20101122-082442-pic_329407g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/sport/article284224.ece">
+Nasjonalt gjennombrudd
+</a>
+</h2>
+<p class="leadIn">
+Veronica Orheim Bjørlykke (16) fikk sitt definitive gjennombrudd som
+juniorsvømmer under kortbane NM.
+<a target="_top" class="artType_news" href="http://www.smp.no/sport/article284224.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div id="ad_Nettboard1" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1055121|0|261|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1055121|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1055121|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="468" height="400" alt="Click here"></a></noscript>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article284184.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/villsau_329405g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article284184.ece">
+Villsau til jul
+</a>
+</h2>
+<p class="leadIn">
+Per Kåre Ræstad har ikke vitenskapelig bevis. Men det er smaksforskjell på
+villsau og annen sau, mener han.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article284184.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://fotball.smp.no/eliteserien/article186369.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/Hoff_129762o_329401g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/eliteserien/article186369.ece">
+Den «ukjente» agenten
+</a>
+</h2>
+<p class="leadIn">
+AaFK får hjelp av Atta Aneke i forhandlingene med Man Utd.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/eliteserien/article186369.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<p class="breakingNews noFloat">
+Hareid:
+</p>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/soere/article284061.ece">
+Promilletur enda i hage
+</a>
+</h2>
+<p class="leadIn">
+Promillekøyrar bad om å få blåse då politiet kom.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/soere/article284061.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<p class="breakingNews noFloat">
+Stryn:
+</p>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/soere/article284126.ece">
+Til sjukehus etter slåsskamp
+</a>
+</h2>
+<p class="leadIn">
+Byturen endte hos legen.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/soere/article284126.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div id="ad_Nettboard2" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1247739|0|261|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1247739|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1247739|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="468" height="400" alt="Click here"></a></noscript>
+</div>
+<div class="fp30 ">
+<p class="breakingNews">
+Se bildeseriene:
+</p>
+<div class="image">
+<a href="http://www.smp.no/bildeserier/article283107.ece?imageIndex=0#pageTop" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/V_rportrett01_328832d.jpg" alt="" />
+</a>
+</div>
+<div class="fpRelatedContainer" style="background-color:#999999">
+<h2>
+<a target="_top" href="http://www.smp.no/bildeserier/article283107.ece?imageIndex=0#pageTop">
+Folk i fire årstider
+</a>
+</h2>
+<p class="leadIn">
+Journalist Stig Vågnes og fotograf Nils Harald Ånstad har møtt folk på
+Nordvestlandet gjenom de fire årstider.
+<a target="_top" class="artType_external" href="http://www.smp.no/bildeserier/article283107.ece?imageIndex=0#pageTop">
+Vårportrett
+</a>
+</p>
+<div class="fpRelated">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article283071.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/Sommerportrett10_328774j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article283071.ece">
+Sommerportrett
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_slideShow" href="http://www.smp.no/nyheter/article283071.ece">
+Se bildeserien
+</a>
+</p>
+</div>
+<div class="fpRelated">
+<div class="image">
+<a href="http://www.smp.no/bildeserier/article283072.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/H_stportrett06_328791j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/bildeserier/article283072.ece">
+Høstportrett
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_slideShow" href="http://www.smp.no/bildeserier/article283072.ece">
+Se bildeserien
+</a>
+</p>
+</div>
+<div class="fpRelated">
+<div class="image">
+<a href="http://www.smp.no/bildeserier/article283106.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/Vinterportrett04_328814j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/bildeserier/article283106.ece">
+Vinterportrett
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_slideShow" href="http://www.smp.no/bildeserier/article283106.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/alesundogomland/article284122.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/byggeplass__bygg__a_329355g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/alesundogomland/article284122.ece">
+Tjuveriplage for bedrifter
+</a>
+</h2>
+<p class="leadIn">
+Flere tjuverier fra byggeplasser.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/alesundogomland/article284122.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186287.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/19SPOlindegaard011_329195g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/england/article186287.ece">
+– Så mye vil han tjene i United
+</a>
+</h2>
+<p class="leadIn">
+Vil få millionbeløp på kontoen hver måned, hevder dansk avis.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/england/article186287.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_external" href="http://fotball.smp.no/eliteserien/article186220.ece">
+Investorene vil ha informasjon
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://fotball.smp.no/england/article186208.ece">
+Schmeichel: - Lykke til Anders!
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://fotball.smp.no/england/article186164.ece">
+- Perfekt for England
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/kultur/article284176.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/harrypotter_329393g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/kultur/article284176.ece">
+Harry Potter vant premierepublikummet i USA
+</a>
+</h2>
+<p class="leadIn">
+Cashet inn over 125 millioner dollar i åpningshelgen på nordamerikanske
+kinoer.
+<a target="_top" class="artType_news" href="http://www.smp.no/kultur/article284176.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/soere/article284041.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/boligbrann__fosnav__329329g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/soere/article284041.ece">
+Kom seg uskadd ut
+</a>
+</h2>
+<p class="leadIn">
+Bustadhus i Fosnavåg brann ned til grunnen i morgontimane.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/soere/article284041.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div id="ad_Nettboard3" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1247738|0|261|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1247738|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1247738|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="468" height="400" alt="Click here"></a></noscript>
+</div>
+<div class="fp30 ">
+<p class="breakingNews">
+Laga i Volda:
+</p>
+<div class="image">
+<a href="http://www.smp.no/kultur/article283955.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/barnetv_329317d.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/kultur/article283955.ece">
+Barne-tv på nynorsk
+</a>
+</h2>
+<p class="leadIn">
+Jakob seier ja til alt, mens Neikob seier nei.
+<strong>Saknar du meir nynorsk på barne-tv? </strong>
+<a target="_top" class="artType_news" href="http://www.smp.no/kultur/article283955.ece">
+Les mer
+</a>
+<span class="artHasComments">47 kommentarer</span>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/soere/article284000.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/kajakk__Tormod_Aust_329326g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/soere/article284000.ece">
+Mellom sinte selar og høge bølgjer
+</a>
+</h2>
+<p class="leadIn">
+Følg Tormod frå Selje på kajakkekspedisjon i Antarktis.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/soere/article284000.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/alesundogomland/article284054.ece">
+Rusa, uten førerkort - med falske skilt
+</a>
+</h2>
+<p class="leadIn">
+Da mannen i tillegg holdt på å krasje på en bensinstasjon – ble politiet
+tipset.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/alesundogomland/article284054.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_news" href="http://www.smp.no/nyheter/soere/article284061.ece">
+Promilletur enda i hage
+</a>
+</li>
+<li>
+<a class="artType_news" href="http://www.smp.no/nyheter/indre/article283867.ece">
+Brann ved ungdomsklubb var påsatt
+</a>
+</li>
+<li>
+<a class="artType_news" href="http://www.smp.no/nyheter/alesundogomland/article283885.ece">
+Stukket ned med barn som vitner
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp10">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186300.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/nytt_gamst_129814o_329353j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/england/article186300.ece">
+Gamsten scoret to
+</a>
+</h2>
+<p class="leadIn">
+Den norske landslagskanten er i scoringsform om dagen.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/england/article186300.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fp10">
+<div class="image">
+<a href="http://www.smp.no/nyheter/innenriks/article284043.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00309/lege__pleier__omsor_309824j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/innenriks/article284043.ece">
+Frynsete tillit til norsk helsevesen
+</a>
+</h2>
+<p class="leadIn">
+– Sunt tegn, mener sykehusdirektør.
+<strong>Si din mening !</strong>
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/innenriks/article284043.ece">
+Les mer
+</a>
+<span class="artHasComments">11 kommentarer</span>
+</p>
+</div>
+<div class="fp10">
+<div class="image">
+<a href="http://www.smp.no/sport/handball/article283976.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/handball_Spjelkavik_329324j.jpg" alt="" />
+</a>
+</div>
+<h3>
+Surt tap for Spjelkavik:
+</h3>
+<h2>
+<a target="_top" href="http://www.smp.no/sport/handball/article283976.ece">
+God debutant et lyspunkt
+</a>
+</h2>
+<p class="leadIn">
+<strong>Fem sekunder før kampslutt falt avgjørelsen.</strong>
+<a target="_top" class="artType_news" href="http://www.smp.no/sport/handball/article283976.ece">
+Les mer
+</a>
+</p>
+</div>
+</div>
+<div id="ad_Nettboard4" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1977670|0|261|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1977670|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1977670|0|261|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="468" height="400" alt="Click here"></a></noscript>
+</div>
+<div class="fp30 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article283591.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/20101119-091457-pic_329199d.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article283591.ece">
+Måtte ha gravferd på parkeringsplass
+</a>
+</h2>
+<p class="leadIn">
+Mangler lokaler for andre enn kristne.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article283591.ece">
+Les mer
+</a>
+<span class="artHasComments">107 kommentarer</span>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://fotball.smp.no/italia/article186262.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/jariise_329316g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/italia/article186262.ece">
+Roma vant uten Riise
+</a>
+</h2>
+<p class="leadIn">
+John Arne Riise har vondt i lysken og sto over da Roma slo Udinese 2-0 i serie
+A lørdag.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/italia/article186262.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=iss1559926">
+SLIK VAR : Roma - Udinese 2-0
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://fotball.smp.no/stat/index.jsp?stats=center&amp;type=seasontable&amp;seasonId=7680&amp;groupId=all">
+TABELLEN: Serie A Italia
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://fotball.smp.no/eliteserien/article186220.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/henrik_Hoff__h_gens_329308g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/eliteserien/article186220.ece">
+Investorene vil ha informasjon
+</a>
+</h2>
+<p class="leadIn">
+Slik fordeles pengene om Lindegaard går til United.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/eliteserien/article186220.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_external" href="http://fotball.smp.no/england/article186208.ece">
+Schmeichel: - Lykke til Anders!
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://fotball.smp.no/eliteserien/article186184.ece">
+- Den nye Schmeichel
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://fotball.smp.no/england/article186164.ece">
+- Perfekt for England
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<h3>
+Gaular:
+</h3>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/innenriks/article283996.ece">
+Må fraktes i båt i ukevis
+</a>
+</h2>
+<p class="leadIn">
+Ras tok vegen til bygda.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/innenriks/article283996.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/innenriks/article283951.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00314/20100818-091325-pic_314247g.jpg" alt="Statsråd Kristin Halvorsen vil ikkje seie om det er OK med 40-metersmaster mellom Sunnmørsalpane." />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/innenriks/article283951.ece">
+Heltent Halvorsen fortsetter
+</a>
+</h2>
+<p class="leadIn">
+Lysten på å knuse høyresiden.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/innenriks/article283951.ece">
+Les mer
+</a>
+<span class="artHasComments">10 kommentarer</span>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/indre/article283867.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/brann__ungdomsklubb_329304g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/indre/article283867.ece">
+Tente på ungdomsklubb
+</a>
+</h2>
+<p class="leadIn">
+Mistenkte unggutter i avhør.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/indre/article283867.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_news" href="http://www.smp.no/nyheter/indre/article283812.ece">
+Brann i ungdomsklubb
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<p class="breakingNews noFloat">
+Ålesund:
+</p>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/alesundogomland/article283885.ece">
+Stukket ned med barn som vitner
+</a>
+</h2>
+<p class="leadIn">
+Mann til sjukehus med knivskader.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/alesundogomland/article283885.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fp30 ">
+<div class="image">
+<a href="http://fotball.smp.no/eliteserien/article185238.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00327/AlleAafkScoringer_327146d.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/eliteserien/article185238.ece">
+Stem på årets mål
+</a>
+</h2>
+<p class="leadIn">
+Hvem er den fineste AaFK-scoringen i 2010?
+<a target="_top" class="artType_external" href="http://fotball.smp.no/eliteserien/article185238.ece">
+Se målene og si din mening !
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpContainer">
+<div class="fp15 ">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186252.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/_haraldtale_329327g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/england/article186252.ece">
+Vant enkelt uten Gerrard
+</a>
+</h2>
+<p class="leadIn">
+Roy Hodgson fikk en etterlengtet seier da bunnlaget West Ham ble for små på
+Anfield.
+<a target="_top" class="artType_external" href="http://fotball.smp.no/england/article186252.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10002997">
+SLIK VAR: Arsenal - Tottenham 2-3
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10002995">
+Manchester United - Wigan 2-0
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10002999">
+West Bromwich - Stoke 0-3
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10003001">
+Blackpool - Wolverhampton 2-0
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10003000">
+Bolton - Newcastle 5-1
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10003003">
+Birmingham - Chelsea 1-0
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://live.smp.no/#match=10002996">
+Liverpool - West Ham 3-0
+</a>
+</li>
+<li>
+<a class="artType_external" href="http://fotball.smp.no/england/article186239.ece">
+LES OGSÅ: Rooney tilbake i seier
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fp15 ">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article283804.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/frode_tafjord__siv__329288g.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article283804.ece">
+Sterkt møte på Stortinget
+</a>
+</h2>
+<p class="leadIn">
+Mistet datteren - vier livet til kampen mot rus.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article283804.ece">
+Les mer
+</a>
+</p>
+<ul class="relatedArticlesFp">
+<li>
+<a class="artType_news" href="http://www.smp.no/nyheter/article278176.ece">
+Stiller opp i kampen mot rus
+</a>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp10">
+<div class="image">
+<a href="http://www.smp.no/nyheter/alesundogomland/article283801.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/biltjuveri__Bardec__329287j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/alesundogomland/article283801.ece">
+Bildrama endte godt
+</a>
+</h2>
+<p class="leadIn">
+Les hvordan bileieren opplevde tjuveriet og den ville biljakten i Ålesund
+sentrum.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/alesundogomland/article283801.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fp10">
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/innenriks/article283860.ece">
+Isolert etter veiras
+</a>
+</h2>
+<p class="leadIn">
+Fylkesveg forsvant i fjorden i Gaular.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/innenriks/article283860.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fp10">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186208.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/schmeichel_329280j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://fotball.smp.no/england/article186208.ece">
+Schmeichel: - Lykke til Anders!
+</a>
+</h2>
+<p class="leadIn">
+Den danske keeperkjempen har «snudd».
+<a target="_top" class="artType_external" href="http://fotball.smp.no/england/article186208.ece">
+Les mer
+</a>
+</p>
+</div>
+</div>
+<div class="fpContainer">
+<div class="fp10">
+<div class="image">
+<a href="http://www.smp.no/nyheter/indre/article283812.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/brann__sj_holt_ungd_329295j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/indre/article283812.ece">
+Brann i ungdomsklubb
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/indre/article283812.ece">
+Evakuert i natt etter røykutvikling
+</a>
+</p>
+</div>
+<div class="fp10">
+<div class="image">
+<a href="http://www.smp.no/nyheter/innenriks/article283796.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00320/geo_barents_d_p_ved_320642j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/innenriks/article283796.ece">
+- Tidsspørsmål før pirater kaprer norske skip
+</a>
+</h2>
+<p class="leadIn">
+Sjøfartsnæringen ber regjeringen ta ansvar.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/innenriks/article283796.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fp10">
+<div class="image">
+<a href="http://www.smp.no/nyheter/alesundogomland/article283777.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00290/promille__trafikk___290216j.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/alesundogomland/article283777.ece">
+Eldre sjåfør skapte kaos
+</a>
+</h2>
+<p class="leadIn">
+Ble kjørt hjem av politiet.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/alesundogomland/article283777.ece">
+Les mer
+</a>
+</p>
+</div>
+</div>
+</div>
+<div id="centerContainer">
+<div class="fpModule customTabs">
+<ul class="tabs">
+<li><a href="#">Siste nytt</a></li>
+<li><a href="#">Mest kommentert</a></li>
+</ul>
+<div class="panes">
+<div style="display:block;">
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">10:43</span>
+<a href="http://www.smp.no/kultur/article284261.ece">Teknikkproblemer på Løvenvold</a>
+</li>
+<li>
+<span class="time">10:31</span>
+<a href="http://www.smp.no/nyheter/article284260.ece">Fortsatt tid til å måle opp boligen</a>
+</li>
+<li>
+<span class="time">09:15</span>
+<a href="http://www.smp.no/nyheter/article284239.ece">Sjøfuglbestandane framleis pressa</a>
+</li>
+<li>
+<span class="time">08:49</span>
+<a href="http://www.smp.no/forbruker/helse/article284227.ece">Hvilke skadetyper er mest utbredt i fotball?</a>
+</li>
+<li>
+<span class="time">06:00</span>
+<a href="http://www.smp.no/nyheter/article284184.ece">Villsau til jul</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="display:none;">
+<div class="box">
+<ul class="articleList">
+<li class="even">
+<a href="http://www.smp.no/nyheter/article283591.ece">Måtte ha gravferd på parkeringsplass</a>
+<span class="artHasComments">107 kommentarer</span>
+</li>
+<li class="odd">
+<a href="http://www.smp.no/nyheter/article258391.ece">9000 færre tar buss - hver måned</a>
+<span class="artHasComments">63 kommentarer</span>
+</li>
+<li class="even">
+<a href="http://www.smp.no/kultur/article283955.ece">Barne-tv på nynorsk</a>
+<span class="artHasComments">47 kommentarer</span>
+</li>
+<li class="odd">
+<a href="http://www.smp.no/nyheter/article283324.ece">Dommer raser mot politiforening</a>
+<span class="artHasComments">46 kommentarer</span>
+</li>
+<li class="even">
+<a href="http://www.smp.no/nyheter/article281019.ece">Vil legge ned «Huset»</a>
+<span class="artHasComments">41 kommentarer</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+if(!tabsInitialized) {
+$("ul.tabs").tabs("div.panes > div");
+tabsInitialized = true;
+}
+});
+</script>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3>Ledige jobber</h3>
+</div>
+<div class="jobCarousel">
+<a class="prevPage browse left"></a>
+<div class="scrollable">
+<div class="items">
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13671?placement_id=111"><img src="http://files.tinde.no/storage/04/b1/04b17d3e7821bbd5dc5a5b8282f0ccca-14007-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13671?placement_id=111">Daglig leder</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13737?placement_id=111"><img src="http://files.tinde.no/storage/71/f9/71f93439e62b42306edfd59f85ee4a68-22232-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13737?placement_id=111">Site team - Skipsingeniør</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13739?placement_id=111"><img src="http://files.tinde.no/storage/13/f7/13f78180fb3d03f0dca879934f22db61-8601-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13739?placement_id=111">Dokumentasjonsansvarlig</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13746?placement_id=111"><img src="http://files.tinde.no/storage/fd/a6/fda6d7eafe0b843a082ec204dd00871e-4158-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13746?placement_id=111">Driftsoperatør</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13762?placement_id=111"><img src="http://files.tinde.no/storage/42/aa/42aad1631fdb97b5b82a8461e95183c2-18117-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13762?placement_id=111">Kulturhusleiar</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13791?placement_id=111"><img src="http://files.tinde.no/storage/fc/e4/fce4a41d0606a7f85cc6e7dc7d87ad3f-82745-2.jpeg" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13791?placement_id=111">Vi søker nye medarbeidarar innafor ulike fagfelt:</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13771?placement_id=111"><img src="http://files.tinde.no/storage/fa/36/fa3608fce1d9b898b5671e691f87c335-17447-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13771?placement_id=111">Daglig leder</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13804?placement_id=111"><img src="http://files.tinde.no/storage/52/1d/521dc5eabc921f4529e913f834b26451-13975-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13804?placement_id=111">FoU Leder</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13818?placement_id=111"><img src="http://files.tinde.no/storage/07/cc/07cc25e02ceb0221cbd94fc1fcccfb1a-11515-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13818?placement_id=111">Ledige stillinger hos PMC Servi Technics</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13854?placement_id=111"><img src="http://files.tinde.no/storage/cd/06/cd068fc3f9df54804ef10c9f2bad585c-16514-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13854?placement_id=111">Avdelingsleiar</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13850?placement_id=111"><img src="http://files.tinde.no/storage/62/2d/622d85fb57e1fea480535823ff2aeec6-3129-1.gif" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13850?placement_id=111">DAGLEG LEIAR</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13851?placement_id=111"><img src="http://files.tinde.no/storage/e2/7e/e27e9cf3d958468b8e39e8c61817baf8-2221-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13851?placement_id=111">Servicemontører</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13871?placement_id=111"><img src="http://files.tinde.no/storage/5d/24/5d24917eaca3ad30370a4e75d0e4419a-6711-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13871?placement_id=111">Mekaniker</a></h3>
+</div>
+<div class="item">
+<a href="http://plug.tinde.no/hits/SL13886?placement_id=111"><img src="http://files.tinde.no/storage/c7/bd/c7bdf41bc34f14310bafd909a396e2be-4969-1.png" /></a>
+<h3><a href="http://plug.tinde.no/hits/SL13886?placement_id=111">Nettverksadministrator / Systemansvarlig</a></h3>
+</div>
+</div>
+</div>
+<a class="nextPage browse right"></a>
+</div>
+<div class="jobSearch">
+<a href="http://em-sm.tinde.no/stilling/lokalt">S&oslash;k blant ledige jobber</a>
+<form action="http://em-sm.tinde.no/sok/build" method="get">
+<input type="text" id="querystring" name="querystring" class="searchForm" />
+<input type="hidden" name="vertical" value="tinde-job" />
+<input type="hidden" name="filters" value="*taxonomy,^Norge/MÃ¸re og Romsdal/" />
+<input type="submit" value="S&oslash;k" class="searchFormSubmit" />
+</form>
+</div>
+<div class="boxBottom">
+<a href="http://em-sm.tinde.no/eiendom/lokalt">Eiendom</a>
+<a href="http://em-sm.tinde.no/stilling/lokalt">Jobb</a>
+<a href="http://em-sm.tinde.no/motors/lokalt">Motor</a>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+$("div.scrollable").scrollable({
+size: 1
+}).circular().autoscroll({
+autoplay: true,
+interval: 5000
+});
+});
+</script>
+</div>
+<div class="fpModule readerGreetings">
+<div class="header">
+<h3><a href="http://dittogmitt.smp.no/hilsenoversikt.php">Lesernes hilsener</a></h3>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://dittogmitt.smp.no/vishilsen.php?gid=52173"><img src="http://dittogmitt.smp.no/uploadedimages/0/126/126929-5.jpg"></a>
+</div>
+<h2>
+<a href="http://dittogmitt.smp.no/vishilsen.php?gid=52173">Johan-Henrik 15 &aring;r</a>
+</h2>
+<p class="leadIn">Gratulere s&aring; masse med 15 &aring;rs dagen din i dag !! H&aring;pe du f&aelig;r en...<a href="http://dittogmitt.smp.no/profil.php?uid=21498" class="username">Ingvillf</a>
+</p>
+<div class="clear"></div>
+</div><div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://dittogmitt.smp.no/vishilsen.php?gid=52145"><img src="http://dittogmitt.smp.no/uploadedimages/0/126/126857-5.jpg"></a>
+</div>
+<h2>
+<a href="http://dittogmitt.smp.no/vishilsen.php?gid=52145">Gratulere med dagen</a>
+</h2>
+<p class="leadIn">Hipp hurra for GULL gutten v&aring;r som fyller 3 &aring;r idag. Ha en str&aring;lende bursdag...<a href="http://dittogmitt.smp.no/profil.php?uid=48414" class="username">buyu5</a>
+</p>
+<div class="clear"></div>
+</div><div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://dittogmitt.smp.no/vishilsen.php?gid=52139"><img src="http://dittogmitt.smp.no/uploadedimages/0/126/126844-5.jpg"></a>
+</div>
+<h2>
+<a href="http://dittogmitt.smp.no/vishilsen.php?gid=52139">Amanda 1 &aring;r!!</a>
+</h2>
+<p class="leadIn">Vi vil med dette gratulere sjarmtrollet v&aring;rt med 1-&aring;rs dagen som var torsdag 1. november!...<a href="http://dittogmitt.smp.no/profil.php?uid=39854" class="username">Solholm</a>
+</p>
+<div class="clear"></div>
+</div>
+<div class="boxBottom">
+<a href='http://dittogmitt.smp.no/hilsenoversikt.php'>
+Les flere hilsener her
+</a>
+</div>
+</div>
+<div class="fpModule readerPictures">
+<div class="header">
+<h3><a href="http://dittogmitt.smp.no/bildeoversikt.php">Lesernes bilder</a></h3>
+</div>
+<div class="fpCenter15">
+<div class="image">
+<a href="http://dittogmitt.smp.no/visbilder.php?isid=11349"><img src="http://dittogmitt.smp.no/uploadedimages/0/127/127005-1.jpg"></a>
+</div>
+<h2>
+<a href="http://dittogmitt.smp.no/visbilder.php?isid=11349">Engesetdalsvatnet</a>
+</h2>
+<div class="clear"></div>
+</div><div class="fpCenter15">
+<div class="image">
+<a href="http://dittogmitt.smp.no/visbilder.php?isid=11348"><img src="http://dittogmitt.smp.no/uploadedimages/0/127/127004-1.jpg"></a>
+</div>
+<h2>
+<a href="http://dittogmitt.smp.no/visbilder.php?isid=11348">Skodje-Straumsbrua</a>
+</h2>
+<div class="clear"></div>
+</div>
+<div class="boxBottom">
+<a href='http://dittogmitt.smp.no/bildeoversikt.php'>
+Les flere hilsener her
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer imageGalleries">
+<div class="header">
+<h3>Bildeserier</h3>
+</div>
+<div class="box hasFollowingElement">
+<div class="fpCenterBoxedBig">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article283440.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/Asp_ya_og_bysentrum_329152f.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article283440.ece">
+Sjekk Aspøya og sentrum fra lufta
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_slideShow" href="http://www.smp.no/nyheter/article283440.ece">
+Ta deg en flytur rundt bysentrum i Ålesund
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/kultur/article283425.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/taremare03_329107l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/kultur/article283425.ece">
+Taremarefestival i Ingebrigt Davikhuset i Brattvåg
+</a>
+</h2>
+<p class="leadIn">
+Barn fra Haram deltok i helgas Taremarefestival i Ingebrigt Davikhuset i
+Brattvåg
+<a target="_top" class="artType_slideShow" href="http://www.smp.no/kultur/article283425.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article283342.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/19LOKfa5_329044l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article283342.ece">
+Brennande protest for Jens Prest
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_slideShow" href="http://www.smp.no/nyheter/article283342.ece">
+Sjå bilde frå det brennande engasjementet
+</a>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/bildeserier/'>
+Flere bildeserier
+</a>
+</div>
+</div>
+<div class="fpModule videoGalleries">
+<div class="header">
+<h3>Video</h3>
+</div>
+<div class="box">
+<div class="fpCenterBoxedBig">
+<div class="image">
+<a href="http://www.smp.no/video/?videoId=572">
+<img src="http://front.xstream.dk/smp/image/thumbnail/?id=572&amp;format=4&amp;v=1289818302" alt="" title="" />
+</a>
+</div>
+<h2>
+<a href="http://www.smp.no/video/?videoId=572">
+Hør Marthe (15) og storbandet i &#034;BrODDway Fever&#034;
+</a>
+</h2>
+<p class="leadIn">
+Marthe Hauge Knudsen synger med SUBB og KBB i forestillingen &#034;brODDway fever&#034; i Parken kulturhus 13. november 2010.
+<a href="http://www.smp.no/video/?videoId=572">Les mer</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/video/?videoId=568">
+<img src="http://front.xstream.dk/smp/image/thumbnail/?id=568&amp;format=1&amp;v=1289293988" alt="" title="" />
+</a>
+</div>
+<h2>
+<a href="http://www.smp.no/video/?videoId=568">
+Gjerdestrikking - Åse og Solveig setter farge på byen
+</a>
+</h2>
+<p class="leadIn">
+På en svært original måte.
+<a href="http://www.smp.no/video/?videoId=568">Les mer</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/video/?videoId=565">
+<img src="http://front.xstream.dk/smp/image/thumbnail/?id=565&amp;format=1&amp;v=1288606469" alt="" title="" />
+</a>
+</div>
+<h2>
+<a href="http://www.smp.no/video/?videoId=565">
+Trenger ikke oppvarming
+</a>
+</h2>
+<p class="leadIn">
+AaFK-veteran Trond Fredriksen fikk beskjed om å starte kampen mot Brann 15 minutter før kampstart. - Like greit, jeg trenger ikke oppvarming, ler Trond.
+<a href="http://www.smp.no/video/?videoId=565">Les mer</a>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/video/'>
+Flere videoer
+</a>
+</div>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3>SMP på Facebook</h3>
+</div>
+<div class="box hasPadding">
+<iframe src="http://www.connect.facebook.com/widgets/fan.php?api_key=90eb6ed94dbad9026ad91d777af3f8ab&amp;channel_url=http%3A%2F%2Fwww.smp.no%2Fapps%2Fpbcs.dll%2Fforside%3Ffbc_channel%3D1&amp;id=241422063738&amp;name=&amp;width=294&amp;connections=10&amp;stream=0&amp;logobar=0&amp;css="
+width="100%"
+height="250"
+marginwidth="0"
+marginheight="0"
+scrolling="no"
+frameborder="0"></iframe>
+</div>
+</div>
+<div class="fpModule ">
+<div class="fpModule taxModule">
+<div class="header">
+<h3>S&oslash;k i skattelistene</h3>
+</div>
+<form method="POST" action="http://skatt.smp.no/?encoding=utf">
+<div>
+<label for="lastname">Navn</label>
+<input type="text" name="name" id="name">
+<label for="age">Alder</label>
+<input type="text" name="age" id="age">
+<input type="submit" alt="S&oslash;k" value="S&oslash;k" title="S&oslash;k" class="sbmt">
+</div>
+</form>
+<ul>
+<li><a href="http://skatt.smp.no/?tab=inntekt">Topp 50 inntekt</a></li>
+<li><a href="http://skatt.smp.no/skattekart.php">Skattekart</a></li>
+<li><a href="http://skatt.smp.no/topsearch.php">Mest s&oslash;kt</a></li>
+</ul>
+</div>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3><a href="http://www.smp.no/nyheter/article277167.ece">Kommunevalg på nett</a></h3>
+</div>
+<div class="box hasNoPadding">
+<a href="http://www.smp.no/nyheter/article277167.ece"><img width="320" height="137" alt="" src="http://www.smp.no/multimedia/dynamic/00325/valg09_325285e.jpg"/></a>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/nyheter/article277167.ece'>
+Ålesund skal være forsøkskommune
+</a>
+</div>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3><a href="http://dittogmitt.smp.no/quiz_t2.php?IDQ=2058">Førerprøven</a></h3>
+</div>
+<div class="box hasNoPadding">
+<a href="http://dittogmitt.smp.no/quiz_t2.php?IDQ=2058"><img width="320" height="180" alt="" src="http://www.smp.no/multimedia/archive/00320/test-NY_320808a.jpg"/></a>
+</div>
+<div class="boxBottom">
+<a href='http://dittogmitt.smp.no/quiz_t2.php?IDQ=2058'>
+Klarer du teoritesten?
+</a>
+</div>
+</div>
+<div class="fpModule aafkModule">
+<div class="header">
+<h3><a href="http://fotball.smp.no/eliteserien/index.jsp?service=default&amp;stats=true&amp;type=team&amp;teamId=272">AaFK</a></h3>
+</div>
+<div class="box">
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186428.ece">
+<img src="http://fotball.smp.no/multimedia/archive/00129/22SPOlinde_129861a.jpg" alt="" />
+<span class="videoIconOverlay"></span>
+</a>
+</div>
+<h2><a href="http://fotball.smp.no/england/article186428.ece">
+&ndash; Må være en klassespiller
+</a></h2>
+<p class="leadIn">
+Manchester United-fansen innrømmer at de knapt vet noe om Anders Lindegaard.
+Likevel er de overbevist om at han har potensiale til å bli en stjerne i
+klubben.
+<a href="http://fotball.smp.no/england/article186428.ece">Les mer</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://fotball.smp.no/eliteserien/article186369.ece">
+<img src="http://fotball.smp.no/multimedia/archive/00129/Hoff_129762a.JPG" alt="" />
+<span class="videoIconOverlay"></span>
+</a>
+</div>
+<h2><a href="http://fotball.smp.no/eliteserien/article186369.ece">
+Den &laquo;ukjente&raquo; agenten
+</a></h2>
+<p class="leadIn">
+AaFK får hjelp av fotballagenten Atta Aneke (32) i forhandlingene med
+Manchester United.
+<a href="http://fotball.smp.no/eliteserien/article186369.ece">Les mer</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://fotball.smp.no/england/article186287.ece">
+<img src="http://fotball.smp.no/multimedia/archive/00129/Lindeg_129811a.jpg" alt="" />
+<span class="videoIconOverlay"></span>
+</a>
+</div>
+<h2><a href="http://fotball.smp.no/england/article186287.ece">
+&ndash; Så mye vil Lindegaard tjene
+</a></h2>
+<p class="leadIn">
+Samtidig som Anders Lindegaard formelt fortsatt er AaFK-keeper, går
+spekulasjonene høyt rundt den forventede overgangen til Manchester United.
+<a href="http://fotball.smp.no/england/article186287.ece">Les mer</a>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://fotball.smp.no/eliteserien/index.jsp?service=default&amp;stats=true&amp;type=team&amp;teamId=272'>
+Les mer om AaFK
+</a>
+</div>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3><a href="http://www.smp.no/kultur/kulturkalender/">HVA SKJER? Sjekk kulturkalenderen her!</a></h3>
+</div>
+<div class="box hasNoPadding">
+<a href="http://www.smp.no/kultur/kulturkalender/"><img width="320" height="180" alt="" src="http://www.smp.no/multimedia/dynamic/00303/sommerfest_kulturka_303521e.jpg"/></a>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/kultur/kulturkalender/'>
+Registrér ditt arrangement
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Kultur</h3>
+</div>
+<div class="box hasFollowingElement">
+<div class="fpCenterBoxedBig">
+<div class="image">
+<a href="http://www.smp.no/kultur/article284261.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/lovenvold_329488f.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/kultur/article284261.ece">
+Teknikkproblemer på Løvenvold
+</a>
+</h2>
+<p class="leadIn">
+Måtte avlyse søndag. Forhåndssalget stengt mandag.
+<a target="_top" class="artType_news" href="http://www.smp.no/kultur/article284261.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/kultur/article284176.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/harrypotter_329393l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/kultur/article284176.ece">
+Harry Potter vant premierepublikummet i USA
+</a>
+</h2>
+<p class="leadIn">
+Cashet inn over 125 millioner dollar i åpningshelgen på nordamerikanske
+kinoer.
+<a target="_top" class="artType_news" href="http://www.smp.no/kultur/article284176.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/kultur/article283955.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/barnetv_329317l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/kultur/article283955.ece">
+Barne-tv på nynorsk
+</a>
+</h2>
+<p class="leadIn">
+Jakob seier ja til alt, mens Neikob seier nei.
+<strong>Saknar du meir nynorsk på barne-tv? </strong>
+<a target="_top" class="artType_news" href="http://www.smp.no/kultur/article283955.ece">
+Les mer
+</a>
+<span class="artHasComments">47 kommentarer</span>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/kultur/'>
+Flere Kultur-nyheter
+</a>
+</div>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3><a href="http://www.smp.no/5rette/article267522.ece">Nyhetskonkurranse</a></h3>
+</div>
+<div class="box hasNoPadding">
+<a href="http://www.smp.no/5rette/article267522.ece"><img width="320" height="199" alt="" src="http://www.smp.no/multimedia/dynamic/00319/5rette_promo_319803e.jpg"/></a>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/5rette/'>
+Les mer om 5 rette
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Sport</h3>
+</div>
+<div class="box hasFollowingElement">
+<div class="fpCenterBoxedBig">
+<div class="image">
+<a href="http://www.smp.no/sport/article284224.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/20101122-082442-pic_329407f.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/sport/article284224.ece">
+Nasjonalt gjennombrudd
+</a>
+</h2>
+<p class="leadIn">
+Veronica Orheim Bjørlykke (16) fikk sitt definitive gjennombrudd som
+juniorsvømmer under kortbane NM.
+<a target="_top" class="artType_news" href="http://www.smp.no/sport/article284224.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/sport/handball/article283976.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/handball_Spjelkavik_329324l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/sport/handball/article283976.ece">
+God debutant et lyspunkt
+</a>
+</h2>
+<p class="leadIn">
+<strong>Fem sekunder før kampslutt falt avgjørelsen.</strong>
+<a target="_top" class="artType_news" href="http://www.smp.no/sport/handball/article283976.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article283523.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/hafs_s_328072l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article283523.ece">
+Hafsås har fått astma
+</a>
+</h2>
+<p class="leadIn">
+Fikk bekreftet mistanken om luftveissykdom.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article283523.ece">
+Les mer
+</a>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/sport/'>
+Les flere sportssaker
+</a>
+</div>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3><a href="http://konsert.smp.no/default.aspx?menu=1002">Gjenopplev JUGENDFESTEN</a></h3>
+</div>
+<div class="box hasNoPadding">
+<a href="http://konsert.smp.no/default.aspx?menu=1002"><img width="350" height="234" alt="" src="http://www.smp.no/multimedia/archive/00315/MEH_2903_315428a.jpg"/></a>
+</div>
+<div class="boxBottom">
+<a href='http://konsert.smp.no/default.aspx?menu=1002'>
+Se de musikalske godbitene HER
+</a>
+</div>
+</div>
+<div class="fpModule taxModule">
+<div class="header">
+<h3>Skattelistene 2008</h3>
+</div>
+<h3>Søk i skattelistene <br/>for 2008</h3>
+<form action="http://skatt.smp.no/" method="POST">
+<label for="sbox">Etternavn</label>
+<input type="text" id="sbox" name="lastname"/>
+<input type="submit" class="sbmt" title="Søk" value="Søk" alt="Søk" />
+</form>
+<ul>
+<li><a href="http://skatt.smp.no/?tab=inntekt">Topp 50 inntekt</a></li>
+<li><a href="http://skatt.smp.no/skattekart.php">Skattekart</a></li>
+<li><a href="http://skatt.smp.no/topsearch.php">Mest søkt</a></li>
+</ul>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3><a href="http://fotball.smp.no/blogg/sindre_halkjelsvik/article184413.ece">Blogg</a></h3>
+</div>
+<div class="box hasNoPadding">
+<a href="http://fotball.smp.no/blogg/sindre_halkjelsvik/article184413.ece"><img width="320" height="180" alt="" src="http://www.smp.no/multimedia/dynamic/00282/sindre-blogg_282182e.jpg"/></a>
+</div>
+<div class="boxBottom">
+<a href='http://fotball.smp.no/blogg/sindre_halkjelsvik/article184413.ece'>
+Gå til blogg
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Meninger</h3>
+</div>
+<div class="box hasFollowingElement">
+<div class="fpCenterBoxedBig">
+<div class="image">
+<a href="http://www.smp.no/meninger/kommentar/article283844.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00313/politi-generell_ill_313477f.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/meninger/kommentar/article283844.ece">
+Bunnplasseringer
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_news" href="http://www.smp.no/meninger/kommentar/article283844.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpCenterBoxedSmall">
+<h2>
+<a target="_top" href="http://www.smp.no/meninger/leder/article283843.ece">
+Rådata til foredling
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_news" href="http://www.smp.no/meninger/leder/article283843.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<h2>
+<a target="_top" href="http://www.smp.no/meninger/leder/article283841.ece">
+Prest til besvær
+</a>
+</h2>
+<p class="leadIn">
+<a target="_top" class="artType_news" href="http://www.smp.no/meninger/leder/article283841.ece">
+Les mer
+</a>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/meninger/'>
+Flere Meninger
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>FORBRUKER</h3>
+</div>
+<div class="box hasFollowingElement">
+<div class="fpCenterBoxedBig">
+<div class="image">
+<a href="http://www.smp.no/forbruker/helse/article284227.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00329/fotball1_329413f.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/forbruker/helse/article284227.ece">
+Hvilke skadetyper er mest utbredt i fotball?
+</a>
+</h2>
+<p class="leadIn">
+Mange skader, også i ung alder.
+<a target="_top" class="artType_news" href="http://www.smp.no/forbruker/helse/article284227.ece">
+Les mer
+</a>
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article282264.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/parloftervekter4_328328l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article282264.ece">
+Gir styrketrening ulik effekt på menn og kvinner?
+</a>
+</h2>
+<p class="leadIn">
+Ja, viser denne studien. Sjekk hvordan.
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article282264.ece">
+Les mer
+</a>
+</p>
+</div>
+<div class="fpCenterBoxedSmall">
+<div class="image">
+<a href="http://www.smp.no/nyheter/article282245.ece" class="">
+<img src="http://www.smp.no/multimedia/dynamic/00328/trening_328309l.jpg" alt="" />
+</a>
+</div>
+<h2>
+<a target="_top" href="http://www.smp.no/nyheter/article282245.ece">
+Høyt utdannede trener mer
+</a>
+</h2>
+<p class="leadIn">
+Er det sammenheng mellom fysisk aktvitetsnivå og utdanning?
+<a target="_top" class="artType_news" href="http://www.smp.no/nyheter/article282245.ece">
+Les mer
+</a>
+</p>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/forbruker/'>
+Flere nyheter
+</a>
+</div>
+</div>
+</div>
+</div>
+<div id="rightContainer">
+<div class="fpModule lokalGuidenModule">
+<div class="header">
+<h3><a href="http://smp.lokalguiden.no/">Lokalguiden</a></h3>
+</div>
+<ul>
+<li><a href="http://smp.lokalguiden.no/?q=velv%E6re">Velv&aelig;re</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=varmepumpe">Varmepumpe</a></li>
+<li><a href="http://smp.lokalguiden.no/smp/tjenester/bedriftstjenester/regnskapstjenester">Regnskap</a></li>
+<li><a href="http://smp.lokalguiden.no/smp/tjenester/bedriftstjenester/revisjonstjenester/">Revisjon</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=trening">Trening</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=restaurant">Restaurant</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=bilverksted">Bilverksted</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=r%F8rlegger">R&oslash;rlegger</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=isolering">Isolering</a></li>
+<li><a href="http://smp.lokalguiden.no/?q=forbrukselektronikk">Elektronikk</a></li>
+</ul>
+<form method="get" action="http://smp.lokalguiden.no/" accept-charset="iso-8859-1">
+<input class="searchForm" name="q" type="text" value="S&oslash;k i Lokalguiden" /><input class="searchFormSubmit" type="submit" />
+</form>
+</div>
+<div id="ad_Skyskraper1" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1055115|0|339|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1055115|0|339|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1055115|0|339|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="500" alt="Click here"></a></noscript>
+</div>
+<div id="ad_Knapp1" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1593463|0|592|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1593463|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1593463|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="120" alt="Click here"></a></noscript>
+</div>
+<div class="fpModule ">
+<div class="header">
+<h3>Elektronisk papiravis</h3>
+</div>
+<div class="box hasNoPadding">
+<img width="180" src="http://www.smp.no/template/ver2-0/img/local/smp/buyandread.png" alt="Kj&oslash;p og les avisen elektronisk her." />
+</div>
+<div class="boxBottom">
+<ul>
+<li><a href="https://www.buyandread.com/mediaport/custom/ePaper.htm?pub=sunnmorsposten">Kjøp som eAvis</a></li>
+<li><a href="https://www.buyandread.com/mediaport/buy.htm?pub=sunnmorsposten">Kjøp som pdf-avis</a></li>
+</ul>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Ålesund og omland</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/alesundogomland/article284122.ece">Tjuveriplage for bedrifter</a>
+</li>
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/alesundogomland/article284054.ece">Kjørte rusa, uten førerkort - med falske skilt </a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/alesundogomland/article283885.ece">Stukket ned med barn som vitner</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/bildeserier/article283106.ece?imageIndex=0#pageTop">Folk i fire årstider</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/article283804.ece">Sterkt møte på Stortinget</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Nordre</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">06:00</span>
+<a href="http://www.smp.no/nyheter/article284184.ece">Villsau til jul</a>
+</li>
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/alesundogomland/article284122.ece">Tjuveriplage for bedrifter</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/bildeserier/article283106.ece?imageIndex=0#pageTop">Folk i fire årstider</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/article283804.ece">Sterkt møte på Stortinget</a>
+</li>
+<li>
+<span class="time">19.11</span>
+<a href="http://www.smp.no/vaeret/article283765.ece">Pent, men kaldt</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/nyheter/nordre/'>
+Flere saker fra Nordre
+</a>
+</div>
+</div>
+<div id="ad_Skyskraper2" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1055118|0|339|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1055118|0|339|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1055118|0|339|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="500" alt="Click here"></a></noscript>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Søre</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/alesundogomland/article284122.ece">Tjuveriplage for bedrifter</a>
+</li>
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/soere/article284126.ece">Til sjukehus etter slåsskamp</a>
+</li>
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/soere/article284061.ece">Promilletur enda i hage</a>
+</li>
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/soere/article284041.ece">Bustadhus brann ned</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/soere/article284000.ece">Mellom sinte selar og høge bølgjer</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="ad_Knapp2" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1593461|0|592|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1593461|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1593461|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="120" alt="Click here"></a></noscript>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Indre</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">21.11</span>
+<a href="http://www.smp.no/nyheter/alesundogomland/article284122.ece">Tjuveriplage for bedrifter</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/indre/article283867.ece">Brann ved ungdomsklubb var påsatt</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/bildeserier/article283106.ece?imageIndex=0#pageTop">Folk i fire årstider</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/article283804.ece">Sterkt møte på Stortinget</a>
+</li>
+<li>
+<span class="time">20.11</span>
+<a href="http://www.smp.no/nyheter/indre/article283812.ece">Brann i ungdomsklubb</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/nyheter/indre/'>
+Flere nyheter fra Indre
+</a>
+</div>
+</div>
+<div id="ad_Skyskraper3" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1067225|0|339|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1067225|0|339|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1067225|0|339|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="500" alt="Click here"></a></noscript>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Næringsliv</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">19.11</span>
+<a href="http://www.smp.no/nyheter/article283720.ece">Kjempekontrakter til Aker Midsund</a>
+</li>
+<li>
+<span class="time">19.11</span>
+<a href="http://www.smp.no/nyheter/ytre/article283609.ece">Byggjer to skip hos Ulstein</a>
+</li>
+<li>
+<span class="time">17.11</span>
+<a href="http://www.smp.no/nyheter/article283074.ece">Småbrukere mot pels</a>
+</li>
+<li>
+<span class="time">17.11</span>
+<a href="http://www.smp.no/nyheter/article283047.ece">Frå torskeeventyr til lusekrig</a>
+</li>
+<li>
+<span class="time">17.11</span>
+<a href="http://www.smp.no/nyheter/article283041.ece">Gigantkontrakt gir store ringvirkninger</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/naeringsliv/'>
+Flere nyheter
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Siste innenriks</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">10:41</span>
+<a href="http://www.smp.no/ntb/innenriks/article284262.ece">Mann hardt skadd i kollisjon med lastebil</a>
+</li>
+<li>
+<span class="time">10:27</span>
+<a href="http://www.smp.no/ntb/innenriks/article284147.ece">Anker drapsdom for å vise at han ikke er syk</a>
+</li>
+<li>
+<span class="time">10:16</span>
+<a href="http://www.smp.no/ntb/innenriks/article284234.ece">Brann i Tromsø slukket</a>
+</li>
+<li>
+<span class="time">09:55</span>
+<a href="http://www.smp.no/ntb/innenriks/article284213.ece">Ingen pågrepet etter drapsforsøk i Oslo</a>
+</li>
+<li>
+<span class="time">09:50</span>
+<a href="http://www.smp.no/ntb/innenriks/article284248.ece">Rett opp på Oslo Børs</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/ntb/innenriks/'>
+Les flere nyheter
+</a>
+</div>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Siste utenriks</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">10:25</span>
+<a href="http://www.smp.no/ntb/utenriks/article284258.ece">Suu Kyis sønn får besøke moren</a>
+</li>
+<li>
+<span class="time">10:19</span>
+<a href="http://www.smp.no/ntb/utenriks/article284075.ece">Chilenske gruvearbeidere kranglet om mat</a>
+</li>
+<li>
+<span class="time">08:44</span>
+<a href="http://www.smp.no/ntb/utenriks/article284229.ece">- Kabul tryggere for barn enn London</a>
+</li>
+<li>
+<span class="time">08:32</span>
+<a href="http://www.smp.no/ntb/utenriks/article284185.ece">Israel bygger grensegjerde mot Egypt </a>
+</li>
+<li>
+<span class="time">07:32</span>
+<a href="http://www.smp.no/ntb/utenriks/article284218.ece">Somaliske pirater for retten i Tyskland</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/ntb/utenriks/'>
+Les flere nyheter
+</a>
+</div>
+</div>
+<div id="ad_Knapp3" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1593462|0|592|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1593462|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1593462|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="120" alt="Click here"></a></noscript>
+</div>
+<div class="fpModule blueContainer ">
+<div class="header">
+<h3>Siste sport</h3>
+</div>
+<div class="Container">
+<div class="box">
+<ul class="articleList">
+<li>
+<span class="time">10:42</span>
+<a href="http://www.smp.no/ntb/sport/article284265.ece">Australsk WADA-president gjenvalgt</a>
+</li>
+<li>
+<span class="time">08:48</span>
+<a href="http://www.smp.no/ntb/sport/article284231.ece">Hornets på topp</a>
+</li>
+<li>
+<span class="time">08:17</span>
+<a href="http://www.smp.no/ntb/sport/article284223.ece">Ingen trenerbonus i ski-VM</a>
+</li>
+<li>
+<span class="time">08:03</span>
+<a href="http://www.smp.no/ntb/sport/article284219.ece">Lidström avgjorde for Red Wings</a>
+</li>
+<li>
+<span class="time">07:02</span>
+<a href="http://www.smp.no/ntb/sport/article284215.ece">Northug-avgjørelse tirsdag</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="boxBottom">
+<a href='http://www.smp.no/ntb/sport/'>
+Flere sportsnyheter
+</a>
+</div>
+</div>
+<div id="ad_Knapp4" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1593465|0|592|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1593465|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1593465|0|592|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="180" height="120" alt="Click here"></a></noscript>
+</div>
+</div>
+<div id="footerBg"></div>
+<div id="bottomContainer">
+<div class="mediaListContainer">
+<ul id="videoGallery">
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00308/basehopp1_308353h.jpg" alt="" />
+<a href="http://www.smp.no/nyheter/article247629.ece" class="videoIconOverlay"></a>
+</div>
+<h3>
+<a href="http://www.smp.no/nyheter/article247629.ece">
+Her går det unna
+</a>
+</h3>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00295/rekdal_295072h.jpg" alt="" />
+<a href="http://www.smp.no/nyheter/article221625.ece" class="videoIconOverlay"></a>
+</div>
+<h3>
+<a href="http://www.smp.no/nyheter/article221625.ece">
+Advarer mot sultne bergensere
+</a>
+</h3>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00294/inn_med_mat_294396h.jpg" alt="" />
+<a href="http://www.smp.no/nyheter/article219886.ece" class="videoIconOverlay"></a>
+</div>
+<h3>
+<a href="http://www.smp.no/nyheter/article219886.ece">
+Ungeskrik hos Cyan og Gaia
+</a>
+</h3>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00285/bl_meisainne_285463h.jpg" alt="" />
+<a href="http://www.smp.no/video/article204371.ece" class="videoIconOverlay"></a>
+</div>
+<h3>
+<a href="http://www.smp.no/video/article204371.ece">
+Nå innreder blåmeisene
+</a>
+</h3>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00268/SM201010100129947AR_268896h.jpg" alt="" />
+<a href="http://www.smp.no/nyheter/article186056.ece" class="videoIconOverlay"></a>
+</div>
+<h3>
+<a href="http://www.smp.no/nyheter/article186056.ece">
+Opna trafikknutepunkt
+</a>
+</h3>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00270/SM201010701159977AR_270800h.jpg" alt="" />
+<a href="http://www.smp.no/kultur/article187073.ece" class="videoIconOverlay"></a>
+</div>
+<h3>
+<a href="http://www.smp.no/kultur/article187073.ece">
+Fagerlia går Footloose
+</a>
+</h3>
+</li>
+</ul>
+</div>
+<div class="mediaListContainer">
+<ul id="imageGallery">
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00329/Asp_ya_og_bysentrum_329152h.jpg" alt="" />
+<a href="http://www.smp.no/nyheter/article283440.ece" class=""></a>
+</div>
+<h3>
+<a href="http://www.smp.no/nyheter/article283440.ece">
+Sjekk Aspøya og sentrum fra lufta
+</a>
+</h3>
+<p>
+36 bilder
+</p>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00329/taremare03_329107h.jpg" alt="" />
+<a href="http://www.smp.no/kultur/article283425.ece" class=""></a>
+</div>
+<h3>
+<a href="http://www.smp.no/kultur/article283425.ece">
+Taremarefestival i Ingebrigt Davikhuset i Brattvåg
+</a>
+</h3>
+<p>
+15 bilder
+</p>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00329/19LOKfa5_329044h.jpg" alt="" />
+<a href="http://www.smp.no/nyheter/article283342.ece" class=""></a>
+</div>
+<h3>
+<a href="http://www.smp.no/nyheter/article283342.ece">
+Brennande protest for Jens Prest
+</a>
+</h3>
+<p>
+24 bilder
+</p>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00328/V_rportrett02_328831h.jpg" alt="" />
+<a href="http://www.smp.no/bildeserier/article283107.ece" class=""></a>
+</div>
+<h3>
+<a href="http://www.smp.no/bildeserier/article283107.ece">
+<b>Vårportrett</b>
+</a>
+</h3>
+<p>
+14 bilder
+</p>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00328/Vinterportrett04_328814h.jpg" alt="" />
+<a href="http://www.smp.no/bildeserier/article283106.ece" class=""></a>
+</div>
+<h3>
+<a href="http://www.smp.no/bildeserier/article283106.ece">
+<b>Vinterportrett</b>
+</a>
+</h3>
+<p>
+14 bilder
+</p>
+</li>
+<li>
+<div class="image">
+<img src="http://www.smp.no/multimedia/dynamic/00328/H_stportrett06_328791h.jpg" alt="" />
+<a href="http://www.smp.no/bildeserier/article283072.ece" class=""></a>
+</div>
+<h3>
+<a href="http://www.smp.no/bildeserier/article283072.ece">
+<b>Høstportrett</b>
+</a>
+</h3>
+<p>
+12 bilder
+</p>
+</li>
+</ul>
+</div>
+<div id="tvGuide">
+<p>Finn program for alle kanaler:</p>
+<form action="http://tvguiden.smp.no/search.php" method="get">
+<div class="option">
+<p>Dag</p>
+<select name='sday' style='width:90px'>
+<option value='2010-11-22'>Mandag 22.11</option>
+<option value='2010-11-23'>Tirsdag 23.11</option>
+<option value='2010-11-24'>Onsdag 24.11</option>
+<option value='2010-11-25'>Torsdag 25.11</option>
+<option value='2010-11-26'>Fredag 26.11</option>
+<option value='2010-11-27'>Lørdag 27.11</option>
+<option value='2010-11-28'>Søndag 28.11</option>
+</select>
+</div>
+<div class="option">
+<p>Fra</p>
+<select name="sfclock" style="width:75px">
+<option value="-">Fra kl. &raquo;</option>
+<option value='00.00'>00:00</option>
+<option value='01.00'>01:00</option>
+<option value='02.00'>02:00</option>
+<option value='03.00'>03:00</option>
+<option value='04.00'>04:00</option>
+<option value='05.00'>05:00</option>
+<option value='06.00'>06:00</option>
+<option value='07.00'>07:00</option>
+<option value='08.00'>08:00</option>
+<option value='09.00'>09:00</option>
+<option value='10.00'>10:00</option>
+<option value='11.00'>11:00</option>
+<option value='12.00'>12:00</option>
+<option value='13.00'>13:00</option>
+<option value='14.00'>14:00</option>
+<option value='15.00'>15:00</option>
+<option value='16.00'>16:00</option>
+<option value='17.00'>17:00</option>
+<option value='18.00'>18:00</option>
+<option value='19.00'>19:00</option>
+<option value='20.00'>20:00</option>
+<option value='21.00'>21:00</option>
+<option value='22.00'>22:00</option>
+<option value='23.00'>23:00</option>
+</select>
+</div>
+<div class="option">
+<p>Til</p>
+<select name="stclock" style="width:75px">
+<option value="-">Til kl. &raquo;</option>
+<option value='01.00'>01:00</option>
+<option value='02.00'>02:00</option>
+<option value='03.00'>03:00</option>
+<option value='04.00'>04:00</option>
+<option value='05.00'>05:00</option>
+<option value='06.00'>06:00</option>
+<option value='07.00'>07:00</option>
+<option value='08.00'>08:00</option>
+<option value='09.00'>09:00</option>
+<option value='10.00'>10:00</option>
+<option value='11.00'>11:00</option>
+<option value='12.00'>12:00</option>
+<option value='13.00'>13:00</option>
+<option value='14.00'>14:00</option>
+<option value='15.00'>15:00</option>
+<option value='16.00'>16:00</option>
+<option value='17.00'>17:00</option>
+<option value='18.00'>18:00</option>
+<option value='19.00'>19:00</option>
+<option value='20.00'>20:00</option>
+<option value='21.00'>21:00</option>
+<option value='22.00'>22:00</option>
+<option value='23.00'>23:00</option>
+<option value="24.00">00:00</option>
+</select>
+</div>
+<div class="option">
+<p>Kategori</p>
+<select name='scategory' style='width:150px'>
+<option value='-'>Alle kategorier &raquo;</option>
+<option value='AKTUELT'>Aktuelt</option>
+<option value='ANIMASJ'>Animasjon</option>
+<option value='ANNET'>Annet</option>
+<option value='BARN'>Barn</option>
+<option value='DOKUMTAR'>Dokumentar</option>
+<option value='FILM'>Film</option>
+<option value='HELSE'>Helse</option>
+<option value='KULTUR'>Kultur</option>
+<option value='LIVSSTIL'>Livsstil</option>
+<option value='LIVSSYN'>Livssyn</option>
+<option value='LOTTERI'>Lotteri</option>
+<option value='MUSIKK'>Musikk</option>
+<option value='NYHETER'>Nyheter</option>
+<option value='QUIZ'>Quiz</option>
+<option value='REPORTAS'>Reportasje</option>
+<option value='SAMFINFO'>Samfunnsinformasjon</option>
+<option value='SERIE'>Serie</option>
+<option value='SPORT'>Sport</option>
+<option value='TALKSHOW'>Talkshow</option>
+<option value='UNDERH'>Underholdning</option>
+<option value='UNDERVIS'>Undervisning</option>
+<option value='VITENSKP'>Vitenskap</option>
+<option value='XErotikk'>Erotikk</option>
+</select>
+</div>
+<div class="option">
+<p>Kanal</p>
+<select name='schannel' style='width:170px'>
+<option value='-'>Velg kanal &raquo;</option>
+<option value='3sat'>3sat</option>
+<option value='aljazint'>Al Jazeera Int.</option>
+<option value='animal'>Animal Planet</option>
+<option value='animalhd'>Animal Planet HD</option>
+<option value='bbcenter'>BBC Entertainment</option>
+<option value='bbchd'>BBC HD</option>
+<option value='bbcknow'>BBC Knowledge</option>
+<option value='bbclife'>BBC Livestyle</option>
+<option value='bbcworld'>BBC World</option>
+<option value='boom'>Boomerang</option>
+<option value='canplaction'>Canal+ Action</option>
+<option value='canplcomedy'>Canal+ Comedy</option>
+<option value='canpldrama'>Canal+ Drama</option>
+<option value='canplfilmhd'>Canal+ HD</option>
+<option value='canplfirst'>Canal+ First</option>
+<option value='canplhits'>Canal+ Hits</option>
+<option value='canplspo1'>Canal+ Sport 1</option>
+<option value='canplspo2'>Canal+ Sport 2</option>
+<option value='canplspohd'>Canal+ Sport HD</option>
+<option value='canplspoxtra'>Canal+ Sport Extra</option>
+<option value='cartoon'>Cartoon Network</option>
+<option value='club'>Zone Club</option>
+<option value='cnbc'>CNBC</option>
+<option value='cnbcnatgeoch'>CNBC &amp; National Geographic</option>
+<option value='cnn'>CNN</option>
+<option value='dcivil'>Discovery Civilsations</option>
+<option value='dischd'>Discovery HD</option>
+<option value='discov'>Discovery</option>
+<option value='disney'>Disney Channel</option>
+<option value='disneyplay'>Disney Playhouse</option>
+<option value='disneyxd'>Disney XD</option>
+<option value='dr1'>DR1</option>
+<option value='dr2'>DR2</option>
+<option value='dscitrek'>Discovery Science</option>
+<option value='dsf'>DSF</option>
+<option value='dtravel'>Discovery Travel &amp; Living</option>
+<option value='dtv2'>TV2 Danmark</option>
+<option value='dw'>Deutsche Welle</option>
+<option value='e'>E!</option>
+<option value='eurospo'>Eurosport</option>
+<option value='eurospo2'>Eurosport 2</option>
+<option value='eurospohd'>Eurosport HD</option>
+<option value='extreme'>Extreme Sport</option>
+<option value='fem'>FEM</option>
+<option value='history'>History Channel</option>
+<option value='historyhd'>History Channel HD</option>
+<option value='kanal4'>Radio Norge</option>
+<option value='kanal5'>Kanal 5</option>
+<option value='mtv'>MTV</option>
+<option value='natgeoch'>National Geographic</option>
+<option value='ngchd'>National Geographic HD</option>
+<option value='nickelod'>Nickelodeon</option>
+<option value='nrk3'>NRK 3</option>
+<option value='nrkalltnyh'>NRK Alltid nyheter</option>
+<option value='nrkklass'>NRK Klassisk</option>
+<option value='nrksuper'>NRK Super</option>
+<option value='nrktv1' selected='selected'>NRK 1</option>
+<option value='nrktv2'>NRK 2</option>
+<option value='p1'>P1</option>
+<option value='p2'>P2</option>
+<option value='p3'>P3</option>
+<option value='p4'>P4</option>
+<option value='pro7'>ProSieben</option>
+<option value='reality'>Reality TV</option>
+<option value='rtl1'>RTL 1</option>
+<option value='rushhd'>Rush HD</option>
+<option value='sat1'>SAT 1</option>
+<option value='showtime'>Showtime</option>
+<option value='silver'>Silver</option>
+<option value='silverhd'>Silver HD</option>
+<option value='skynews'>Sky News</option>
+<option value='srp2'>SR P2</option>
+<option value='star'>Star</option>
+<option value='svthd'>SVT HD</option>
+<option value='svtv1'>SVT 1</option>
+<option value='svtv2'>SVT 2</option>
+<option value='tcm'>TCM</option>
+<option value='tcmcartoon'>TMC &amp; Cartoon Network</option>
+<option value='thevoicetv'>The Voice</option>
+<option value='travel'>Travel Channel</option>
+<option value='tv1000'>TV1000</option>
+<option value='tv1kaction'>TV1000 Action</option>
+<option value='tv1kclassic'>TV1000 Classic</option>
+<option value='tv1kfamily'>TV1000 Family</option>
+<option value='tv1knordic'>TV1000 Nordic</option>
+<option value='tv2'>TV2</option>
+<option value='tv2film'>TV2 Filmkanalen</option>
+<option value='tv2nyhet'>TV2 Nyhetskanalen</option>
+<option value='tv2sport'>TV2 Sport</option>
+<option value='tv2zebra'>TV2 Zebra</option>
+<option value='tv3'>TV3</option>
+<option value='tv3dan'>TV3 Danmark</option>
+<option value='tv3pldan'>TV3+ Danmark?</option>
+<option value='tv3sve'>TV3 Sverige</option>
+<option value='tv4'>TV4</option>
+<option value='tv5'>TV5 Frankrike</option>
+<option value='tv8'>TV8</option>
+<option value='tvn'>TVNorge</option>
+<option value='tvnhd'>TVNorge HD</option>
+<option value='vh1'>VH1</option>
+<option value='vh1classic'>VH1 Classic</option>
+<option value='viaexpl'>Viasat Explorer</option>
+<option value='viagolf'>Viasat Golf</option>
+<option value='viahis'>Viasat History</option>
+<option value='vianatcrime'>Viasat TV6</option>
+<option value='viasat4'>Viasat 4</option>
+<option value='viaspo'>Viasat Fotball</option>
+<option value='viaspo2'>Viasat Sport 2</option>
+<option value='viaspo3'>Viasat Sport 3</option>
+<option value='viaspohd'>Viasat HD</option>
+<option value='viatv6'>Viasat TV6</option>
+<option value='zeetv'>Zee TV</option>
+<option value='ztvsve'>ZTV Sverige</option>
+</select>
+</div>
+<input id="search_button" class="submit" type="submit" value="S&oslash;k">
+</form>
+</div>
+<div id="shortcuts">
+<ul>
+<li>
+<a href="http://www.smp.no/apps/pbcs.dll/artikkel?Dato=99999999&amp;Kategori=DIVERSE&amp;Lopenr=315901747&amp;Ref=AR">
+<strong>Tips oss!</strong>
+Send oss ditt tips!
+</a>
+</li>
+<li>
+<a href="http://kundesenter.smp.no/default.asp?page=5630?=1">
+<strong>Kontakt oss</strong>
+Her finner du kontaktinformasjon.
+</a>
+</li>
+<li>
+<a href="http://vaer.smp.no/">
+<strong>Været</strong>
+Værvarsel for Nordvestlandet.
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/section/FOTBALL07/1033">
+<strong>Scoringsvarsel på SMS</strong>
+Scoringsvarsel på mobilen fra smp.no
+</a>
+</li>
+<li>
+<a href="http://dittogmitt.smp.no/quiz.php">
+<strong>Quiz</strong>
+Test dine kunnskaper.
+</a>
+</li>
+<li>
+<a href="http://konsert.smp.no/">
+<strong>Konserter</strong>
+Se våre konsertopptak.
+</a>
+</li>
+<li>
+<a href="http://radio.smp.no/services/liveradio/">
+<strong><b>Fotballradio</b></strong>
+Radio Smp dekker AAFKs kamper direkte.
+</a>
+</li>
+</ul>
+</div><div id="adBottomContainer"><div id="adBottomLeft">
+<div id="ad_BunnLeft" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1055120|0|615|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1055120|0|615|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1055120|0|615|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="205" height="150" alt="Click here"></a></noscript>
+</div>
+</div>
+<div id="adBottomRight">
+<div id="ad_BunnBanner" class="ad">
+<script language="javascript" type="text/javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" type="text/javascript" src="http://adserver.adtech.de/addyn|3.0|546|1055123|0|316|ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=;misc='+new Date().getTime()+'"><\/scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtech.de/adlink|3.0|546|1055123|0|316|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" target="_blank"><img src="http://adserver.adtech.de/adserv|3.0|546|1055123|0|316|ADTECH;loc=300;key=key1+key2+key3+key4;grp=" border="0" width="768" height="150" alt="Click here"></a></noscript>
+</div>
+</div>
+</div>
+<div class="tipBox">
+<a class="tipButton" href="#" rel="#overlay_tip">Tips oss <br />800 30 007</a>
+<div class="date">22.11.2010</div>
+</div>
+<div class="menu menu">
+<ul>
+<li>
+<a href="http://www.smp.no/nyheter/">
+Nyheter
+</a>
+<li>
+<a href="http://www.smp.no/sport/">
+Sport
+</a>
+</li>
+<li>
+<a href="http://fotball.smp.no/">
+Fotball
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/kultur/">
+Kultur
+</a>
+<li>
+<a href="http://www.smp.no/ung/">
+Ung
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/search/">
+Søk
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/forbruker/">
+Forbruker
+</a>
+<li>
+<a href="http://dittogmitt.smp.no/">
+Lesernes SMP
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/5rette/">
+5 rette
+</a>
+</li>
+<li>
+<a href="http://www.smp.no/meninger/">
+Meninger
+</a>
+</li>
+<li>
+<a href="http://em-sm.tinde.no/">
+Markedsplass
+</a>
+</li>
+<li>
+<a href="http://smp.lokalguiden.no/">
+Lokalguiden
+</a>
+</li>
+<li>
+<a href="#innhold">
+Alt innhold
+</a>
+<div class="allContent">
+<ul class="menuList">
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<h2>A</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/alpint/">Alpint</a>
+</li>
+<li class="listItem">
+<h2>B</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/bilogtrafikk/">Bil</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/bildeserier/">Bildeserier</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/bolig/">Bolig</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/bat/">Båt</a>
+</li>
+<li class="listItem">
+<h2>C</h2>
+</li>
+<li class="listItem">
+<h2>D</h2>
+</li>
+<li class="listItem">
+<h2>E</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/elektronikk/">Elektronikk</a>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/england/">Engelsk fotball</a>
+</li>
+<li class="listItem">
+<h2>F</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/kultur/film/">Film</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/">Forbruker</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/fortuna/">Fortuna</a>
+</li>
+<li class="listItem">
+<a href="http://radio.smp.no/services/liveradio/">Fotballradio</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/friidrett/">Friidrett</a>
+</li>
+<li class="listItem">
+<h2>G</h2>
+</li>
+<li class="listItem">
+<h2>H</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/handball/">Håndball</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/helse/">Helse</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/hoedd/">Hødd</a>
+</li>
+<li class="listItem">
+<h2>I</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/indre/">Indre</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/innenriks/">Innenriks</a>
+</li>
+<li class="listItem">
+<h2>J</h2>
+</li>
+<li class="listItem">
+<h2>K</h2>
+</li>
+<li class="listItem">
+<a href="https://www.buyandread.com/mediaport/custom/ePaper.htm?pub=sunnmorsposten">Kjøp Sunnmørsposten som eAvis</a>
+</li>
+<li class="listItem">
+<a href="https://www.buyandread.com/mediaport/buy.htm?pub=sunnmorsposten">Kjøp Sunnmørsposten som pdf-utgave</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/kommentar/">Kommentar</a>
+</li>
+<li class="listItem">
+<a href="http://konsert.smp.no/">Konserter</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/kronikk/">Kronikk</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/kultur/">Kultur</a>
+</li>
+<li class="listItem">
+<a href="http://kundesenter.smp.no/default.asp?page=5630&lang=1">Kundeservice</a>
+</li>
+<li class="listItem">
+<h2>L</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/langrenn/">Langrenn</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/leder/">Leder</a>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/bildeoversikt.php">Leserbilder</a>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/hilsenoversikt.php">Lesernes hilsener</a>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/">Lesernes smp</a>
+</li>
+<li class="listItem">
+<a href="http://live.smp.no/">LIVE-tjeneste fotball</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/livsstil/">Livsstil</a>
+</li>
+<li class="listItem">
+<a href="http://smp.lokalguiden.no/">Lokalguiden</a>
+</li>
+<li class="listItem">
+<h2>M</h2>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<a href="http://em-sm.tinde.no/">Markedsplass</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/matogvin/">Mat og vin</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/">Meninger</a>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/mesterligaen/">Mesterligaen</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/kultur/musikk/">Musikk</a>
+</li>
+<li class="listItem">
+<h2>N</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tema/nettmoter/">Nettmøter</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/nordre/">Nordre</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/">Nyheter</a>
+</li>
+<li class="listItem">
+<h2>O</h2>
+</li>
+<li class="listItem">
+<h2>P</h2>
+</li>
+<li class="listItem">
+<h2>Q</h2>
+</li>
+<li class="listItem">
+<a href="http://dittogmitt.smp.no/quiz.php">Quiz</a>
+</li>
+<li class="listItem">
+<h2>R</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/reise/">Reise</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<h2>S</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/sandvolleyball/">Sandvolleyball</a>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/blogg/sindre_halkjelsvik/">Sindres AaFK-blogg</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tjenester/skatt/">Skatt</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/skarboevik/">Skarbøvik</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/skiskyting/">Skiskyting</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/sport/">Sport</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/soere/">Søre</a>
+</li>
+<li class="listItem">
+<h2>T</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tegneserie/">Tegneserie</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/tjenester/">Tjenester</a>
+</li>
+<li class="listItem">
+<a href="http://tvguiden.smp.no/">TV-guide</a>
+</li>
+<li class="listItem">
+<h2>U</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/ung/">Ung</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/utenriks/">Utenriks</a>
+</li>
+</ul>
+</li>
+<li class="menuColumn">
+<ul>
+<li class="listItem">
+<h2>V</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/video/">Video</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/vaeret/">Været</a>
+</li>
+<li class="listItem">
+<h2>W</h2>
+</li>
+<li class="listItem">
+<a href="http://fotball.smp.no/webtv/">Web-TV fotball</a>
+</li>
+<li class="listItem">
+<h2>x</h2>
+</li>
+<li class="listItem">
+<h2>Y</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/meninger/ytring/">Ytring</a>
+</li>
+<li class="listItem">
+<h2>Z</h2>
+</li>
+<li class="listItem">
+<h2>Æ</h2>
+</li>
+<li class="listItem">
+<h2>Ø</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/forbruker/okonomi/">Økonomi</a>
+</li>
+<li class="listItem">
+<h2>Å</h2>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/nyheter/alesundogomland/">Ålesund og omland</a>
+</li>
+<li class="listItem">
+<a href="http://www.smp.no/fotball/alesund/">AaFK</a>
+</li>
+</ul>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+</li>
+<li id="frontpage" class="current">
+</ul>
+</div>
+<div id="footer">
+<ul>
+<li>
+<ul>
+<li><b>© Sunnmørsposten 2010</b> </li>
+<li>Ansvarlig redaktør: <a href='mailto:hanna.relling.berg@smp.no'>Hanna Relling Berg</a> </li>
+<li>Nyhetsredaktør: <a href='mailto:tormod.utne@smp.no'>Tormod Utne</a> </li>
+<li><a href='http://presse.no/Pressens_Faglige_Utvalg_PFU/Redaktorplakaten/'>Redaktørplakaten</a> <a href='http://www.pfu.no/simple.php'>PFU</a> </li>
+</ul>
+</li>
+<li>
+<ul>
+<li> <a href='http://minside.smp.no'>Kundesenter</a> </li>
+<li><a href='http://minside.smp.no/kontakt'>Kontakt oss</a> </li>
+<li><a href='mailto:tips@smp.no'>Tips oss</a> </li>
+</ul>
+</li>
+<li>
+<ul>
+<li> <a href='http://minside.smp.no'>Annonser</a> </li>
+<li><a href='http://minside.smp.no'>Abonnement</a> </li>
+<li><a href='http://minside.smp.no/kontakt'>Kontakt oss</a> </li>
+</ul>
+</li>
+<li>
+<ul>
+<li> For informasjon kontakt: <a href='nyhet@smp.no'>nyhet@smp.no</a> </li>
+<li>Telefon: 70 12 00 00 </li>
+<li>Adresse: Pb. 123, 6001 Ålesund</li>
+</ul>
+</li>
+</ul>
+<p class="disclaimer">
+Sunnmørsposten arbeider etter Vær Varsom-plakatens regler for god presseskikk.<br />
+Sunnmørsposten har ikke ansvar for innhold på eksterne nettsider som det lenkes til.<br />
+Alt innhold er opphavsrettslig beskyttet 2010 &copy Sunnmørsposten
+</p>
+</div>
+<script type="text/javascript" src="http://web.easyresearch.se/misc/ps21898252.js"></script></div>
+</div>
+</div>
+</div>
+<script src="http://www.smp.no/template/ver2-0/javascript/spring.js"></script>
+<script type="text/javascript" language="Javascript">
+/*<[CDATA[*/
+var sp_e0 = {
+"s":"polaris",
+"cp":"polaris/smp/forsiden",
+"url": document.location.href
+}
+spring.c(sp_e0);
+/*]]>*/
+</script>
+<noscript><img src="http://polaris.tns-cs.net/j0=,,,;+,cp=polaris/smp/forsiden+url=http://www.smp.no/;;;"></noscript>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-3592751-7']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script type="text/javascript" src="http://www.smp.no/template/ver2-0/javascript/common.js"></script>
+<script type="text/javascript" src="http://www.smp.no/template/ver2-0/javascript/lib/jquery.validate.1.5.5.js"></script>
+<script type="text/javascript" src="http://www.smp.no/template/ver2-0/javascript/jquery.poll.js"></script>
+<div class="overlay" id="overlay_tip" style="display:none;">
+<div id="tipOverlayContent">
+<h2>Tips oss</h2>
+<p>Felter merket med * m&aring; fylles ut.</p>
+<form id="tipForm" method="post" action="http://www.smp.no/template/ver2-0/modules/mail/sendGenericMail.jsp">
+<div>
+<input type="hidden" name="to" value=""/>
+<input type="hidden" name="from" value=""/>
+<input type="hidden" name="subject" value=""/>
+<div class="label">Navn *</div>
+<input type="text" name="tipName" class="required" value="" />
+<div class="label">E-post</div>
+<input type="text" name="tipEmail" class="email" value="" />
+<div class="label">Adresse</div>
+<input type="text" name="tipAdress" class="" value="" />
+<div class="label">Postnr. sted</div>
+<input type="text" name="tipPostNumberPlace" class="" value="" />
+<div class="label">Telefon *</div>
+<input type="text" name="subscriberPhone" class="required digits" value="" />
+<div class="label">Melding *</div>
+<textarea name="tipMessage" cols="30" rows="5" class="required"></textarea><input class="button" type="submit" name="button" value="Send" />
+</div>
+</form>
+<div style="display: none;" class="feedback"></div>
+</div>
+</div>
+<div class="overlay" id="overlay_tipfriend" style="display:none;">
+</div>
+<div class="overlay" id="overlay_img" style="display:none;">
+<a class="prev">Forrige</a>
+<a class="next">Neste</a>
+<div class="info"></div>
+<img class="progress" src="http://www.smp.no/template/ver2-0/img/global/jQueryGallery/loading.gif" />
+</div>
+<div class="overlay" id="overlay_map" style="display:none;">
+<div class="contentWrap"></div>
+</div>
+<div class="overlay" id="overlay_form" style="display:none;">
+<div class="contentWrap"></div>
+</div>
+</body>
+</html>
