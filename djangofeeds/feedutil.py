@@ -53,7 +53,9 @@ def search_alternate_links(feed):
 
 def search_links_url(html, url):
     """
-    Search for rss links in html file
+    Search for rss links in html file.
+    This method can be used if the search_alternate_links function
+    failed to find any link.
     """
     def _map(link):
         """ add the url if to the link if doesn't start with http

@@ -391,6 +391,25 @@ class TestFeedImporter(unittest.TestCase):
         self.assertListEqual(links, [
             "http://feeds.newsweek.com/newsweek/TopNews"])
 
+    def test_search_alternate_links_double_function(self):
+        feed_str = get_data_file("smp.no.html")
+        feed = feedparser.parse(feed_str)
+        links = feedutil.search_alternate_links(feed)
+        self.assertListEqual(links,
+            ['http://www.smp.no/?service=rss',
+            'http://www.smp.no/?service=rss&t=0',
+            'http://www.smp.no/nyheter/?service=rss',
+            'http://www.smp.no/kultur/?service=rss']
+        )
+        links = feedutil.search_links_url(feed_str, 'http://www.smp.no/')
+        self.assertListEqual(links,
+            ['http://www.smp.no/?service=rss',
+            'http://www.smp.no/?service=rss&t=0',
+            'http://www.smp.no/nyheter/?service=rss',
+            'http://www.smp.no/kultur/?service=rss']
+        )
+
+
     def test_generate_utf8_encode_guid_bug(self):
         """Some feeds trigger utf8 bugs when the guid is generated."""
         feed_str = get_data_file("mobile_it.rss")
