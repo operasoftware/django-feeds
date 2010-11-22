@@ -377,37 +377,7 @@ class TestFeedImporter(unittest.TestCase):
         imp1.import_feed(self.feed, local=True, force=True)
         self.assertFalse(imp2.updated)
 
-    def test_search_alternate_links(self):
-        feed_str = get_data_file("bbc_homepage.html")
-        feed = feedparser.parse(feed_str)
-        links = feedutil.search_alternate_links(feed)
-        self.assertListEqual(links, [
-            "http://newsrss.bbc.co.uk/rss/newsonline_world_edition/"
-            "front_page/rss.xml"])
 
-        feed_str = get_data_file("newsweek_homepage.html")
-        feed = feedparser.parse(feed_str)
-        links = feedutil.search_alternate_links(feed)
-        self.assertListEqual(links, [
-            "http://feeds.newsweek.com/newsweek/TopNews"])
-
-    def test_search_alternate_links_double_function(self):
-        feed_str = get_data_file("smp.no.html")
-        feed = feedparser.parse(feed_str)
-        links = feedutil.search_alternate_links(feed)
-        self.assertListEqual(links,
-            ['http://www.smp.no/?service=rss',
-            'http://www.smp.no/?service=rss&t=0',
-            'http://www.smp.no/nyheter/?service=rss',
-            'http://www.smp.no/kultur/?service=rss']
-        )
-        links = feedutil.search_links_url(feed_str, 'http://www.smp.no/')
-        self.assertListEqual(links,
-            ['http://www.smp.no/?service=rss',
-            'http://www.smp.no/?service=rss&t=0',
-            'http://www.smp.no/nyheter/?service=rss',
-            'http://www.smp.no/kultur/?service=rss']
-        )
 
 
     def test_generate_utf8_encode_guid_bug(self):

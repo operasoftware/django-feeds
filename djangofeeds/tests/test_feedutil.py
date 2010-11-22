@@ -1,8 +1,10 @@
 import unittest2 as unittest
 from datetime import datetime
+import feedparser
 
 from djangofeeds import feedutil
 from djangofeeds.feedutil import date_to_datetime, find_post_content
+from djangofeeds.tests.test_importers import get_data_file
 
 NOT_ENCODEABLE = ('\xd0\x9e\xd1\x82\xd0\xb2\xd0\xb5\xd1\x82\xd1\x8b '
                   '\xd0\xbd\xd0\xb0 \xd0\xb2\xd0\xb0\xd1\x88\xd0\xb8 '
@@ -62,3 +64,38 @@ class test_generate_guid(unittest.TestCase):
         utf8_entry = dict(title="UTF-8",
             link="premi\xc3\xa8re_")
         feedutil.get_entry_guid(None, utf8_entry)
+
+
+    def test_search_alternate_links(self):
+        feed_str = get_data_file("bbc_homepage.html")
+        feed = feedparser.parse(feed_str)
+        links = feedutil.search_alternate_links(feed)
+        self.assertListEqual(links, [
+            "http://newsrss.bbc.co.uk/rss/newsonline_world_edition/"
+            "front_page/rss.xml"])
+
+        feed_str = get_data_file("newsweek_homepage.html")
+        feed = feedparser.parse(feed_str)
+        links = feedutil.search_alternate_links(feed)
+        self.assertListEqual(links, [
+            "http://feeds.newsweek.com/newsweek/TopNews"])
+
+class test_alternate_links(unittest.TestCase):
+
+    def test_search_alternate_links_double_function(self):
+        feed_str = get_data_file("smp.no.html")
+        feed = feedparser.parse(feed_str)
+        links = feedutil.search_alternate_links(feed)
+        self.assertListEqual(links,
+            ['http://www.smp.no/?service=rss',
+            'http://www.smp.no/?service=rss&t=0',
+            'http://www.smp.no/nyheter/?service=rss',
+            'http://www.smp.no/kultur/?service=rss']
+        )
+        links = feedutil.search_links_url(feed_str, 'http://www.smp.no/')
+        self.assertListEqual(links,
+            ['http://www.smp.no/?service=rss',
+            'http://www.smp.no/?service=rss&t=0',
+            'http://www.smp.no/nyheter/?service=rss',
+            'http://www.smp.no/kultur/?service=rss']
+        )
