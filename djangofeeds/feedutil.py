@@ -51,7 +51,7 @@ def search_alternate_links(feed):
     return []
 
 
-def search_links_url(url):
+def search_links_url(url, source=''):
     """
     Search for rss links in html file.
     This method can be used if the search_alternate_links function
@@ -84,9 +84,18 @@ def search_links_url(url):
             except KeyError:
                 pass
 
-    sock = urllib.urlopen(url)
+    if not source:
+        try:
+            sock = urllib.urlopen(url)
+        except IOError, e:
+            return []
+        try:
+            source = sock.read()
+        finally:
+            sock.close()
+
     parser = URLLister()
-    parser.feed(sock.read())
+    parser.feed(source)
     parser.close()
     # Check that the urls are well formed
     return map(_map, parser.feeds)
