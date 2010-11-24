@@ -65,7 +65,6 @@ class test_generate_guid(unittest.TestCase):
             link="premi\xc3\xa8re_")
         feedutil.get_entry_guid(None, utf8_entry)
 
-
     def test_search_alternate_links(self):
         feed_str = get_data_file("bbc_homepage.html")
         feed = feedparser.parse(feed_str)
@@ -79,6 +78,7 @@ class test_generate_guid(unittest.TestCase):
         links = feedutil.search_alternate_links(feed)
         self.assertListEqual(links, [
             "http://feeds.newsweek.com/newsweek/TopNews"])
+
 
 class test_alternate_links(unittest.TestCase):
 

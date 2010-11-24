@@ -378,8 +378,6 @@ class TestFeedImporter(unittest.TestCase):
         self.assertFalse(imp2.updated)
 
 
-
-
     def test_generate_utf8_encode_guid_bug(self):
         """Some feeds trigger utf8 bugs when the guid is generated."""
         feed_str = get_data_file("mobile_it.rss")
