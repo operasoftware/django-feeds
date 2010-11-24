@@ -92,6 +92,13 @@ class test_alternate_links(unittest.TestCase):
             'http://www.smp.no/nyheter/?service=rss',
             'http://www.smp.no/kultur/?service=rss']
         )
+        links = feedutil.search_links_url("http://www.smp.no/", feed_str)
+        self.assertListEqual(links,
+            ['http://www.smp.no/?service=rss',
+            'http://www.smp.no/?service=rss&t=0',
+            'http://www.smp.no/nyheter/?service=rss',
+            'http://www.smp.no/kultur/?service=rss']
+        )
 
     def test_search_links(self):
         feed_str = get_data_file("mk.ru.html")
@@ -99,4 +106,16 @@ class test_alternate_links(unittest.TestCase):
         self.assertListEqual(links,
                 ['http://www.mk.ru/rss/news/index.xml',
                  'http://www.mk.ru/rss/mk/index.xml']
+        )
+
+    def test_search_link_malformed(self):
+        feed_str = get_data_file("foxnews.com.html")
+        links = feedutil.search_links_url("http://www.foxnews.com/", feed_str)
+        self.assertListEqual(links,
+                ['http://feeds.feedburner.com/foxnews/latest']
+        )
+
+        links = feedutil.search_links_url("http://www.foxnews.com/", feed_str)
+        self.assertListEqual(links,
+                ['http://feeds.feedburner.com/foxnews/latest']
         )

@@ -1,6 +1,8 @@
 import time
 import urllib
+import re
 from sgmllib import SGMLParser
+import html5lib
 
 from base64 import b64encode
 from datetime import datetime, timedelta
@@ -57,6 +59,9 @@ def search_links_url(url, source=''):
     This method can be used if the search_alternate_links function
     failed to find any link.
     """
+    rss_xml = 'application/rss+xml'
+    atom_xml = 'application/atom+xml'
+
     def _map(link):
         """ add the url if to the link if doesn't start with http
             ie: "/rss.xml"
@@ -75,8 +80,6 @@ def search_links_url(url, source=''):
             self.feeds = []
 
         def start_link(self, attrs):
-            rss_xml = 'application/rss+xml'
-            atom_xml = 'application/atom+xml'
             d = dict(attrs)
             try:
                 if d['type'] == rss_xml or d['type'] == atom_xml:
@@ -84,6 +87,22 @@ def search_links_url(url, source=''):
             except KeyError:
                 pass
 
+    def lxml_parse(html):
+        doc = html5lib.parse(html, treebuilder="lxml")
+        links = []
+        for type_link in [atom_xml, rss_xml]:
+            nodes = doc.xpath("//head/link[@type='%s']" % type_link)
+            links.extend([link.attrib['href'] for link in nodes])
+        return links
+
+    def regex_html(html):
+        regex = re.compile(r"""<\s*link[^>]* # Start with link
+                type\s*=\s*[\"|\']application/%s\+xml\[\"|\'][^>]* # type
+                href\s*=\s*[\"|\'](?P<href>[^\"\']*)[\"|\'][^>]*>"""
+                % "|".join(["atom", "rss"]))
+        return regex.findall(html)
+
+    # For testing we pass directly the html in source
     if not source:
         try:
             sock = urllib.urlopen(url)
@@ -94,11 +113,16 @@ def search_links_url(url, source=''):
         finally:
             sock.close()
 
-    parser = URLLister()
-    parser.feed(source)
-    parser.close()
+    # SGML Parser
+    #parser = URLLister()
+    #parser.feed(source)
+    #parser.close()
+    # lxml parser
+    links = lxml_parse(source)
+    # regex
+    #links = regex_html(source)
     # Check that the urls are well formed
-    return map(_map, parser.feeds)
+    return map(_map, links)
 
 
 def get_entry_guid(feed_obj, entry):
