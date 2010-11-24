@@ -92,10 +92,3 @@ class test_alternate_links(unittest.TestCase):
             'http://www.smp.no/nyheter/?service=rss',
             'http://www.smp.no/kultur/?service=rss']
         )
-        links = feedutil.search_links_url(feed_str, 'http://www.smp.no/')
-        self.assertListEqual(links,
-            ['http://www.smp.no/?service=rss',
-            'http://www.smp.no/?service=rss&t=0',
-            'http://www.smp.no/nyheter/?service=rss',
-            'http://www.smp.no/kultur/?service=rss']
-        )
