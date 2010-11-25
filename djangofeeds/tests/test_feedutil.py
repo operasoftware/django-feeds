@@ -100,7 +100,9 @@ class test_alternate_links(unittest.TestCase):
             'http://www.smp.no/kultur/?service=rss']
         )
 
-    def test_search_links(self):
+    def test_search_links_order(self):
+        """ Different order for type and href in link sentence.
+            Format in UTF-8 (Russian)"""
         feed_str = get_data_file("mk.ru.html")
         links = feedutil.search_links_url("http://www.mk.ru/", feed_str)
         self.assertListEqual(links,
@@ -109,6 +111,7 @@ class test_alternate_links(unittest.TestCase):
         )
 
     def test_search_link_malformed(self):
+        """ SGML and others are not able to parse it """
         feed_str = get_data_file("foxnews.com.html")
         links = feedutil.search_links_url("http://www.foxnews.com/", feed_str)
         self.assertListEqual(links,
@@ -116,8 +119,10 @@ class test_alternate_links(unittest.TestCase):
         )
 
     def test_search_links_mixed(self):
+        """ Mixed atom and rss sentences """
         feed_str = get_data_file("elcomercio.pe.html")
-        links = feedutil.search_links_url("http://www.elcomercio.pe/", feed_str)
+        links = feedutil.search_links_url(
+                "http://www.elcomercio.pe/", feed_str)
         self.assertListEqual(links,
             ['http://www.elcomercio.pe/feed/portada.xml',
              'http://www.elcomercio.pe/feed/portada/politica.xml',

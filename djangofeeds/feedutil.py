@@ -96,14 +96,18 @@ def search_links_url(url, source=''):
         return links
 
     def regex_html(html):
-        regex = re.compile(r"""
-                <\s*link[^>]*   # contains link
-                type\s*=\s*["|']application/(%s)\+xml['|"][^>]*  # the type
-                href\s*=\s*["|'](?P<href>[^"']*)["|'][^>]*>    # save the href
-                """ % "|".join(["atom", "rss"]), re.VERBOSE)
-        elements = regex.findall(html)
+        links = re.compile(r"""<\s*link[^>]*>""")
+        atom = re.compile(r"""<[^>]*
+            type\s*=\s*["|']application/atom\+xml['|"][^>]*
+            >""", re.VERBOSE)
+        rss = re.compile(r"""<[^>]*
+            type\s*=\s*["|']application/rss\+xml['|"][^>]*
+            >""", re.VERBOSE)
+        href = re.compile(r"""href\s*=\s*["|'](?P<href>[^"']*)["|'][^>]*""")
+        links_str = "".join(links.findall(html))
+        types_str = "".join(rss.findall(links_str) + atom.findall(links_str))
+        return href.findall(types_str)
         # elements list of (type, href). Return the href only
-        return [elem[1] for elem in elements]
 
     # For testing we pass directly the html in source
     if not source:
