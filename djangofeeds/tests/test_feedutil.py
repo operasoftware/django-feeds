@@ -95,7 +95,7 @@ class test_alternate_links(unittest.TestCase):
         links = feedutil.search_links_url("http://www.smp.no/", feed_str)
         self.assertListEqual(links,
             ['http://www.smp.no/?service=rss',
-            'http://www.smp.no/?service=rss&t=0',
+            'http://www.smp.no/?service=rss&amp;t=0',
             'http://www.smp.no/nyheter/?service=rss',
             'http://www.smp.no/kultur/?service=rss']
         )
@@ -115,7 +115,19 @@ class test_alternate_links(unittest.TestCase):
                 ['http://feeds.feedburner.com/foxnews/latest']
         )
 
-        links = feedutil.search_links_url("http://www.foxnews.com/", feed_str)
+    def test_search_links_mixed(self):
+        feed_str = get_data_file("elcomercio.pe.html")
+        links = feedutil.search_links_url("http://www.elcomercio.pe/", feed_str)
         self.assertListEqual(links,
-                ['http://feeds.feedburner.com/foxnews/latest']
+            ['http://www.elcomercio.pe/feed/portada.xml',
+             'http://www.elcomercio.pe/feed/portada/politica.xml',
+             'http://www.elcomercio.pe/feed/portada/lima.xml',
+             'http://www.elcomercio.pe/feed/portada/peru.xml',
+             'http://www.elcomercio.pe/feed/portada/mundo.xml',
+             'http://www.elcomercio.pe/feed/portada/economia.xml',
+             'http://www.elcomercio.pe/feed/portada/tecnologia.xml',
+             'http://www.elcomercio.pe/feed/portada/deportes.xml',
+             'http://www.elcomercio.pe/feed/portada/espectaculos.xml',
+             'http://www.elcomercio.pe/feed/portada/ecologia.xml',
+             'http://www.elcomercio.pe/feed/portada/opinion.xml']
         )
