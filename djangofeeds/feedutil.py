@@ -59,9 +59,6 @@ def search_links_url(url, source=''):
     This method can be used if the search_alternate_links function
     failed to find any link.
     """
-    rss_xml = 'application/rss+xml'
-    atom_xml = 'application/atom+xml'
-
     def _map(link):
         """ add the url if to the link if doesn't start with http
             ie: "/rss.xml"
@@ -73,27 +70,6 @@ def search_links_url(url, source=''):
             return url + link[1:]
         else:
             return url + link
-
-    class URLLister(SGMLParser):
-        def reset(self):
-            SGMLParser.reset(self)
-            self.feeds = []
-
-        def start_link(self, attrs):
-            d = dict(attrs)
-            try:
-                if d['type'] == rss_xml or d['type'] == atom_xml:
-                    self.feeds.append(d['href'])
-            except KeyError:
-                pass
-
-    def lxml_parse(html):
-        doc = html5lib.parse(html, treebuilder="lxml")
-        links = []
-        for type_link in [atom_xml, rss_xml]:
-            nodes = doc.xpath("//head/link[@type='%s']" % type_link)
-            links.extend([link.attrib['href'] for link in nodes])
-        return links
 
     def regex_html(html):
         links = re.compile(r"""<\s*link[^>]*>""")
@@ -107,7 +83,6 @@ def search_links_url(url, source=''):
         links_str = "".join(links.findall(html))
         types_str = "".join(rss.findall(links_str) + atom.findall(links_str))
         return href.findall(types_str)
-        # elements list of (type, href). Return the href only
 
     # For testing we pass directly the html in source
     if not source:
@@ -120,15 +95,7 @@ def search_links_url(url, source=''):
         finally:
             sock.close()
 
-    # SGML Parser
-    #parser = URLLister()
-    #parser.feed(source)
-    #parser.close()
-    # lxml parser
-    #links = lxml_parse(source)
-    # regex
     links = regex_html(source)
-    # Check that the urls are well formed
     return map(_map, links)
 
 
