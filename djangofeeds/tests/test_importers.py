@@ -97,6 +97,8 @@ class TestFeedImporter(unittest.TestCase):
 
     def test_import_feed_with_content_encoded_regr_OPAL552(self):
         """See https://bugs.opera.com/browse/OPAL-552"""
+        # Change 29/11/10: removing <img because the new feedparser is
+        # reordering the html
         feed = self.feed_content_encoded
         importer = self.importer
         feed_obj = importer.import_feed(feed, local=True)
@@ -105,31 +107,31 @@ class TestFeedImporter(unittest.TestCase):
         post_map = [
             (u"NEWS 4", None),
             (u"268 - Technique", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/268
+src="http://www.labandepasdessinee.com/bpd/images/saison3/268
 """),
                     (u"267 - Phénomène de Groupe", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/267
+src="http://www.labandepasdessinee.com/bpd/images/saison3/267
 """),
                     (u"266 - VDM", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/266
+src="http://www.labandepasdessinee.com/bpd/images/saison3/266
 """),
                     (u"265 - Inspecteur Sanchez : Encore Du Sang", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/265
+src="http://www.labandepasdessinee.com/bpd/images/saison3/265
 """),
                     (u"264 - Manque", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/264
+src="http://www.labandepasdessinee.com/bpd/images/saison3/264
 """),
                     (u"263 - Rosbeef", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/263
+src="http://www.labandepasdessinee.com/bpd/images/saison3/263
 """),
                     (u"262 - Geek Smic", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/262
+src="http://www.labandepasdessinee.com/bpd/images/saison3/262
 """),
                     (u"Résultats du Concours We Are The 90’s", u"""
 étais un lèche-cul
 """),
                     (u"261 - Papy", """
-<img src="http://www.labandepasdessinee.com/bpd/images/saison3/261
+src="http://www.labandepasdessinee.com/bpd/images/saison3/261
 """),
         ]
         for i, post in enumerate(posts):
