@@ -1,5 +1,6 @@
 import time
 import urllib
+import urllib2
 import re
 from sgmllib import SGMLParser
 import html5lib
@@ -59,18 +60,6 @@ def search_links_url(url, source=''):
     This method can be used if the search_alternate_links function
     failed to find any link.
     """
-    def _map(link):
-        """ add the url if to the link if doesn't start with http
-            ie: "/rss.xml"
-        """
-        if link.startswith('http'):
-            return link
-        elif link.startswith('/'):
-            # use the url as the domain, need to remove the / of the link
-            return url + link[1:]
-        else:
-            return url + link
-
     def regex_html(html):
         links = re.compile(r"""<\s*link[^>]*>""")
         atom = re.compile(r"""<[^>]*
@@ -96,7 +85,7 @@ def search_links_url(url, source=''):
             sock.close()
 
     links = regex_html(source)
-    return map(_map, links)
+    return [urllib2.urlparse.urljoin(url, link) for link in links]
 
 
 def get_entry_guid(feed_obj, entry):

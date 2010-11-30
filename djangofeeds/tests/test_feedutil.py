@@ -136,11 +136,12 @@ class test_alternate_links(unittest.TestCase):
              'http://www.elcomercio.pe/feed/portada/ecologia.xml',
              'http://www.elcomercio.pe/feed/portada/opinion.xml']
         )
+
     def test_serach_links_join_url(self):
         feed_str = get_data_file("chooseopera.html")
         links = feedutil.search_links_url(
                 "http://my.opera.com/chooseopera/blog/", feed_str)
 
-        self.assertListEqual(links, 
+        self.assertListEqual(links,
                 ['http://my.opera.com/chooseopera/xml/rss/blog/',
                  'http://my.opera.com/chooseopera/xml/atom/blog/'])
