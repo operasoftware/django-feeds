@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Portal Vietnamese\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-26 15:59+0100\n"
+"POT-Creation-Date: 2010-12-06 12:23+0100\n"
 "PO-Revision-Date: 2010-11-29 16:25+0100\n"
 "Last-Translator: Van <nguyent@opera.com>\n"
 "Language-Team: Vi\n"
@@ -21,15 +21,20 @@ msgid "The feed does not seem to be respond. We will try again later."
 msgstr "Không kết nối được với feed. Chúng tôi sẽ thử lại sau."
 
 #: models.py:34
-msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
 msgstr "Bạn đã cung cấp URL sai hoặc feed của bạn yêu cầu không còn tồn tại."
 
 #: models.py:37
-msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
-msgstr "Feed bạn cung cấp gặp phải lỗi, vui lòng kiểm tra URL hoặc thử lại trong chốc lát."
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"Feed bạn cung cấp gặp phải lỗi, vui lòng kiểm tra URL hoặc thử lại trong "
+"chốc lát."
 
-#: models.py:59
-#: models.py:113
+#: models.py:59 models.py:113
 msgid "name"
 msgstr "tên"
 
@@ -53,8 +58,7 @@ msgstr "feed URL"
 msgid "description"
 msgstr "mô tả "
 
-#: models.py:116
-#: models.py:313
+#: models.py:116 models.py:313
 msgid "link"
 msgstr "đường dẫn"
 
@@ -233,4 +237,3 @@ msgstr "hàng ngày"
 #, python-format
 msgid "%(number)d %(type)s ago"
 msgstr "%(number)d %(type)s trước"
-
