@@ -156,14 +156,15 @@ def find_post_content(feed_obj, entry):
                 return ''
             img_dict.pop('url')
             for attr in img_dict.items():
-                img += "%s='%s'" % (attr[0],attr[1])
+                img += "%s='%s'" % (attr[0], attr[1])
             img += ">"
-            return img 
-        try: 
+            return img
+
+        try:
             thumbnail = entry["media_thumbnail"][0]
             img = build_img(thumbnail)
         except (IndexError, KeyError):
-            img = "" 
+            img = ""
         content = img + content
     try:
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
