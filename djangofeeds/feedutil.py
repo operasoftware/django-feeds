@@ -146,6 +146,25 @@ def find_post_content(feed_obj, entry):
     except (IndexError, KeyError):
         content = entry.get("description") or entry.get("summary") or ""
 
+    if '<img' not in content:
+        # if there's no image and the we add an image to the feed
+        def build_img(img_dict):
+            try:
+                # The tag is url instead of src... pain
+                img = "<img src='%s'" % img_dict.get("url")
+            except KeyError:
+                return ''
+            img_dict.pop('url')
+            for attr in img_dict.items():
+                img += "%s='%s'" % (attr[0],attr[1])
+            img += ">"
+            return img 
+        try: 
+            thumbnail = entry["media_thumbnail"][0]
+            img = build_img(thumbnail)
+        except (IndexError, KeyError):
+            img = "" 
+        content = img + content
     try:
         content = truncate_html_words(content, conf.DEFAULT_ENTRY_WORD_LIMIT)
     except UnicodeDecodeError:

@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss" xmlns:dm="http://www.dailymotion.com/dmrss">
+   <channel>
+   <title>Dailymotion - most viewed videos</title>
+   <link>http://www.dailymotion.com/fr/visited-today/1</link>
+   <description><![CDATA[Most Viewed Videos]]></description>
+    <itunes:subtitle>Dailymotion - Most Viewed Videos</itunes:subtitle>
+    <itunes:summary>Most Viewed Videos</itunes:summary>
+   <itunes:owner>
+      <itunes:name>Dailymotion</itunes:name>
+      <itunes:email>rss@dailymotion.com</itunes:email>
+   </itunes:owner>
+   <itunes:author>Dailymotion</itunes:author>
+   <itunes:image href="http://www.dailymotion.com/images/dailymotion_itunes.jpg"/>
+   <itunes:explicit>no</itunes:explicit>
+   <itunes:category text="TV &amp; Film" />
+   <language>en-US</language>
+   <lastBuildDate>Mon, 06 Dec 2010 16:37:34 +0100</lastBuildDate>
+      <image>
+          <url>http://www.dailymotion.com/images/dailymotion.jpg</url>
+          <title>Dailymotion - most viewed videos</title>
+          <link>http://www.dailymotion.com/fr/visited-today/1</link>
+          <width>400</width>
+          <height>144</height>
+      </image>
+        <dm:link rel="uql" href="http://www.dailymotion.com/rss/fr/visited-today/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_featured" title="Featured Videos" href="http://www.dailymotion.com/rss/fr/visited/featured/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_buzz" title="Hot Right Now" href="http://www.dailymotion.com/rss/fr/visited/buzz/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_hd" title="HD content" href="http://www.dailymotion.com/rss/visited/hd/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_official" title="Official Content" href="http://www.dailymotion.com/rss/fr/visited/official/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_creative" title="Creative Content" href="http://www.dailymotion.com/rss/fr/visited/creative/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_recent" title="Most Recent" href="http://www.dailymotion.com/rss/fr/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_commented-week" title="Most Commented" href="http://www.dailymotion.com/rss/fr/commented-week/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_visited-week" title="Most Viewed" href="http://www.dailymotion.com/rss/fr/visited-week/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_rated-week" title="Best Rated" href="http://www.dailymotion.com/rss/fr/rated-week/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_forever" title="All time" href="http://www.dailymotion.com/rss/fr/visited/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_30" title="Month" href="http://www.dailymotion.com/rss/fr/visited-month/1" type="application/rss+xml"/>
+        <dm:link rel="sort_by_7" title="Week" href="http://www.dailymotion.com/rss/fr/visited-week/1" type="application/rss+xml"/>
+        <dm:link rel="up" href="http://www.dailymotion.com/rss/1" type="application/rss+xml"/>
+        <dm:link rel="next" href="http://www.dailymotion.com/rss/fr/visited-today/2" type="application/rss+xml"/>
+        <dm:link rel="nextUql" href="http://www.dailymotion.com/rss/fr/visited-today/2" type="application/rss+xml"/>
+        <item>
+            <title>Miss Provence (Election Miss Nationale 2011)</title>
+            <link>http://www.dailymotion.com/video/xfu1ye_miss-provence-election-miss-nationale-2011_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfu1ye_miss-provence-election-miss-nationale-2011_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/454/695/26596454:jpeg_preview_medium.jpg?20101129171226" style="border: 2px solid #B9D3FE;"></a><p>Vidéo de Miss Provence, Barbara Morel, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</p><p>Author: <a href="http://www.dailymotion.com/Tele-Loisirs"><img src="http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802" width="80" height="80" alt="avatar"/>Tele-Loisirs</a><br />Tags: <a href="http://www.dailymotion.com/tag/Miss">Miss</a> <a href="http://www.dailymotion.com/tag/Provence">Provence</a> <a href="http://www.dailymotion.com/tag/Barbara">Barbara</a> <a href="http://www.dailymotion.com/tag/Morel">Morel</a> <a href="http://www.dailymotion.com/tag/election">election</a> <a href="http://www.dailymotion.com/tag/Nationale">Nationale</a> <a href="http://www.dailymotion.com/tag/+2011">2011</a> <a href="http://www.dailymotion.com/tag/Geneviève">Geneviève</a> <a href="http://www.dailymotion.com/tag/Fontenay">Fontenay</a> <br />Posted: 29 November 2010<br />Rating: 3.9<br />Votes: 7<br /></p>]]></description>
+            <author>rss@dailymotion.com (Tele-Loisirs)</author>
+            <itunes:author>Tele-Loisirs</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Vidéo de Miss Provence, Barbara Morel, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</itunes:summary>
+            <itunes:subtitle>Vidéo de Miss Provence, Barbara Morel, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</itunes:subtitle>
+            <dm:videorating>3.9</dm:videorating>
+            <dm:videovotes>7</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfu1ye_miss-provence-election-miss-nationale-2011_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Tele-Loisirs" type="application/rss+xml"/>
+            <dm:views>91277</dm:views>
+            <dm:comments>2</dm:comments>
+            <dm:favorites>1</dm:favorites>
+            <dm:id>xfu1ye</dm:id>
+            <dm:author>Tele-Loisirs</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfu1ye?session_id=&amp;referer=&amp;country=NO&amp;key=7lgk9lcj9x1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=34e679b8be424ed2b7caca3a4692b974</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802</dm:authorAvatar>
+            <dm:relativeDate>posted 1 week ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Mon, 29 Nov 2010 00:23:41 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfu1ye_miss-provence-election-miss-nationale-2011_news</guid>
+            <media:title>Miss Provence (Election Miss Nationale 2011)</media:title>
+            <media:credit>Tele-Loisirs</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/454/695/26596454:jpeg_preview_large.jpg?20101129171226" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfu1ye_miss-provence-election-miss-nationale-2011_news" height="384" width="480"><![CDATA[<iframe frameborder="0" width="480" height="384" src="http://www.dailymotion.com/embed/video/xfu1ye"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfu1ye" type="text/html" duration="80" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfu1ye" type="application/x-shockwave-flash" duration="80" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfu1ye.flv?auth=1292254653_3a5008d2974aeee1030256867f37a556" type="video/x-flv" duration="80" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>Miss, Provence, Barbara, Morel, election, Nationale, 2011, Geneviève, Fontenay</itunes:keywords>
+            <media:category label="Miss">Miss</media:category>
+            <media:category label="Provence">Provence</media:category>
+            <media:category label="Barbara">Barbara</media:category>
+            <media:category label="Morel">Morel</media:category>
+            <media:category label="election">election</media:category>
+            <media:category label="Nationale">Nationale</media:category>
+            <media:category label="2011">2011</media:category>
+            <media:category label="Geneviève">Geneviève</media:category>
+            <media:category label="Fontenay">Fontenay</media:category>
+        </item>
+        <item>
+            <title>JCVD Clash Tournage pub</title>
+            <link>http://www.dailymotion.com/video/xftkzu_jcvd-clash-tournage-pub_shortfilms</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xftkzu_jcvd-clash-tournage-pub_shortfilms"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/474/475/26574474:jpeg_preview_medium.jpg?20101203145910" style="border: 2px solid #B9D3FE;"></a><p>Images du tournage de la nouvelle pub Gillette</p><p>Author: <a href="http://www.dailymotion.com/jcvd2711"><img src="http://ak.style.dailymotion.com/images/avatar/male/80x80.jpg.v6de6bde24007c41c" width="80" height="80" alt="avatar"/>jcvd2711</a><br />Tags: <a href="http://www.dailymotion.com/tag/VAN">VAN</a> <a href="http://www.dailymotion.com/tag/CLAUDE">CLAUDE</a> <a href="http://www.dailymotion.com/tag/FIGHT">FIGHT</a> <a href="http://www.dailymotion.com/tag/BASTON">BASTON</a> <a href="http://www.dailymotion.com/tag/JEAN">JEAN</a> <a href="http://www.dailymotion.com/tag/DAMME">DAMME</a> <a href="http://www.dailymotion.com/tag/JCVD">JCVD</a> <a href="http://www.dailymotion.com/tag/BAGARRE">BAGARRE</a> <a href="http://www.dailymotion.com/tag/WOW">WOW</a> <a href="http://www.dailymotion.com/tag/JEAN CLAUDE">JEAN CLAUDE</a> <a href="http://www.dailymotion.com/tag/MAKING OF">MAKING OF</a> <a href="http://www.dailymotion.com/tag/PUB">PUB</a> <a href="http://www.dailymotion.com/tag/LIVE">LIVE</a> <a href="http://www.dailymotion.com/tag/COMBAT">COMBAT</a> <a href="http://www.dailymotion.com/tag/TOURNAGE">TOURNAGE</a> <a href="http://www.dailymotion.com/tag/ENORME">ENORME</a> <a href="http://www.dailymotion.com/tag/GILLETTE">GILLETTE</a> <a href="http://www.dailymotion.com/tag/BUZZ">BUZZ</a> <a href="http://www.dailymotion.com/tag/POEPLE">POEPLE</a> <a href="http://www.dailymotion.com/tag/DERAPAGE">DERAPAGE</a> <a href="http://www.dailymotion.com/tag/KICK">KICK</a> <a href="http://www.dailymotion.com/tag/CLASH">CLASH</a> <br />Posted: 27 November 2010<br />Rating: 4.7<br />Votes: 16<br /></p>]]></description>
+            <author>rss@dailymotion.com (jcvd2711)</author>
+            <itunes:author>jcvd2711</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Images du tournage de la nouvelle pub Gillette</itunes:summary>
+            <itunes:subtitle>Images du tournage de la nouvelle pub Gillette</itunes:subtitle>
+            <dm:videorating>4.7</dm:videorating>
+            <dm:videovotes>16</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xftkzu_jcvd-clash-tournage-pub_shortfilms" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/jcvd2711" type="application/rss+xml"/>
+            <dm:views>185814</dm:views>
+            <dm:comments>19</dm:comments>
+            <dm:favorites>9</dm:favorites>
+            <dm:id>xftkzu</dm:id>
+            <dm:author>jcvd2711</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xftkzu?session_id=&amp;referer=&amp;country=NO&amp;key=9eir7jqqz01ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=74a0dba7f9ccc9fd51a7103d6d6f17b7</dm:loggerURL>
+            <dm:authorAvatar>http://ak.style.dailymotion.com/images/avatar/male/80x80.jpg.v6de6bde24007c41c</dm:authorAvatar>
+            <dm:relativeDate>posted 1 week ago</dm:relativeDate>
+            <dm:channels>shortfilms</dm:channels>
+            <pubDate>Sat, 27 Nov 2010 19:22:26 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xftkzu_jcvd-clash-tournage-pub_shortfilms</guid>
+            <media:title>JCVD Clash Tournage pub</media:title>
+            <media:credit>jcvd2711</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/474/475/26574474:jpeg_preview_large.jpg?20101203145910" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xftkzu_jcvd-clash-tournage-pub_shortfilms" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xftkzu"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xftkzu" type="text/html" duration="153" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xftkzu" type="application/x-shockwave-flash" duration="153" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xftkzu.flv?auth=1292254653_df30e4d05735822b082d94c0a3c78279" type="video/x-flv" duration="153" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>VAN, CLAUDE, FIGHT, BASTON, JEAN, DAMME, JCVD, BAGARRE, WOW, JEAN CLAUDE, MAKING OF, PUB, LIVE, COMBAT, TOURNAGE, ENORME, GILLETTE, BUZZ, POEPLE, DERAPAGE, KICK, CLASH</itunes:keywords>
+            <media:category label="VAN">VAN</media:category>
+            <media:category label="CLAUDE">CLAUDE</media:category>
+            <media:category label="FIGHT">FIGHT</media:category>
+            <media:category label="BASTON">BASTON</media:category>
+            <media:category label="JEAN">JEAN</media:category>
+            <media:category label="DAMME">DAMME</media:category>
+            <media:category label="JCVD">JCVD</media:category>
+            <media:category label="BAGARRE">BAGARRE</media:category>
+            <media:category label="WOW">WOW</media:category>
+            <media:category label="JEAN CLAUDE">JEAN CLAUDE</media:category>
+            <media:category label="MAKING OF">MAKING OF</media:category>
+            <media:category label="PUB">PUB</media:category>
+            <media:category label="LIVE">LIVE</media:category>
+            <media:category label="COMBAT">COMBAT</media:category>
+            <media:category label="TOURNAGE">TOURNAGE</media:category>
+            <media:category label="ENORME">ENORME</media:category>
+            <media:category label="GILLETTE">GILLETTE</media:category>
+            <media:category label="BUZZ">BUZZ</media:category>
+            <media:category label="POEPLE">POEPLE</media:category>
+            <media:category label="DERAPAGE">DERAPAGE</media:category>
+            <media:category label="KICK">KICK</media:category>
+            <media:category label="CLASH">CLASH</media:category>
+        </item>
+        <item>
+            <title>DUFFY@HOME PART1 (9:27) #LiveAtHome album ''Endlessly''</title>
+            <link>http://www.dailymotion.com/video/xfp532_duffy-home-part1-9-27-liveathome-album-endlessly_music</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfp532_duffy-home-part1-9-27-liveathome-album-endlessly_music"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/032/763/26367230:jpeg_preview_medium.jpg?20101124190554" style="border: 2px solid #B9D3FE;"></a><p>• Duffy @ Home !<br /><br />Endlessly (album)<br />1."My Boy" 2:26<br />2."Too Hurt to Dance" 3:04<br />3."Keeping My Baby" 2:07<br />4."Well, Well, Well" 2:45<br />5."Don't Forsake Me" 3:09<br />6."Endlessly" 2:59<br />7."Breath Away" 3:06<br />8."Lovestruck" 2:37<br />9."Girl" 1:46<br />10."Hard for the Heart" 2:12<br /><br />on http://on.fb.me/duffyathome !<br /><br />- make sure you follow @iamduffymusic @labelaz @live_at_home #LiveAtHome<br /><br />Tous les 15 jours, retrouvez en toute intimité sur Live@Home vos artistes préférés dans un cadre musical prestigieux. Live@Home a réuni les meilleures conditions pour que les plus grands musiciens actuels libèrent pleinement le groove qui est en eux, et ce, comme vous ne l'avez jamais vus !<br /><br />“LIVE@HOME” is a home for music – a comfortable space to play it, talk about it, and live it.</p><p>Author: <a href="http://www.dailymotion.com/LiveAtHome"><img src="http://ak2.static.dailymotion.com/static/user/684/453/34354486:avatar_medium.jpg?20101122135835" width="80" height="80" alt="avatar"/>LiveAtHome</a><br />Tags: <a href="http://www.dailymotion.com/tag/duffy">duffy</a> <a href="http://www.dailymotion.com/tag/live">live</a> <a href="http://www.dailymotion.com/tag/home">home</a> <a href="http://www.dailymotion.com/tag/inedit">inedit</a> <a href="http://www.dailymotion.com/tag/nouvel">nouvel</a> <a href="http://www.dailymotion.com/tag/album">album</a> <a href="http://www.dailymotion.com/tag/concert">concert</a> <a href="http://www.dailymotion.com/tag/prive">prive</a> <a href="http://www.dailymotion.com/tag/mercy">mercy</a> <a href="http://www.dailymotion.com/tag/rockferry">rockferry</a> <a href="http://www.dailymotion.com/tag/well">well</a> <a href="http://www.dailymotion.com/tag/endlessly">endlessly</a> <a href="http://www.dailymotion.com/tag/liveathome">liveathome</a> <a href="http://www.dailymotion.com/tag/labelaz">labelaz</a> <a href="http://www.dailymotion.com/tag/umf">umf</a> <br />Posted: 20 November 2010<br />Rating: 4.5<br />Votes: 11<br /></p>]]></description>
+            <author>rss@dailymotion.com (LiveAtHome)</author>
+            <itunes:author>LiveAtHome</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>• Duffy @ Home !Endlessly (album)1.&quot;My Boy&quot; 2:262.&quot;Too Hurt to Dance&quot; 3:043.&quot;Keeping My Baby&quot; 2:074.&quot;Well, Well, Well&quot; 2:455.&quot;Don't Forsake Me&quot; 3:096.&quot;Endlessly&quot; 2:597.&quot;Breath Away&quot; 3:068...</itunes:summary>
+            <itunes:subtitle>• Duffy @ Home !Endlessly (album)1.&quot;My Boy&quot; 2:262.&quot;Too Hurt to Dance&quot; 3:043.&quot;Keeping My Baby&quot; 2:074.&quot;Well, Well, Well&quot; 2:455.&quot;Don't Forsake Me&quot; 3:096.&quot;Endlessly&quot; 2:597.&quot;Breath Away&quot; 3:068...</itunes:subtitle>
+            <dm:videorating>4.5</dm:videorating>
+            <dm:videovotes>11</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfp532_duffy-home-part1-9-27-liveathome-album-endlessly_music" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/LiveAtHome" type="application/rss+xml"/>
+            <dm:views>309370</dm:views>
+            <dm:comments>5</dm:comments>
+            <dm:favorites>20</dm:favorites>
+            <dm:id>xfp532</dm:id>
+            <dm:author>LiveAtHome</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfp532?session_id=&amp;referer=&amp;country=NO&amp;key=91eeblibiu1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=426e89fedc8b06485244bc056a09dc4e</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/684/453/34354486:avatar_medium.jpg?20101122135835</dm:authorAvatar>
+            <dm:relativeDate>posted 2 weeks ago</dm:relativeDate>
+            <dm:channels>music</dm:channels>
+            <pubDate>Sat, 20 Nov 2010 01:11:09 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfp532_duffy-home-part1-9-27-liveathome-album-endlessly_music</guid>
+            <media:title>DUFFY@HOME PART1 (9:27) #LiveAtHome album ''Endlessly''</media:title>
+            <media:credit>LiveAtHome</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/032/763/26367230:jpeg_preview_large.jpg?20101124190554" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfp532_duffy-home-part1-9-27-liveathome-album-endlessly_music" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfp532"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfp532" type="text/html" duration="567" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfp532" type="application/x-shockwave-flash" duration="567" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfp532.flv?auth=1292254653_6cdbd1fa9b0762a6e7e9c28ae8c2f8fc" type="video/x-flv" duration="567" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>duffy, live, home, inedit, nouvel, album, concert, prive, mercy, rockferry, well, endlessly, liveathome, labelaz, umf</itunes:keywords>
+            <media:category label="duffy">duffy</media:category>
+            <media:category label="live">live</media:category>
+            <media:category label="home">home</media:category>
+            <media:category label="inedit">inedit</media:category>
+            <media:category label="nouvel">nouvel</media:category>
+            <media:category label="album">album</media:category>
+            <media:category label="concert">concert</media:category>
+            <media:category label="prive">prive</media:category>
+            <media:category label="mercy">mercy</media:category>
+            <media:category label="rockferry">rockferry</media:category>
+            <media:category label="well">well</media:category>
+            <media:category label="endlessly">endlessly</media:category>
+            <media:category label="liveathome">liveathome</media:category>
+            <media:category label="labelaz">labelaz</media:category>
+            <media:category label="umf">umf</media:category>
+        </item>
+        <item>
+            <title>DUFFY@HOME PART2 (8:42) #LiveAtHome</title>
+            <link>http://www.dailymotion.com/video/xfp4b6_duffy-home-part2-8-42-liveathome_music</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfp4b6_duffy-home-part2-8-42-liveathome_music"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/622/663/26366226:jpeg_preview_medium.jpg?20101122054313" style="border: 2px solid #B9D3FE;"></a><p>•  Duffy @ Home !<br /><br />Endlessly (album)<br />1."My Boy" 2:26<br />2."Too Hurt to Dance" 3:04<br />3."Keeping My Baby" 2:07<br />4."Well, Well, Well" 2:45<br />5."Don't Forsake Me" 3:09<br />6."Endlessly" 2:59<br />7."Breath Away" 3:06<br />8."Lovestruck" 2:37<br />9."Girl" 1:46<br />10."Hard for the Heart" 2:12<br /><br />on http://on.fb.me/duffyathome !<br /><br /> - make sure you follow @iamduffymusic @labelaz @live_at_home #LiveAtHome<br /><br />Tous les 15 jours, retrouvez en toute intimité sur Live@Home vos artistes préférés dans un cadre musical prestigieux. Live@Home a réuni les meilleures conditions pour que les plus grands musiciens actuels libèrent pleinement le groove qui est en eux, et ce, comme vous ne l'avez jamais vus !<br /><br />“LIVE@HOME” is a home for music – a comfortable space to play it, talk about it, and live it.</p><p>Author: <a href="http://www.dailymotion.com/LiveAtHome"><img src="http://ak2.static.dailymotion.com/static/user/684/453/34354486:avatar_medium.jpg?20101122135835" width="80" height="80" alt="avatar"/>LiveAtHome</a><br />Tags: <a href="http://www.dailymotion.com/tag/liveathome">liveathome</a> <a href="http://www.dailymotion.com/tag/duffy">duffy</a> <a href="http://www.dailymotion.com/tag/live">live</a> <a href="http://www.dailymotion.com/tag/home">home</a> <a href="http://www.dailymotion.com/tag/inedit">inedit</a> <a href="http://www.dailymotion.com/tag/nouvel">nouvel</a> <a href="http://www.dailymotion.com/tag/album">album</a> <a href="http://www.dailymotion.com/tag/concert">concert</a> <a href="http://www.dailymotion.com/tag/prive">prive</a> <a href="http://www.dailymotion.com/tag/mercy">mercy</a> <a href="http://www.dailymotion.com/tag/rockferry">rockferry</a> <a href="http://www.dailymotion.com/tag/well">well</a> <a href="http://www.dailymotion.com/tag/endlessly">endlessly</a> <a href="http://www.dailymotion.com/tag/labelaz">labelaz</a> <a href="http://www.dailymotion.com/tag/umf">umf</a> <br />Posted: 19 November 2010<br />Rating: 5.0<br />Votes: 5<br /></p>]]></description>
+            <author>rss@dailymotion.com (LiveAtHome)</author>
+            <itunes:author>LiveAtHome</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>•  Duffy @ Home !Endlessly (album)1.&quot;My Boy&quot; 2:262.&quot;Too Hurt to Dance&quot; 3:043.&quot;Keeping My Baby&quot; 2:074.&quot;Well, Well, Well&quot; 2:455.&quot;Don't Forsake Me&quot; 3:096.&quot;Endlessly&quot; 2:597.&quot;Breath Away&quot; 3:068...</itunes:summary>
+            <itunes:subtitle>•  Duffy @ Home !Endlessly (album)1.&quot;My Boy&quot; 2:262.&quot;Too Hurt to Dance&quot; 3:043.&quot;Keeping My Baby&quot; 2:074.&quot;Well, Well, Well&quot; 2:455.&quot;Don't Forsake Me&quot; 3:096.&quot;Endlessly&quot; 2:597.&quot;Breath Away&quot; 3:068...</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>5</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfp4b6_duffy-home-part2-8-42-liveathome_music" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/LiveAtHome" type="application/rss+xml"/>
+            <dm:views>301961</dm:views>
+            <dm:comments>1</dm:comments>
+            <dm:favorites>6</dm:favorites>
+            <dm:id>xfp4b6</dm:id>
+            <dm:author>LiveAtHome</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfp4b6?session_id=&amp;referer=&amp;country=NO&amp;key=ei7f7kxq8t1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=7579d4282d5ed84cbe8c2c11453bff76</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/684/453/34354486:avatar_medium.jpg?20101122135835</dm:authorAvatar>
+            <dm:relativeDate>posted 2 weeks ago</dm:relativeDate>
+            <dm:channels>music</dm:channels>
+            <pubDate>Fri, 19 Nov 2010 23:43:59 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfp4b6_duffy-home-part2-8-42-liveathome_music</guid>
+            <media:title>DUFFY@HOME PART2 (8:42) #LiveAtHome</media:title>
+            <media:credit>LiveAtHome</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/622/663/26366226:jpeg_preview_large.jpg?20101122054313" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfp4b6_duffy-home-part2-8-42-liveathome_music" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfp4b6"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfp4b6" type="text/html" duration="522" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfp4b6" type="application/x-shockwave-flash" duration="522" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfp4b6.flv?auth=1292254653_89ac82ae89f8b6af4169568cbeac645e" type="video/x-flv" duration="522" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>liveathome, duffy, live, home, inedit, nouvel, album, concert, prive, mercy, rockferry, well, endlessly, labelaz, umf</itunes:keywords>
+            <media:category label="liveathome">liveathome</media:category>
+            <media:category label="duffy">duffy</media:category>
+            <media:category label="live">live</media:category>
+            <media:category label="home">home</media:category>
+            <media:category label="inedit">inedit</media:category>
+            <media:category label="nouvel">nouvel</media:category>
+            <media:category label="album">album</media:category>
+            <media:category label="concert">concert</media:category>
+            <media:category label="prive">prive</media:category>
+            <media:category label="mercy">mercy</media:category>
+            <media:category label="rockferry">rockferry</media:category>
+            <media:category label="well">well</media:category>
+            <media:category label="endlessly">endlessly</media:category>
+            <media:category label="labelaz">labelaz</media:category>
+            <media:category label="umf">umf</media:category>
+        </item>
+        <item>
+            <title>DUFFY@HOME PART3  (9:06) #LiveAtHome</title>
+            <link>http://www.dailymotion.com/video/xfp3dz_duffy-home-part3-9-06-liveathome_music</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfp3dz_duffy-home-part3-9-06-liveathome_music"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/130/563/26365031:jpeg_preview_medium.jpg?20101122054425" style="border: 2px solid #B9D3FE;"></a><p>• Duffy @ Home !<br /><br />Endlessly (album)<br />1."My Boy" 2:26<br />2."Too Hurt to Dance" 3:04<br />3."Keeping My Baby" 2:07<br />4."Well, Well, Well" 2:45<br />5."Don't Forsake Me" 3:09<br />6."Endlessly" 2:59<br />7."Breath Away" 3:06<br />8."Lovestruck" 2:37<br />9."Girl" 1:46<br />10."Hard for the Heart" 2:12<br /><br />on http://on.fb.me/duffyathome !<br /><br />- make sure you follow @iamduffymusic @labelaz @live_at_home #LiveAtHome<br /><br />Tous les 15 jours, retrouvez en toute intimité sur Live@Home vos artistes préférés dans un cadre musical prestigieux. Live@Home a réuni les meilleures conditions pour que les plus grands musiciens actuels libèrent pleinement le groove qui est en eux, et ce, comme vous ne l'avez jamais vus !<br /><br />“LIVE@HOME” is a home for music – a comfortable space to play it, talk about it, and live it.</p><p>Author: <a href="http://www.dailymotion.com/LiveAtHome"><img src="http://ak2.static.dailymotion.com/static/user/684/453/34354486:avatar_medium.jpg?20101122135835" width="80" height="80" alt="avatar"/>LiveAtHome</a><br />Tags: <a href="http://www.dailymotion.com/tag/duffy">duffy</a> <a href="http://www.dailymotion.com/tag/live">live</a> <a href="http://www.dailymotion.com/tag/inedit">inedit</a> <a href="http://www.dailymotion.com/tag/mercy">mercy</a> <a href="http://www.dailymotion.com/tag/liveathome">liveathome</a> <a href="http://www.dailymotion.com/tag/private">private</a> <a href="http://www.dailymotion.com/tag/gig">gig</a> <a href="http://www.dailymotion.com/tag/well">well</a> <a href="http://www.dailymotion.com/tag/labelaz">labelaz</a> <a href="http://www.dailymotion.com/tag/umf">umf</a> <a href="http://www.dailymotion.com/tag/windowsphone">windowsphone</a> <br />Posted: 19 November 2010<br />Rating: 5.0<br />Votes: 6<br /></p>]]></description>
+            <author>rss@dailymotion.com (LiveAtHome)</author>
+            <itunes:author>LiveAtHome</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>• Duffy @ Home !Endlessly (album)1.&quot;My Boy&quot; 2:262.&quot;Too Hurt to Dance&quot; 3:043.&quot;Keeping My Baby&quot; 2:074.&quot;Well, Well, Well&quot; 2:455.&quot;Don't Forsake Me&quot; 3:096.&quot;Endlessly&quot; 2:597.&quot;Breath Away&quot; 3:068...</itunes:summary>
+            <itunes:subtitle>• Duffy @ Home !Endlessly (album)1.&quot;My Boy&quot; 2:262.&quot;Too Hurt to Dance&quot; 3:043.&quot;Keeping My Baby&quot; 2:074.&quot;Well, Well, Well&quot; 2:455.&quot;Don't Forsake Me&quot; 3:096.&quot;Endlessly&quot; 2:597.&quot;Breath Away&quot; 3:068...</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>6</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfp3dz_duffy-home-part3-9-06-liveathome_music" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/LiveAtHome" type="application/rss+xml"/>
+            <dm:views>298324</dm:views>
+            <dm:comments>1</dm:comments>
+            <dm:favorites>6</dm:favorites>
+            <dm:id>xfp3dz</dm:id>
+            <dm:author>LiveAtHome</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfp3dz?session_id=&amp;referer=&amp;country=NO&amp;key=9x3s49lgio1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=c8863ede890c21c8f03374b48708431a</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/684/453/34354486:avatar_medium.jpg?20101122135835</dm:authorAvatar>
+            <dm:relativeDate>posted 2 weeks ago</dm:relativeDate>
+            <dm:channels>music</dm:channels>
+            <pubDate>Fri, 19 Nov 2010 22:12:59 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfp3dz_duffy-home-part3-9-06-liveathome_music</guid>
+            <media:title>DUFFY@HOME PART3  (9:06) #LiveAtHome</media:title>
+            <media:credit>LiveAtHome</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/130/563/26365031:jpeg_preview_large.jpg?20101122054425" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfp3dz_duffy-home-part3-9-06-liveathome_music" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfp3dz"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfp3dz" type="text/html" duration="546" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfp3dz" type="application/x-shockwave-flash" duration="546" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfp3dz.flv?auth=1292254653_829f7e23de1b3a880342028454235f7d" type="video/x-flv" duration="546" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>duffy, live, inedit, mercy, liveathome, private, gig, well, labelaz, umf, windowsphone</itunes:keywords>
+            <media:category label="duffy">duffy</media:category>
+            <media:category label="live">live</media:category>
+            <media:category label="inedit">inedit</media:category>
+            <media:category label="mercy">mercy</media:category>
+            <media:category label="liveathome">liveathome</media:category>
+            <media:category label="private">private</media:category>
+            <media:category label="gig">gig</media:category>
+            <media:category label="well">well</media:category>
+            <media:category label="labelaz">labelaz</media:category>
+            <media:category label="umf">umf</media:category>
+            <media:category label="windowsphone">windowsphone</media:category>
+        </item>
+        <item>
+            <title>Geneviève de Fontenay (interview)</title>
+            <link>http://www.dailymotion.com/video/xfwlo6_genevieve-de-fontenay-interview_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfwlo6_genevieve-de-fontenay-interview_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/813/517/26715318:jpeg_preview_medium.jpg?20101202172003" style="border: 2px solid #B9D3FE;"></a><p>Interview de Geneviève de Fontenay, organisatrice de l'élection Miss Nationale.</p><p>Author: <a href="http://www.dailymotion.com/Tele-Loisirs"><img src="http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802" width="80" height="80" alt="avatar"/>Tele-Loisirs</a><br />Tags: <a href="http://www.dailymotion.com/tag/Geneviève">Geneviève</a> <a href="http://www.dailymotion.com/tag/Fontenay">Fontenay</a> <a href="http://www.dailymotion.com/tag/interview">interview</a> <a href="http://www.dailymotion.com/tag/miss">miss</a> <a href="http://www.dailymotion.com/tag/nationale">nationale</a> <a href="http://www.dailymotion.com/tag/elodie">elodie</a> <a href="http://www.dailymotion.com/tag/gossuin">gossuin</a> <br />Posted: 02 December 2010<br />Rating: 5.0<br />Votes: 5<br /></p>]]></description>
+            <author>rss@dailymotion.com (Tele-Loisirs)</author>
+            <itunes:author>Tele-Loisirs</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Interview de Geneviève de Fontenay, organisatrice de l'élection Miss Nationale.</itunes:summary>
+            <itunes:subtitle>Interview de Geneviève de Fontenay, organisatrice de l'élection Miss Nationale.</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>5</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfwlo6_genevieve-de-fontenay-interview_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Tele-Loisirs" type="application/rss+xml"/>
+            <dm:views>62504</dm:views>
+            <dm:comments>7</dm:comments>
+            <dm:favorites>1</dm:favorites>
+            <dm:id>xfwlo6</dm:id>
+            <dm:author>Tele-Loisirs</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfwlo6?session_id=&amp;referer=&amp;country=NO&amp;key=2z61f2anp71ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=48eefabc532c05c80b41f39bf81289ae</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802</dm:authorAvatar>
+            <dm:relativeDate>posted 3 days ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Thu, 02 Dec 2010 17:13:11 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfwlo6_genevieve-de-fontenay-interview_news</guid>
+            <media:title>Geneviève de Fontenay (interview)</media:title>
+            <media:credit>Tele-Loisirs</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/813/517/26715318:jpeg_preview_large.jpg?20101202172003" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfwlo6_genevieve-de-fontenay-interview_news" height="360" width="480"><![CDATA[<iframe frameborder="0" width="480" height="360" src="http://www.dailymotion.com/embed/video/xfwlo6"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfwlo6" type="text/html" duration="191" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfwlo6" type="application/x-shockwave-flash" duration="191" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfwlo6.flv?auth=1292254653_1099fa4fdc922970bb3232034eb0c599" type="video/x-flv" duration="191" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>Geneviève, Fontenay, interview, miss, nationale, elodie, gossuin</itunes:keywords>
+            <media:category label="Geneviève">Geneviève</media:category>
+            <media:category label="Fontenay">Fontenay</media:category>
+            <media:category label="interview">interview</media:category>
+            <media:category label="miss">miss</media:category>
+            <media:category label="nationale">nationale</media:category>
+            <media:category label="elodie">elodie</media:category>
+            <media:category label="gossuin">gossuin</media:category>
+        </item>
+        <item>
+            <title>Miss Nationale : Interview Barbara Morel et images élection</title>
+            <link>http://www.dailymotion.com/video/xfyp2f_miss-nationale-interview-barbara-morel-et-images-election_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfyp2f_miss-nationale-interview-barbara-morel-et-images-election_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/130/318/26813031:jpeg_preview_medium.jpg?20101206020910" style="border: 2px solid #B9D3FE;"></a><p>Première interview de Barbara Morel, quelques minutes après son élection comme Miss Nationale 2011, et extraits de la soirée.</p><p>Author: <a href="http://www.dailymotion.com/Tele-Loisirs"><img src="http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802" width="80" height="80" alt="avatar"/>Tele-Loisirs</a><br />Tags: <a href="http://www.dailymotion.com/tag/miss">miss</a> <a href="http://www.dailymotion.com/tag/nationale">nationale</a> <a href="http://www.dailymotion.com/tag/+2011">2011</a> <a href="http://www.dailymotion.com/tag/barbara">barbara</a> <a href="http://www.dailymotion.com/tag/morel">morel</a> <a href="http://www.dailymotion.com/tag/genevieve">genevieve</a> <a href="http://www.dailymotion.com/tag/fontenay">fontenay</a> <br />Posted: 06 December 2010<br />Rating: 5.0<br />Votes: 4<br /></p>]]></description>
+            <author>rss@dailymotion.com (Tele-Loisirs)</author>
+            <itunes:author>Tele-Loisirs</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Première interview de Barbara Morel, quelques minutes après son élection comme Miss Nationale 2011, et extraits de la soirée.</itunes:summary>
+            <itunes:subtitle>Première interview de Barbara Morel, quelques minutes après son élection comme Miss Nationale 2011, et extraits de la soirée.</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>4</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfyp2f_miss-nationale-interview-barbara-morel-et-images-election_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Tele-Loisirs" type="application/rss+xml"/>
+            <dm:views>36014</dm:views>
+            <dm:comments>0</dm:comments>
+            <dm:favorites>2</dm:favorites>
+            <dm:id>xfyp2f</dm:id>
+            <dm:author>Tele-Loisirs</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfyp2f?session_id=&amp;referer=&amp;country=NO&amp;key=5z6rdqz9fq1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=90c481a516ca0e5889f104afd5a294cd</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802</dm:authorAvatar>
+            <dm:relativeDate>posted 14 hours ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Mon, 06 Dec 2010 01:58:34 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfyp2f_miss-nationale-interview-barbara-morel-et-images-election_news</guid>
+            <media:title>Miss Nationale : Interview Barbara Morel et images élection</media:title>
+            <media:credit>Tele-Loisirs</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/130/318/26813031:jpeg_preview_large.jpg?20101206020910" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfyp2f_miss-nationale-interview-barbara-morel-et-images-election_news" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfyp2f"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfyp2f" type="text/html" duration="211" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfyp2f" type="application/x-shockwave-flash" duration="211" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfyp2f.flv?auth=1292254653_ca6616a459010cf3094c38b8661e2ebf" type="video/x-flv" duration="211" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>miss, nationale, 2011, barbara, morel, genevieve, fontenay</itunes:keywords>
+            <media:category label="miss">miss</media:category>
+            <media:category label="nationale">nationale</media:category>
+            <media:category label="2011">2011</media:category>
+            <media:category label="barbara">barbara</media:category>
+            <media:category label="morel">morel</media:category>
+            <media:category label="genevieve">genevieve</media:category>
+            <media:category label="fontenay">fontenay</media:category>
+        </item>
+        <item>
+            <title>Royal - Fountaine</title>
+            <link>http://www.dailymotion.com/video/x4kdbf_royal-fountaine_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/x4kdbf_royal-fountaine_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/348/866/7668843:jpeg_preview_medium.jpg?20100725060713" style="border: 2px solid #B9D3FE;"></a><p></p><p>Author: <a href="http://www.dailymotion.com/man_solo"><img src="http://ak.style.dailymotion.com/images/avatar/male/80x80.jpg.v6de6bde24007c41c" width="80" height="80" alt="avatar"/>man_solo</a><br />Tags: <a href="http://www.dailymotion.com/tag/royal">royal</a> <a href="http://www.dailymotion.com/tag/fountaine">fountaine</a> <br />Posted: 02 March 2008<br />Rating: 4.6<br />Votes: 299<br /></p>]]></description>
+            <author>rss@dailymotion.com (man_solo)</author>
+            <itunes:author>man_solo</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary></itunes:summary>
+            <itunes:subtitle></itunes:subtitle>
+            <dm:videorating>4.6</dm:videorating>
+            <dm:videovotes>299</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/x4kdbf_royal-fountaine_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/man_solo" type="application/rss+xml"/>
+            <dm:views>1987906</dm:views>
+            <dm:comments>584</dm:comments>
+            <dm:favorites>328</dm:favorites>
+            <dm:id>x4kdbf</dm:id>
+            <dm:author>man_solo</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/x4kdbf?session_id=&amp;referer=&amp;country=NO&amp;key=94qw34b0091ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=b18504888f4551e110a4cfb73ce2631a</dm:loggerURL>
+            <dm:authorAvatar>http://ak.style.dailymotion.com/images/avatar/male/80x80.jpg.v6de6bde24007c41c</dm:authorAvatar>
+            <dm:relativeDate>posted 2 years ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Sun, 02 Mar 2008 09:39:38 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/x4kdbf_royal-fountaine_news</guid>
+            <media:title>Royal - Fountaine</media:title>
+            <media:credit>man_solo</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/348/866/7668843:jpeg_preview_large.jpg?20100725060713" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/x4kdbf_royal-fountaine_news" height="360" width="480"><![CDATA[<iframe frameborder="0" width="480" height="360" src="http://www.dailymotion.com/embed/video/x4kdbf"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/x4kdbf" type="text/html" duration="198" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/swf/video/x4kdbf" type="application/x-shockwave-flash" duration="198" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/x4kdbf.flv?auth=1292254653_71900fa8dfa19cec407e9b16381e2d62" type="video/x-flv" duration="198" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>royal, fountaine</itunes:keywords>
+            <media:category label="royal">royal</media:category>
+            <media:category label="fountaine">fountaine</media:category>
+        </item>
+        <item>
+            <title>One Piece 478 Vosta</title>
+            <link>http://www.dailymotion.com/video/xfyd3l_one-piece-478-vosta_shortfilms</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfyd3l_one-piece-478-vosta_shortfilms"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/125/797/26797521:jpeg_preview_medium.jpg?20101205093217" style="border: 2px solid #B9D3FE;"></a><p>A plus tard dans la journée pour l'épisode en vostfr !</p><p>Author: <a href="http://www.dailymotion.com/Sshanks"><img src="http://ak2.static.dailymotion.com/static/user/539/838/35838935:avatar_medium.jpg?20101101121657" width="80" height="80" alt="avatar"/>Sshanks</a><br />Tags: <a href="http://www.dailymotion.com/tag/One">One</a> <a href="http://www.dailymotion.com/tag/Piece">Piece</a> <a href="http://www.dailymotion.com/tag/+477">477</a> <a href="http://www.dailymotion.com/tag/+478">478</a> <a href="http://www.dailymotion.com/tag/+479">479</a> <a href="http://www.dailymotion.com/tag/Vosta">Vosta</a> <a href="http://www.dailymotion.com/tag/Ace">Ace</a> <a href="http://www.dailymotion.com/tag/Luffy">Luffy</a> <a href="http://www.dailymotion.com/tag/Barbe">Barbe</a> <a href="http://www.dailymotion.com/tag/Blabche">Blabche</a> <a href="http://www.dailymotion.com/tag/Pirate">Pirate</a> <a href="http://www.dailymotion.com/tag/Marine">Marine</a> <a href="http://www.dailymotion.com/tag/Guerre">Guerre</a> <a href="http://www.dailymotion.com/tag/Bataille">Bataille</a> <br />Posted: 05 December 2010<br />Rating: 5.0<br />Votes: 6<br /></p>]]></description>
+            <author>rss@dailymotion.com (Sshanks)</author>
+            <itunes:author>Sshanks</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>A plus tard dans la journée pour l'épisode en vostfr !</itunes:summary>
+            <itunes:subtitle>A plus tard dans la journée pour l'épisode en vostfr !</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>6</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfyd3l_one-piece-478-vosta_shortfilms" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Sshanks" type="application/rss+xml"/>
+            <dm:views>40906</dm:views>
+            <dm:comments>18</dm:comments>
+            <dm:favorites>5</dm:favorites>
+            <dm:id>xfyd3l</dm:id>
+            <dm:author>Sshanks</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfyd3l?session_id=&amp;referer=&amp;country=NO&amp;key=1fmqclwt8r1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=36475a73dddea18abfe3ae12003825c4</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/539/838/35838935:avatar_medium.jpg?20101101121657</dm:authorAvatar>
+            <dm:relativeDate>posted yesterday</dm:relativeDate>
+            <dm:channels>shortfilms</dm:channels>
+            <pubDate>Sun, 05 Dec 2010 08:15:03 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfyd3l_one-piece-478-vosta_shortfilms</guid>
+            <media:title>One Piece 478 Vosta</media:title>
+            <media:credit>Sshanks</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/125/797/26797521:jpeg_preview_large.jpg?20101205093217" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfyd3l_one-piece-478-vosta_shortfilms" height="276" width="480"><![CDATA[<iframe frameborder="0" width="480" height="276" src="http://www.dailymotion.com/embed/video/xfyd3l"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfyd3l" type="text/html" duration="1200" width="480" height="276"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfyd3l" type="application/x-shockwave-flash" duration="1200" width="480" height="276"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfyd3l.flv?auth=1292254653_b67ea96932aa2b75cbe036d1307b2554" type="video/x-flv" duration="1200" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>One, Piece, 477, 478, 479, Vosta, Ace, Luffy, Barbe, Blabche, Pirate, Marine, Guerre, Bataille</itunes:keywords>
+            <media:category label="One">One</media:category>
+            <media:category label="Piece">Piece</media:category>
+            <media:category label="477">477</media:category>
+            <media:category label="478">478</media:category>
+            <media:category label="479">479</media:category>
+            <media:category label="Vosta">Vosta</media:category>
+            <media:category label="Ace">Ace</media:category>
+            <media:category label="Luffy">Luffy</media:category>
+            <media:category label="Barbe">Barbe</media:category>
+            <media:category label="Blabche">Blabche</media:category>
+            <media:category label="Pirate">Pirate</media:category>
+            <media:category label="Marine">Marine</media:category>
+            <media:category label="Guerre">Guerre</media:category>
+            <media:category label="Bataille">Bataille</media:category>
+        </item>
+        <item>
+            <title>Millenium TV</title>
+            <link>http://www.dailymotion.com/video/xfnik7_millenium-tv_videogames</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfnik7_millenium-tv_videogames"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/383/192/26291383:jpeg_preview_medium.jpg?20101206104155" style="border: 2px solid #B9D3FE;"></a><p>La chaine du site millenium.org avec des LIVE tous les jours !</p><p>Author: <a href="http://www.dailymotion.com/Millenium_TV"><img src="http://ak2.static.dailymotion.com/static/user/735/677/35776537:avatar_medium.jpg?20101115005648" width="80" height="80" alt="avatar"/>Millenium_TV</a><br />Tags: <a href="http://www.dailymotion.com/tag/millenum">millenum</a> <a href="http://www.dailymotion.com/tag/live">live</a> <br />Posted: 16 November 2010<br />Rating: 4.6<br />Votes: 10<br /></p>]]></description>
+            <author>rss@dailymotion.com (Millenium_TV)</author>
+            <itunes:author>Millenium_TV</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>La chaine du site millenium.org avec des LIVE tous les jours !</itunes:summary>
+            <itunes:subtitle>La chaine du site millenium.org avec des LIVE tous les jours !</itunes:subtitle>
+            <dm:videorating>4.6</dm:videorating>
+            <dm:videovotes>10</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfnik7_millenium-tv_videogames" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Millenium_TV" type="application/rss+xml"/>
+            <dm:views>232978</dm:views>
+            <dm:comments>10</dm:comments>
+            <dm:favorites>18</dm:favorites>
+            <dm:id>xfnik7</dm:id>
+            <dm:author>Millenium_TV</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfnik7?session_id=&amp;referer=&amp;country=NO&amp;key=8k9rvlrfy51ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=15277e5e44e7607bf50847f511a0c76b</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/735/677/35776537:avatar_medium.jpg?20101115005648</dm:authorAvatar>
+            <dm:relativeDate>posted 2 weeks ago</dm:relativeDate>
+            <dm:channels>videogames</dm:channels>
+            <pubDate>Tue, 16 Nov 2010 09:17:12 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfnik7_millenium-tv_videogames</guid>
+            <media:title>Millenium TV</media:title>
+            <media:credit>Millenium_TV</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/383/192/26291383:jpeg_preview_large.jpg?20101206104155" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfnik7_millenium-tv_videogames" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfnik7"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfnik7" type="text/html" duration="44" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfnik7" type="application/x-shockwave-flash" duration="44" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfnik7.flv?auth=1292254653_7bb254a66d715116b565888f17b02ef5" type="video/x-flv" duration="44" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>millenum, live</itunes:keywords>
+            <media:category label="millenum">millenum</media:category>
+            <media:category label="live">live</media:category>
+        </item>
+        <item>
+            <title>One Piece 478 Vostfr</title>
+            <link>http://www.dailymotion.com/video/xfym0y_one-piece-478-vostfr_shortfilms</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfym0y_one-piece-478-vostfr_shortfilms"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/090/908/26809090:jpeg_preview_medium.jpg?20101205220518" style="border: 2px solid #B9D3FE;"></a><p>Traduit par la Fansubsherif. Bon épisode.<br /><br />One Piece 479 Vostfr Preview : http://www.dailymotion.com/video/xfylxn</p><p>Author: <a href="http://www.dailymotion.com/Sshanks"><img src="http://ak2.static.dailymotion.com/static/user/539/838/35838935:avatar_medium.jpg?20101101121657" width="80" height="80" alt="avatar"/>Sshanks</a><br />Tags: <a href="http://www.dailymotion.com/tag/One">One</a> <a href="http://www.dailymotion.com/tag/Piece">Piece</a> <a href="http://www.dailymotion.com/tag/+477">477</a> <a href="http://www.dailymotion.com/tag/+478">478</a> <a href="http://www.dailymotion.com/tag/+479">479</a> <a href="http://www.dailymotion.com/tag/Vostfr">Vostfr</a> <a href="http://www.dailymotion.com/tag/Ace">Ace</a> <a href="http://www.dailymotion.com/tag/Luffy">Luffy</a> <a href="http://www.dailymotion.com/tag/Barbe">Barbe</a> <a href="http://www.dailymotion.com/tag/Blanche">Blanche</a> <a href="http://www.dailymotion.com/tag/Pirate">Pirate</a> <a href="http://www.dailymotion.com/tag/Marine">Marine</a> <a href="http://www.dailymotion.com/tag/Guerre">Guerre</a> <a href="http://www.dailymotion.com/tag/Bataille">Bataille</a> <br />Posted: 05 December 2010<br />Rating: 5.0<br />Votes: 24<br /></p>]]></description>
+            <author>rss@dailymotion.com (Sshanks)</author>
+            <itunes:author>Sshanks</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Traduit par la Fansubsherif. Bon épisode.One Piece 479 Vostfr Preview : http://www.dailymotion.com/video/xfylxn</itunes:summary>
+            <itunes:subtitle>Traduit par la Fansubsherif. Bon épisode.One Piece 479 Vostfr Preview : http://www.dailymotion.com/video/xfylxn</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>24</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfym0y_one-piece-478-vostfr_shortfilms" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Sshanks" type="application/rss+xml"/>
+            <dm:views>16412</dm:views>
+            <dm:comments>20</dm:comments>
+            <dm:favorites>7</dm:favorites>
+            <dm:id>xfym0y</dm:id>
+            <dm:author>Sshanks</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfym0y?session_id=&amp;referer=&amp;country=NO&amp;key=adkzua0vjy1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=6ff0f36ac18ec4e5d9a1acaf0a6ceda4</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/539/838/35838935:avatar_medium.jpg?20101101121657</dm:authorAvatar>
+            <dm:relativeDate>posted 19 hours ago</dm:relativeDate>
+            <dm:channels>shortfilms</dm:channels>
+            <pubDate>Sun, 05 Dec 2010 21:07:16 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfym0y_one-piece-478-vostfr_shortfilms</guid>
+            <media:title>One Piece 478 Vostfr</media:title>
+            <media:credit>Sshanks</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/090/908/26809090:jpeg_preview_large.jpg?20101205220518" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfym0y_one-piece-478-vostfr_shortfilms" height="267" width="480"><![CDATA[<iframe frameborder="0" width="480" height="266" src="http://www.dailymotion.com/embed/video/xfym0y"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfym0y" type="text/html" duration="1200" width="480" height="267"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfym0y" type="application/x-shockwave-flash" duration="1200" width="480" height="267"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfym0y.flv?auth=1292254653_5fba901905c3895c7a93bb664bc92fe0" type="video/x-flv" duration="1200" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>One, Piece, 477, 478, 479, Vostfr, Ace, Luffy, Barbe, Blanche, Pirate, Marine, Guerre, Bataille</itunes:keywords>
+            <media:category label="One">One</media:category>
+            <media:category label="Piece">Piece</media:category>
+            <media:category label="477">477</media:category>
+            <media:category label="478">478</media:category>
+            <media:category label="479">479</media:category>
+            <media:category label="Vostfr">Vostfr</media:category>
+            <media:category label="Ace">Ace</media:category>
+            <media:category label="Luffy">Luffy</media:category>
+            <media:category label="Barbe">Barbe</media:category>
+            <media:category label="Blanche">Blanche</media:category>
+            <media:category label="Pirate">Pirate</media:category>
+            <media:category label="Marine">Marine</media:category>
+            <media:category label="Guerre">Guerre</media:category>
+            <media:category label="Bataille">Bataille</media:category>
+        </item>
+        <item>
+            <title>Subsonic présente le RACIN' PRO !</title>
+            <link>http://www.dailymotion.com/video/xfwiol_subsonic-presente-le-racin-pro_videogames</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfwiol_subsonic-presente-le-racin-pro_videogames"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/544/117/26711445:jpeg_preview_medium.jpg?20101203153601" style="border: 2px solid #B9D3FE;"></a><p>La nouvelle génération de volant pour PS3™ et PC.<br /><br />Une nouvelle expérience!<br />● Une solution "tout en 1" stable et solide.<br />● Câble de 3m à brancher à la console. Pas besoin de piles!<br />● Installation simple et rapide en 1 min.<br />● Facilement transportable grâce à la poignée intégrée.<br />● Compatible avec tous les jeux PS3™ et PC.<br /><br />Plus d'informations sur: www.subsonic.com</p><p>Author: <a href="http://www.dailymotion.com/Subsonic_Accessories"><img src="http://ak2.static.dailymotion.com/static/user/514/232/22232415:avatar_medium.jpg?20101122154515" width="80" height="80" alt="avatar"/>Subsonic_Accessories</a><br />Tags: <a href="http://www.dailymotion.com/tag/Racin Pro">Racin Pro</a> <a href="http://www.dailymotion.com/tag/Racing Pro">Racing Pro</a> <a href="http://www.dailymotion.com/tag/Subsonic Racin Pro">Subsonic Racin Pro</a> <a href="http://www.dailymotion.com/tag/Subsonic Racing Pro">Subsonic Racing Pro</a> <a href="http://www.dailymotion.com/tag/Subsonic">Subsonic</a> <a href="http://www.dailymotion.com/tag/volant PS3">volant PS3</a> <a href="http://www.dailymotion.com/tag/Racin">Racin</a> <a href="http://www.dailymotion.com/tag/Racing">Racing</a> <a href="http://www.dailymotion.com/tag/NEO">NEO</a> <a href="http://www.dailymotion.com/tag/manette PS3">manette PS3</a> <br />Posted: 02 December 2010<br />Rating: 0.0<br />Votes: 0<br /></p>]]></description>
+            <author>rss@dailymotion.com (Subsonic_Accessories)</author>
+            <itunes:author>Subsonic_Accessories</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>La nouvelle génération de volant pour PS3™ et PC.Une nouvelle expérience!● Une solution &quot;tout en 1&quot; stable et solide.● Câble de 3m à brancher à la console. Pas besoin de piles!● Installation simple et rapide en 1 min...</itunes:summary>
+            <itunes:subtitle>La nouvelle génération de volant pour PS3™ et PC.Une nouvelle expérience!● Une solution &quot;tout en 1&quot; stable et solide.● Câble de 3m à brancher à la console. Pas besoin de piles!● Installation simple et rapide en 1 min...</itunes:subtitle>
+            <dm:videorating>0.0</dm:videorating>
+            <dm:videovotes>0</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfwiol_subsonic-presente-le-racin-pro_videogames" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Subsonic_Accessories" type="application/rss+xml"/>
+            <dm:views>41004</dm:views>
+            <dm:comments>9</dm:comments>
+            <dm:favorites>1</dm:favorites>
+            <dm:id>xfwiol</dm:id>
+            <dm:author>Subsonic_Accessories</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfwiol?session_id=&amp;referer=&amp;country=NO&amp;key=b9aoou9wr11ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=90ba98e368118da4243e2796c6e18283</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/514/232/22232415:avatar_medium.jpg?20101122154515</dm:authorAvatar>
+            <dm:relativeDate>posted 4 days ago</dm:relativeDate>
+            <dm:channels>videogames</dm:channels>
+            <pubDate>Thu, 02 Dec 2010 14:09:35 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfwiol_subsonic-presente-le-racin-pro_videogames</guid>
+            <media:title>Subsonic présente le RACIN' PRO !</media:title>
+            <media:credit>Subsonic_Accessories</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/544/117/26711445:jpeg_preview_large.jpg?20101203153601" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfwiol_subsonic-presente-le-racin-pro_videogames" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfwiol"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfwiol" type="text/html" duration="88" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfwiol" type="application/x-shockwave-flash" duration="88" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfwiol.flv?auth=1292254653_983f5f23cc1908e9827f92b98e2d8c46" type="video/x-flv" duration="88" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>Racin Pro, Racing Pro, Subsonic Racin Pro, Subsonic Racing Pro, Subsonic, volant PS3, Racin, Racing, NEO, manette PS3</itunes:keywords>
+            <media:category label="Racin Pro">Racin Pro</media:category>
+            <media:category label="Racing Pro">Racing Pro</media:category>
+            <media:category label="Subsonic Racin Pro">Subsonic Racin Pro</media:category>
+            <media:category label="Subsonic Racing Pro">Subsonic Racing Pro</media:category>
+            <media:category label="Subsonic">Subsonic</media:category>
+            <media:category label="volant PS3">volant PS3</media:category>
+            <media:category label="Racin">Racin</media:category>
+            <media:category label="Racing">Racing</media:category>
+            <media:category label="NEO">NEO</media:category>
+            <media:category label="manette PS3">manette PS3</media:category>
+        </item>
+        <item>
+            <title>Miss Nationale : Défilé en maillot de bain</title>
+            <link>http://www.dailymotion.com/video/xfyp70_miss-nationale-defile-en-maillot-de-bain_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfyp70_miss-nationale-defile-en-maillot-de-bain_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/691/318/26813196:jpeg_preview_medium.jpg?20101206023725" style="border: 2px solid #B9D3FE;"></a><p>Le défilé en maillot de bain de l'élection de Miss Nationale 2011 de Geneviève de Fontenay , qui s'est déroulée à Paris le 5 décembre 2010.</p><p>Author: <a href="http://www.dailymotion.com/Tele-Loisirs"><img src="http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802" width="80" height="80" alt="avatar"/>Tele-Loisirs</a><br />Tags: <a href="http://www.dailymotion.com/tag/miss">miss</a> <a href="http://www.dailymotion.com/tag/nationale">nationale</a> <a href="http://www.dailymotion.com/tag/genevieve">genevieve</a> <a href="http://www.dailymotion.com/tag/fontenay">fontenay</a> <a href="http://www.dailymotion.com/tag/defile">defile</a> <a href="http://www.dailymotion.com/tag/maillots">maillots</a> <a href="http://www.dailymotion.com/tag/bain">bain</a> <br />Posted: 06 December 2010<br />Rating: 5.0<br />Votes: 2<br /></p>]]></description>
+            <author>rss@dailymotion.com (Tele-Loisirs)</author>
+            <itunes:author>Tele-Loisirs</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Le défilé en maillot de bain de l'élection de Miss Nationale 2011 de Geneviève de Fontenay , qui s'est déroulée à Paris le 5 décembre 2010.</itunes:summary>
+            <itunes:subtitle>Le défilé en maillot de bain de l'élection de Miss Nationale 2011 de Geneviève de Fontenay , qui s'est déroulée à Paris le 5 décembre 2010.</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>2</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfyp70_miss-nationale-defile-en-maillot-de-bain_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Tele-Loisirs" type="application/rss+xml"/>
+            <dm:views>14725</dm:views>
+            <dm:comments>0</dm:comments>
+            <dm:favorites>2</dm:favorites>
+            <dm:id>xfyp70</dm:id>
+            <dm:author>Tele-Loisirs</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfyp70?session_id=&amp;referer=&amp;country=NO&amp;key=eeeclxhbee1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=182be2a5f75f3810950e190b923ae04f</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802</dm:authorAvatar>
+            <dm:relativeDate>posted 14 hours ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Mon, 06 Dec 2010 02:20:38 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfyp70_miss-nationale-defile-en-maillot-de-bain_news</guid>
+            <media:title>Miss Nationale : Défilé en maillot de bain</media:title>
+            <media:credit>Tele-Loisirs</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/691/318/26813196:jpeg_preview_large.jpg?20101206023725" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfyp70_miss-nationale-defile-en-maillot-de-bain_news" height="360" width="480"><![CDATA[<iframe frameborder="0" width="480" height="360" src="http://www.dailymotion.com/embed/video/xfyp70"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfyp70" type="text/html" duration="447" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfyp70" type="application/x-shockwave-flash" duration="447" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfyp70.flv?auth=1292254653_42a13e1a49533d8ce24f8bfc96f551e2" type="video/x-flv" duration="447" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>miss, nationale, genevieve, fontenay, defile, maillots, bain</itunes:keywords>
+            <media:category label="miss">miss</media:category>
+            <media:category label="nationale">nationale</media:category>
+            <media:category label="genevieve">genevieve</media:category>
+            <media:category label="fontenay">fontenay</media:category>
+            <media:category label="defile">defile</media:category>
+            <media:category label="maillots">maillots</media:category>
+            <media:category label="bain">bain</media:category>
+        </item>
+        <item>
+            <title>Max Boublil - Joyeux Noel !</title>
+            <link>http://www.dailymotion.com/video/xfxake_max-boublil-joyeux-noel_fun</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfxake_max-boublil-joyeux-noel_fun"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/285/747/26747582:jpeg_preview_medium.jpg?20101204181318" style="border: 2px solid #B9D3FE;"></a><p>Disponible sur iTunes dès la semaine prochaine !<br />Max Boublil, nouveau spectacle sur scène. Billetterie sur www.maxboublil.com</p><p>Author: <a href="http://www.dailymotion.com/maxboublil"><img src="http://ak2.static.dailymotion.com/static/user/941/408/5804149:avatar_medium.jpg?20100607074318" width="80" height="80" alt="avatar"/>maxboublil</a><br />Tags: <a href="http://www.dailymotion.com/tag/max">max</a> <a href="http://www.dailymotion.com/tag/boublil">boublil</a> <a href="http://www.dailymotion.com/tag/clash">clash</a> <a href="http://www.dailymotion.com/tag/alibi">alibi</a> <a href="http://www.dailymotion.com/tag/montana">montana</a> <a href="http://www.dailymotion.com/tag/clashe">clashe</a> <a href="http://www.dailymotion.com/tag/rap">rap</a> <a href="http://www.dailymotion.com/tag/rappeur">rappeur</a> <a href="http://www.dailymotion.com/tag/chanson">chanson</a> <a href="http://www.dailymotion.com/tag/parodie">parodie</a> <a href="http://www.dailymotion.com/tag/chatroulette">chatroulette</a> <a href="http://www.dailymotion.com/tag/vas">vas</a> <a href="http://www.dailymotion.com/tag/prendre">prendre</a> <a href="http://www.dailymotion.com/tag/susan">susan</a> <a href="http://www.dailymotion.com/tag/boyle">boyle</a> <a href="http://www.dailymotion.com/tag/wii">wii</a> <a href="http://www.dailymotion.com/tag/spectacle">spectacle</a> <a href="http://www.dailymotion.com/tag/sketch">sketch</a> <a href="http://www.dailymotion.com/tag/sketche">sketche</a> <a href="http://www.dailymotion.com/tag/humoristique">humoristique</a> <a href="http://www.dailymotion.com/tag/humour">humour</a> <a href="http://www.dailymotion.com/tag/nouvelle">nouvelle</a> <a href="http://www.dailymotion.com/tag/pere">pere</a> <a href="http://www.dailymotion.com/tag/noel">noel</a> <br />Posted: 03 December 2010<br />Rating: 4.6<br />Votes: 30<br /></p>]]></description>
+            <author>rss@dailymotion.com (maxboublil)</author>
+            <itunes:author>maxboublil</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Disponible sur iTunes dès la semaine prochaine !Max Boublil, nouveau spectacle sur scène. Billetterie sur www.maxboublil.com</itunes:summary>
+            <itunes:subtitle>Disponible sur iTunes dès la semaine prochaine !Max Boublil, nouveau spectacle sur scène. Billetterie sur www.maxboublil.com</itunes:subtitle>
+            <dm:videorating>4.6</dm:videorating>
+            <dm:videovotes>30</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfxake_max-boublil-joyeux-noel_fun" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/maxboublil" type="application/rss+xml"/>
+            <dm:views>39148</dm:views>
+            <dm:comments>16</dm:comments>
+            <dm:favorites>17</dm:favorites>
+            <dm:id>xfxake</dm:id>
+            <dm:author>maxboublil</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfxake?session_id=&amp;referer=&amp;country=NO&amp;key=ep3lqdkhn71ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=14d83a62df435c0d8ba26eeeda6d8561</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/941/408/5804149:avatar_medium.jpg?20100607074318</dm:authorAvatar>
+            <dm:relativeDate>posted 2 days ago</dm:relativeDate>
+            <dm:channels>fun</dm:channels>
+            <pubDate>Fri, 03 Dec 2010 17:18:30 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfxake_max-boublil-joyeux-noel_fun</guid>
+            <media:title>Max Boublil - Joyeux Noel !</media:title>
+            <media:credit>maxboublil</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/285/747/26747582:jpeg_preview_large.jpg?20101204181318" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfxake_max-boublil-joyeux-noel_fun" height="393" width="480"><![CDATA[<iframe frameborder="0" width="480" height="393" src="http://www.dailymotion.com/embed/video/xfxake"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfxake" type="text/html" duration="150" width="480" height="393"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfxake" type="application/x-shockwave-flash" duration="150" width="480" height="393"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfxake.flv?auth=1292254653_edbad22d1de1cc32f41f66cfde5b91e6" type="video/x-flv" duration="150" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>max, boublil, clash, alibi, montana, clashe, rap, rappeur, chanson, parodie, chatroulette, vas, prendre, susan, boyle, wii, spectacle, sketch, sketche, humoristique, humour, nouvelle, pere, noel</itunes:keywords>
+            <media:category label="max">max</media:category>
+            <media:category label="boublil">boublil</media:category>
+            <media:category label="clash">clash</media:category>
+            <media:category label="alibi">alibi</media:category>
+            <media:category label="montana">montana</media:category>
+            <media:category label="clashe">clashe</media:category>
+            <media:category label="rap">rap</media:category>
+            <media:category label="rappeur">rappeur</media:category>
+            <media:category label="chanson">chanson</media:category>
+            <media:category label="parodie">parodie</media:category>
+            <media:category label="chatroulette">chatroulette</media:category>
+            <media:category label="vas">vas</media:category>
+            <media:category label="prendre">prendre</media:category>
+            <media:category label="susan">susan</media:category>
+            <media:category label="boyle">boyle</media:category>
+            <media:category label="wii">wii</media:category>
+            <media:category label="spectacle">spectacle</media:category>
+            <media:category label="sketch">sketch</media:category>
+            <media:category label="sketche">sketche</media:category>
+            <media:category label="humoristique">humoristique</media:category>
+            <media:category label="humour">humour</media:category>
+            <media:category label="nouvelle">nouvelle</media:category>
+            <media:category label="pere">pere</media:category>
+            <media:category label="noel">noel</media:category>
+        </item>
+        <item>
+            <title>Miss Côte d'Azur (Election Miss Nationale 2011)</title>
+            <link>http://www.dailymotion.com/video/xfu1ki_miss-cote-d-azur-election-miss-nationale-2011_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfu1ki_miss-cote-d-azur-election-miss-nationale-2011_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/459/595/26595954:jpeg_preview_medium.jpg?20101129182643" style="border: 2px solid #B9D3FE;"></a><p>Vidéo de Miss Côte d'Azur, Charlotte Pétillon, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</p><p>Author: <a href="http://www.dailymotion.com/Tele-Loisirs"><img src="http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802" width="80" height="80" alt="avatar"/>Tele-Loisirs</a><br />Tags: <a href="http://www.dailymotion.com/tag/Miss">Miss</a> <a href="http://www.dailymotion.com/tag/Côte">Côte</a> <a href="http://www.dailymotion.com/tag/dAzur">dAzur</a> <a href="http://www.dailymotion.com/tag/Charlotte">Charlotte</a> <a href="http://www.dailymotion.com/tag/Pétillon">Pétillon</a> <a href="http://www.dailymotion.com/tag/election">election</a> <a href="http://www.dailymotion.com/tag/Nationale">Nationale</a> <a href="http://www.dailymotion.com/tag/+2011">2011</a> <a href="http://www.dailymotion.com/tag/Geneviève">Geneviève</a> <a href="http://www.dailymotion.com/tag/Fontenay">Fontenay</a> <br />Posted: 28 November 2010<br />Rating: 3.2<br />Votes: 6<br /></p>]]></description>
+            <author>rss@dailymotion.com (Tele-Loisirs)</author>
+            <itunes:author>Tele-Loisirs</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Vidéo de Miss Côte d'Azur, Charlotte Pétillon, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</itunes:summary>
+            <itunes:subtitle>Vidéo de Miss Côte d'Azur, Charlotte Pétillon, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</itunes:subtitle>
+            <dm:videorating>3.2</dm:videorating>
+            <dm:videovotes>6</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfu1ki_miss-cote-d-azur-election-miss-nationale-2011_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Tele-Loisirs" type="application/rss+xml"/>
+            <dm:views>22318</dm:views>
+            <dm:comments>0</dm:comments>
+            <dm:favorites>0</dm:favorites>
+            <dm:id>xfu1ki</dm:id>
+            <dm:author>Tele-Loisirs</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfu1ki?session_id=&amp;referer=&amp;country=NO&amp;key=4znyldotxt1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=74f7f3c2551c06247ccffc409090e073</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802</dm:authorAvatar>
+            <dm:relativeDate>posted 1 week ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Sun, 28 Nov 2010 23:39:13 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfu1ki_miss-cote-d-azur-election-miss-nationale-2011_news</guid>
+            <media:title>Miss Côte d'Azur (Election Miss Nationale 2011)</media:title>
+            <media:credit>Tele-Loisirs</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/459/595/26595954:jpeg_preview_large.jpg?20101129182643" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfu1ki_miss-cote-d-azur-election-miss-nationale-2011_news" height="384" width="480"><![CDATA[<iframe frameborder="0" width="480" height="384" src="http://www.dailymotion.com/embed/video/xfu1ki"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfu1ki" type="text/html" duration="94" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfu1ki" type="application/x-shockwave-flash" duration="94" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfu1ki.flv?auth=1292254653_1866cd51387d5ae4ffe3c9417f4e9c81" type="video/x-flv" duration="94" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>Miss, Côte, dAzur, Charlotte, Pétillon, election, Nationale, 2011, Geneviève, Fontenay</itunes:keywords>
+            <media:category label="Miss">Miss</media:category>
+            <media:category label="Côte">Côte</media:category>
+            <media:category label="dAzur">dAzur</media:category>
+            <media:category label="Charlotte">Charlotte</media:category>
+            <media:category label="Pétillon">Pétillon</media:category>
+            <media:category label="election">election</media:category>
+            <media:category label="Nationale">Nationale</media:category>
+            <media:category label="2011">2011</media:category>
+            <media:category label="Geneviève">Geneviève</media:category>
+            <media:category label="Fontenay">Fontenay</media:category>
+        </item>
+        <item>
+            <title>Miss Orléanais-Centre (Election Miss Nationale 2011)</title>
+            <link>http://www.dailymotion.com/video/xfucde_miss-orleanais-centre-election-miss-nationale-2011_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfucde_miss-orleanais-centre-election-miss-nationale-2011_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/459/906/26609954:jpeg_preview_medium.jpg?20101203103319" style="border: 2px solid #B9D3FE;"></a><p>Miss Orléanais-Centre, Kathleen Moreno-Barbosa, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</p><p>Author: <a href="http://www.dailymotion.com/Tele-Loisirs"><img src="http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802" width="80" height="80" alt="avatar"/>Tele-Loisirs</a><br />Tags: <a href="http://www.dailymotion.com/tag/miss">miss</a> <a href="http://www.dailymotion.com/tag/orleanais">orleanais</a> <a href="http://www.dailymotion.com/tag/centre">centre</a> <a href="http://www.dailymotion.com/tag/Kathleen">Kathleen</a> <a href="http://www.dailymotion.com/tag/Moreno-Barbosa">Moreno-Barbosa</a> <a href="http://www.dailymotion.com/tag/election">election</a> <a href="http://www.dailymotion.com/tag/nationale">nationale</a> <a href="http://www.dailymotion.com/tag/genevieve">genevieve</a> <a href="http://www.dailymotion.com/tag/fontenay">fontenay</a> <br />Posted: 29 November 2010<br />Rating: 3.5<br />Votes: 2<br /></p>]]></description>
+            <author>rss@dailymotion.com (Tele-Loisirs)</author>
+            <itunes:author>Tele-Loisirs</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Miss Orléanais-Centre, Kathleen Moreno-Barbosa, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</itunes:summary>
+            <itunes:subtitle>Miss Orléanais-Centre, Kathleen Moreno-Barbosa, candidate à l'élection Miss Nationale 2011 de Geneviève de Fontenay.</itunes:subtitle>
+            <dm:videorating>3.5</dm:videorating>
+            <dm:videovotes>2</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfucde_miss-orleanais-centre-election-miss-nationale-2011_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Tele-Loisirs" type="application/rss+xml"/>
+            <dm:views>21498</dm:views>
+            <dm:comments>0</dm:comments>
+            <dm:favorites>1</dm:favorites>
+            <dm:id>xfucde</dm:id>
+            <dm:author>Tele-Loisirs</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfucde?session_id=&amp;referer=&amp;country=NO&amp;key=5c0y852bt61ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=bd95a15777b62846f4888fef4bd620b8</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/547/069/9960745:avatar_medium.jpg?20100705155802</dm:authorAvatar>
+            <dm:relativeDate>posted 6 days ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Mon, 29 Nov 2010 18:07:01 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfucde_miss-orleanais-centre-election-miss-nationale-2011_news</guid>
+            <media:title>Miss Orléanais-Centre (Election Miss Nationale 2011)</media:title>
+            <media:credit>Tele-Loisirs</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/459/906/26609954:jpeg_preview_large.jpg?20101203103319" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfucde_miss-orleanais-centre-election-miss-nationale-2011_news" height="384" width="480"><![CDATA[<iframe frameborder="0" width="480" height="384" src="http://www.dailymotion.com/embed/video/xfucde"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfucde" type="text/html" duration="87" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfucde" type="application/x-shockwave-flash" duration="87" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfucde.flv?auth=1292254653_8e0028bda08141e9076ac8d15c9ae2f1" type="video/x-flv" duration="87" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>miss, orleanais, centre, Kathleen, Moreno-Barbosa, election, nationale, genevieve, fontenay</itunes:keywords>
+            <media:category label="miss">miss</media:category>
+            <media:category label="orleanais">orleanais</media:category>
+            <media:category label="centre">centre</media:category>
+            <media:category label="Kathleen">Kathleen</media:category>
+            <media:category label="Moreno-Barbosa">Moreno-Barbosa</media:category>
+            <media:category label="election">election</media:category>
+            <media:category label="nationale">nationale</media:category>
+            <media:category label="genevieve">genevieve</media:category>
+            <media:category label="fontenay">fontenay</media:category>
+        </item>
+        <item>
+            <title>SHAKIRA : LOCA (2010) OFFICIAL VIDEO</title>
+            <link>http://www.dailymotion.com/video/xf01jk_shakira-loca-2010-official-video_music</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xf01jk_shakira-loca-2010-official-video_music"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/042/691/25196240:jpeg_preview_medium.jpg?20101106202352" style="border: 2px solid #B9D3FE;"></a><p></p><p>Author: <a href="http://www.dailymotion.com/artemis181"><img src="http://ak.style.dailymotion.com/images/avatar/male/80x80.jpg.v6de6bde24007c41c" width="80" height="80" alt="avatar"/>artemis181</a><br />Tags: <a href="http://www.dailymotion.com/tag/SHAKIRA">SHAKIRA</a> <a href="http://www.dailymotion.com/tag/LOCA">LOCA</a> <a href="http://www.dailymotion.com/tag/OFFICIAL">OFFICIAL</a> <a href="http://www.dailymotion.com/tag/VIDEO">VIDEO</a> <br />Posted: 29 September 2010<br />Rating: 4.7<br />Votes: 57<br /></p>]]></description>
+            <author>rss@dailymotion.com (artemis181)</author>
+            <itunes:author>artemis181</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary></itunes:summary>
+            <itunes:subtitle></itunes:subtitle>
+            <dm:videorating>4.7</dm:videorating>
+            <dm:videovotes>57</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xf01jk_shakira-loca-2010-official-video_music" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/artemis181" type="application/rss+xml"/>
+            <dm:views>681207</dm:views>
+            <dm:comments>46</dm:comments>
+            <dm:favorites>226</dm:favorites>
+            <dm:id>xf01jk</dm:id>
+            <dm:author>artemis181</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xf01jk?session_id=&amp;referer=&amp;country=NO&amp;key=1aeksqba291ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=741777dd6c3c2af526c3a0e8fc6f5059</dm:loggerURL>
+            <dm:authorAvatar>http://ak.style.dailymotion.com/images/avatar/male/80x80.jpg.v6de6bde24007c41c</dm:authorAvatar>
+            <dm:relativeDate>posted 2 months ago</dm:relativeDate>
+            <dm:channels>music</dm:channels>
+            <pubDate>Wed, 29 Sep 2010 11:14:03 +0200</pubDate>
+            <guid>http://www.dailymotion.com/video/xf01jk_shakira-loca-2010-official-video_music</guid>
+            <media:title>SHAKIRA : LOCA (2010) OFFICIAL VIDEO</media:title>
+            <media:credit>artemis181</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/042/691/25196240:jpeg_preview_large.jpg?20101106202352" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xf01jk_shakira-loca-2010-official-video_music" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xf01jk"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xf01jk" type="text/html" duration="201" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xf01jk" type="application/x-shockwave-flash" duration="201" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xf01jk.flv?auth=1292254653_ba44f13ea8a2dfb630a647ba325c3ee0" type="video/x-flv" duration="201" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>SHAKIRA, LOCA, OFFICIAL, VIDEO</itunes:keywords>
+            <media:category label="SHAKIRA">SHAKIRA</media:category>
+            <media:category label="LOCA">LOCA</media:category>
+            <media:category label="OFFICIAL">OFFICIAL</media:category>
+            <media:category label="VIDEO">VIDEO</media:category>
+        </item>
+        <item>
+            <title>Le Parrain (Rémi GAILLARD)</title>
+            <link>http://www.dailymotion.com/video/xfopql_le-parrain-remi-gaillard_fun</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfopql_le-parrain-remi-gaillard_fun"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/143/743/26347341:jpeg_preview_medium.jpg?20101119110411" style="border: 2px solid #B9D3FE;"></a><p>Rémi, le parrain, arrive avec de la bonne came...<br />L'aventure continue sur www.nimportequi.com</p><p>Author: <a href="http://www.dailymotion.com/nqtv"><img src="http://ak2.static.dailymotion.com/static/user/785/979/7979587:avatar_medium.jpg?20101013041146" width="80" height="80" alt="avatar"/>nqtv</a><br />Tags: <a href="http://www.dailymotion.com/tag/parrain">parrain</a> <a href="http://www.dailymotion.com/tag/godfather">godfather</a> <a href="http://www.dailymotion.com/tag/mafia">mafia</a> <a href="http://www.dailymotion.com/tag/remi">remi</a> <a href="http://www.dailymotion.com/tag/gaillard">gaillard</a> <a href="http://www.dailymotion.com/tag/parking">parking</a> <a href="http://www.dailymotion.com/tag/drogue">drogue</a> <br />Posted: 19 November 2010<br />Rating: 4.9<br />Votes: 161<br /></p>]]></description>
+            <author>rss@dailymotion.com (nqtv)</author>
+            <itunes:author>nqtv</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Rémi, le parrain, arrive avec de la bonne came...L'aventure continue sur www.nimportequi.com</itunes:summary>
+            <itunes:subtitle>Rémi, le parrain, arrive avec de la bonne came...L'aventure continue sur www.nimportequi.com</itunes:subtitle>
+            <dm:videorating>4.9</dm:videorating>
+            <dm:videovotes>161</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfopql_le-parrain-remi-gaillard_fun" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/nqtv" type="application/rss+xml"/>
+            <dm:views>1022710</dm:views>
+            <dm:comments>92</dm:comments>
+            <dm:favorites>108</dm:favorites>
+            <dm:id>xfopql</dm:id>
+            <dm:author>nqtv</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfopql?session_id=&amp;referer=&amp;country=NO&amp;key=8s1f0u0yi51ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=8511a2415ba4e971124517aed3de18aa</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/785/979/7979587:avatar_medium.jpg?20101013041146</dm:authorAvatar>
+            <dm:relativeDate>posted 2 weeks ago</dm:relativeDate>
+            <dm:channels>fun</dm:channels>
+            <pubDate>Fri, 19 Nov 2010 02:05:38 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfopql_le-parrain-remi-gaillard_fun</guid>
+            <media:title>Le Parrain (Rémi GAILLARD)</media:title>
+            <media:credit>nqtv</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/143/743/26347341:jpeg_preview_large.jpg?20101119110411" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfopql_le-parrain-remi-gaillard_fun" height="384" width="480"><![CDATA[<iframe frameborder="0" width="480" height="384" src="http://www.dailymotion.com/embed/video/xfopql"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfopql" type="text/html" duration="56" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfopql" type="application/x-shockwave-flash" duration="56" width="480" height="384"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfopql.flv?auth=1292254654_3261453d159a2e6ad78036047c164cb7" type="video/x-flv" duration="56" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>parrain, godfather, mafia, remi, gaillard, parking, drogue</itunes:keywords>
+            <media:category label="parrain">parrain</media:category>
+            <media:category label="godfather">godfather</media:category>
+            <media:category label="mafia">mafia</media:category>
+            <media:category label="remi">remi</media:category>
+            <media:category label="gaillard">gaillard</media:category>
+            <media:category label="parking">parking</media:category>
+            <media:category label="drogue">drogue</media:category>
+        </item>
+        <item>
+            <title>Geneviève veut tout nationaliser</title>
+            <link>http://www.dailymotion.com/video/xfysgh_genevieve-veut-tout-nationaliser_fun</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfysgh_genevieve-veut-tout-nationaliser_fun"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/524/718/26817425:jpeg_preview_medium.jpg?20101206110607" style="border: 2px solid #B9D3FE;"></a><p>Après les Miss, Geneviève de Fontenay rebaptiserait bien la patrouille de France, mais sans les avions de chasse.    Retrouvez tous les bonus web de Nicolas Canteloup sur http://canteloup.europe1.fr</p><p>Author: <a href="http://www.dailymotion.com/Europe1fr"><img src="http://ak2.static.dailymotion.com/static/user/783/324/25423387:avatar_medium.jpg?20101116144434" width="80" height="80" alt="avatar"/>Europe1fr</a><br />Tags: <a href="http://www.dailymotion.com/tag/Divertissement">Divertissement</a> <a href="http://www.dailymotion.com/tag/Nicolas">Nicolas</a> <a href="http://www.dailymotion.com/tag/Canteloup">Canteloup</a> <a href="http://www.dailymotion.com/tag/Revue">Revue</a> <a href="http://www.dailymotion.com/tag/Presque">Presque</a> <a href="http://www.dailymotion.com/tag/Europe1">Europe1</a> <a href="http://www.dailymotion.com/tag/vidéo">vidéo</a> <a href="http://www.dailymotion.com/tag/Miss">Miss</a> <a href="http://www.dailymotion.com/tag/Nationale">Nationale</a> <a href="http://www.dailymotion.com/tag/France">France</a> <a href="http://www.dailymotion.com/tag/Geneviève">Geneviève</a> <a href="http://www.dailymotion.com/tag/Fontenay">Fontenay</a> <br />Posted: 06 December 2010<br />Rating: 5.0<br />Votes: 5<br /></p>]]></description>
+            <author>rss@dailymotion.com (Europe1fr)</author>
+            <itunes:author>Europe1fr</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Après les Miss, Geneviève de Fontenay rebaptiserait bien la patrouille de France, mais sans les avions de chasse.    Retrouvez tous les bonus web de Nicolas Canteloup sur http://canteloup.europe1.fr</itunes:summary>
+            <itunes:subtitle>Après les Miss, Geneviève de Fontenay rebaptiserait bien la patrouille de France, mais sans les avions de chasse.    Retrouvez tous les bonus web de Nicolas Canteloup sur http://canteloup.europe1.fr</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>5</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfysgh_genevieve-veut-tout-nationaliser_fun" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/Europe1fr" type="application/rss+xml"/>
+            <dm:views>11107</dm:views>
+            <dm:comments>0</dm:comments>
+            <dm:favorites>2</dm:favorites>
+            <dm:id>xfysgh</dm:id>
+            <dm:author>Europe1fr</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfysgh?session_id=&amp;referer=&amp;country=NO&amp;key=jj7kurj0oa1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=4affe869ab1a092c27efe06d1b26fd33</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/783/324/25423387:avatar_medium.jpg?20101116144434</dm:authorAvatar>
+            <dm:relativeDate>posted 6 hours ago</dm:relativeDate>
+            <dm:channels>fun</dm:channels>
+            <pubDate>Mon, 06 Dec 2010 09:54:55 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfysgh_genevieve-veut-tout-nationaliser_fun</guid>
+            <media:title>Geneviève veut tout nationaliser</media:title>
+            <media:credit>Europe1fr</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/524/718/26817425:jpeg_preview_large.jpg?20101206110607" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfysgh_genevieve-veut-tout-nationaliser_fun" height="270" width="480"><![CDATA[<iframe frameborder="0" width="480" height="270" src="http://www.dailymotion.com/embed/video/xfysgh"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfysgh" type="text/html" duration="524" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfysgh" type="application/x-shockwave-flash" duration="524" width="480" height="270"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfysgh.flv?auth=1292254654_158f628222de10f7b533c8677c6aac8f" type="video/x-flv" duration="524" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>Divertissement, Nicolas, Canteloup, Revue, Presque, Europe1, vidéo, Miss, Nationale, France, Geneviève, Fontenay</itunes:keywords>
+            <media:category label="Divertissement">Divertissement</media:category>
+            <media:category label="Nicolas">Nicolas</media:category>
+            <media:category label="Canteloup">Canteloup</media:category>
+            <media:category label="Revue">Revue</media:category>
+            <media:category label="Presque">Presque</media:category>
+            <media:category label="Europe1">Europe1</media:category>
+            <media:category label="vidéo">vidéo</media:category>
+            <media:category label="Miss">Miss</media:category>
+            <media:category label="Nationale">Nationale</media:category>
+            <media:category label="France">France</media:category>
+            <media:category label="Geneviève">Geneviève</media:category>
+            <media:category label="Fontenay">Fontenay</media:category>
+        </item>
+        <item>
+            <title>Le masque et la plume</title>
+            <link>http://www.dailymotion.com/video/xfvwal_le-masque-et-la-plume_news</link>
+            <description><![CDATA[<a href="http://www.dailymotion.com/video/xfvwal_le-masque-et-la-plume_news"><img align="right" width="120" height="90" src="http://ak2.static.dailymotion.com/static/video/924/286/26682429:jpeg_preview_medium.jpg?20101206100412" style="border: 2px solid #B9D3FE;"></a><p>Emission enregistrée à Radio France le 25 novembre 2010 au studio 105 Charles Trenet.</p><p>Author: <a href="http://www.dailymotion.com/franceinter"><img src="http://ak2.static.dailymotion.com/static/user/914/575/4575419:avatar_medium.jpg?20101005140302" width="80" height="80" alt="avatar"/>franceinter</a><br />Tags: <a href="http://www.dailymotion.com/tag/Jérôme">Jérôme</a> <a href="http://www.dailymotion.com/tag/cinéma">cinéma</a> <a href="http://www.dailymotion.com/tag/télérama">télérama</a> <a href="http://www.dailymotion.com/tag/studio-Cinélive">studio-Cinélive</a> <a href="http://www.dailymotion.com/tag/masque">masque</a> <a href="http://www.dailymotion.com/tag/plume">plume</a> <a href="http://www.dailymotion.com/tag/Teaser">Teaser</a> <a href="http://www.dailymotion.com/tag/Garcin">Garcin</a> <a href="http://www.dailymotion.com/tag/france">france</a> <a href="http://www.dailymotion.com/tag/inter">inter</a> <a href="http://www.dailymotion.com/tag/Sophie">Sophie</a> <a href="http://www.dailymotion.com/tag/Avon">Avon</a> <a href="http://www.dailymotion.com/tag/Pierre">Pierre</a> <a href="http://www.dailymotion.com/tag/Murat">Murat</a> <a href="http://www.dailymotion.com/tag/sud">sud</a> <a href="http://www.dailymotion.com/tag/ouest">ouest</a> <a href="http://www.dailymotion.com/tag/Alain">Alain</a> <a href="http://www.dailymotion.com/tag/Riou">Riou</a> <a href="http://www.dailymotion.com/tag/nouvel">nouvel</a> <a href="http://www.dailymotion.com/tag/observateur">observateur</a> <a href="http://www.dailymotion.com/tag/obs">obs</a> <a href="http://www.dailymotion.com/tag/Xavier">Xavier</a> <a href="http://www.dailymotion.com/tag/Leherpeur">Leherpeur</a> <a href="http://www.dailymotion.com/tag/studio">studio</a> <a href="http://www.dailymotion.com/tag/Cinélive">Cinélive</a> <br />Posted: 01 December 2010<br />Rating: 5.0<br />Votes: 5<br /></p>]]></description>
+            <author>rss@dailymotion.com (franceinter)</author>
+            <itunes:author>franceinter</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:summary>Emission enregistrée à Radio France le 25 novembre 2010 au studio 105 Charles Trenet.</itunes:summary>
+            <itunes:subtitle>Emission enregistrée à Radio France le 25 novembre 2010 au studio 105 Charles Trenet.</itunes:subtitle>
+            <dm:videorating>5.0</dm:videorating>
+            <dm:videovotes>5</dm:videovotes>
+            <dm:link rel="uql" href="http://www.dailymotion.com/rss/video/xfvwal_le-masque-et-la-plume_news" type="application/rss+xml"/>
+            <dm:link rel="userProfile" href="http://www.dailymotion.com/rss/franceinter" type="application/rss+xml"/>
+            <dm:views>10764</dm:views>
+            <dm:comments>13</dm:comments>
+            <dm:favorites>3</dm:favorites>
+            <dm:id>xfvwal</dm:id>
+            <dm:author>franceinter</dm:author>
+            <dm:loggerURL>http://logger.dailymotion.com/video/access/xfvwal?session_id=&amp;referer=&amp;country=NO&amp;key=6y2pe99g9s1ib73c7ld0ro0&amp;v=4cfd2d10&amp;i=c3bd8fa7&amp;h=894ac2daf98c8dd97a0256852def60c3</dm:loggerURL>
+            <dm:authorAvatar>http://ak2.static.dailymotion.com/static/user/914/575/4575419:avatar_medium.jpg?20101005140302</dm:authorAvatar>
+            <dm:relativeDate>posted 5 days ago</dm:relativeDate>
+            <dm:channels>news</dm:channels>
+            <pubDate>Wed, 01 Dec 2010 16:19:50 +0100</pubDate>
+            <guid>http://www.dailymotion.com/video/xfvwal_le-masque-et-la-plume_news</guid>
+            <media:title>Le masque et la plume</media:title>
+            <media:credit>franceinter</media:credit>
+            <media:thumbnail url="http://ak2.static.dailymotion.com/static/video/924/286/26682429:jpeg_preview_large.jpg?20101206100412" height="240" width="320" />
+            <media:player url="http://www.dailymotion.com/video/xfvwal_le-masque-et-la-plume_news" height="360" width="480"><![CDATA[<iframe frameborder="0" width="480" height="360" src="http://www.dailymotion.com/embed/video/xfvwal"></iframe>]]></media:player>
+            <media:group>
+                <media:content url="http://www.dailymotion.com/embed/video/xfvwal" type="text/html" duration="3536" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/swf/video/xfvwal" type="application/x-shockwave-flash" duration="3536" width="480" height="360"/>
+                <media:content url="http://www.dailymotion.com/cdn/FLV-80x60/video/xfvwal.flv?auth=1292254654_1bd5c1cccbd39d84283e9586e6fbedf3" type="video/x-flv" duration="3536" width="80" height="60"/>
+            </media:group>
+            <itunes:keywords>Jérôme, cinéma, télérama, studio-Cinélive, masque, plume, Teaser, Garcin, france, inter, Sophie, Avon, Pierre, Murat, sud, ouest, Alain, Riou, nouvel, observateur, obs, Xavier, Leherpeur, studio, Cinélive</itunes:keywords>
+            <media:category label="Jérôme">Jérôme</media:category>
+            <media:category label="cinéma">cinéma</media:category>
+            <media:category label="télérama">télérama</media:category>
+            <media:category label="studio-Cinélive">studio-Cinélive</media:category>
+            <media:category label="masque">masque</media:category>
+            <media:category label="plume">plume</media:category>
+            <media:category label="Teaser">Teaser</media:category>
+            <media:category label="Garcin">Garcin</media:category>
+            <media:category label="france">france</media:category>
+            <media:category label="inter">inter</media:category>
+            <media:category label="Sophie">Sophie</media:category>
+            <media:category label="Avon">Avon</media:category>
+            <media:category label="Pierre">Pierre</media:category>
+            <media:category label="Murat">Murat</media:category>
+            <media:category label="sud">sud</media:category>
+            <media:category label="ouest">ouest</media:category>
+            <media:category label="Alain">Alain</media:category>
+            <media:category label="Riou">Riou</media:category>
+            <media:category label="nouvel">nouvel</media:category>
+            <media:category label="observateur">observateur</media:category>
+            <media:category label="obs">obs</media:category>
+            <media:category label="Xavier">Xavier</media:category>
+            <media:category label="Leherpeur">Leherpeur</media:category>
+            <media:category label="studio">studio</media:category>
+            <media:category label="Cinélive">Cinélive</media:category>
+        </item>
+    </channel>
+</rss>

@@ -45,6 +45,22 @@ class test_find_post_content(unittest.TestCase):
             feedutil.truncate_html_words = prev
 
 
+    def test_get_img(self):
+        ''' see https://bugs.opera.com/browse/OPAL-1113
+            check that find_post_content adds an image to the content if 
+            theres no img tag and is a media namespace
+        '''
+        
+        feed_str = get_data_file("dailymotion.rss")
+        feed = feedparser.parse(feed_str)
+        elements = ("src='http://ak2.static.dailymotion.com/static/video/454/695/26596454:jpeg_preview_large.jpg?20101129171226'",
+                "width='320'",
+                "height='240'")
+
+        post = find_post_content(None, feed.entries[0])
+        for elem in elements:
+            self.assertTrue(post.find(elem) != -1)
+
 class test_generate_guid(unittest.TestCase):
 
     def test_handles_not_encodable_text(self):
