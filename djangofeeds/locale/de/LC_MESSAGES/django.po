@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# alex <alexandrad@opera.com>, 2010.
+# alex <alexandrad@opera.com>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-06 12:24+0100\n"
-"PO-Revision-Date: 2010-10-01 13:04+0200\n"
+"PO-Revision-Date: 2011-01-12 14:59+0200\n"
 "Last-Translator: alex <alexandrad@opera.com>\n"
 "Language-Team: portal django feeds\n"
 "Language: de\n"
@@ -148,7 +148,7 @@ msgstr "Inhalt"
 # is this an english word?
 #: models.py:315
 msgid "guid"
-msgstr ""
+msgstr "Guide"
 
 #: models.py:316
 msgid "author"
