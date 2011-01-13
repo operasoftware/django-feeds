@@ -2,8 +2,6 @@ import time
 import urllib
 import urllib2
 import re
-from sgmllib import SGMLParser
-import html5lib
 
 from base64 import b64encode
 from datetime import datetime, timedelta
