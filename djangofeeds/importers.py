@@ -108,7 +108,8 @@ class FeedImporter(object):
                 headers = self.early_headers(feed_url)
                 contentlen = int(headers.get("content-length") or 0)
                 if contentlen > maxlen:
-                    raise ContentLengthLimitExceeded()
+                    raise exceptions.FeedCriticalError(
+                        unicode(models.FEED_GENERIC_ERROR_TEXT))
 
             feed = self.parser.parse(feed_url,
                                      etag=etag,
