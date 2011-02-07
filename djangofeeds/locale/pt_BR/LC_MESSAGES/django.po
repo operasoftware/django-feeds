@@ -1,0 +1,241 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-06 12:23+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:32
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr "O feed parece não responder. Tentaremos novamente mais tarde."
+
+#: models.py:34
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr ""
+"Você digitou uma URL incorreta ou o feed que você quer acessar não existe"
+"mais."
+#: models.py:37
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"Há um problema com este feed, por favor verifique se a URL"
+"foi digitada corretamente ou tente novamente mais tarde."
+
+#: models.py:59 models.py:113
+msgid "name"
+msgstr "nome"
+
+#: models.py:60
+msgid "domain"
+msgstr "domínio"
+
+#: models.py:67
+msgid "category"
+msgstr "categoria"
+
+#: models.py:68
+msgid "categories"
+msgstr "categorias"
+
+#: models.py:114
+msgid "feed URL"
+msgstr "URL do feed"
+
+#: models.py:115
+msgid "description"
+msgstr "descrição"
+
+#: models.py:116 models.py:313
+msgid "link"
+msgstr "link"
+
+#: models.py:117
+msgid "E-Tag"
+msgstr "E-Tag"
+
+#: models.py:120
+msgid "Last-Modified"
+msgstr "Última Modificação"
+
+#: models.py:122
+msgid "date of last refresh"
+msgstr "data da última atualização"
+
+#: models.py:125
+msgid "last error"
+msgstr "último erro"
+
+#: models.py:128
+msgid "sort order"
+msgstr "ordem de classificação"
+
+#: models.py:129
+msgid "date created"
+msgstr "data de criação"
+
+#: models.py:130
+msgid "date changed"
+msgstr "data de alteração"
+
+#: models.py:133
+msgid "last requested"
+msgstr "última solicitação"
+
+#: models.py:135
+msgid "is active"
+msgstr "está ativo"
+
+#: models.py:136
+msgid "frequency"
+msgstr "frequencia"
+
+#: models.py:142
+msgid "syndication feed"
+msgstr "feed de distribuição"
+
+#: models.py:143
+msgid "syndication feeds"
+msgstr "feeds de distribuição"
+
+#: models.py:256
+msgid "URL"
+msgstr "URL"
+
+#: models.py:257
+msgid "type"
+msgstr "tipo"
+
+#: models.py:258
+msgid "length"
+msgstr "tamanho"
+
+#: models.py:263
+msgid "enclosure"
+msgstr "anexo"
+
+#: models.py:264
+msgid "enclosures"
+msgstr "anexos"
+
+#: models.py:312
+msgid "title"
+msgstr "título"
+
+#: models.py:314
+msgid "content"
+msgstr "conteúdo"
+
+#: models.py:315
+msgid "guid"
+msgstr "guia"
+
+#: models.py:316
+msgid "author"
+msgstr "autor"
+
+#: models.py:317
+msgid "date published"
+msgstr "data de publicação"
+
+#: models.py:318
+msgid "date updated"
+msgstr "data de atualização"
+
+#: models.py:329
+msgid "post"
+msgstr "post"
+
+#: models.py:330
+msgid "posts"
+msgstr "posts"
+
+#: utils.py:8
+msgid "just now"
+msgstr "agora"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr "%(seconds)d segundos atrás"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr "%(seconds)d segundos atrás"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr "%(minutes)d minutos atrás"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr "%(minutes)d minutos atrás"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr "%(hours)d horas atrás"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr "%(hours)d horas atrás"
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr "Ontem às %(time)s"
+
+#: utils.py:13
+msgid "year"
+msgstr "ano"
+
+#: utils.py:13
+msgid "years"
+msgstr "anos"
+
+#: utils.py:14
+msgid "month"
+msgstr "mês"
+
+#: utils.py:14
+msgid "months"
+msgstr "meses"
+
+#: utils.py:15
+msgid "week"
+msgstr "semana"
+
+#: utils.py:15
+msgid "weeks"
+msgstr "semanas"
+
+#: utils.py:16
+msgid "day"
+msgstr "dia"
+
+#: utils.py:16
+msgid "days"
+msgstr "dias"
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr "%(number)d %(type)s atrás"
