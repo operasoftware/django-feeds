@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -11,53 +11,53 @@ msgstr ""
 "PO-Revision-Date: 2010-12-02 12:58+0100\n"
 "Last-Translator: Slawek Sochaj <ssochaj@opera.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: models.py:32
 msgid "The feed does not seem to be respond. We will try again later."
-msgstr "Kanał RSS nie odpowiada. Spróbujemy ponownie później."
+msgstr "这个订阅似乎没有回应.我们会稍后再试"
 
 #: models.py:34
 msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
-msgstr "Wprowadziłeś niepoprawny URL, albo ten kanał RSS już nie istnieje."
+msgstr "您可能填写了一个错误的URL，或者这个订阅并不存在"
 
 #: models.py:37
 msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
-msgstr "Pojawił się problem z wprowadzonym kanałem RSS. Sprawdź dokładnie URL, albo spróbuj ponownie później."
+msgstr "您提供的订阅有一个错误，请检查一下您输入的URL是否出错，并稍后重试"
 
-#: models.py:59
-#: models.py:113
+#: models.py:59 models.py:113
 msgid "name"
-msgstr "nazwa"
+msgstr "名称"
 
 #: models.py:60
 msgid "domain"
-msgstr "domena"
+msgstr "域"
 
 #: models.py:67
+#, fuzzy
 msgid "category"
-msgstr "kategoria"
+msgstr "目录"
 
 #: models.py:68
+#, fuzzy
 msgid "categories"
-msgstr "kategorie"
+msgstr "目录"
 
 #: models.py:114
 msgid "feed URL"
-msgstr "Adres kanału RSS"
+msgstr "订阅地址"
 
 #: models.py:115
 msgid "description"
-msgstr "Opis"
+msgstr "介绍"
 
-#: models.py:116
-#: models.py:313
+#: models.py:116 models.py:313
 msgid "link"
-msgstr "link"
+msgstr "链接"
 
 #: models.py:117
 msgid "E-Tag"
@@ -73,7 +73,7 @@ msgstr "data ostatniego odświeżenia"
 
 #: models.py:125
 msgid "last error"
-msgstr "ostatni błąd"
+msgstr ""
 
 #: models.py:128
 msgid "sort order"
@@ -234,4 +234,3 @@ msgstr "dni"
 #, python-format
 msgid "%(number)d %(type)s ago"
 msgstr "%(number)d %(type)s temu"
-
