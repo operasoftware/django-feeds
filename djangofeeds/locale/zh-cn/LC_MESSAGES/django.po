@@ -194,7 +194,7 @@ msgstr "%(hours)d 个小时以前"
 #: utils.py:12
 #, python-format
 msgid "yesterday at %(time)s"
-msgstr "yesterday at %(time)s"
+msgstr ""
 
 #: utils.py:13
 msgid "year"
@@ -226,9 +226,9 @@ msgstr ""
 
 #: utils.py:16
 msgid "days"
-msgstr "dni"
+msgstr ""
 
 #: utils.py:23
 #, python-format
 msgid "%(number)d %(type)s ago"
-msgstr "%(number)d %(type)s temu"
+msgstr "%(number)d %(type)s 以前"
