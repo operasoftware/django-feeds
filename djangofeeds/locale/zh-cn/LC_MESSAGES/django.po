@@ -127,7 +127,7 @@ msgstr "załączniki"
 
 #: models.py:312
 msgid "title"
-msgstr "tytuł"
+msgstr "标题"
 
 #: models.py:314
 msgid "content"
@@ -139,7 +139,7 @@ msgstr "GUID"
 
 #: models.py:316
 msgid "author"
-msgstr "autor"
+msgstr "作者"
 
 #: models.py:317
 msgid "date published"
@@ -159,7 +159,7 @@ msgstr "posty"
 
 #: utils.py:8
 msgid "just now"
-msgstr "już teraz"
+msgstr "刚才"
 
 #: utils.py:9
 #, python-format
