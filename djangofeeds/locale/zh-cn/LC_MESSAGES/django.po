@@ -198,7 +198,7 @@ msgstr "%(hours)d 个小时以前"
 #: utils.py:12
 #, python-format
 msgid "yesterday at %(time)s"
-msgstr ""
+msgstr "在昨天的 %(time)s"
 
 #: utils.py:13
 msgid "year"
@@ -226,11 +226,11 @@ msgstr "周"
 
 #: utils.py:16
 msgid "day"
-msgstr ""
+msgstr "天"
 
 #: utils.py:16
 msgid "days"
-msgstr ""
+msgstr "天"
 
 #: utils.py:23
 #, python-format
