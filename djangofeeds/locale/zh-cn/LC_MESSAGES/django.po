@@ -132,7 +132,6 @@ msgid "title"
 msgstr "标题"
 
 #: models.py:314
-#, fuzzy
 msgid "content"
 msgstr "内容"
 
