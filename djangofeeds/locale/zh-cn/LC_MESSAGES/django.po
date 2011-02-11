@@ -98,12 +98,14 @@ msgid "frequency"
 msgstr "频率"
 
 #: models.py:142
+#, fuzzy
 msgid "syndication feed"
-msgstr "udostępniony kanał"
+msgstr "订阅聚合"
 
 #: models.py:143
+#, fuzzy
 msgid "syndication feeds"
-msgstr "udostępnione kanały"
+msgstr "订阅聚合"
 
 #: models.py:256
 msgid "URL"
@@ -111,31 +113,32 @@ msgstr "URL"
 
 #: models.py:257
 msgid "type"
-msgstr "typ"
+msgstr "类型"
 
 #: models.py:258
 msgid "length"
-msgstr "długość"
+msgstr "长度"
 
 #: models.py:263
 msgid "enclosure"
-msgstr "załącznik"
+msgstr "附件"
 
 #: models.py:264
 msgid "enclosures"
-msgstr "załączniki"
+msgstr "附件"
 
 #: models.py:312
 msgid "title"
 msgstr "标题"
 
 #: models.py:314
+#, fuzzy
 msgid "content"
-msgstr "zawartość"
+msgstr "内容"
 
 #: models.py:315
 msgid "guid"
-msgstr "GUID"
+msgstr "引导"
 
 #: models.py:316
 msgid "author"
@@ -143,19 +146,20 @@ msgstr "作者"
 
 #: models.py:317
 msgid "date published"
-msgstr "data publikacji"
+msgstr "发布日期"
 
 #: models.py:318
 msgid "date updated"
-msgstr "data zmiany"
+msgstr "更新日期"
 
 #: models.py:329
+#, fuzzy
 msgid "post"
-msgstr "post"
+msgstr "文章"
 
 #: models.py:330
 msgid "posts"
-msgstr "posty"
+msgstr "文章"
 
 #: utils.py:8
 msgid "just now"
@@ -164,22 +168,22 @@ msgstr "刚才"
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d second ago"
-msgstr "%(seconds)d sekund temu"
+msgstr "%(seconds)d 秒以前"
 
 #: utils.py:9
 #, python-format
 msgid "%(seconds)d seconds ago"
-msgstr "%(seconds)d sekund temu"
+msgstr "%(seconds)d 秒以前"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minute ago"
-msgstr "%(minutes)d minut temu"
+msgstr "%(minutes)d 分钟以前"
 
 #: utils.py:10
 #, python-format
 msgid "%(minutes)d minutes ago"
-msgstr "%(minutes)d minut temu"
+msgstr "%(minutes)d 分钟以前"
 
 #: utils.py:11
 #, python-format
