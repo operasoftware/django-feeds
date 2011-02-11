@@ -153,7 +153,6 @@ msgid "date updated"
 msgstr "更新日期"
 
 #: models.py:329
-#, fuzzy
 msgid "post"
 msgstr "文章"
 
