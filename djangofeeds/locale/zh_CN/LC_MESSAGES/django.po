@@ -99,11 +99,11 @@ msgstr "频率"
 
 #: models.py:142
 msgid "syndication feed"
-msgstr "订阅聚合"
+msgstr "聚合订阅"
 
 #: models.py:143
 msgid "syndication feeds"
-msgstr "订阅聚合"
+msgstr "聚合订阅"
 
 #: models.py:256
 msgid "URL"
