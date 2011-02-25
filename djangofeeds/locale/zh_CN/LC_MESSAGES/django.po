@@ -98,12 +98,10 @@ msgid "frequency"
 msgstr "频率"
 
 #: models.py:142
-#, fuzzy
 msgid "syndication feed"
 msgstr "订阅聚合"
 
 #: models.py:143
-#, fuzzy
 msgid "syndication feeds"
 msgstr "订阅聚合"
 
