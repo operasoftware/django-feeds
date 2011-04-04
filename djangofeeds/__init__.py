@@ -1,6 +1,6 @@
 """Django Feed Aggregator."""
 
-VERSION = (2, 0, 9)
+VERSION = (2, 0, 10)
 
 __version__ = ".".join(map(str, VERSION))
 __author__ = "Ask Solem"
