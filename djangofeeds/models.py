@@ -310,7 +310,8 @@ class Post(models.Model):
 
     feed = models.ForeignKey(Feed, null=False, blank=False)
     title = models.CharField(_(u"title"), max_length=200)
-    link = models.URLField(_(u"link"))
+    # using 2048 for long URLs, only work for MySQL 5.0.3 +
+    link = models.URLField(_(u"link"), max_length=2048)
     content = models.TextField(_(u"content"), blank=True)
     guid = models.CharField(_(u"guid"), max_length=200, blank=True)
     author = models.CharField(_(u"author"), max_length=50, blank=True)
