@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-26 15:59+0100\n"
+"PO-Revision-Date: 2010-12-02 12:58+0100\n"
+"Last-Translator: Slawek Sochaj <ssochaj@opera.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: models.py:32
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr "Kanał RSS nie odpowiada. Spróbujemy ponownie później."
+
+#: models.py:34
+msgid "You entered an incorrect URL or the feed you requested does not exist anymore."
+msgstr "Wprowadziłeś niepoprawny URL, albo ten kanał RSS już nie istnieje."
+
+#: models.py:37
+msgid "There was a problem with the feed you provided, please check the URL for mispellings or try again later."
+msgstr "Pojawił się problem z wprowadzonym kanałem RSS. Sprawdź dokładnie URL, albo spróbuj ponownie później."
+
+#: models.py:59
+#: models.py:113
+msgid "name"
+msgstr "nazwa"
+
+#: models.py:60
+msgid "domain"
+msgstr "domena"
+
+#: models.py:67
+msgid "category"
+msgstr "kategoria"
+
+#: models.py:68
+msgid "categories"
+msgstr "kategorie"
+
+#: models.py:114
+msgid "feed URL"
+msgstr "Adres kanału RSS"
+
+#: models.py:115
+msgid "description"
+msgstr "Opis"
+
+#: models.py:116
+#: models.py:313
+msgid "link"
+msgstr "link"
+
+#: models.py:117
+msgid "E-Tag"
+msgstr "E-Tag"
+
+#: models.py:120
+msgid "Last-Modified"
+msgstr "Ostatnio zmodyfikowane"
+
+#: models.py:122
+msgid "date of last refresh"
+msgstr "data ostatniego odświeżenia"
+
+#: models.py:125
+msgid "last error"
+msgstr "ostatni błąd"
+
+#: models.py:128
+msgid "sort order"
+msgstr "porządek sortowania"
+
+#: models.py:129
+msgid "date created"
+msgstr "data utworzenia"
+
+#: models.py:130
+msgid "date changed"
+msgstr "zmieniona data"
+
+#: models.py:133
+msgid "last requested"
+msgstr "ostatnio wywołany"
+
+#: models.py:135
+msgid "is active"
+msgstr "jest aktywny"
+
+#: models.py:136
+msgid "frequency"
+msgstr "częstotliwość"
+
+#: models.py:142
+msgid "syndication feed"
+msgstr "udostępniony kanał"
+
+#: models.py:143
+msgid "syndication feeds"
+msgstr "udostępnione kanały"
+
+#: models.py:256
+msgid "URL"
+msgstr "URL"
+
+#: models.py:257
+msgid "type"
+msgstr "typ"
+
+#: models.py:258
+msgid "length"
+msgstr "długość"
+
+#: models.py:263
+msgid "enclosure"
+msgstr "załącznik"
+
+#: models.py:264
+msgid "enclosures"
+msgstr "załączniki"
+
+#: models.py:312
+msgid "title"
+msgstr "tytuł"
+
+#: models.py:314
+msgid "content"
+msgstr "zawartość"
+
+#: models.py:315
+msgid "guid"
+msgstr "GUID"
+
+#: models.py:316
+msgid "author"
+msgstr "autor"
+
+#: models.py:317
+msgid "date published"
+msgstr "data publikacji"
+
+#: models.py:318
+msgid "date updated"
+msgstr "data zmiany"
+
+#: models.py:329
+msgid "post"
+msgstr "post"
+
+#: models.py:330
+msgid "posts"
+msgstr "posty"
+
+#: utils.py:8
+msgid "just now"
+msgstr "już teraz"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr "%(seconds)d sekund temu"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr "%(seconds)d sekund temu"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr "%(minutes)d minut temu"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr "%(minutes)d minut temu"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr "%(hours)d hour ago"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr "%(hours)d hours ago"
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr "yesterday at %(time)s"
+
+#: utils.py:13
+msgid "year"
+msgstr "rok"
+
+#: utils.py:13
+msgid "years"
+msgstr "lata"
+
+#: utils.py:14
+msgid "month"
+msgstr "miesiąc"
+
+#: utils.py:14
+msgid "months"
+msgstr "miesiące"
+
+#: utils.py:15
+msgid "week"
+msgstr "tydzień"
+
+#: utils.py:15
+msgid "weeks"
+msgstr "tygodnie"
+
+#: utils.py:16
+msgid "day"
+msgstr "dzień"
+
+#: utils.py:16
+msgid "days"
+msgstr "dni"
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr "%(number)d %(type)s temu"
+

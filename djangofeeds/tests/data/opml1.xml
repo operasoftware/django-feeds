@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<opml version="1.0">
+    <head>
+        <title>OPML Tests</title>
+        <dateCreated>Thu, 12 Sep 2009 23:35:52 GMT</dateCreated>
+        <dateModified>Fri, 12 Sep 2009 23:45:37 GMT</dateModified>
+        <ownerName>Portal</ownerName>
+        <ownerEmail>newsfor@news4humans.com</ownerEmail>
+        <link>http://news4humans.com/feedonfeeds.opml</link>
+    </head>
+<body>
+    <outline text="Technology News">
+        <outline text="Reddit"  type="link" url="http://www.reddit.com/r/programming/.rss"
+            dateCreated="Thu, 12 Sep 2003 23:35:52 GMT"/>
+        <outline text="Osnews"  type="link"
+            url="http://www.osnews.com/files/recent.xml" dateCreated="Thu, 12 Sep 2003 23:35:52 GMT"/>
+    </outline>
+    <outline text="Google News">
+        <outline text="Google new french"  type="link"
+            url="http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&topic=h&num=3&output=rss"
+            dateCreated="Thu, 12 Sep 2003 23:35:52 GMT"/>
+    </outline>
+</body>
+</opml>

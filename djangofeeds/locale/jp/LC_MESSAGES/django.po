@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-06 12:24+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:32
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr ""
+
+#: models.py:34
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr ""
+
+#: models.py:37
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+
+#: models.py:59 models.py:113
+msgid "name"
+msgstr ""
+
+#: models.py:60
+msgid "domain"
+msgstr ""
+
+#: models.py:67
+msgid "category"
+msgstr ""
+
+#: models.py:68
+msgid "categories"
+msgstr ""
+
+#: models.py:114
+msgid "feed URL"
+msgstr ""
+
+#: models.py:115
+msgid "description"
+msgstr ""
+
+#: models.py:116 models.py:313
+msgid "link"
+msgstr ""
+
+#: models.py:117
+msgid "E-Tag"
+msgstr ""
+
+#: models.py:120
+msgid "Last-Modified"
+msgstr ""
+
+#: models.py:122
+msgid "date of last refresh"
+msgstr ""
+
+#: models.py:125
+msgid "last error"
+msgstr ""
+
+#: models.py:128
+msgid "sort order"
+msgstr ""
+
+#: models.py:129
+msgid "date created"
+msgstr ""
+
+#: models.py:130
+msgid "date changed"
+msgstr ""
+
+#: models.py:133
+msgid "last requested"
+msgstr ""
+
+#: models.py:135
+msgid "is active"
+msgstr ""
+
+#: models.py:136
+msgid "frequency"
+msgstr ""
+
+#: models.py:142
+msgid "syndication feed"
+msgstr ""
+
+#: models.py:143
+msgid "syndication feeds"
+msgstr ""
+
+#: models.py:256
+msgid "URL"
+msgstr ""
+
+#: models.py:257
+msgid "type"
+msgstr ""
+
+#: models.py:258
+msgid "length"
+msgstr ""
+
+#: models.py:263
+msgid "enclosure"
+msgstr ""
+
+#: models.py:264
+msgid "enclosures"
+msgstr ""
+
+#: models.py:312
+msgid "title"
+msgstr ""
+
+#: models.py:314
+msgid "content"
+msgstr ""
+
+#: models.py:315
+msgid "guid"
+msgstr ""
+
+#: models.py:316
+msgid "author"
+msgstr ""
+
+#: models.py:317
+msgid "date published"
+msgstr ""
+
+#: models.py:318
+msgid "date updated"
+msgstr ""
+
+#: models.py:329
+msgid "post"
+msgstr ""
+
+#: models.py:330
+msgid "posts"
+msgstr ""
+
+#: utils.py:8
+msgid "just now"
+msgstr ""
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr ""
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr ""
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr ""
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr ""
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr ""
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr ""
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr ""
+
+#: utils.py:13
+msgid "year"
+msgstr ""
+
+#: utils.py:13
+msgid "years"
+msgstr ""
+
+#: utils.py:14
+msgid "month"
+msgstr ""
+
+#: utils.py:14
+msgid "months"
+msgstr ""
+
+#: utils.py:15
+msgid "week"
+msgstr ""
+
+#: utils.py:15
+msgid "weeks"
+msgstr ""
+
+#: utils.py:16
+msgid "day"
+msgstr ""
+
+#: utils.py:16
+msgid "days"
+msgstr ""
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr ""

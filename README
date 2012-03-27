@@ -1,0 +1,7 @@
+===========================================
+djangofeeds - Feed Aggregator for Django.
+===========================================
+
+Django feeds provides an extensive database model for RSS feeds and a fault tolerant parser.
+
+You have the option to store the feed data using a redis storage backend.

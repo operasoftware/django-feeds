@@ -1,0 +1,7 @@
+importlib
+feedparser
+celery
+django-celery
+BeautifulSoup
+httplib2
+html5lib

@@ -1,0 +1,239 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Portal Vietnamese\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-06 12:23+0100\n"
+"PO-Revision-Date: 2010-11-29 16:25+0100\n"
+"Last-Translator: Van <nguyent@opera.com>\n"
+"Language-Team: Vi\n"
+"Language: Vietnamese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:32
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr "Không kết nối được với feed. Chúng tôi sẽ thử lại sau."
+
+#: models.py:34
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr "Bạn đã cung cấp URL sai hoặc feed của bạn yêu cầu không còn tồn tại."
+
+#: models.py:37
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"Feed bạn cung cấp gặp phải lỗi, vui lòng kiểm tra URL hoặc thử lại trong "
+"chốc lát."
+
+#: models.py:59 models.py:113
+msgid "name"
+msgstr "tên"
+
+#: models.py:60
+msgid "domain"
+msgstr "tên miền"
+
+#: models.py:67
+msgid "category"
+msgstr "thể loại"
+
+#: models.py:68
+msgid "categories"
+msgstr "các thể loại"
+
+#: models.py:114
+msgid "feed URL"
+msgstr "feed URL"
+
+#: models.py:115
+msgid "description"
+msgstr "mô tả "
+
+#: models.py:116 models.py:313
+msgid "link"
+msgstr "đường dẫn"
+
+#: models.py:117
+msgid "E-Tag"
+msgstr "E-Tag"
+
+#: models.py:120
+msgid "Last-Modified"
+msgstr "Cập nhật lần cuối"
+
+#: models.py:122
+msgid "date of last refresh"
+msgstr "Lần cuối làm mới"
+
+#: models.py:125
+msgid "last error"
+msgstr "lỗi mới nhất"
+
+#: models.py:128
+msgid "sort order"
+msgstr "Sắp xếp theo thứ tự"
+
+#: models.py:129
+msgid "date created"
+msgstr "Ngày thiết lập"
+
+#: models.py:130
+msgid "date changed"
+msgstr "ngày sửa đôỉ"
+
+#: models.py:133
+msgid "last requested"
+msgstr "yêu cầu gần nhất"
+
+#: models.py:135
+msgid "is active"
+msgstr "đang hoạt động"
+
+#: models.py:136
+msgid "frequency"
+msgstr "tần số"
+
+#: models.py:142
+msgid "syndication feed"
+msgstr "syndication feed"
+
+#: models.py:143
+msgid "syndication feeds"
+msgstr "syndication feeds"
+
+#: models.py:256
+msgid "URL"
+msgstr "URL"
+
+#: models.py:257
+msgid "type"
+msgstr "loại"
+
+#: models.py:258
+msgid "length"
+msgstr "chiều dài"
+
+#: models.py:263
+msgid "enclosure"
+msgstr "tài liệu đính kèm"
+
+#: models.py:264
+msgid "enclosures"
+msgstr "tài liệu đính kèm"
+
+#: models.py:312
+msgid "title"
+msgstr "tiêu đề"
+
+#: models.py:314
+msgid "content"
+msgstr "nội dung"
+
+#: models.py:315
+msgid "guid"
+msgstr "hướng dẫn"
+
+#: models.py:316
+msgid "author"
+msgstr "tác giả"
+
+#: models.py:317
+msgid "date published"
+msgstr "ngày đăng tải"
+
+#: models.py:318
+msgid "date updated"
+msgstr "ngày cập nhật"
+
+#: models.py:329
+msgid "post"
+msgstr "bài viết"
+
+#: models.py:330
+msgid "posts"
+msgstr "các bài viết"
+
+#: utils.py:8
+msgid "just now"
+msgstr "vừa xong"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr "%(seconds)d giây trước"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr "%(seconds)d giây trước"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr "%(minutes)d phút trước"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr "%(minutes)d phút trước"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr "%(hours)d giờ trước"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr "%(hours)d giờ trước"
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr "hôm qua lúc %(time)s"
+
+#: utils.py:13
+msgid "year"
+msgstr "năm"
+
+#: utils.py:13
+msgid "years"
+msgstr "hàng năm"
+
+#: utils.py:14
+msgid "month"
+msgstr "tháng"
+
+#: utils.py:14
+msgid "months"
+msgstr "hàng tháng"
+
+#: utils.py:15
+msgid "week"
+msgstr "tuần"
+
+#: utils.py:15
+msgid "weeks"
+msgstr "hàng tuần"
+
+#: utils.py:16
+msgid "day"
+msgstr "ngày"
+
+#: utils.py:16
+msgid "days"
+msgstr "hàng ngày"
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr "%(number)d %(type)s trước"

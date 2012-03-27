@@ -1,0 +1,245 @@
+# translation of django.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ilya Shpankov <ilyas@opera.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-06 12:23+0100\n"
+"PO-Revision-Date: 2010-10-08 17:53+0400\n"
+"Last-Translator: Ilya Shpankov <ilyas@opera.com>\n"
+"Language-Team: Russian <ilyas@opera.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding:  \n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: models.py:32
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr "Лента не отвечает на запросы. Мы попробуем позже."
+
+#: models.py:34
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr "Вы ввели неверный URL или запрашиваемая лента больше не существует."
+
+#: models.py:37
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"С указанной вами лентой возникли проблемы, проверьте правильность URL или "
+"повторите попытку позже."
+
+#: models.py:59 models.py:113
+msgid "name"
+msgstr "имя"
+
+#: models.py:60
+msgid "domain"
+msgstr "домен"
+
+#: models.py:67
+msgid "category"
+msgstr "категория"
+
+#: models.py:68
+msgid "categories"
+msgstr "категории"
+
+#: models.py:114
+msgid "feed URL"
+msgstr "URL ленты"
+
+#: models.py:115
+msgid "description"
+msgstr "описание"
+
+#: models.py:116 models.py:313
+msgid "link"
+msgstr "ссылка"
+
+#: models.py:117
+msgid "E-Tag"
+msgstr "E-Tag"
+
+#: models.py:120
+msgid "Last-Modified"
+msgstr "Обновлённые"
+
+#: models.py:122
+msgid "date of last refresh"
+msgstr "дата последнего обновления"
+
+#: models.py:125
+msgid "last error"
+msgstr "последняя ошибка"
+
+#: models.py:128
+msgid "sort order"
+msgstr "порядок сортировки"
+
+#: models.py:129
+msgid "date created"
+msgstr "дата создана"
+
+#: models.py:130
+msgid "date changed"
+msgstr "дата изменена"
+
+#: models.py:133
+msgid "last requested"
+msgstr "недавно запрошенные"
+
+#: models.py:135
+msgid "is active"
+msgstr "активна"
+
+#: models.py:136
+msgid "frequency"
+msgstr "частота"
+
+#: models.py:142
+msgid "syndication feed"
+msgstr "лента новостей"
+
+#: models.py:143
+msgid "syndication feeds"
+msgstr "ленты новостей"
+
+#: models.py:256
+msgid "URL"
+msgstr "URL"
+
+#: models.py:257
+msgid "type"
+msgstr "тип"
+
+#: models.py:258
+msgid "length"
+msgstr "длина"
+
+#: models.py:263
+msgid "enclosure"
+msgstr "вложение"
+
+#: models.py:264
+msgid "enclosures"
+msgstr "вложения"
+
+#: models.py:312
+msgid "title"
+msgstr "заголовок"
+
+#: models.py:314
+msgid "content"
+msgstr "содержимое"
+
+#: models.py:315
+msgid "guid"
+msgstr "guid"
+
+#: models.py:316
+msgid "author"
+msgstr "автор"
+
+#: models.py:317
+msgid "date published"
+msgstr "дата публикации"
+
+#: models.py:318
+msgid "date updated"
+msgstr "дата обновления"
+
+#: models.py:329
+msgid "post"
+msgstr "сообщение"
+
+#: models.py:330
+msgid "posts"
+msgstr "сообщения"
+
+#: utils.py:8
+msgid "just now"
+msgstr "сейчас"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr "%(seconds)d секунду назад"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr "%(seconds)d секунд назад"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr "%(minutes)d минуту назад"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr "%(minutes)d минут назад"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr "%(hours)d час назад"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr "%(hours)d часов назад"
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr "вчера в %(time)s"
+
+#: utils.py:13
+msgid "year"
+msgstr "год"
+
+#: utils.py:13
+msgid "years"
+msgstr "лет"
+
+#: utils.py:14
+msgid "month"
+msgstr "месяц"
+
+#: utils.py:14
+msgid "months"
+msgstr "месяцев"
+
+#: utils.py:15
+msgid "week"
+msgstr "неделя"
+
+#: utils.py:15
+msgid "weeks"
+msgstr "недель"
+
+#: utils.py:16
+msgid "day"
+msgstr "день"
+
+#: utils.py:16
+msgid "days"
+msgstr "дней"
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr "%(number)d %(type)s назад"
+
+#~ msgid "This is a test sentence for the demo."
+#~ msgstr "Это тестовое сообщение для демонстрации."

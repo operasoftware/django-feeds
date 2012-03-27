@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-06 12:24+0100\n"
+"PO-Revision-Date: 2009-06-18 17:08+0100\n"
+"Last-Translator: Pål Eivind Jacobsen Nes <paaln@opera.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:32
+msgid "The feed does not seem to be respond. We will try again later."
+msgstr "Denne kanalen ser ikke ut til å svare. Vi prøver igjen senere."
+
+#: models.py:34
+msgid ""
+"You entered an incorrect URL or the feed you requested does not exist "
+"anymore."
+msgstr ""
+"Du har skrevet feil adresse, eller kanalen du etterspurte finnes ikke lenger."
+
+#: models.py:37
+msgid ""
+"There was a problem with the feed you provided, please check the URL for "
+"mispellings or try again later."
+msgstr ""
+"Det var et problem med kanalen du angav, vennligst sjekk adressen for "
+"skrivefeil eller prøv igjen senere."
+
+#: models.py:59 models.py:113
+msgid "name"
+msgstr "navn"
+
+#: models.py:60
+msgid "domain"
+msgstr "domene"
+
+#: models.py:67
+msgid "category"
+msgstr "kategori"
+
+#: models.py:68
+msgid "categories"
+msgstr "kategorier"
+
+#: models.py:114
+msgid "feed URL"
+msgstr "kanal adresse"
+
+#: models.py:115
+msgid "description"
+msgstr "beskrivelse"
+
+#: models.py:116 models.py:313
+msgid "link"
+msgstr "lenke"
+
+#: models.py:117
+msgid "E-Tag"
+msgstr "E-Tag"
+
+#: models.py:120
+msgid "Last-Modified"
+msgstr "Last-Modified"
+
+#: models.py:122
+msgid "date of last refresh"
+msgstr "siste oppdatering"
+
+#: models.py:125
+msgid "last error"
+msgstr "siste feil"
+
+#: models.py:128
+msgid "sort order"
+msgstr "sorteringsrekkefølge"
+
+#: models.py:129
+msgid "date created"
+msgstr "dato opprettet"
+
+#: models.py:130
+msgid "date changed"
+msgstr "dato oppdatert"
+
+#: models.py:133
+msgid "last requested"
+msgstr "sist forespurt"
+
+#: models.py:135
+msgid "is active"
+msgstr "er aktiv"
+
+#: models.py:136
+msgid "frequency"
+msgstr "frekvens"
+
+#: models.py:142
+msgid "syndication feed"
+msgstr "syndikeringskanal"
+
+#: models.py:143
+msgid "syndication feeds"
+msgstr "syndikeringskanaler"
+
+#: models.py:256
+msgid "URL"
+msgstr "URL\t"
+
+#: models.py:257
+msgid "type"
+msgstr "type"
+
+#: models.py:258
+msgid "length"
+msgstr "lengde"
+
+#: models.py:263
+msgid "enclosure"
+msgstr "vedlegg"
+
+#: models.py:264
+msgid "enclosures"
+msgstr "vedlegg"
+
+#: models.py:312
+msgid "title"
+msgstr "tittel"
+
+#: models.py:314
+msgid "content"
+msgstr "innhold"
+
+#: models.py:315
+msgid "guid"
+msgstr "guid"
+
+#: models.py:316
+msgid "author"
+msgstr "forfatter"
+
+#: models.py:317
+msgid "date published"
+msgstr "dato publisert"
+
+#: models.py:318
+msgid "date updated"
+msgstr "dato oppdatert"
+
+#: models.py:329
+msgid "post"
+msgstr "artikkel"
+
+#: models.py:330
+msgid "posts"
+msgstr "artikler"
+
+#: utils.py:8
+msgid "just now"
+msgstr "akkurat nå"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d second ago"
+msgstr "%(seconds)d sekund siden"
+
+#: utils.py:9
+#, python-format
+msgid "%(seconds)d seconds ago"
+msgstr "%(seconds)d sekunder siden"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minute ago"
+msgstr "%(minutes)d minutt siden"
+
+#: utils.py:10
+#, python-format
+msgid "%(minutes)d minutes ago"
+msgstr "%(minutes)d minutter siden"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hour ago"
+msgstr "%(hours)d time siden"
+
+#: utils.py:11
+#, python-format
+msgid "%(hours)d hours ago"
+msgstr "%(hours)d timer siden"
+
+#: utils.py:12
+#, python-format
+msgid "yesterday at %(time)s"
+msgstr "i går klokken %(time)s"
+
+#: utils.py:13
+msgid "year"
+msgstr "år"
+
+#: utils.py:13
+msgid "years"
+msgstr "år"
+
+#: utils.py:14
+msgid "month"
+msgstr "måned"
+
+#: utils.py:14
+msgid "months"
+msgstr "måneder"
+
+#: utils.py:15
+msgid "week"
+msgstr "uke"
+
+#: utils.py:15
+msgid "weeks"
+msgstr "uker"
+
+#: utils.py:16
+msgid "day"
+msgstr "dag"
+
+#: utils.py:16
+msgid "days"
+msgstr "dager"
+
+#: utils.py:23
+#, python-format
+msgid "%(number)d %(type)s ago"
+msgstr "%(number)d %(type)s siden"
+
+#~ msgid "This is a test sentence for the demo."
+#~ msgstr "Dette er en testsetning for demonstrasjonen."
