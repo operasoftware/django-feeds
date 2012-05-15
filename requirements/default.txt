@@ -1,4 +1,3 @@
-importlib
 feedparser
 celery
 django-celery

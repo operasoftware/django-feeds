@@ -11,6 +11,7 @@ from django.utils.hashcompat import md5_constructor
 
 from djangofeeds import conf
 from djangofeeds.optimization import BeaconRemover
+from django.utils.timezone import utc
 beacon_remover = BeaconRemover()
 
 GUID_FIELDS = frozenset(("title", "link", "author"))
@@ -110,7 +111,7 @@ def entries_by_date(entries, limit=None):
     :param limit: Limit number of posts.
 
     """
-    now = datetime.now()
+    now = datetime.utcnow().replace(tzinfo=utc)
 
     def find_date(entry, counter):
         """Find the most current date entry tuple."""
@@ -186,9 +187,9 @@ def date_to_datetime(field_name):
                 time_ = time.mktime(entry[field_name])
                 date = datetime.fromtimestamp(time_)
             except TypeError:
-                date = datetime.now()
+                date  = datetime.utcnow().replace(tzinfo=utc)
             return date
-        return datetime.now()
+        return datetime.utcnow().replace(tzinfo=utc)
     _field_to_datetime.__doc__ = "Convert %s to datetime" % repr(field_name)
 
     return _field_to_datetime

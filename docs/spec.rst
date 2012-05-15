@@ -2,31 +2,6 @@
  Feed Service
 ==========================================
 
-Discussion
-==========
-
-*Tristan*:
-::
-
-    I would like the feed processing to be a separate service, so it's not
-    running on Portal. This service would use Redis (ref batiste's email
-    about superfeedr, who got the same problem as us and fixed it with Redis)
-    to solve most of the performance issues [they had].
-    As a bonus, it could be really cool to use Durian and have a push service
-    (with Portal as a client). But keep in mind it's a "bonus".
-
-
-I don't think accessing the feeds through such a service is useful for
-Portal, as Portal uses most (if not all) of the feeds in the system
-this would only result in feeds being stored twice.
-
-But if some other service at Opera needs this, we could add a
-`PubSubHubbub`_ interface on top of this, using the proposed signals
-below.
-
-
-.. _`PubSubHubbub`: http://en.wikipedia.org/wiki/PubSubHubbub
-
 
 Support for storing posts in Redis
 ==================================

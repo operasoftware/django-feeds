@@ -12,6 +12,7 @@ from djangofeeds import feedutil
 from djangofeeds import exceptions
 from djangofeeds.utils import get_default_logger, truncate_field_data
 from djangofeeds.backends import backend_or_default
+from django.utils.timezone import utc
 
 
 class FeedImporter(object):
@@ -221,8 +222,9 @@ class FeedImporter(object):
             recently refreshed already.
 
         """
+        now = datetime.utcnow().replace(tzinfo=utc)
         already_fresh = (feed_obj.date_last_refresh and
-                         datetime.now() < feed_obj.date_last_refresh +
+                         now < feed_obj.date_last_refresh +
                          conf.MIN_REFRESH_INTERVAL)
 
         if already_fresh and not force:
@@ -259,7 +261,7 @@ class FeedImporter(object):
             for entry in sorted_by_date:
                 self.import_entry(entry, feed_obj)
 
-        feed_obj.date_last_refresh = datetime.now()
+        feed_obj.date_last_refresh = now
         feed_obj.http_etag = feed.get("etag", "")
         if hasattr(feed, "modified") and feed.modified:
             try:

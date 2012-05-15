@@ -11,10 +11,7 @@ import feedparser
 from datetime import datetime
 from UserDict import UserDict
 from contextlib import nested
-
 from django.contrib.auth import authenticate
-
-from yadayada.test.user import create_random_user
 
 from djangofeeds.importers import FeedImporter
 from djangofeeds.exceptions import FeedCriticalError
@@ -83,12 +80,6 @@ class TestRegressionOPAL578(unittest.TestCase):
 class TestFeedImporter(unittest.TestCase):
 
     def setUp(self):
-        randuser = create_random_user()
-        self.user = authenticate(username=randuser.username,
-                                 password=randuser.username)
-        self.assertEqual(randuser.username, self.user.username)
-        self.assertTrue(self.user.is_authenticated(),
-                        "Random user created successfully")
         self.feed = get_data_filename("example_feed.rss")
         self.empty_feed = get_data_filename("example_empty_feed.rss")
         self.feed_content_encoded = get_data_filename(
