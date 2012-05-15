@@ -8,6 +8,7 @@ DJANGOFEEDS_REMOVE_BEACON = getattr(settings,
 
 # for now only the obvious tracker images
 DJANGOFEEDS_BEACON_SERVICES = [
+    r'http://feedads.+',
     r'http://feeds.feedburner.com/~r/.+',
     r'http://feeds.feedburner.com/~ff/.+',
     r'http://ads.pheedo.com/.+',
@@ -86,6 +87,11 @@ class BeaconRemover(object):
                 if self.looks_like_beacon(image_source):
                     image.replaceWith("")
                     stripped_count += 1
+            # remove very small images
+            elif image_width is not None and image_width < 6:
+                image.replaceWith("")
+                stripped_count += 1
+
         for link in soup("a"):
             link_href = link.get("href")
             if link_href and "://" in link_href:
