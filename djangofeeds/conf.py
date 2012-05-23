@@ -2,7 +2,11 @@ from datetime import timedelta
 
 from django.conf import settings
 
-from celery import conf as celeryconf
+try:
+    from celery import conf as celeryconf
+    DEFAULT_ROUTING_KEY = celeryconf.DEFAULT_ROUTING_KEY
+except ImportError:
+    DEFAULT_ROUTING_KEY = "celery"
 
 DEFAULT_DEFAULT_POST_LIMIT = 20
 DEFAULT_NUM_POSTS = -1
@@ -102,7 +106,7 @@ FEED_LAST_REQUESTED_REFRESH_LIMIT = getattr(settings,
 
 """
 ROUTING_KEY_PREFIX = getattr(settings, "DJANGOFEEDS_ROUTING_KEY_PREFIX",
-                             celeryconf.DEFAULT_ROUTING_KEY)
+                            DEFAULT_ROUTING_KEY)
 
 """ .. data:: FEED_LOCK_CACHE_KEY_FMT
 

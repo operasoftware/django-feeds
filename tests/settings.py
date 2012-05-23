@@ -32,10 +32,7 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
 
 TEST_RUNNER = "django_nose.run_tests"
 here = os.path.abspath(os.path.dirname(__file__))
-NOSE_ARGS = [os.path.join(here, os.pardir, "djangofeeds", "tests"),
-            "--cover3-package=djangofeeds",
-            "--cover3-branch",
-            "--cover3-exclude=%s" % ",".join(COVERAGE_EXCLUDE_MODULES)]
+NOSE_ARGS = [os.path.join(here, os.pardir, "djangofeeds", "tests")]
 
 
 BROKER_HOST = "localhost"
@@ -62,7 +59,7 @@ DATABASES = {
     }
 }
 
-USE_TZ = True 
+USE_TZ = True
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -70,7 +67,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django_nose',
-    'djcelery',
+    #'djcelery',
     'djangofeeds',
     'pytz',
 )

@@ -5,8 +5,10 @@ import pytz
 from datetime import datetime, timedelta
 from functools import wraps
 from itertools import count
+import socket
 
 from nose import SkipTest
+
 
 try:
     from redis.exceptions import ConnectionError

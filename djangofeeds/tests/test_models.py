@@ -2,12 +2,15 @@ import unittest2 as unittest
 import httplib as http
 import pytz
 from datetime import datetime
-
-from celery.utils import gen_unique_id
+from uuid import uuid4
 
 from djangofeeds import models
 from djangofeeds.utils import naturaldate
 from django.utils.timezone import utc
+
+
+def gen_unique_id():
+    return str(uuid4())
 
 
 class TestCategory(unittest.TestCase):

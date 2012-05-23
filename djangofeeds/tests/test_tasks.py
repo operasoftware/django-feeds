@@ -1,6 +1,10 @@
 import unittest2 as unittest
 
-from djangofeeds import tasks
+CELERY_MISSING = False
+try:
+    from djangofeeds import tasks
+except ImportError:
+    CELERY_MISSING = True
 
 
 class MockImporter(object):
@@ -15,12 +19,14 @@ class MockImporter(object):
 
 class TestRefreshFeed(unittest.TestCase):
 
+    @unittest.skipIf(CELERY_MISSING, "Celery is missing")
     def test_refresh(self):
         tasks.refresh_feed.apply(args=["http://example.com/t.rss"],
                                 kwargs={"importer_cls": MockImporter}).get()
 
         self.assertIn("http://example.com/t.rss", MockImporter.imported)
 
+    @unittest.skipIf(CELERY_MISSING, "Celery is missing")
     def test_refresh_with_locks(self):
         prev = tasks.ENABLE_LOCKS
         tasks.ENABLE_LOCKS = True
@@ -32,6 +38,7 @@ class TestRefreshFeed(unittest.TestCase):
         finally:
             tasks.ENABLE_LOCKS = prev
 
+    @unittest.skipIf(CELERY_MISSING, "Celery is not installed")
     def test_refresh_with_locked(self):
 
         class MockCache(tasks.cache.__class__):

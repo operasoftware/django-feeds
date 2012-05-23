@@ -8,11 +8,6 @@ from django.db.models import signals
 from django.utils.translation import ugettext_lazy as _
 from django.utils.hashcompat import md5_constructor
 
-try:
-    from celery.utils import timedelta_seconds
-except ImportError:
-    from celery.utils.timeutils import timedelta_seconds
-
 from djangofeeds import conf
 from djangofeeds.utils import naturaldate
 from djangofeeds.managers import FeedManager, PostManager
@@ -43,6 +38,14 @@ FEED_ERROR_CHOICES = (
         (FEED_NOT_FOUND_ERROR, FEED_NOT_FOUND_ERROR_TEXT),
         (FEED_GENERIC_ERROR, FEED_GENERIC_ERROR_TEXT),
 )
+
+def timedelta_seconds(delta):
+    """Convert :class:`datetime.timedelta` to seconds.
+
+    Doesn't account for negative values.
+
+    """
+    return max(delta.total_seconds(), 0)
 
 
 class Category(models.Model):
