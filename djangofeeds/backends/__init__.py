@@ -48,7 +48,7 @@ def symbol_by_name(name, aliases={}, imp=None, package=None,
         imp = importlib.import_module
 
     if not isinstance(name, basestring):
-        return name                                 # already a class
+        return name # already a class
 
     name = aliases.get(name) or name
     sep = ':' if ':' in name else sep
@@ -59,7 +59,7 @@ def symbol_by_name(name, aliases={}, imp=None, package=None,
         try:
             module = imp(module_name, package=package, **kwargs)
         except ValueError, exc:
-            raise ValueError, ValueError(
+            raise ValueError(
                     "Couldn't import %r: %s" % (name, exc)), sys.exc_info()[2]
         return getattr(module, cls_name) if cls_name else module
     except (ImportError, AttributeError):
