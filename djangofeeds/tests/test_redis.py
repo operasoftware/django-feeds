@@ -1,6 +1,7 @@
 from __future__ import with_statement
 
 import unittest2 as unittest
+import pytz
 from datetime import datetime, timedelta
 from functools import wraps
 from itertools import count
@@ -41,7 +42,7 @@ class TestRedisBackend(unittest.TestCase):
                     guid="http://rss.com/example/%d",
                     link="http://rss.com/example/%d",
                     content="This is an example",
-                    timestamp=datetime.now())
+                    timestamp=datetime.now(pytz.utc))
 
     def setUp(self):
         self.b = Entries()
@@ -52,7 +53,7 @@ class TestRedisBackend(unittest.TestCase):
         fields.setdefault("guid", self.test_data["guid"] % (id, ))
         fields.setdefault("link", self.test_data["link"] % (id, ))
         fields.setdefault("feed_url", self.test_data["feed_url"] % (id, ))
-        fields.setdefault("timestamp", datetime.now())
+        fields.setdefault("timestamp", datetime.now(pytz.utc))
         fields.setdefault("date_updated", fields["timestamp"])
         if delta is not None:
             fields["timestamp"] = fields["timestamp"] + delta

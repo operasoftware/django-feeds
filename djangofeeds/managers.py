@@ -1,3 +1,4 @@
+import pytz
 from datetime import timedelta, datetime
 
 from django.db import models
@@ -38,7 +39,7 @@ class ExtendedQuerySet(QuerySet):
     def since(self, interval):
         """Return all the feeds refreshed since a specified
         amount of seconds."""
-        threshold = datetime.now() - timedelta(seconds=interval)
+        threshold = datetime.now(pytz.utc) - timedelta(seconds=interval)
         return self.filter(date_last_refresh__lt=threshold)
 
     def ratio(self, min=None, max=None):

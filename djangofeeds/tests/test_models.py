@@ -1,11 +1,13 @@
 import unittest2 as unittest
 import httplib as http
+import pytz
 from datetime import datetime
 
 from celery.utils import gen_unique_id
 
 from djangofeeds import models
 from djangofeeds.utils import naturaldate
+from django.utils.timezone import utc
 
 
 class TestCategory(unittest.TestCase):
@@ -47,13 +49,13 @@ class TestPost(unittest.TestCase):
         self.assertNotEqual(p1.auto_guid(), p2.auto_guid())
 
     def test_date_published_naturaldate(self):
-        now = datetime.now()
-        day = datetime(now.year, now.month, now.day)
+        now = datetime.now(pytz.utc)
+        day = datetime(now.year, now.month, now.day, tzinfo=utc)
         post = models.Post(feed=self.feed, title="baz", date_published=now)
         self.assertEqual(post.date_published_naturaldate, naturaldate(day))
 
     def test_date_updated_naturaldate(self):
-        now = datetime.now()
+        now = datetime.now(pytz.utc)
         post = models.Post(feed=self.feed, title="baz", date_updated=now)
         self.assertEqual(post.date_updated_naturaldate, naturaldate(now))
 
@@ -98,7 +100,7 @@ class TestFeed(unittest.TestCase):
         self.assertEqual(indb.last_error, models.FEED_TIMEDOUT_ERROR)
 
     def test_date_last_refresh_naturaldate(self):
-        now = datetime.now()
+        now = datetime.now(pytz.utc)
         f = models.Feed(name="foo2", feed_url="http://example.com/t2.rss",
                 sort=0, date_last_refresh=now)
         self.assertEqual(f.date_last_refresh_naturaldate, naturaldate(now))
@@ -123,7 +125,7 @@ class TestFeed(unittest.TestCase):
         self.assertEqual(f.expire_old_posts(), 0)
 
     def test_expire_old_posts(self):
-        now = datetime.now()
+        now = datetime.now(pytz.utc)
         f = models.Feed.objects.create(name="foozalaz",
                 feed_url=gen_unique_id(), sort=0)
         [models.Post.objects.create(feed=f,

@@ -1,3 +1,4 @@
+import pytz
 import unittest2 as unittest
 from datetime import datetime, timedelta
 
@@ -13,92 +14,92 @@ class TestNaturalDate(unittest.TestCase):
         self.assertEqual(naturaldate(None), "")
 
     def test_in_the_future(self):
-        then = datetime.now() + timedelta(seconds=1)
+        then = datetime.now(pytz.utc) + timedelta(seconds=1)
         self.assertEqual(naturaldate(then), "just now")
-        then = datetime.now() + timedelta(minutes=30)
+        then = datetime.now(pytz.utc) + timedelta(minutes=30)
         self.assertEqual(naturaldate(then), "just now")
-        then = datetime.now() + timedelta(hours=30)
+        then = datetime.now(pytz.utc) + timedelta(hours=30)
         self.assertEqual(naturaldate(then), "just now")
-        then = datetime.now() + timedelta(days=2)
+        then = datetime.now(pytz.utc) + timedelta(days=2)
         self.assertEqual(naturaldate(then), "just now")
-        then = datetime.now() + timedelta(days=8)
+        then = datetime.now(pytz.utc) + timedelta(days=8)
         self.assertEqual(naturaldate(then), "just now")
-        then = datetime.now() + timedelta(days=5 * 7)
+        then = datetime.now(pytz.utc) + timedelta(days=5 * 7)
         self.assertEqual(naturaldate(then), "just now")
-        then = datetime.now() + timedelta(days=413)
+        then = datetime.now(pytz.utc) + timedelta(days=413)
         self.assertEqual(naturaldate(then), "just now")
 
-    def test_just_now(self):
-        now = datetime.now()
+    def test_just_utcnow(self):
+        now = datetime.now(pytz.utc)
         self.assertEqual(naturaldate(now), "just now")
 
     def test_seconds_ago(self):
         for n in xrange(0, 59 + 1):
-            n_seconds_ago = datetime.now() - timedelta(seconds=n)
+            n_seconds_ago = datetime.now(pytz.utc) - timedelta(seconds=n)
             self.assertEqual(naturaldate(n_seconds_ago), "just now")
 
     def test_one_minute_ago(self):
-        one_minute_ago = datetime.now() - timedelta(minutes=1)
+        one_minute_ago = datetime.now(pytz.utc) - timedelta(minutes=1)
         self.assertEqual(naturaldate(one_minute_ago), "1 minute ago")
 
     def test_minutes_ago(self):
         for n in xrange(2, 59 + 1):
-            n_minutes_ago = datetime.now() - timedelta(minutes=n)
+            n_minutes_ago = datetime.now(pytz.utc) - timedelta(minutes=n)
             self.assertEqual(naturaldate(n_minutes_ago),
                               "%d minutes ago" % n)
 
     def test_one_hour_ago(self):
-        one_hour_ago = datetime.now() - timedelta(hours=1)
+        one_hour_ago = datetime.now(pytz.utc) - timedelta(hours=1)
         self.assertEqual(naturaldate(one_hour_ago), "1 hour ago")
 
     def test_hours_ago(self):
         for n in xrange(2, 24):
-            n_hours_ago = datetime.now() - timedelta(hours=n)
+            n_hours_ago = datetime.now(pytz.utc) - timedelta(hours=n)
             self.assertEqual(naturaldate(n_hours_ago),
                 "%d hours ago" % n)
-        yesterday = datetime.now() - timedelta(hours=24)
+        yesterday = datetime.now(pytz.utc) - timedelta(hours=24)
         self.assertEqual(naturaldate(yesterday),
                 "yesterday at %s" % yesterday.strftime("%H:%M"))
 
     def test_yesterday(self):
-        yesterday = datetime.now() - timedelta(days=1)
+        yesterday = datetime.now(pytz.utc) - timedelta(days=1)
         self.assertEqual(naturaldate(yesterday),
                 "yesterday at %s" % yesterday.strftime("%H:%M"))
 
     def test_days_ago(self):
-        yesteryesterday = datetime.now() - timedelta(days=2)
+        yesteryesterday = datetime.now(pytz.utc) - timedelta(days=2)
         self.assertEqual(naturaldate(yesteryesterday), "2 days ago")
 
     def test_one_week_ago(self):
-        one_week_ago = datetime.now() - timedelta(days=7)
+        one_week_ago = datetime.now(pytz.utc) - timedelta(days=7)
         self.assertEqual(naturaldate(one_week_ago), "1 week ago")
 
     def test_weeks_ago(self):
         for n in xrange(2, 5):
-            n_weeks_ago = datetime.now() - timedelta(days=n * 7)
+            n_weeks_ago = datetime.now(pytz.utc) - timedelta(days=n * 7)
             self.assertEqual(naturaldate(n_weeks_ago), "%d weeks ago" % n)
 
     def test_one_month_ago(self):
-        one_month_ago = datetime.now() - timedelta(days=30)
+        one_month_ago = datetime.now(pytz.utc) - timedelta(days=30)
         self.assertEqual(naturaldate(one_month_ago), "1 month ago")
 
     def test_months_ago(self):
         for n in xrange(2, 13):
-            n_months_ago = datetime.now() - timedelta(days=n * 30)
+            n_months_ago = datetime.now(pytz.utc) - timedelta(days=n * 30)
             self.assertEqual(naturaldate(n_months_ago), "%d months ago" % n)
 
     def test_one_year_ago(self):
-        one_year_ago = datetime.now() - timedelta(days=365)
+        one_year_ago = datetime.now(pytz.utc) - timedelta(days=365)
         self.assertEqual(naturaldate(one_year_ago), "1 year ago")
 
     def test_years_ago(self):
         for n in xrange(2, 30):
-            n_years_ago = datetime.now() - timedelta(days=n * 365)
+            n_years_ago = datetime.now(pytz.utc) - timedelta(days=n * 365)
             self.assertEqual(naturaldate(n_years_ago),
                 "%d years ago" % n)
 
     def test_entries_by_date(self):
-        now = datetime.now()
+        now = datetime.now(pytz.utc)
         proper_list = [
             {"title": "proper 1", "date_parsed": now},
             {"title": "proper 2",

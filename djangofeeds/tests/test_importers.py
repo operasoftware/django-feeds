@@ -8,6 +8,7 @@ import httplib as http
 import tempfile
 import unittest2 as unittest
 import feedparser
+import pytz
 from datetime import datetime
 from UserDict import UserDict
 from contextlib import nested
@@ -156,7 +157,12 @@ src="http://www.labandepasdessinee.com/bpd/images/saison3/261
         posts = feed_obj.get_posts(limit=None)
         first_post = posts[0]
         self.assertEqual(first_post.guid, "Lifehacker-5147831")
-        self.assertEqual(str(first_post.date_updated), "2009-02-06 12:30:00")
+        fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+        self.assertEqual(first_post.date_updated,
+                datetime(2009, 02, 06, 04, 30, 0, 0,
+                tzinfo=pytz.timezone('US/Pacific')).astimezone(
+                    pytz.utc))
+
         for post in posts:
             self.assertTrue(post.guid, "post has GUID")
             self.assertTrue(post.title, "post has title")
@@ -296,7 +302,8 @@ src="http://www.labandepasdessinee.com/bpd/images/saison3/261
 
     def test_http_modified(self):
         now = time.localtime()
-        now_as_dt = datetime.fromtimestamp(time.mktime(now))
+        now_as_dt = datetime.fromtimestamp(time.mktime(
+            now)).replace(tzinfo=pytz.utc)
 
         class _Verify(FeedImporter):
 

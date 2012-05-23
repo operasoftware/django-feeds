@@ -1,5 +1,7 @@
 import logging
+import pytz
 from datetime import datetime
+from django.utils.timezone import utc
 
 from django.utils.translation import ungettext, ugettext as _
 
@@ -34,8 +36,8 @@ def naturaldate(date):
     if not date:
         return ''
 
-    now = datetime.now()
-    today = datetime(now.year, now.month, now.day)
+    now = datetime.now(pytz.utc)
+    today = datetime(now.year, now.month, now.day, tzinfo=utc)
     delta = now - date
     delta_midnight = today - date
 

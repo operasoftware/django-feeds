@@ -1,10 +1,12 @@
 import unittest2 as unittest
-from datetime import datetime
 import feedparser
+from datetime import datetime
+import pytz
 
 from djangofeeds import feedutil
 from djangofeeds.feedutil import date_to_datetime, find_post_content
 from djangofeeds.tests.test_importers import get_data_file
+from django.utils.timezone import utc
 
 NOT_ENCODEABLE = ('\xd0\x9e\xd1\x82\xd0\xb2\xd0\xb5\xd1\x82\xd1\x8b '
                   '\xd0\xbd\xd0\xb0 \xd0\xb2\xd0\xb0\xd1\x88\xd0\xb8 '
@@ -17,14 +19,14 @@ class test_date_to_datetime(unittest.TestCase):
     def test_no_date(self):
         x = date_to_datetime("date_test")
         date = x(None, {})
-        now = datetime.now()
+        now = datetime.now(pytz.utc)
         self.assertTupleEqual((date.year, date.month, date.day),
                               (now.year, now.month, now.day))
 
     def test_wrong_type(self):
         x = date_to_datetime("date_test")
         date = x(None, {"date_test": object()})
-        now = datetime.now()
+        now = datetime.now(pytz.utc)
         self.assertTupleEqual((date.year, date.month, date.day),
                               (now.year, now.month, now.day))
 

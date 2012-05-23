@@ -2,6 +2,7 @@ import time
 import urllib
 import urllib2
 import re
+import pytz
 
 from base64 import b64encode
 from datetime import datetime, timedelta
@@ -111,7 +112,7 @@ def entries_by_date(entries, limit=None):
     :param limit: Limit number of posts.
 
     """
-    now = datetime.utcnow().replace(tzinfo=utc)
+    now = datetime.now(pytz.utc)
 
     def find_date(entry, counter):
         """Find the most current date entry tuple."""
@@ -185,11 +186,11 @@ def date_to_datetime(field_name):
         if field_name in entry:
             try:
                 time_ = time.mktime(entry[field_name])
-                date = datetime.fromtimestamp(time_)
+                date = datetime.fromtimestamp(time_).replace(tzinfo=utc)
             except TypeError:
-                date  = datetime.utcnow().replace(tzinfo=utc)
+                date = datetime.now(pytz.utc)
             return date
-        return datetime.utcnow().replace(tzinfo=utc)
+        return datetime.now(pytz.utc)
     _field_to_datetime.__doc__ = "Convert %s to datetime" % repr(field_name)
 
     return _field_to_datetime

@@ -1,6 +1,7 @@
 """Model working with Feeds and Posts."""
 import httplib as http
 from datetime import datetime, timedelta
+from django.utils.timezone import utc
 
 from django.db import models
 from django.db.models import signals
@@ -341,7 +342,7 @@ class Post(models.Model):
     @property
     def date_published_naturaldate(self):
         date = self.date_published
-        as_datetime = datetime(date.year, date.month, date.day)
+        as_datetime = datetime(date.year, date.month, date.day, tzinfo=utc)
         return unicode(naturaldate(as_datetime))
 
     @property

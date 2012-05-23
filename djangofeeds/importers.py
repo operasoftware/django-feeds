@@ -266,7 +266,8 @@ class FeedImporter(object):
         if hasattr(feed, "modified") and feed.modified:
             try:
                 as_ts = time.mktime(feed.modified)
-                feed_obj.http_last_modified = datetime.fromtimestamp(as_ts)
+                feed_obj.http_last_modified = datetime.fromtimestamp(
+                        as_ts).replace(tzinfo=utc)
             except TypeError:
                 pass
 

@@ -9,6 +9,8 @@ SITE_ID = 69932
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+SECRET_KEY = "mysecretkeytest"
+USE_TZ = True
 
 ROOT_URLCONF = "urls"
 
@@ -51,15 +53,16 @@ CELERY_QUEUES = {
 }
 CELERY_DEFAULT_ROUTING_KEY = "testdjangofeeds"
 
-
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = 'testdb.sqlite'
-DATABASE_USER = ''
-DATABASE_PASSWORD = ''
-DATABASE_HOST = ''
-DATABASE_PORT = ''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'testdb.sqlite',
+    }
+}
+
+USE_TZ = True 
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -69,6 +72,7 @@ INSTALLED_APPS = (
     'django_nose',
     'djcelery',
     'djangofeeds',
+    'pytz',
 )
 
 
