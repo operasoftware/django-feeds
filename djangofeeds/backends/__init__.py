@@ -42,13 +42,15 @@ def symbol_by_name(name, aliases={}, imp=None, package=None,
         >>> from celery.concurrency.processes import TaskPool
         >>> symbol_by_name(TaskPool) is TaskPool
         True
-
     """
+
     if imp is None:
         imp = importlib.import_module
 
+
     if not isinstance(name, basestring):
-        return name # already a class
+        # already a class
+        return name
 
     name = aliases.get(name) or name
     sep = ':' if ':' in name else sep
