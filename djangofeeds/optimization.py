@@ -82,7 +82,7 @@ class BeaconRemover(object):
         soup = BeautifulSoup(html)
         stripped_count = 0
         for image in soup("img"):
-            image_width = image.get("width")
+            image_width = image.get("width", 10)
             image_source = image.get("src")
             if image_source and "://" in image_source:
                 if self.looks_like_beacon(image_source):
