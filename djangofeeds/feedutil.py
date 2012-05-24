@@ -21,8 +21,8 @@ GUID_FIELDS = frozenset(("title", "link", "author"))
 def format_date(t):
     """Make sure time object is a :class:`datetime.datetime` object."""
     if isinstance(t, time.struct_time):
-        return datetime(*t[:6])
-    return t
+        return datetime(*t[:6], tzinfo=pytz.utc)
+    return t.replace(tzinfo=utc)
 
 
 def md5sum(text):

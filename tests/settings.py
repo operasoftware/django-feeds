@@ -30,7 +30,6 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
                             "djangofeeds.utils",
 )
 
-TEST_RUNNER = "django_nose.run_tests"
 here = os.path.abspath(os.path.dirname(__file__))
 NOSE_ARGS = [os.path.join(here, os.pardir, "djangofeeds", "tests")]
 
