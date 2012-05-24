@@ -39,6 +39,7 @@ FEED_ERROR_CHOICES = (
         (FEED_GENERIC_ERROR, FEED_GENERIC_ERROR_TEXT),
 )
 
+
 def timedelta_seconds(delta):
     """Convert :class:`datetime.timedelta` to seconds.
 

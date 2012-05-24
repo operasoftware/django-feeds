@@ -47,7 +47,6 @@ def symbol_by_name(name, aliases={}, imp=None, package=None,
     if imp is None:
         imp = importlib.import_module
 
-
     if not isinstance(name, basestring):
         # already a class
         return name
