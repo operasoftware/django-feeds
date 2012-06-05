@@ -171,6 +171,9 @@ def find_post_content(feed_obj, entry):
     except UnicodeDecodeError:
         content = ""
 
+    # Remove uneccesary white spaces
+    content = content.strip()
+
     return beacon_remover.strip(content)
 
 
