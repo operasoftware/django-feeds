@@ -40,7 +40,8 @@ class test_BeaconRemover(unittest.TestCase):
             """<a>&lt; <img src="test" /></a>""")
 
     def test_remove_extra_br(self):
-        extra = """  <br /><br><br><br/> <a href="test">toto</a> <br><br><br>"""
+        extra = """  <br /><br><br><br/> <a href="test">toto</a>
+        <br><br><br>"""
         ecpected_result = """<a href="test">toto</a> <br />"""
         self.assertEqual(self.tracker_remover.optimize(extra),
                          ecpected_result)
@@ -77,8 +78,9 @@ class test_BeaconRemover(unittest.TestCase):
             to_img_tag = """<img src="%s" />"""
 
             for url in SERVICE_URLS:
-                self.assertEqual(self.tracker_remover.optimize(to_img_tag % url),
-                                 to_img_tag % url)
+                self.assertEqual(
+                    self.tracker_remover.optimize(to_img_tag % url),
+                    to_img_tag % url)
         finally:
             optimization.DJANGOFEEDS_REMOVE_TRACKERS = prev
 
