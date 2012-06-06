@@ -39,8 +39,8 @@ class test_BeaconRemover(unittest.TestCase):
             """<a>&lt; <img src="test" /></a>""")
 
     def test_remove_extra_br(self):
-        extra = """  <br /><br><br><br/> <a href="test">toto</a> <br><br>"""
-        ecpected_result = """<br /> <a href="test">toto</a> <br />"""
+        extra = """  <br /><br><br><br/> <a href="test">toto</a> <br><br><br>"""
+        ecpected_result = """<a href="test">toto</a> <br />"""
         self.assertEqual(self.tracker_remover.optimize(extra),
                          ecpected_result)
 

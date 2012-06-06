@@ -89,7 +89,8 @@ class PostContentOptimizer(object):
         return str(soup).strip()
 
     def remove_excessive_br(self, soup):
-        last_one_is_br = False
+        # start with true to remove any starting br tag
+        last_one_is_br = True
         children = soup.childGenerator()
         for el in children:
             if isinstance(el, BeautifulSoup.Tag):
