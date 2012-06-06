@@ -57,12 +57,13 @@ class test_find_post_content(unittest.TestCase):
 
         feed_str = get_data_file("dailymotion.rss")
         feed = feedparser.parse(feed_str)
-        elements = ("src='http://ak2.static.dailymotion.com/static/video/454/"
-                "695/26596454:jpeg_preview_large.jpg?20101129171226'",
-                "width='320'",
-                "height='240'")
+        elements = ("http://ak2.static.dailymotion.com/static/video/454/"
+                "695/26596454:jpeg_preview_large.jpg?20101129171226",
+                "320",
+                "240")
 
         post = find_post_content(None, feed.entries[0])
+        print post
         for elem in elements:
             self.assertTrue(post.find(elem) != -1, elem)
 

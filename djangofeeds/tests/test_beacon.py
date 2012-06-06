@@ -8,6 +8,8 @@ IMG3 = "http://a.rfihub.com/eus.gif?eui=2224"
 
 SERVICE_URLS = [IMG3, IMG1]
 
+IMG_LIMIT = optimization.DJANGOFEEDS_SMALL_IMAGE_LIMIT
+
 
 class test_BeaconRemover(unittest.TestCase):
 
@@ -32,9 +34,9 @@ class test_BeaconRemover(unittest.TestCase):
         self.assertEqual(self.tracker_remover.optimize(" test "), "test")
 
     def test_parse_borken_html(self):
-        broken_html = """<a< <img>"""
+        broken_html = """<a< <img src="test">"""
         self.assertEqual(self.tracker_remover.optimize(broken_html),
-                         "<a>&lt; <img /></a>")
+            """<a>&lt; <img src="test" /></a>""")
 
     def test_remove_extra_br(self):
         extra = """  <br /><br><br><br/> <a href="test">toto</a> <br><br>"""
@@ -43,16 +45,29 @@ class test_BeaconRemover(unittest.TestCase):
                          ecpected_result)
 
     def test_remove_small_image(self):
-        small_image = """<img src="test" width="6">"""
+        small_image = """<img src="test" width="%d">""" % (IMG_LIMIT - 1)
         self.assertEqual(
             self.tracker_remover.optimize(small_image),
             "")
 
     def test_big_enough_image(self):
-        big_enough_image = """<img src="test" width="20">"""
+        big_enough_image = """<img src="test" width="%d">""" % IMG_LIMIT
         self.assertEqual(
             self.tracker_remover.optimize(big_enough_image),
-            '<img src="test" width="20" />')
+            '<img src="test" width="%d" />' % IMG_LIMIT)
+
+    def test_remove_tracker(self):
+        tracker_src = [
+            'http://telegraph.feedsportal.com/c/test',
+            'http://rss.feedsportal.com/c/32495/f/479227/s/20113027/mf.gif',
+            'http://feeds.newscientist.com/c/749/f/10901/s/1fee0bac/mf.gif'
+            'http://ads.pheedo.com/random',
+            'http://a.rfihub.com/random',
+            'http://segment-pixel.invitemedia.com/random',
+        ]
+        for src in tracker_src:
+            tracker = """<img src="%s" width="%d">""" % (src, IMG_LIMIT + 1)
+            self.assertEqual(self.tracker_remover.optimize(tracker), '')
 
     def test_settings(self):
         prev = optimization.DJANGOFEEDS_REMOVE_TRACKERS

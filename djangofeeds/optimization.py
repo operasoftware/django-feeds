@@ -7,15 +7,23 @@ DJANGOFEEDS_REMOVE_TRACKERS = getattr(settings,
     "DJANGOFEEDS_REMOVE_TRACKERS", True)
 
 # The obvious tracker images
-DJANGOFEEDS_TRACKER_SERVICES = getattr(settings, "DJANGOFEEDS_TRACKER_SERVICES", [
-    r'http://feedads.+',
-    r'http://feeds.feedburner.com/~r/.+',
-    r'http://feeds.feedburner.com/~ff/.+',
-    r'http://ads.pheedo.com/.+',
-    r'http://a.rfihub.com/.+',
-    r'http://segment-pixel.invitemedia.com/.+',
-    r'http://pixel.quantserve.com/.+',
+DJANGOFEEDS_TRACKER_SERVICES = getattr(settings,
+    "DJANGOFEEDS_TRACKER_SERVICES", [
+    'http://feedads',
+    'http://feeds.feedburner.com/~r/',
+    'http://feeds.feedburner.com/~ff/',
+    'http://rss.feedsportal.com/c/',
+    'http://ads.pheedo.com/',
+    'http://a.rfihub.com/',
+    'http://segment-pixel.invitemedia.com/',
+    'http://pixel.quantserve.com/',
+    'http://feeds.newscientist.com/',
+    'http://mf.feeds.reuters.com/c/',
+    'http://telegraph.feedsportal.com/c/',
 ])
+
+DJANGOFEEDS_SMALL_IMAGE_LIMIT = getattr(settings,
+    "DJANGOFEEDS_SMALL_IMAGE_LIMIT", 50)
 
 
 class PostContentOptimizer(object):
@@ -58,18 +66,18 @@ class PostContentOptimizer(object):
 
     """
 
-    def looks_like_tracker(self, image_url):
+    def looks_like_tracker(self, url):
         """Return True if the image URL has to be removed."""
-        for reg in DJANGOFEEDS_TRACKER_SERVICES:
-            if re.match(reg, image_url):
+        for service in DJANGOFEEDS_TRACKER_SERVICES:
+            if url.startswith(service):
                 return True
         return False
 
     def optimize(self, html):
         """Remove unecessary spaces, <br> and image tracker."""
+
         # Remove uneccesary white spaces
         html = html.strip()
-
         try:
             soup = BeautifulSoup.BeautifulSoup(html)
             self.remove_excessive_br(soup)
@@ -92,26 +100,29 @@ class PostContentOptimizer(object):
                 else:
                     last_one_is_br = False
 
-
     def remove_trackers(self, soup):
-        """Do the stripping work using beautiful soup."""
-
+        """Remove the trackers."""
         stripped_count = 0
         for image in soup("img"):
+            already_removed = False
+
+            # remove images that looks like tracker
+            image_source = image.get("src", "")
+            if (len(image_source) == 0 or
+                self.looks_like_tracker(image_source)):
+                image.replaceWith("")
+                already_removed = True
+
+            # remove small images
             try:
-                image_width = int(image.get("width", 100))
+                image_width = int(image.get("width",
+                    DJANGOFEEDS_SMALL_IMAGE_LIMIT))
             except ValueError:
                 image_width = None
-            image_source = image.get("src")
-            # remove images that looks like tracker
-            if image_source and "://" in image_source:
-                if self.looks_like_tracker(image_source):
-                    image.replaceWith("")
-                    stripped_count += 1
-            # remove very small images
-            elif image_width is not None and image_width < 10:
+            if (image_width is not None and
+                image_width < DJANGOFEEDS_SMALL_IMAGE_LIMIT and
+                not already_removed):
                 image.replaceWith("")
-                stripped_count += 1
 
         # remove links that looks like tracker
         for link in soup("a"):
@@ -119,5 +130,4 @@ class PostContentOptimizer(object):
             if link_href and "://" in link_href:
                 if self.looks_like_tracker(link_href):
                     link.replaceWith("")
-                    stripped_count += 1
 
