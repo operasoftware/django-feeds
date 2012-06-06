@@ -11,9 +11,9 @@ from django.utils.text import truncate_html_words
 from django.utils.hashcompat import md5_constructor
 
 from djangofeeds import conf
-from djangofeeds.optimization import BeaconRemover
+from djangofeeds.optimization import PostContentOptimizer
 from django.utils.timezone import utc
-beacon_remover = BeaconRemover()
+feed_content_optimizer = PostContentOptimizer()
 
 GUID_FIELDS = frozenset(("title", "link", "author"))
 
@@ -54,24 +54,29 @@ def search_alternate_links(feed):
     return []
 
 
+
+links = re.compile(r"""<\s*link[^>]*>""")
+atom = re.compile(r"""<[^>]*
+    type\s*=\s*["|']application/atom\+xml['|"][^>]*
+    >""", re.VERBOSE)
+rss = re.compile(r"""<[^>]*
+    type\s*=\s*["|']application/rss\+xml['|"][^>]*
+    >""", re.VERBOSE)
+href = re.compile(r"""href\s*=\s*["|'](?P<href>[^"']*)["|'][^>]*""")
+
+
+def regex_html(html):
+    links_str = "".join(links.findall(html))
+    types_str = "".join(rss.findall(links_str) + atom.findall(links_str))
+    return href.findall(types_str)
+
+
 def search_links_url(url, source=''):
     """
     Search for rss links in html file.
     This method can be used if the search_alternate_links function
     failed to find any link.
     """
-    def regex_html(html):
-        links = re.compile(r"""<\s*link[^>]*>""")
-        atom = re.compile(r"""<[^>]*
-            type\s*=\s*["|']application/atom\+xml['|"][^>]*
-            >""", re.VERBOSE)
-        rss = re.compile(r"""<[^>]*
-            type\s*=\s*["|']application/rss\+xml['|"][^>]*
-            >""", re.VERBOSE)
-        href = re.compile(r"""href\s*=\s*["|'](?P<href>[^"']*)["|'][^>]*""")
-        links_str = "".join(links.findall(html))
-        types_str = "".join(rss.findall(links_str) + atom.findall(links_str))
-        return href.findall(types_str)
 
     # For testing we pass directly the html in source
     if not source:
@@ -171,10 +176,7 @@ def find_post_content(feed_obj, entry):
     except UnicodeDecodeError:
         content = ""
 
-    # Remove uneccesary white spaces
-    content = content.strip()
-
-    return beacon_remover.strip(content)
+    return feed_content_optimizer.optimize(content)
 
 
 def date_to_datetime(field_name):

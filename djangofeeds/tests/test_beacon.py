@@ -12,12 +12,12 @@ SERVICE_URLS = [IMG3, IMG1]
 class test_BeaconRemover(unittest.TestCase):
 
     def setUp(self):
-        self.beacon_remover = optimization.BeaconRemover()
+        self.tracker_remover = optimization.PostContentOptimizer()
 
     def test_01_urls(self):
         self.assertIsBeacons(SERVICE_URLS + [IMG2])
 
-    def test_02_strip(self):
+    def test_strip_tracker(self):
         some_text = """test %s %s"""
         to_img_tag = """<img src="%s" />"""
         img1 = to_img_tag % IMG2
@@ -26,36 +26,48 @@ class test_BeaconRemover(unittest.TestCase):
         content = some_text % (img1, img2)
         expected_result = some_text % ("", img2)
 
-        self.assertEqual(self.beacon_remover.strip(content), expected_result)
+        self.assertEqual(self.tracker_remover.optimize(content), expected_result)
 
-    def test_no_img_optimization(self):
-        self.assertEqual(self.beacon_remover.strip(" test "), " test ")
+    def test_no_optimization(self):
+        self.assertEqual(self.tracker_remover.optimize(" test "), "test")
 
-    def test_parse_error(self):
-        unparseable_text = """<a< <img>"""
-        self.assertEqual(self.beacon_remover.strip(unparseable_text),
-                         unparseable_text)
+    def test_parse_borken_html(self):
+        broken_html = """<a< <img>"""
+        self.assertEqual(self.tracker_remover.optimize(broken_html),
+                         "<a>&lt; <img /></a>")
 
-    def test_special_condition(self):
-        condition = """<img src="">"""
-        # FIXME shouldn't it assert something?
-        self.beacon_remover.strip(condition)
+    def test_remove_extra_br(self):
+        extra = """  <br /><br><br><br/> <a href="test">toto</a> <br><br>"""
+        ecpected_result = """<br /> <a href="test">toto</a> <br />"""
+        self.assertEqual(self.tracker_remover.optimize(extra),
+                         ecpected_result)
 
-    def test_03_settings(self):
-        prev = optimization.DJANGOFEEDS_REMOVE_BEACON
-        optimization.DJANGOFEEDS_REMOVE_BEACON = False
+    def test_remove_small_image(self):
+        small_image = """<img src="test" width="6">"""
+        self.assertEqual(
+            self.tracker_remover.optimize(small_image),
+            "")
+
+    def test_big_enough_image(self):
+        big_enough_image = """<img src="test" width="20">"""
+        self.assertEqual(
+            self.tracker_remover.optimize(big_enough_image),
+            '<img src="test" width="20" />')
+
+    def test_settings(self):
+        prev = optimization.DJANGOFEEDS_REMOVE_TRACKERS
+        optimization.DJANGOFEEDS_REMOVE_TRACKERS = False
         try:
             to_img_tag = """<img src="%s" />"""
 
             for url in SERVICE_URLS:
-                self.assertEqual(self.beacon_remover.strip(to_img_tag % url),
+                self.assertEqual(self.tracker_remover.optimize(to_img_tag % url),
                                  to_img_tag % url)
         finally:
-            optimization.DJANGOFEEDS_REMOVE_BEACON = prev
+            optimization.DJANGOFEEDS_REMOVE_TRACKERS = prev
 
     def assertIsBeacon(self, url):
-        self.assertTrue(self.beacon_remover.looks_like_beacon(url))
+        self.assertTrue(self.tracker_remover.looks_like_tracker(url))
 
     def assertIsBeacons(self, urls):
-        print("URLS: %s" % urls)
         map(self.assertIsBeacon, urls)

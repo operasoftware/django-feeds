@@ -50,10 +50,10 @@ class test_find_post_content(unittest.TestCase):
             feedutil.truncate_html_words = prev
 
     def test_get_img(self):
-        ''' see https://bugs.opera.com/browse/OPAL-1113
-            check that find_post_content adds an image to the content if
-            theres no img tag and is a media namespace
-        '''
+        """
+        Check that find_post_content adds an image to the content if
+        theres no img tag and is a media namespace
+        """
 
         feed_str = get_data_file("dailymotion.rss")
         feed = feedparser.parse(feed_str)
@@ -64,7 +64,7 @@ class test_find_post_content(unittest.TestCase):
 
         post = find_post_content(None, feed.entries[0])
         for elem in elements:
-            self.assertTrue(post.find(elem) != -1)
+            self.assertTrue(post.find(elem) != -1, elem)
 
 
 class test_generate_guid(unittest.TestCase):
@@ -109,17 +109,17 @@ class test_alternate_links(unittest.TestCase):
         feed = feedparser.parse(feed_str)
         links = feedutil.search_alternate_links(feed)
         self.assertListEqual(links,
-            ['http://www.smp.no/?service=rss',
-            'http://www.smp.no/?service=rss&amp;t=0',
-            'http://www.smp.no/nyheter/?service=rss',
-            'http://www.smp.no/kultur/?service=rss']
+            [u'http://www.smp.no/?service=rss',
+            u'http://www.smp.no/?service=rss&t=0',
+            u'http://www.smp.no/nyheter/?service=rss',
+            u'http://www.smp.no/kultur/?service=rss']
         )
         links = feedutil.search_links_url("http://www.smp.no/", feed_str)
         self.assertListEqual(links,
-            ['http://www.smp.no/?service=rss',
-            'http://www.smp.no/?service=rss&amp;t=0',
-            'http://www.smp.no/nyheter/?service=rss',
-            'http://www.smp.no/kultur/?service=rss']
+            [u'http://www.smp.no/?service=rss',
+            u'http://www.smp.no/?service=rss&amp;t=0',
+            u'http://www.smp.no/nyheter/?service=rss',
+            u'http://www.smp.no/kultur/?service=rss']
         )
 
     def test_search_links_order(self):
