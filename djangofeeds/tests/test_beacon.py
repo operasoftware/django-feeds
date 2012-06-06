@@ -28,7 +28,8 @@ class test_BeaconRemover(unittest.TestCase):
         content = some_text % (img1, img2)
         expected_result = some_text % ("", img2)
 
-        self.assertEqual(self.tracker_remover.optimize(content), expected_result)
+        self.assertEqual(self.tracker_remover.optimize(content),
+            expected_result)
 
     def test_no_optimization(self):
         self.assertEqual(self.tracker_remover.optimize(" test "), "test")

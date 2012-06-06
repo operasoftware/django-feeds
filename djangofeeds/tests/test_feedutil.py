@@ -54,7 +54,6 @@ class test_find_post_content(unittest.TestCase):
         Check that find_post_content adds an image to the content if
         theres no img tag and is a media namespace
         """
-
         feed_str = get_data_file("dailymotion.rss")
         feed = feedparser.parse(feed_str)
         elements = ("http://ak2.static.dailymotion.com/static/video/454/"

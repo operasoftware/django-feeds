@@ -54,7 +54,6 @@ def search_alternate_links(feed):
     return []
 
 
-
 links = re.compile(r"""<\s*link[^>]*>""")
 atom = re.compile(r"""<[^>]*
     type\s*=\s*["|']application/atom\+xml['|"][^>]*

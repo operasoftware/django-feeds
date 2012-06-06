@@ -29,8 +29,8 @@ DJANGOFEEDS_SMALL_IMAGE_LIMIT = getattr(settings,
 class PostContentOptimizer(object):
     """Remove diverse abberation and annoying content in the posts.
 
-    The idea is to remove some tracker images in the feeds because these images
-    are a pollution to the user.
+    The idea is to remove some tracker images in the feeds because
+    these images are a pollution to the user.
 
     Identified tools that add tracker images and tools into the feeds
 
@@ -131,4 +131,3 @@ class PostContentOptimizer(object):
             if link_href and "://" in link_href:
                 if self.looks_like_tracker(link_href):
                     link.replaceWith("")
-
