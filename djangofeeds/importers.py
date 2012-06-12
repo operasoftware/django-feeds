@@ -140,8 +140,7 @@ class FeedImporter(object):
 
         :param feed_url: URL to the feed to import.
         :keyword force: Force import of feed even if it's been updated
-            too recently.
-
+            recently.
         """
         feed_url = feed_url.strip()
         feed = None

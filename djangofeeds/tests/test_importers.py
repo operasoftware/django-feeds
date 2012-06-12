@@ -18,7 +18,7 @@ from djangofeeds.importers import FeedImporter
 from djangofeeds.exceptions import FeedCriticalError
 from djangofeeds.exceptions import TimeoutError, FeedNotFoundError
 from djangofeeds import models
-from djangofeeds.models import Feed
+from djangofeeds.models import Feed, Post
 from djangofeeds import feedutil
 
 data_path = os.path.join(os.path.dirname(__file__), "data")
@@ -435,5 +435,6 @@ src="http://www.labandepasdessinee.com/bpd/images/saison3/261
                                                             force=True)
         self.assertEqual(imported_feed.post_set.count(), post_count,
             "Posts seems to be imported twice.")
+
 
 

@@ -62,7 +62,6 @@ class test_find_post_content(unittest.TestCase):
                 "240")
 
         post = find_post_content(None, feed.entries[0])
-        print post
         for elem in elements:
             self.assertTrue(post.find(elem) != -1, elem)
 

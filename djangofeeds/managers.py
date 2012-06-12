@@ -107,11 +107,11 @@ class PostManager(ExtendedManager):
         super_update = super(PostManager, self).update_or_create
         defaults = truncate_field_data(self.model, fields)
         try:
-            return super_update(guid=fields["guid"], feed=feed_obj,
+            return super_update(guid=defaults["guid"], feed=feed_obj,
                                          defaults=defaults)
         except MultipleObjectsReturned:
-            self.filter(guid=fields["guid"], feed=feed_obj).delete()
-            super_update(guid=fields["guid"], feed=feed_obj,
+            self.filter(guid=defaults["guid"], feed=feed_obj).delete()
+            super_update(guid=defaults["guid"], feed=feed_obj,
                          defaults=defaults)
 
 

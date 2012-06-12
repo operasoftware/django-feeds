@@ -18,7 +18,7 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
-TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
+#TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
 
 COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
                             "djangofeeds.admin",
@@ -31,8 +31,6 @@ COVERAGE_EXCLUDE_MODULES = ("djangofeeds",
 )
 
 here = os.path.abspath(os.path.dirname(__file__))
-NOSE_ARGS = [os.path.join(here, os.pardir, "djangofeeds", "tests")]
-
 
 BROKER_HOST = "localhost"
 BROKER_PORT = 5672
