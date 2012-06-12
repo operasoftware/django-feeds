@@ -424,3 +424,16 @@ src="http://www.labandepasdessinee.com/bpd/images/saison3/261
         feed_obj = importer.import_feed(feed, local=True)
         self.assertEqual(feed_obj.name, "Lifehacker", "feed title is set")
         self.assertEqual(feed_obj.get_post_count(), 10, "feed has 10 items")
+
+    def test_double_post_bug(self):
+        """With some feeds, the posts seem to be imported several times."""
+        feed_str = get_data_file("lefigaro.rss")
+        imported_feed = self.importer.import_feed(feed_str, local=True,
+                                                            force=True)
+        post_count = imported_feed.post_set.count()
+        imported_feed = self.importer.import_feed(feed_str, local=True,
+                                                            force=True)
+        self.assertEqual(imported_feed.post_set.count(), post_count,
+            "Posts seems to be imported twice.")
+
+

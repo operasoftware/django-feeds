@@ -42,7 +42,7 @@ class test_BeaconRemover(unittest.TestCase):
     def test_remove_extra_br(self):
         extra = """  <br /><br><br><br/> <a href="test">toto</a>
         <br><br><br>"""
-        ecpected_result = """<a href="test">toto</a> <br />"""
+        ecpected_result = """<a href="test">toto</a>\n<br />"""
         self.assertEqual(self.tracker_remover.optimize(extra),
                          ecpected_result)
 
