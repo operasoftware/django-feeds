@@ -435,6 +435,3 @@ src="http://www.labandepasdessinee.com/bpd/images/saison3/261
                                                             force=True)
         self.assertEqual(imported_feed.post_set.count(), post_count,
             "Posts seems to be imported twice.")
-
-
-

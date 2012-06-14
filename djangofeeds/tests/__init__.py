@@ -2,6 +2,7 @@
 import unittest
 import os
 
+
 def suite():
     loader = unittest.TestLoader()
     tests = loader.discover(os.path.dirname(__file__),
